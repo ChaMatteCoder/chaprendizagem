@@ -1,0 +1,22 @@
+{
+  "name": "chaprendizagem-maquina",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --clearScreen false",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "serve:dist": "node scripts/serve-dist.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "vite": "^7.1.7",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.3",
+    "lucide-react": "^0.544.0",
+    "recharts": "^3.2.1"
+  },
+  "devDependencies": {}
+}
