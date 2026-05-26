@@ -10,6 +10,16 @@ O projeto usa uma estrutura por features para facilitar a expansão do laborató
 - `src/features/<modulo>/` guarda tudo que pertence a um assunto específico.
 - `experiments/` guarda implementações de apoio, protótipos e códigos de estudo que não são importados diretamente pela interface.
 
+## Navegação
+
+A navegação global deve permanecer genérica:
+
+- `Home` para a landing page e o catálogo de projetos.
+- `Sobre` para contexto e motivação do site.
+- `Contato` para apresentação pessoal e canais externos.
+
+Projetos específicos devem ser acessados por cards, módulos ou links internos, não como abas fixas do cabeçalho.
+
 ## Checklist para novos módulos
 
 1. Criar `src/features/<modulo>/pages`.

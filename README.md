@@ -2,7 +2,7 @@
 
 Chaprendizagem é um laboratório digital sobre aprendizagem de máquina. O projeto combina explicações teóricas, visualizações interativas e pequenos experimentos de código para transformar conceitos de modelos em páginas navegáveis e fáceis de revisar.
 
-O primeiro módulo disponível é **Perceptron - Reconhecimento de Dígitos**, com matrizes 5x4 representadas por valores `1` e `-1`.
+Os módulos atuais são **Perceptron - Reconhecimento de Dígitos** e **Adaline - Base B2**.
 
 ## Stack
 
@@ -16,25 +16,26 @@ O primeiro módulo disponível é **Perceptron - Reconhecimento de Dígitos**, c
 
 ```text
 chaprendizagem/
-├─ docs/                         # Documentação técnica e decisões de organização
-├─ experiments/                  # Experimentos e protótipos fora da interface React
-│  └─ perceptron-python/          # Implementação original do Perceptron em Python
-├─ scripts/                      # Utilitários locais
-├─ src/
-│  ├─ app/                       # Composição principal e rotas
-│  ├─ assets/                    # Recursos estáticos do app
-│  ├─ components/                # Componentes reutilizáveis entre módulos
-│  ├─ features/                  # Módulos de estudo organizados por assunto
-│  │  └─ perceptron/
-│  │     ├─ components/
-│  │     ├─ data/
-│  │     ├─ lib/
-│  │     └─ pages/
-│  ├─ pages/                     # Páginas globais, como a Home
-│  └─ styles/                    # CSS global
-├─ index.html
-├─ package.json
-└─ vite.config.js
+|-- docs/                         # Documentação técnica e decisões de organização
+|-- experiments/                  # Experimentos e protótipos fora da interface React
+|   `-- perceptron-python/         # Implementação original do Perceptron em Python
+|-- scripts/                      # Utilitários locais
+|-- src/
+|   |-- app/                      # Composição principal e rotas
+|   |-- assets/                   # Recursos estáticos do app
+|   |-- components/               # Componentes reutilizáveis entre módulos
+|   |-- features/                 # Módulos de estudo organizados por assunto
+|   |   |-- adaline/
+|   |   `-- perceptron/
+|   |       |-- components/
+|   |       |-- data/
+|   |       |-- lib/
+|   |       `-- pages/
+|   |-- pages/                    # Páginas globais, como a Home
+|   `-- styles/                   # CSS global
+|-- index.html
+|-- package.json
+`-- vite.config.js
 ```
 
 ## Como rodar
@@ -69,9 +70,12 @@ Sirva o build localmente:
 npm run serve:dist
 ```
 
-## Páginas atuais
+## Rotas atuais
 
-- `/` - Página inicial do laboratório.
+- `/` - Landing page do laboratório, com projetos em carrossel.
+- `/sobre` - História, motivação e proposta do projeto.
+- `/contato` - Sobre mim e links principais.
+- `/adaline` - Trabalho 05 com teoria, simulação, erro quadrático e teste da rede.
 - `/perceptron/teoria` - Base teórica do Perceptron.
 - `/perceptron/modelo` - Modelo visual com matriz interativa.
 - `/perceptron/resultados` - Painel de treinamento, métricas e resultados.
@@ -93,3 +97,5 @@ Componentes compartilhados entre vários assuntos ficam em `src/components/`. Ex
 - A previsão visual da interface está isolada em `src/features/perceptron/lib/perceptronSimulator.js`.
 - Os dados do painel de resultados estão mockados em `src/features/perceptron/data/mockResults.js`.
 - A implementação Python original foi preservada em `experiments/perceptron-python/`.
+- A base B2 do Adaline está em `src/features/adaline/data/b2Dataset.js`, convertida a partir da planilha `Basedados_B2.xlsx`.
+- O treinamento do Adaline roda em `src/features/adaline/lib/adalineTrainer.js`.

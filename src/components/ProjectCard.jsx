@@ -1,11 +1,11 @@
 import { ArrowRight, BookOpen, Boxes, Code2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export default function ProjectCard({ title, description, status, featured = false }) {
+export default function ProjectCard({ title, description, status, visual, to, featured = false }) {
   return (
     <article className={`project-card ${featured ? 'project-card--featured' : ''}`}>
       <div className="project-card__visual" aria-hidden="true">
-        {featured ? '7' : title.charAt(0)}
+        {visual ?? title.charAt(0)}
       </div>
       <div className="project-card__body">
         <span className="status-pill">{status}</span>
@@ -22,8 +22,8 @@ export default function ProjectCard({ title, description, status, featured = fal
             <Code2 size={16} /> Código
           </span>
         </div>
-        {featured ? (
-          <Link to="/perceptron/modelo" className="text-link">
+        {to ? (
+          <Link to={to} className="text-link">
             Ver projeto <ArrowRight size={17} />
           </Link>
         ) : (
