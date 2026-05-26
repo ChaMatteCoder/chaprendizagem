@@ -1,8 +1,8 @@
 import { ArrowLeft, BookOpen, ChartNoAxesCombined, CheckCircle2, CircleDot, Layers3, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import MetricCard from '../../../components/MetricCard.jsx';
 import ErrorChart from '../components/ErrorChart.jsx';
 import MatrixGrid from '../components/MatrixGrid.jsx';
-import MetricCard from '../components/MetricCard.jsx';
 import { errorCurve, learnedWeights, testSamples, trainingMetrics } from '../data/mockResults.js';
 
 export default function ResultsPage() {

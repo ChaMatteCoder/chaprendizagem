@@ -8,7 +8,7 @@ def exibir_matriz(matriz):
     for linha in matriz:
         for valor in linha:
             if valor == 1:
-                print("█", end=" ")
+                print("#", end=" ")
             else:
                 print(".", end=" ")
         print()

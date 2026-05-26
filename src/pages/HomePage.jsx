@@ -1,9 +1,9 @@
 import { ArrowRight, Beaker, BookOpen, BrainCircuit, MonitorUp, TerminalSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import MatrixGrid from '../components/MatrixGrid.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
 import StudyStepCard from '../components/StudyStepCard.jsx';
-import { digitMatrices, futureStudies } from '../data/digits.js';
+import MatrixGrid from '../features/perceptron/components/MatrixGrid.jsx';
+import { digitMatrices, futureStudies } from '../features/perceptron/data/digits.js';
 
 export default function HomePage() {
   return (

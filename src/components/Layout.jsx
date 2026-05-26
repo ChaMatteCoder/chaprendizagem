@@ -14,7 +14,7 @@ export default function Layout({ children }) {
     <div className="app-shell">
       <header className="site-header">
         <BrandMark />
-        <nav className="main-nav" aria-label="Navegacao principal">
+        <nav className="main-nav" aria-label="Navegação principal">
           {navItems.map((item) => (
             <NavLink key={item.to} to={item.to}>
               {item.label}
@@ -29,7 +29,7 @@ export default function Layout({ children }) {
       <footer className="site-footer">
         <BrandMark />
         <p>Aprender fazendo. Entender profundamente.</p>
-        <span>2026 - Projeto academico em evolucao.</span>
+        <span>2026 - Projeto acadêmico em evolução.</span>
       </footer>
     </div>
   );

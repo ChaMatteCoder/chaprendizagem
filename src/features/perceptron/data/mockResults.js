@@ -1,7 +1,7 @@
 import { digitMatrices } from './digits.js';
 
-// Dados temporarios para a primeira versao visual. Substitua por resultados reais
-// do treino em Python quando a integracao do modelo estiver pronta.
+// Dados temporários para a primeira versão visual. Substitua por resultados reais
+// do treino em Python quando a integração do modelo estiver pronta.
 export const trainingMetrics = {
   epochs: 100,
   finalError: 0,

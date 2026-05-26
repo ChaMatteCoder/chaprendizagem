@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle2, GitBranch, Sigma } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import TheoryBlock from '../../../components/TheoryBlock.jsx';
 import MatrixGrid from '../components/MatrixGrid.jsx';
-import TheoryBlock from '../components/TheoryBlock.jsx';
 import VectorDisplay from '../components/VectorDisplay.jsx';
 import { digitMatrices, expectedOutput } from '../data/digits.js';
 

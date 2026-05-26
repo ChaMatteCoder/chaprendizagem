@@ -53,7 +53,7 @@ export default function ModelPage() {
               <h2>Matriz de entrada (5 x 4)</h2>
               <span>{loadedDigit !== null ? `Exemplo carregado: ${loadedDigit}` : 'Entrada personalizada'}</span>
             </div>
-            <MatrixGrid matrix={matrix} onToggle={toggleCell} label="Matriz de entrada editavel" />
+            <MatrixGrid matrix={matrix} onToggle={toggleCell} label="Matriz de entrada editável" />
             <div className="control-row">
               <button className="button button--ghost" type="button" onClick={() => setMatrix(emptyMatrix())}>
                 <RotateCcw size={17} /> Limpar
@@ -159,7 +159,9 @@ export default function ModelPage() {
         <div className="note-box">
           <h3>Notas</h3>
           <p>Na versão atual, a previsão da interface usa uma simulação por similaridade para permitir a exploração visual.</p>
-          <p>O ponto de integração está isolado em <code>src/lib/perceptronSimulator.js</code>.</p>
+          <p>
+            O ponto de integração está isolado em <code>src/features/perceptron/lib/perceptronSimulator.js</code>.
+          </p>
         </div>
       </section>
 

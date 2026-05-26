@@ -19,7 +19,7 @@ export default function ProjectCard({ title, description, status, featured = fal
             <Boxes size={16} /> Modelo
           </span>
           <span>
-            <Code2 size={16} /> Codigo
+            <Code2 size={16} /> Código
           </span>
         </div>
         {featured ? (
