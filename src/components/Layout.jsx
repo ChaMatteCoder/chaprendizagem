@@ -1,5 +1,20 @@
-import { ArrowDown, Github, Instagram, Mail } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
+import {
+  ArrowDown,
+  ArrowRight,
+  Code2,
+  FileText,
+  FlaskConical,
+  Folder,
+  Github,
+  Home,
+  Instagram,
+  Mail,
+  Network,
+  Sigma,
+  UserRound,
+} from 'lucide-react';
+import { useEffect } from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import BrandMark from './BrandMark.jsx';
 
 const navItems = [
@@ -11,10 +26,63 @@ const navItems = [
 const socialLinks = [
   { href: 'https://github.com/ChaMatteCoder', label: 'GitHub', icon: Github },
   { href: 'https://www.instagram.com/cha_matheus/', label: 'Instagram', icon: Instagram },
-  { href: 'https://x.com/ChaMatteh_', label: 'X', icon: null },
+  { href: 'https://x.com/ChaMatteh_', label: '@ChaMatteh_', icon: null },
 ];
 
+const footerNavItems = [
+  { to: '/', label: 'Home', icon: Home },
+  { to: '/sobre', label: 'Sobre', icon: UserRound },
+  { to: '/#projetos', label: 'Projetos', icon: Folder },
+  { to: '/#modulos', label: 'Módulos', icon: FileText },
+  { to: '/contato', label: 'Contato', icon: Mail },
+];
+
+const moduleLinks = [
+  { to: '/perceptron/modelo', label: 'Perceptron', icon: Sigma, tone: 'teal' },
+  { to: '/adaline', label: 'Adaline', icon: Network, tone: 'violet' },
+];
+
+const resourceLinks = [
+  { href: 'https://github.com/ChaMatteCoder', label: 'GitHub', icon: Github },
+  { href: 'https://github.com/ChaMatteCoder/chaprendizagem', label: 'Código-fonte', icon: Code2 },
+  { href: 'https://www.instagram.com/cha_matheus/', label: 'Instagram', icon: Instagram },
+  { href: 'https://x.com/ChaMatteh_', label: 'Perfil no X', icon: null },
+];
+
+function XLogo({ size = 20 }) {
+  return (
+    <svg aria-hidden="true" className="x-logo" fill="none" height={size} viewBox="0 0 24 24" width={size}>
+      <path
+        fill="currentColor"
+        d="M1 2h2.5L18.5 22h-2.5zM5.5 2h2.5L23 22h-2.5zM3 2h5v2h-5zM16 20h5v2h-5zM18.5 2h3.5L5 22h-3.5z"
+      />
+    </svg>
+  );
+}
+
 export default function Layout({ children }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.hash) {
+      window.requestAnimationFrame(() => {
+        const target = document.querySelector(location.hash);
+        target?.scrollIntoView({ block: 'start' });
+      });
+      return;
+    }
+
+    window.scrollTo({ top: 0, left: 0 });
+  }, [location.pathname, location.hash]);
+
+  function handleFooterSubscribe(event) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const email = data.get('email')?.toString().trim();
+    navigate(email ? `/contato?email=${encodeURIComponent(email)}` : '/contato');
+  }
+
   return (
     <div className="app-shell">
       <header className="site-header">
@@ -30,30 +98,131 @@ export default function Layout({ children }) {
           Explorar <ArrowDown size={18} />
         </a>
       </header>
+
       <main>{children}</main>
-      <footer className="site-footer" id="contato-rapido">
-        <div className="footer-main">
-          <BrandMark />
-          <p>Um laboratório visual para estudar, testar e apresentar conceitos de aprendizagem de máquina.</p>
+
+      <section className="footer-next-step reveal-scale" aria-labelledby="footer-next-title">
+        <div className="footer-next-step__intro">
+          <span className="footer-next-step__icon">
+            <FlaskConical size={30} />
+          </span>
+          <div>
+            <p className="eyebrow">Próximo passo</p>
+            <h2 id="footer-next-title">Pronto para continuar sua jornada?</h2>
+            <p>Acesse o módulo mais recente e explore novos conceitos com teoria, experimentos e código.</p>
+          </div>
         </div>
-        <div className="footer-links">
-          <span>Redes</span>
-          <div className="social-row">
-            {socialLinks.map((item) => {
+
+        <Link className="footer-module-card" to="/adaline">
+          <span className="footer-module-card__mark">ŷ</span>
+          <span>
+            <small>Módulo mais recente</small>
+            <strong>Adaline</strong>
+            <p>Treinamento por erro quadrático com dados B2 e fronteira de decisão.</p>
+          </span>
+          <ArrowRight size={22} />
+        </Link>
+
+        <div className="footer-next-step__actions">
+          <Link className="button button--light" to="/adaline">
+            Abrir Adaline <ArrowRight size={18} />
+          </Link>
+          <a className="footer-inline-link" href="/#modulos">
+            Ver todos os módulos <ArrowRight size={18} />
+          </a>
+        </div>
+      </section>
+
+      <footer className="site-footer" id="contato-rapido">
+        <div className="footer-top stagger">
+          <div className="footer-main">
+            <BrandMark />
+            <p>
+              Um laboratório visual para estudar, testar e apresentar conceitos de aprendizagem de máquina. Do conceito
+              ao código.
+            </p>
+            <div className="footer-social-icons">
+              {socialLinks.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <a href={item.href} key={item.label} rel="noreferrer" target="_blank" title={item.label}>
+                    {Icon ? <Icon size={20} /> : <XLogo size={20} />}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          <nav className="footer-column" aria-label="Navegação do rodapé">
+            <h2>Navegação</h2>
+            {footerNavItems.map((item) => {
               const Icon = item.icon;
 
               return (
-                <a href={item.href} key={item.label} rel="noreferrer" target="_blank" title={item.label}>
-                  {Icon ? <Icon size={18} /> : <strong className="x-mark">X</strong>}
+                <Link key={item.label} to={item.to}>
+                  <Icon size={19} />
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <nav className="footer-column" aria-label="Explorar módulos">
+            <h2>Explorar módulos</h2>
+            <div className="footer-module-list">
+              {moduleLinks.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <Link className={`footer-pill footer-pill--${item.tone}`} key={item.label} to={item.to}>
+                    <Icon size={17} />
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
+          </nav>
+
+          <nav className="footer-column" aria-label="Recursos e comunidade">
+            <h2>Recursos & comunidade</h2>
+            {resourceLinks.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <a href={item.href} key={item.label} rel="noreferrer" target="_blank">
+                  {Icon ? <Icon size={19} /> : <XLogo size={19} />}
                   {item.label}
                 </a>
               );
             })}
+          </nav>
+
+          <form className="footer-newsletter" onSubmit={handleFooterSubscribe}>
+            <span className="footer-newsletter__icon">
+              <Mail size={24} />
+            </span>
+            <h2>Fique por dentro</h2>
+            <p>Receba novidades sobre novos módulos, artigos e atualizações do laboratório.</p>
+            <input aria-label="Email para novidades" name="email" placeholder="seu@email.com" type="email" />
+            <button className="button button--primary" type="submit">
+              Receber atualizações <ArrowRight size={18} />
+            </button>
+            <small>Sem spam. Você pode sair quando quiser.</small>
+          </form>
+        </div>
+
+        <div className="footer-bottom">
+          <span>© 2026 Chaprendizagem. Todos os direitos reservados.</span>
+          <strong>
+            <Code2 size={17} /> Do conceito ao código.
+          </strong>
+          <div>
+            <Link to="/contato">Privacidade</Link>
+            <Link to="/contato">Termos de uso</Link>
+            <Link to="/contato">Acessibilidade</Link>
           </div>
         </div>
-        <a className="footer-contact" href="/contato">
-          <Mail size={18} /> Contato
-        </a>
       </footer>
     </div>
   );

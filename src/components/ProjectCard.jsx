@@ -1,11 +1,11 @@
 import { ArrowRight, BookOpen, Boxes, Code2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export default function ProjectCard({ title, description, status, visual, to, featured = false }) {
+export default function ProjectCard({ title, description, status, visual, cover, to, featured = false }) {
   return (
     <article className={`project-card ${featured ? 'project-card--featured' : ''}`}>
       <div className="project-card__visual" aria-hidden="true">
-        {visual ?? title.charAt(0)}
+        {cover ? <img alt="" src={cover} /> : visual ?? title.charAt(0)}
       </div>
       <div className="project-card__body">
         <span className="status-pill">{status}</span>

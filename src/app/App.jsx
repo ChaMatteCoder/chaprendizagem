@@ -7,8 +7,11 @@ import ContactPage from '../pages/ContactPage.jsx';
 import ModelPage from '../features/perceptron/pages/ModelPage.jsx';
 import ResultsPage from '../features/perceptron/pages/ResultsPage.jsx';
 import TheoryPage from '../features/perceptron/pages/TheoryPage.jsx';
+import useRevealAnimations from '../hooks/useRevealAnimations.js';
 
 export default function App() {
+  useRevealAnimations();
+
   return (
     <Layout>
       <Routes>

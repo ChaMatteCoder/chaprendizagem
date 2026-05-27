@@ -13,6 +13,8 @@ import {
 } from 'lucide-react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import adalineCover from '../assets/Adaline-BaseB2.png';
+import perceptronCover from '../assets/Perceptron-Reconhecimento.png';
 import ProjectCard from '../components/ProjectCard.jsx';
 import StudyStepCard from '../components/StudyStepCard.jsx';
 
@@ -22,6 +24,7 @@ const projects = [
     status: 'Publicado',
     description: 'Classificação de dígitos de 0 a 9 representados por matrizes 5x4.',
     visual: 'P',
+    cover: perceptronCover,
     to: '/perceptron/modelo',
     featured: true,
   },
@@ -30,6 +33,7 @@ const projects = [
     status: 'Novo módulo',
     description: 'Treinamento de uma rede Adaline, curva de erro quadrático e teste da classificação.',
     visual: 'A',
+    cover: adalineCover,
     to: '/adaline',
     featured: true,
   },
@@ -67,13 +71,13 @@ export default function HomePage() {
     <div className="page">
       <section className="home-hero">
         <div className="hero-copy">
-          <p className="eyebrow">Teoria - Experimentos - Código</p>
-          <h1>Aprendizagem de máquina em movimento.</h1>
-          <p>
+          <p className="eyebrow reveal-up hero-sequence hero-sequence--badge">Teoria - Experimentos - Código</p>
+          <h1 className="reveal-up hero-sequence hero-sequence--title">Aprendizagem de máquina em movimento.</h1>
+          <p className="reveal-up hero-sequence hero-sequence--text">
             Um laboratório visual para estudar modelos, testar hipóteses, acompanhar resultados e transformar cada
             conceito em uma experiência navegável.
           </p>
-          <div className="hero-actions">
+          <div className="hero-actions reveal-scale hero-sequence hero-sequence--actions">
             <a className="button button--primary" href="#projetos">
               Ver projetos <ArrowRight size={18} />
             </a>
@@ -83,7 +87,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="ml-scene" aria-label="Cena animada de aprendizagem de máquina">
+        <div className="ml-scene reveal-right hero-sequence hero-sequence--visual" aria-label="Cena animada de aprendizagem de máquina">
           <div className="ml-scene__grid" />
           <span className="ml-node ml-node--input">x</span>
           <span className="ml-node ml-node--hidden">w</span>
@@ -98,7 +102,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section reveal" id="projetos">
+      <section className="section reveal-up" id="projetos">
         <div className="section-heading section-heading--with-actions">
           <div>
             <p className="eyebrow">Projetos em destaque</p>
@@ -113,19 +117,19 @@ export default function HomePage() {
             </button>
           </div>
         </div>
-        <div className="projects-carousel" ref={carouselRef}>
+        <div className="projects-carousel stagger" ref={carouselRef}>
           {projects.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
         </div>
       </section>
 
-      <section className="section reveal">
+      <section className="section reveal-up">
         <div className="section-heading">
           <p className="eyebrow">Como estudar aqui</p>
           <h2>Um fluxo simples para sair da teoria e chegar no experimento.</h2>
         </div>
-        <div className="study-path">
+        <div className="study-path stagger">
           <StudyStepCard
             number="1"
             icon={BookOpen}
@@ -153,12 +157,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section reveal">
+      <section className="section reveal-up" id="modulos">
         <div className="section-heading">
           <p className="eyebrow">Módulos</p>
           <h2>Os assuntos já organizados no laboratório.</h2>
         </div>
-        <div className="module-grid">
+        <div className="module-grid stagger">
           <Link className="module-card" to="/perceptron/modelo">
             <Sigma size={34} />
             <span>Módulo 01</span>
@@ -176,7 +180,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="cta-band reveal">
+      <section className="cta-band reveal-scale">
         <Beaker size={34} />
         <div>
           <h2>Pronto para explorar o novo trabalho?</h2>
