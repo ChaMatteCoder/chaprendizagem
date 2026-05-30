@@ -2243,6 +2243,272 @@ code {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.footer-module-card--disabled {
+  cursor: default;
+  opacity: 0.78;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.work-content-reveal {
+  animation: resultsRise 560ms var(--ease-out) both;
+}
+
+.regression-hero {
+  align-items: stretch;
+}
+
+.regression-hero-visual {
+  background:
+    linear-gradient(135deg, rgba(0, 87, 91, 0.88), rgba(27, 31, 37, 0.94)),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(255, 255, 255, 0.12) 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(255, 255, 255, 0.12) 40px);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  min-height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.regression-hero-visual::before {
+  background: #f6d06f;
+  content: "";
+  height: 5px;
+  left: 8%;
+  position: absolute;
+  top: 58%;
+  transform: rotate(-24deg);
+  transform-origin: left center;
+  width: 96%;
+}
+
+.regression-hero-visual span,
+.regression-hero-visual i,
+.regression-hero-visual b {
+  background: #ffffff;
+  border: 4px solid #8a3ffc;
+  border-radius: 999px;
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18);
+  height: 22px;
+  position: absolute;
+  width: 22px;
+}
+
+.regression-hero-visual span {
+  left: 18%;
+  top: 67%;
+}
+
+.regression-hero-visual i {
+  left: 48%;
+  top: 43%;
+}
+
+.regression-hero-visual b {
+  left: 76%;
+  top: 27%;
+}
+
+.regression-theory-grid,
+.regression-chart-grid,
+.regression-workspace {
+  display: grid;
+  gap: 18px;
+}
+
+.regression-theory-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.regression-theory-grid pre {
+  font-size: 0.9rem;
+  margin: 12px 0;
+}
+
+.math-formula {
+  align-items: center;
+  background: #fbfaf6;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--teal-dark);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 700;
+  gap: 10px;
+  justify-content: center;
+  line-height: 1.35;
+  margin: 14px 0;
+  overflow-x: auto;
+  padding: 16px;
+  text-align: center;
+}
+
+.math-formula sub,
+.math-formula sup {
+  font-size: 0.68em;
+}
+
+.math-fraction {
+  align-items: stretch;
+  display: inline-grid;
+  gap: 7px;
+  min-width: min(100%, 220px);
+  text-align: center;
+}
+
+.math-fraction span:first-child {
+  border-bottom: 2px solid currentColor;
+  padding: 0 8px 7px;
+}
+
+.math-fraction span:last-child {
+  padding: 0 8px;
+}
+
+.comparison-table-wrap {
+  margin-top: 22px;
+  overflow-x: auto;
+}
+
+.regression-steps {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.regression-steps article {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  min-height: 150px;
+  padding: 18px;
+}
+
+.regression-steps span {
+  align-items: center;
+  background: var(--teal);
+  border-radius: 999px;
+  color: #ffffff;
+  display: inline-flex;
+  font-weight: 900;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+}
+
+.regression-steps p {
+  margin: 0;
+}
+
+.regression-workspace {
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.5fr);
+}
+
+.regression-controls label {
+  color: var(--muted);
+  display: grid;
+  font-weight: 800;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.regression-controls input,
+.editable-table input {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  font: inherit;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.random-data-row {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+  padding: 14px;
+}
+
+.random-data-row label {
+  margin: 0;
+}
+
+.regression-action-stack {
+  align-items: stretch;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+
+.regression-action-stack .button,
+.random-data-row .button {
+  justify-content: center;
+  min-height: 54px;
+  width: 100%;
+}
+
+.regression-table-wrap {
+  max-height: 430px;
+}
+
+.regression-metrics {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.regression-metrics .metric-card strong {
+  font-size: clamp(1.1rem, 1.6vw, 1.65rem);
+  word-break: break-word;
+}
+
+.regression-chart-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.regression-chart-card {
+  animation: chartRise 540ms var(--ease-out) both;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.regression-chart-card:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.regression-chart-card:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.regression-chart-card:nth-child(4) {
+  animation-delay: 270ms;
+}
+
+.regression-results-panel {
+  animation: resultsRise 620ms var(--ease-out) both;
+}
+
+.regression-chart-card .panel-heading p {
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+.regression-comment {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
 .table-wrap {
   overflow-x: auto;
 }
@@ -2491,6 +2757,28 @@ body.reveal-ready .stagger.is-visible > * {
   }
 }
 
+@keyframes resultsRise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes chartRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2538,7 +2826,10 @@ body.reveal-ready .stagger.is-visible > * {
   .results-grid,
   .algorithm-body,
   .code-panel,
-  .representation {
+  .representation,
+  .regression-theory-grid,
+  .regression-workspace,
+  .regression-chart-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2564,7 +2855,9 @@ body.reveal-ready .stagger.is-visible > * {
 
   .metrics-grid,
   .digit-strategy,
-  .result-metrics-strip {
+  .result-metrics-strip,
+  .regression-metrics,
+  .regression-steps {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -2625,7 +2918,9 @@ body.reveal-ready .stagger.is-visible > * {
 
   .metrics-grid,
   .settings-grid,
-  .result-metrics-strip {
+  .result-metrics-strip,
+  .regression-metrics,
+  .regression-steps {
     grid-template-columns: 1fr;
   }
 

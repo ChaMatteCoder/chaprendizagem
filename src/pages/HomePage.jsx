@@ -30,11 +30,20 @@ const projects = [
   },
   {
     title: 'Adaline - Base B2',
-    status: 'Novo módulo',
+    status: 'Publicado',
     description: 'Treinamento de uma rede Adaline, curva de erro quadrático e teste da classificação.',
     visual: 'A',
     cover: adalineCover,
     to: '/adaline',
+    featured: true,
+  },
+  {
+    title: 'Adaline - Regressão Linear',
+    status: 'Publicado',
+    description: 'Ajuste de reta com Adaline, regressão clássica, Pearson, R² e comentários automáticos.',
+    visual: 'R',
+    cover: adalineCover,
+    to: '/adaline/regressao',
     featured: true,
   },
   {
@@ -184,10 +193,10 @@ export default function HomePage() {
         <Beaker size={34} />
         <div>
           <h2>Pronto para explorar o novo trabalho?</h2>
-          <p>A página do Adaline já está estruturada para receber teoria, validações e comentários finais.</p>
+          <p>A nova seção do Adaline compara aprendizagem iterativa, regressão clássica e correlação.</p>
         </div>
-        <Link className="button button--primary" to="/adaline">
-          Abrir Adaline <BrainCircuit size={18} />
+        <Link className="button button--primary" to="/adaline/regressao">
+          Abrir Trabalho 06 <BrainCircuit size={18} />
         </Link>
       </section>
     </div>

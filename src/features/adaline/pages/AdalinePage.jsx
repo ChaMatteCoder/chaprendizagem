@@ -28,7 +28,7 @@ import {
   TrendingDown,
   X,
 } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import MetricCard from '../../../components/MetricCard.jsx';
 import AdalineErrorChart from '../components/AdalineErrorChart.jsx';
 import AdalineScatterChart from '../components/AdalineScatterChart.jsx';
@@ -130,6 +130,8 @@ export default function AdalinePage() {
   const [theoryExpanded, setTheoryExpanded] = useState(false);
   const [activeAlgorithmStep, setActiveAlgorithmStep] = useState(0);
   const [pythonModalOpen, setPythonModalOpen] = useState(false);
+  const [workOpen, setWorkOpen] = useState(false);
+  const workContentRef = useRef(null);
   const [simulation, setSimulation] = useState({
     dataset: b2Dataset,
     dimensions: 2,
@@ -182,6 +184,14 @@ export default function AdalinePage() {
       negativeCentroid: centroid(-1),
     };
   }, [parsedDataset, training.errorHistory, training.inputKeys, training.predictions]);
+
+  useEffect(() => {
+    if (!workOpen) return;
+
+    window.requestAnimationFrame(() => {
+      workContentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }, [workOpen]);
 
   function resetDataset() {
     setDatasetRows(initialRows);
@@ -441,6 +451,11 @@ def classificar(entradas, pesos, bias):
             Página base para documentar a teoria, treinar o modelo, acompanhar o erro quadrático total e testar a rede
             neural treinada.
           </p>
+          <div className="hero-actions">
+            <button className="button button--primary" onClick={() => setWorkOpen(true)} type="button">
+              Abrir Trabalho 05 <Calculator size={18} />
+            </button>
+          </div>
         </div>
         <div className="model-orbit" aria-label="Visual abstrato do modelo Adaline">
           <span className="orbit-node orbit-node--a">s1</span>
@@ -450,7 +465,9 @@ def classificar(entradas, pesos, bias):
         </div>
       </section>
 
-      <section className="wide-panel theory-panel reveal">
+      {workOpen ? (
+        <div className="work-content-reveal" ref={workContentRef}>
+      <section className="wide-panel theory-panel">
         <div className="section-heading">
           <p className="eyebrow">Fundamentação teórica</p>
           <h2>Adaline: o neurônio linear adaptativo.</h2>
@@ -466,7 +483,7 @@ def classificar(entradas, pesos, bias):
             const Icon = item.icon;
 
             return (
-              <article className="theory-feature-card reveal" key={item.title}>
+              <article className="theory-feature-card" key={item.title}>
                 <Icon size={30} />
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
@@ -475,7 +492,7 @@ def classificar(entradas, pesos, bias):
           })}
         </div>
 
-        <div className="theory-summary reveal">
+        <div className="theory-summary">
           <p>
             Durante o treinamento, a Adaline compara a saída calculada com a saída desejada e ajusta pesos e bias para
             reduzir o erro quadrático. Essa ideia aproxima o estudo da Adaline de conceitos centrais de otimização,
@@ -489,7 +506,7 @@ def classificar(entradas, pesos, bias):
 
         {theoryExpanded ? (
           <div className="theory-reader">
-            <article className="theory-section reveal">
+            <article className="theory-section">
               <History size={28} />
               <div>
                 <h3>Origem histórica da Adaline</h3>
@@ -507,7 +524,7 @@ def classificar(entradas, pesos, bias):
               </div>
             </article>
 
-            <article className="theory-section reveal">
+            <article className="theory-section">
               <Network size={28} />
               <div>
                 <h3>Estrutura básica do modelo</h3>
@@ -531,7 +548,7 @@ def classificar(entradas, pesos, bias):
               </div>
             </article>
 
-            <article className="theory-section reveal">
+            <article className="theory-section">
               <Target size={28} />
               <div>
                 <h3>Diferença entre Perceptron e Adaline</h3>
@@ -566,7 +583,7 @@ def classificar(entradas, pesos, bias):
               </div>
             </article>
 
-            <article className="theory-section reveal">
+            <article className="theory-section">
               <Calculator size={28} />
               <div>
                 <h3>Função de erro da Adaline</h3>
@@ -586,7 +603,7 @@ def classificar(entradas, pesos, bias):
               </div>
             </article>
 
-            <article className="theory-section reveal">
+            <article className="theory-section">
               <Sigma size={28} />
               <div>
                 <h3>Regra de aprendizado: Widrow-Hoff ou LMS</h3>
@@ -606,7 +623,7 @@ def classificar(entradas, pesos, bias):
               </div>
             </article>
 
-            <article className="theory-section reveal">
+            <article className="theory-section">
               <ListChecks size={28} />
               <div>
                 <h3>Como ocorre o treinamento</h3>
@@ -624,7 +641,7 @@ def classificar(entradas, pesos, bias):
               </div>
             </article>
 
-            <article className="theory-section reveal">
+            <article className="theory-section">
               <TrendingDown size={28} />
               <div>
                 <h3>Interpretação do erro quadrático total</h3>
@@ -640,7 +657,7 @@ def classificar(entradas, pesos, bias):
               </div>
             </article>
 
-            <article className="theory-section reveal">
+            <article className="theory-section">
               <Table2 size={28} />
               <div>
                 <h3>Adaline em classificação e relação com o Trabalho 05</h3>
@@ -657,7 +674,7 @@ def classificar(entradas, pesos, bias):
               </div>
             </article>
 
-            <article className="theory-section theory-section--references reveal">
+            <article className="theory-section theory-section--references">
               <BookOpen size={28} />
               <div>
                 <h3>Referências sugeridas</h3>
@@ -686,7 +703,7 @@ def classificar(entradas, pesos, bias):
         ) : null}
       </section>
 
-      <section className="algorithm-panel reveal">
+      <section className="algorithm-panel">
         <div className="algorithm-header">
           <p className="eyebrow">Modelo</p>
           <h2>Algoritmo principal.</h2>
@@ -819,7 +836,7 @@ def classificar(entradas, pesos, bias):
         </div>
       ) : null}
 
-      <section className="workspace-grid simulation-section reveal">
+      <section className="workspace-grid simulation-section">
         <div className="workspace-column">
           <section className="tool-panel simulation-panel">
             <div className="panel-heading">
@@ -1017,7 +1034,7 @@ def classificar(entradas, pesos, bias):
         </div>
       </section>
 
-      <section className="wide-panel reveal">
+      <section className="wide-panel">
         <div className="section-heading">
           <p className="eyebrow">Teste da rede</p>
           <h2>Amostras classificadas após o treinamento.</h2>
@@ -1058,7 +1075,7 @@ def classificar(entradas, pesos, bias):
         ) : null}
       </section>
 
-      <section className="wide-panel reveal">
+      <section className="wide-panel">
         <div className="section-heading">
           <p className="eyebrow">Comentário dos resultados</p>
           <h2>Interpretação final.</h2>
@@ -1153,6 +1170,8 @@ def classificar(entradas, pesos, bias):
           </article>
         </div>
       </section>
+        </div>
+      ) : null}
     </div>
   );
 }

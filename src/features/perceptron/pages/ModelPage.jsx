@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2, FlaskConical, RotateCcw, Shuffle, Sigma } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MatrixGrid from '../components/MatrixGrid.jsx';
 import PerceptronOutputList from '../components/PerceptronOutputList.jsx';
@@ -14,7 +14,17 @@ function randomMatrix() {
 export default function ModelPage() {
   const [matrix, setMatrix] = useState(() => cloneMatrix(digitMatrices[7]));
   const [loadedDigit, setLoadedDigit] = useState(7);
+  const [workOpen, setWorkOpen] = useState(false);
+  const workContentRef = useRef(null);
   const result = useMemo(() => simulatePrediction(matrix), [matrix]);
+
+  useEffect(() => {
+    if (!workOpen) return;
+
+    window.requestAnimationFrame(() => {
+      workContentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }, [workOpen]);
 
   function toggleCell(rowIndex, columnIndex) {
     setMatrix((current) =>
@@ -38,6 +48,11 @@ export default function ModelPage() {
             Altere a matriz de entrada, carregue exemplos de dígitos e acompanhe a previsão simulada dos 10
             perceptrons.
           </p>
+          <div className="hero-actions">
+            <button className="button button--primary" onClick={() => setWorkOpen(true)} type="button">
+              Abrir trabalho do Perceptron <ArrowRight size={18} />
+            </button>
+          </div>
         </div>
         <div className="result-panel">
           <span>Predição</span>
@@ -46,6 +61,8 @@ export default function ModelPage() {
         </div>
       </section>
 
+      {workOpen ? (
+        <div className="work-content-reveal" ref={workContentRef}>
       <section className="workspace-grid">
         <div className="workspace-column">
           <section className="tool-panel">
@@ -175,6 +192,8 @@ export default function ModelPage() {
           Abrir resultados <ArrowRight size={18} />
         </Link>
       </section>
+        </div>
+      ) : null}
     </div>
   );
 }

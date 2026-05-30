@@ -49,6 +49,62 @@ const resourceLinks = [
   { href: 'https://x.com/ChaMatteh_', label: 'Perfil no X', icon: null },
 ];
 
+function getNextStep(location) {
+  if (location.pathname.startsWith('/perceptron')) {
+    return {
+      eyebrow: 'Próximo trabalho',
+      title: 'Continue com Adaline',
+      description: 'Abra o Trabalho 05 para estudar erro quadrático, regra delta e classificação com a base B2.',
+      cardLabel: 'Trabalho 05',
+      cardTitle: 'Adaline - Base B2',
+      cardDescription: 'Treinamento por erro quadrático, fronteira linear e teste da rede.',
+      buttonLabel: 'Abrir Trabalho 05',
+      to: '/adaline',
+      mark: 'ŷ',
+    };
+  }
+
+  if (location.pathname === '/adaline') {
+    return {
+      eyebrow: 'Próximo trabalho',
+      title: 'Avance para regressão',
+      description: 'Depois do Trabalho 05, compare a Adaline com a regressão linear clássica no Trabalho 06.',
+      cardLabel: 'Trabalho 06',
+      cardTitle: 'Regressão com Adaline',
+      cardDescription: 'Reta aprendida, regressão clássica, Pearson, R² e interpretação automática.',
+      buttonLabel: 'Abrir Trabalho 06',
+      to: '/adaline/regressao',
+      mark: 'ŷ',
+    };
+  }
+
+  if (location.pathname === '/adaline/regressao') {
+    return {
+      eyebrow: 'Próximo trabalho',
+      title: 'Trabalho 07 em preparação',
+      description: 'A próxima atividade ainda não foi publicada. Este espaço já fica reservado para continuar a trilha.',
+      cardLabel: 'Em breve',
+      cardTitle: 'Trabalho 07',
+      cardDescription: 'Novo experimento será disponibilizado quando o próximo conteúdo estiver pronto.',
+      buttonLabel: 'Trabalho 07 em breve',
+      to: null,
+      mark: '07',
+    };
+  }
+
+  return {
+    eyebrow: 'Próximo passo',
+    title: 'Pronto para começar?',
+    description: 'Abra o primeiro módulo publicado e explore conceitos com teoria, experimentos e código.',
+    cardLabel: 'Módulo publicado',
+    cardTitle: 'Perceptron',
+    cardDescription: 'Classificador linear com entradas binárias e estratégia um-contra-todos.',
+    buttonLabel: 'Abrir Perceptron',
+    to: '/perceptron/modelo',
+    mark: 'Σ',
+  };
+}
+
 function XLogo({ size = 20 }) {
   return (
     <svg aria-hidden="true" className="x-logo" fill="none" height={size} viewBox="0 0 24 24" width={size}>
@@ -63,6 +119,7 @@ function XLogo({ size = 20 }) {
 export default function Layout({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const nextStep = getNextStep(location);
 
   useEffect(() => {
     if (location.hash) {
@@ -107,26 +164,43 @@ export default function Layout({ children }) {
             <FlaskConical size={30} />
           </span>
           <div>
-            <p className="eyebrow">Próximo passo</p>
-            <h2 id="footer-next-title">Pronto para continuar sua jornada?</h2>
-            <p>Acesse o módulo mais recente e explore novos conceitos com teoria, experimentos e código.</p>
+            <p className="eyebrow">{nextStep.eyebrow}</p>
+            <h2 id="footer-next-title">{nextStep.title}</h2>
+            <p>{nextStep.description}</p>
           </div>
         </div>
 
-        <Link className="footer-module-card" to="/adaline">
-          <span className="footer-module-card__mark">ŷ</span>
-          <span>
-            <small>Módulo mais recente</small>
-            <strong>Adaline</strong>
-            <p>Treinamento por erro quadrático com dados B2 e fronteira de decisão.</p>
-          </span>
-          <ArrowRight size={22} />
-        </Link>
+        {nextStep.to ? (
+          <Link className="footer-module-card" to={nextStep.to}>
+            <span className="footer-module-card__mark">{nextStep.mark}</span>
+            <span>
+              <small>{nextStep.cardLabel}</small>
+              <strong>{nextStep.cardTitle}</strong>
+              <p>{nextStep.cardDescription}</p>
+            </span>
+            <ArrowRight size={22} />
+          </Link>
+        ) : (
+          <div className="footer-module-card footer-module-card--disabled">
+            <span className="footer-module-card__mark">{nextStep.mark}</span>
+            <span>
+              <small>{nextStep.cardLabel}</small>
+              <strong>{nextStep.cardTitle}</strong>
+              <p>{nextStep.cardDescription}</p>
+            </span>
+          </div>
+        )}
 
         <div className="footer-next-step__actions">
-          <Link className="button button--light" to="/adaline">
-            Abrir Adaline <ArrowRight size={18} />
-          </Link>
+          {nextStep.to ? (
+            <Link className="button button--light" to={nextStep.to}>
+              {nextStep.buttonLabel} <ArrowRight size={18} />
+            </Link>
+          ) : (
+            <button className="button button--light" disabled type="button">
+              {nextStep.buttonLabel}
+            </button>
+          )}
           <a className="footer-inline-link" href="/#modulos">
             Ver todos os módulos <ArrowRight size={18} />
           </a>
