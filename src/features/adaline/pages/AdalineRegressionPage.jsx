@@ -239,10 +239,100 @@ export default function AdalineRegressionPage() {
             </Link>
           </div>
         </div>
-        <div className="regression-hero-visual" aria-label="Reta ajustada sobre pontos observados">
-          <span />
-          <i />
-          <b />
+        <div className="regression-hero-visual" aria-label="Animação da Adaline ajustando uma reta de regressão">
+          <svg className="regression-hero-svg" viewBox="0 0 720 520" role="img" aria-hidden="true">
+            <defs>
+              <linearGradient id="regressionHeroBg" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stopColor="#007a78" />
+                <stop offset="58%" stopColor="#244546" />
+                <stop offset="100%" stopColor="#171b1d" />
+              </linearGradient>
+              <linearGradient id="regressionLineGradient" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stopColor="#ffe8a5" />
+                <stop offset="100%" stopColor="#f6c85f" />
+              </linearGradient>
+              <filter id="heroGlow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="8" result="blur" />
+                <feColorMatrix
+                  in="blur"
+                  result="glow"
+                  values="0 0 0 0 0.45 0 0 0 0 0.22 0 0 0 0 1 0 0 0 0.95 0"
+                />
+                <feMerge>
+                  <feMergeNode in="glow" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="lineGlow" x="-30%" y="-80%" width="160%" height="260%">
+                <feGaussianBlur stdDeviation="5" result="blur" />
+                <feColorMatrix
+                  in="blur"
+                  result="glow"
+                  values="0 0 0 0 1 0 0 0 0 0.82 0 0 0 0 0.32 0 0 0 0.75 0"
+                />
+                <feMerge>
+                  <feMergeNode in="glow" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <rect width="720" height="520" rx="8" fill="url(#regressionHeroBg)" />
+            <g className="regression-grid">
+              {Array.from({ length: 9 }, (_, index) => (
+                <line key={`v-${index}`} x1={80 + index * 70} x2={80 + index * 70} y1="70" y2="430" />
+              ))}
+              {Array.from({ length: 6 }, (_, index) => (
+                <line key={`h-${index}`} x1="70" x2="650" y1={95 + index * 62} y2={95 + index * 62} />
+              ))}
+            </g>
+
+            <g className="regression-axis">
+              <path d="M82 424 H650" />
+              <path d="M82 424 V72" />
+              <text x="630" y="456">x</text>
+              <text x="50" y="90">y</text>
+            </g>
+
+            <g className="adaline-node">
+              <circle cx="118" cy="92" r="34" />
+              <text x="118" y="100">Σ</text>
+              <path d="M152 92 C205 92 218 130 255 160" />
+              <path d="M154 84 C220 58 265 72 302 108" />
+            </g>
+
+            <g className="residuals">
+              <path className="residual residual--1" d="M205 325 V349" />
+              <path className="residual residual--2" d="M287 279 V292" />
+              <path className="residual residual--3" d="M371 235 V215" />
+              <path className="residual residual--4" d="M468 186 V203" />
+              <path className="residual residual--5" d="M572 132 V154" />
+            </g>
+
+            <path className="regression-fit-line regression-fit-line--shadow" d="M115 371 L628 92" />
+            <path className="regression-fit-line" d="M115 371 L628 92" />
+
+            <g className="regression-points" filter="url(#heroGlow)">
+              <circle className="point point--1" cx="158" cy="335" r="9" />
+              <circle className="point point--2" cx="205" cy="349" r="9" />
+              <circle className="point point--3" cx="287" cy="292" r="9" />
+              <circle className="point point--4" cx="371" cy="215" r="9" />
+              <circle className="point point--5" cx="468" cy="203" r="9" />
+              <circle className="point point--6" cx="572" cy="154" r="9" />
+            </g>
+
+            <g className="learning-pulse">
+              <circle cx="318" cy="312" r="18" />
+              <circle cx="318" cy="312" r="36" />
+              <text x="318" y="319">η</text>
+            </g>
+
+            <g className="epoch-chip">
+              <rect x="458" y="356" width="158" height="58" rx="8" />
+              <text x="482" y="381">erro ↓</text>
+              <path d="M482 398 C510 386 530 406 556 390 C574 378 590 382 606 366" />
+            </g>
+          </svg>
         </div>
       </section>
 

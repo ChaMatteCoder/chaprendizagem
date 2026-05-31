@@ -2262,10 +2262,6 @@ code {
 }
 
 .regression-hero-visual {
-  background:
-    linear-gradient(135deg, rgba(0, 87, 91, 0.88), rgba(27, 31, 37, 0.94)),
-    repeating-linear-gradient(0deg, transparent 0 39px, rgba(255, 255, 255, 0.12) 40px),
-    repeating-linear-gradient(90deg, transparent 0 39px, rgba(255, 255, 255, 0.12) 40px);
   border-radius: 8px;
   box-shadow: var(--shadow);
   min-height: 300px;
@@ -2273,43 +2269,189 @@ code {
   position: relative;
 }
 
-.regression-hero-visual::before {
-  background: #f6d06f;
-  content: "";
-  height: 5px;
-  left: 8%;
-  position: absolute;
-  top: 58%;
-  transform: rotate(-24deg);
-  transform-origin: left center;
-  width: 96%;
+.regression-hero-svg {
+  display: block;
+  height: 100%;
+  min-height: 330px;
+  width: 100%;
 }
 
-.regression-hero-visual span,
-.regression-hero-visual i,
-.regression-hero-visual b {
-  background: #ffffff;
-  border: 4px solid #8a3ffc;
-  border-radius: 999px;
-  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18);
-  height: 22px;
-  position: absolute;
-  width: 22px;
+.regression-grid line {
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-dasharray: 3 9;
 }
 
-.regression-hero-visual span {
-  left: 18%;
-  top: 67%;
+.regression-axis path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.44);
+  stroke-linecap: round;
+  stroke-width: 2;
 }
 
-.regression-hero-visual i {
-  left: 48%;
-  top: 43%;
+.regression-axis text,
+.adaline-node text,
+.learning-pulse text,
+.epoch-chip text {
+  fill: #f8fbf8;
+  font-weight: 900;
 }
 
-.regression-hero-visual b {
-  left: 76%;
-  top: 27%;
+.regression-axis text {
+  font-size: 22px;
+}
+
+.adaline-node {
+  animation: adalineNodeFloat 5.6s ease-in-out infinite;
+}
+
+.adaline-node circle {
+  fill: rgba(232, 221, 255, 0.95);
+  stroke: rgba(255, 255, 255, 0.88);
+  stroke-width: 3;
+}
+
+.adaline-node text {
+  fill: var(--teal-dark);
+  font-size: 31px;
+  text-anchor: middle;
+}
+
+.adaline-node path {
+  animation: adalineSignal 3.8s ease-in-out infinite;
+  fill: none;
+  stroke: rgba(232, 221, 255, 0.58);
+  stroke-dasharray: 8 12;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.regression-fit-line {
+  animation: regressionLineDraw 6s ease-in-out infinite;
+  fill: none;
+  filter: url("#lineGlow");
+  stroke: url("#regressionLineGradient");
+  stroke-dasharray: 590;
+  stroke-dashoffset: 590;
+  stroke-linecap: round;
+  stroke-width: 6;
+}
+
+.regression-fit-line--shadow {
+  animation-delay: 0.08s;
+  filter: none;
+  opacity: 0.22;
+  stroke: #000000;
+  stroke-width: 12;
+}
+
+.regression-points .point {
+  animation: regressionPointLoop 6s ease-in-out infinite;
+  fill: #ffffff;
+  opacity: 0;
+  stroke: #8a3ffc;
+  stroke-width: 6;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.point--1 {
+  animation-delay: 0.2s;
+}
+
+.point--2 {
+  animation-delay: 0.42s;
+}
+
+.point--3 {
+  animation-delay: 0.64s;
+}
+
+.point--4 {
+  animation-delay: 0.86s;
+}
+
+.point--5 {
+  animation-delay: 1.08s;
+}
+
+.point--6 {
+  animation-delay: 1.3s;
+}
+
+.residual {
+  animation: residualLoop 6s ease-in-out infinite;
+  fill: none;
+  opacity: 0;
+  stroke: rgba(255, 255, 255, 0.62);
+  stroke-dasharray: 6 8;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.residual--1 {
+  animation-delay: 2.2s;
+}
+
+.residual--2 {
+  animation-delay: 2.36s;
+}
+
+.residual--3 {
+  animation-delay: 2.52s;
+}
+
+.residual--4 {
+  animation-delay: 2.68s;
+}
+
+.residual--5 {
+  animation-delay: 2.84s;
+}
+
+.learning-pulse {
+  animation: learningPulseMove 6s ease-in-out infinite;
+}
+
+.learning-pulse circle {
+  fill: rgba(246, 208, 111, 0.12);
+  stroke: rgba(246, 208, 111, 0.88);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.learning-pulse circle:nth-child(2) {
+  animation: learningRing 1.8s ease-out infinite;
+}
+
+.learning-pulse text {
+  fill: #f6d06f;
+  font-size: 28px;
+  text-anchor: middle;
+}
+
+.epoch-chip {
+  animation: epochChipLoop 6s ease-in-out infinite;
+  opacity: 0;
+}
+
+.epoch-chip rect {
+  fill: rgba(255, 255, 255, 0.11);
+  stroke: rgba(255, 255, 255, 0.18);
+}
+
+.epoch-chip text {
+  font-size: 20px;
+}
+
+.epoch-chip path {
+  animation: errorSparkLoop 6s ease-in-out infinite;
+  fill: none;
+  stroke: #f6d06f;
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+  stroke-linecap: round;
+  stroke-width: 4;
 }
 
 .regression-theory-grid,
@@ -2776,6 +2918,138 @@ body.reveal-ready .stagger.is-visible > * {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes regressionPointLoop {
+  0%,
+  6% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.4);
+  }
+  16%,
+  76% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  84%,
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.72);
+  }
+}
+
+@keyframes regressionLineDraw {
+  0%,
+  25% {
+    stroke-dashoffset: 590;
+  }
+  44%,
+  82% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -590;
+  }
+}
+
+@keyframes residualLoop {
+  0%,
+  43% {
+    opacity: 0;
+    stroke-dashoffset: 28;
+  }
+  54%,
+  70% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+  82%,
+  100% {
+    opacity: 0;
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes learningPulseMove {
+  0%,
+  14% {
+    opacity: 0;
+    transform: translate(-60px, 32px);
+  }
+  25%,
+  68% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  83%,
+  100% {
+    opacity: 0;
+    transform: translate(86px, -48px);
+  }
+}
+
+@keyframes learningRing {
+  0% {
+    opacity: 0.72;
+    transform: scale(0.68);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes adalineSignal {
+  0% {
+    stroke-dashoffset: 40;
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.88;
+  }
+  100% {
+    stroke-dashoffset: -40;
+    opacity: 0.25;
+  }
+}
+
+@keyframes adalineNodeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes epochChipLoop {
+  0%,
+  44% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  56%,
+  78% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes errorSparkLoop {
+  0%,
+  52% {
+    stroke-dashoffset: 140;
+  }
+  72%,
+  100% {
+    stroke-dashoffset: 0;
   }
 }
 
