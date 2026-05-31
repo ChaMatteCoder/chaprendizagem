@@ -16,6 +16,7 @@ import {
 import { useEffect } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import BrandMark from './BrandMark.jsx';
+import ScrollToTop from './ScrollToTop.jsx';
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -157,6 +158,7 @@ export default function Layout({ children }) {
       </header>
 
       <main>{children}</main>
+      <ScrollToTop />
 
       <section className="footer-next-step reveal-scale" aria-labelledby="footer-next-title">
         <div className="footer-next-step__intro">

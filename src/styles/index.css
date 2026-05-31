@@ -102,6 +102,7 @@ input {
     linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
     linear-gradient(135deg, #006365, #00373d);
   background-size: auto, auto, 32px 32px, 32px 32px, auto;
+  animation: nextStepGridDrift 18s linear infinite;
   border-radius: 10px;
   box-shadow: 0 26px 70px rgba(0, 63, 66, 0.18);
   color: white;
@@ -115,12 +116,38 @@ input {
   position: relative;
 }
 
+.footer-next-step::before {
+  animation: nextStepGlow 6s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 18% 50%, rgba(88, 241, 212, 0.22), transparent 36%),
+    radial-gradient(circle at 72% 32%, rgba(216, 195, 255, 0.16), transparent 34%);
+  content: "";
+  inset: -40px;
+  pointer-events: none;
+  position: absolute;
+}
+
 .footer-next-step::after {
-  border: 2px dashed rgba(255, 255, 255, 0.22);
+  --orbit-angle: 0deg;
+  animation: nextStepOrbitDash 12s linear infinite;
+  background: repeating-conic-gradient(
+    from var(--orbit-angle),
+    rgba(255, 255, 255, 0.28) 0deg 7deg,
+    transparent 7deg 17deg
+  );
   border-radius: 50%;
   bottom: -92px;
   content: "";
   height: 230px;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  padding: 2px;
   position: absolute;
   right: -34px;
   transform: rotate(-22deg);
@@ -149,6 +176,14 @@ input {
   width: 66px;
 }
 
+.footer-next-step__icon {
+  animation: nextStepIconPulse 4.6s ease-in-out infinite;
+}
+
+.footer-next-step__icon svg {
+  animation: nextStepIconFloat 3.8s ease-in-out infinite;
+}
+
 .footer-next-step .eyebrow {
   color: #58f1d4;
   margin-bottom: 10px;
@@ -173,23 +208,46 @@ input {
 
 .footer-module-card {
   align-items: center;
+  background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 10px;
   display: grid;
   gap: 18px;
   grid-template-columns: 78px 1fr auto;
   min-height: 118px;
+  overflow: hidden;
   padding: 14px 18px;
   position: relative;
+  transition:
+    background 240ms var(--ease-out),
+    border-color 240ms var(--ease-out),
+    box-shadow 240ms var(--ease-out),
+    transform 240ms var(--ease-out);
   z-index: 1;
+}
+
+.footer-module-card::before {
+  animation: nextStepCardSheen 4.8s ease-in-out infinite;
+  background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  content: "";
+  height: 160%;
+  left: -56%;
+  position: absolute;
+  top: -30%;
+  transform: rotate(12deg);
+  width: 34%;
 }
 
 .footer-module-card:hover {
   background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(216, 195, 255, 0.42);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.16);
+  transform: translateY(-4px);
 }
 
 .footer-module-card__mark {
   align-items: center;
+  animation: nextStepMarkPulse 5.4s ease-in-out infinite;
   background: linear-gradient(135deg, #f0e3ff, #d9c7ff);
   border-radius: 8px;
   color: var(--teal-dark);
@@ -236,6 +294,46 @@ input {
   border-color: rgba(255, 255, 255, 0.7);
   color: var(--teal-dark);
   min-width: 188px;
+}
+
+.footer-next-step .button--light {
+  animation: nextStepButtonBreath 5s ease-in-out infinite;
+}
+
+.scroll-to-top {
+  align-items: center;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  bottom: 26px;
+  box-shadow: 0 18px 44px rgba(0, 63, 66, 0.22);
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 52px;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 26px;
+  transform: translateY(18px) scale(0.92);
+  transition:
+    opacity 220ms var(--ease-out),
+    transform 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out);
+  width: 52px;
+  z-index: 15;
+}
+
+.scroll-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+  box-shadow: 0 22px 54px rgba(0, 63, 66, 0.3);
+  transform: translateY(-3px) scale(1.03);
 }
 
 .footer-inline-link {
@@ -1146,6 +1244,69 @@ p {
 .theory-feature-card h3,
 .theory-feature-card p {
   margin-bottom: 0;
+}
+
+.regression-objective-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.regression-objective-grid .theory-feature-card {
+  isolation: isolate;
+  min-height: 198px;
+  overflow: hidden;
+  position: relative;
+  transition:
+    border-color 240ms var(--ease-out),
+    box-shadow 240ms var(--ease-out),
+    transform 240ms var(--ease-out);
+}
+
+.regression-objective-grid .theory-feature-card::before {
+  background:
+    radial-gradient(circle at var(--glow-x, 18%) var(--glow-y, 0%), rgba(138, 63, 252, 0.32), transparent 36%),
+    linear-gradient(135deg, rgba(138, 63, 252, 0.2), transparent 44%);
+  content: "";
+  filter: blur(10px);
+  inset: -42px;
+  opacity: 0;
+  position: absolute;
+  transform: translate3d(-14px, 14px, 0) scale(0.96);
+  transition:
+    opacity 280ms var(--ease-out),
+    transform 520ms var(--ease-out);
+  z-index: -1;
+}
+
+.regression-objective-grid .theory-feature-card::after {
+  animation: objectiveGlowSweep 2.4s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(232, 221, 255, 0.72), transparent);
+  content: "";
+  height: 160%;
+  left: -72%;
+  opacity: 0;
+  position: absolute;
+  top: -30%;
+  transform: rotate(18deg);
+  transition: opacity 220ms var(--ease-out);
+  width: 38%;
+  z-index: -1;
+}
+
+.regression-objective-grid .theory-feature-card:hover {
+  border-color: rgba(138, 63, 252, 0.42);
+  box-shadow:
+    0 22px 48px rgba(42, 25, 84, 0.14),
+    0 0 0 1px rgba(138, 63, 252, 0.1);
+  transform: translateY(-5px);
+}
+
+.regression-objective-grid .theory-feature-card:hover::before,
+.regression-objective-grid .theory-feature-card:hover::after {
+  opacity: 1;
+}
+
+.regression-objective-grid .theory-feature-card:hover::before {
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .theory-summary {
@@ -2519,34 +2680,189 @@ code {
 
 .regression-steps {
   display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 22px;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
 }
 
-.regression-steps article {
-  background: var(--surface-soft);
-  border: 1px solid var(--line);
+.timeline-stage {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(232, 221, 255, 0.2), transparent 34%),
+    linear-gradient(135deg, var(--teal-dark), #171b1d);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
   display: grid;
-  gap: 12px;
-  min-height: 150px;
-  padding: 18px;
+  gap: 22px;
+  min-height: 330px;
+  overflow: hidden;
+  padding: 28px;
+  position: relative;
 }
 
-.regression-steps span {
-  align-items: center;
-  background: var(--teal);
-  border-radius: 999px;
-  color: #ffffff;
-  display: inline-flex;
+.timeline-stage::before {
+  animation: timelineStagePulse 4.8s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(138, 63, 252, 0.35), transparent 62%);
+  content: "";
+  height: 220px;
+  position: absolute;
+  right: -72px;
+  top: -72px;
+  width: 220px;
+}
+
+.timeline-stage__meta {
+  display: grid;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-stage__meta span {
+  color: #a8fff1;
+  font-size: 0.76rem;
   font-weight: 900;
-  height: 32px;
-  justify-content: center;
-  width: 32px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-.regression-steps p {
+.timeline-stage__meta strong {
+  color: #ffffff;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 1;
+}
+
+.timeline-stage p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.05rem;
+  line-height: 1.8;
   margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-stage code {
+  align-self: end;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: #f6d06f;
+  display: inline-flex;
+  font-size: 1.05rem;
+  justify-self: start;
+  padding: 12px 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-controls {
+  align-items: center;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto 1fr auto;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-controls .icon-button {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.timeline-progress {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.timeline-progress span {
+  background: linear-gradient(90deg, #a8fff1, #e8ddff, #f6d06f);
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+  transition: width 320ms var(--ease-out);
+}
+
+.timeline-track {
+  display: grid;
+  gap: 10px;
+  position: relative;
+}
+
+.timeline-track::before {
+  background: linear-gradient(180deg, rgba(0, 87, 91, 0.16), rgba(138, 63, 252, 0.18));
+  bottom: 18px;
+  content: "";
+  left: 23px;
+  position: absolute;
+  top: 18px;
+  width: 2px;
+}
+
+.timeline-step {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: auto 1fr;
+  min-height: 58px;
+  padding: 10px 14px;
+  position: relative;
+  text-align: left;
+  transition:
+    background 220ms var(--ease-out),
+    border-color 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    transform 220ms var(--ease-out);
+}
+
+.timeline-step span {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(0, 87, 91, 0.16);
+  border-radius: 999px;
+  color: var(--teal);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 900;
+  height: 34px;
+  justify-content: center;
+  position: relative;
+  width: 34px;
+  z-index: 1;
+}
+
+.timeline-step small {
+  color: inherit;
+  font-size: 0.92rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.timeline-step:hover,
+.timeline-step.is-active {
+  background: #ffffff;
+  border-color: rgba(138, 63, 252, 0.35);
+  box-shadow: 0 16px 32px rgba(42, 25, 84, 0.1);
+  color: var(--ink);
+  transform: translateX(5px);
+}
+
+.timeline-step.is-active span {
+  background: var(--violet);
+  border-color: var(--violet);
+  color: #ffffff;
+  box-shadow: 0 0 0 6px rgba(138, 63, 252, 0.12);
+}
+
+.timeline-step.is-complete span {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #ffffff;
 }
 
 .regression-workspace {
@@ -2608,6 +2924,40 @@ code {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+.regression-metrics .metric-card {
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+  transition:
+    border-color 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    transform 220ms var(--ease-out);
+}
+
+.regression-metrics .metric-card::before {
+  background: radial-gradient(circle at 20% 0%, rgba(138, 63, 252, 0.24), transparent 42%);
+  content: "";
+  inset: -26px;
+  opacity: 0;
+  position: absolute;
+  transform: translateY(12px) scale(0.96);
+  transition:
+    opacity 260ms var(--ease-out),
+    transform 260ms var(--ease-out);
+  z-index: -1;
+}
+
+.regression-metrics .metric-card:hover {
+  border-color: rgba(138, 63, 252, 0.32);
+  box-shadow: 0 18px 42px rgba(42, 25, 84, 0.12);
+  transform: translateY(-4px);
+}
+
+.regression-metrics .metric-card:hover::before {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 .regression-metrics .metric-card strong {
   font-size: clamp(1.1rem, 1.6vw, 1.65rem);
   word-break: break-word;
@@ -2622,7 +2972,7 @@ code {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 20px;
+  padding: 16px 20px 14px;
 }
 
 .regression-chart-card:nth-child(2) {
@@ -2644,6 +2994,108 @@ code {
 .regression-chart-card .panel-heading p {
   color: var(--muted);
   margin: 6px 0 0;
+}
+
+.regression-chart-card .chart-frame {
+  height: 324px;
+}
+
+.regression-chart-card .recharts-wrapper {
+  overflow: visible;
+}
+
+.regression-chart-card .recharts-legend-wrapper {
+  color: var(--ink);
+  font-size: 0.85rem;
+}
+
+.regression-chart-card .recharts-label {
+  font-size: 0.82rem;
+}
+
+.comparison-chart-actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.chart-section-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.comparison-study-panel {
+  align-items: center;
+  background: rgba(232, 221, 255, 0.26);
+  border: 1px solid rgba(138, 63, 252, 0.16);
+  border-radius: 8px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 18px;
+  padding: 18px;
+}
+
+.comparison-study-panel > div {
+  display: grid;
+  gap: 10px;
+}
+
+.comparison-study-panel span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.segmented-control,
+.curve-toggle-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.segmented-control button {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 900;
+  min-height: 40px;
+  padding: 8px 14px;
+  transition:
+    background 180ms var(--ease-out),
+    border-color 180ms var(--ease-out),
+    color 180ms var(--ease-out);
+}
+
+.segmented-control button.is-active,
+.segmented-control button:hover {
+  background: var(--violet);
+  border-color: var(--violet);
+  color: #ffffff;
+}
+
+.curve-toggle-row label {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  display: inline-flex;
+  font-weight: 800;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 12px;
+}
+
+.curve-toggle-row input {
+  accent-color: var(--violet);
 }
 
 .regression-comment {
@@ -3053,6 +3505,122 @@ body.reveal-ready .stagger.is-visible > * {
   }
 }
 
+@keyframes objectiveGlowSweep {
+  0% {
+    transform: translateX(0) rotate(18deg);
+  }
+  100% {
+    transform: translateX(460%) rotate(18deg);
+  }
+}
+
+@keyframes timelineStagePulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes nextStepGridDrift {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 0, 0 0, 64px 32px, 32px 64px, 0 0;
+  }
+}
+
+@keyframes nextStepGlow {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(18px, -10px, 0) scale(1.04);
+  }
+}
+
+@property --orbit-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes nextStepOrbitDash {
+  to {
+    --orbit-angle: 360deg;
+  }
+}
+
+@keyframes nextStepIconPulse {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+      0 0 0 0 rgba(88, 241, 212, 0.16);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+      0 0 0 14px rgba(88, 241, 212, 0);
+  }
+}
+
+@keyframes nextStepIconFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-5deg);
+  }
+}
+
+@keyframes nextStepCardSheen {
+  0%,
+  30% {
+    opacity: 0;
+    transform: translateX(0) rotate(12deg);
+  }
+  45% {
+    opacity: 1;
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: translateX(520%) rotate(12deg);
+  }
+}
+
+@keyframes nextStepMarkPulse {
+  0%,
+  100% {
+    filter: saturate(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: saturate(1.25);
+    transform: scale(1.035);
+  }
+}
+
+@keyframes nextStepButtonBreath {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.12);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -3103,7 +3671,10 @@ body.reveal-ready .stagger.is-visible > * {
   .representation,
   .regression-theory-grid,
   .regression-workspace,
-  .regression-chart-grid {
+  .regression-chart-grid,
+  .regression-objective-grid,
+  .regression-steps,
+  .comparison-study-panel {
     grid-template-columns: 1fr;
   }
 
@@ -3130,8 +3701,7 @@ body.reveal-ready .stagger.is-visible > * {
   .metrics-grid,
   .digit-strategy,
   .result-metrics-strip,
-  .regression-metrics,
-  .regression-steps {
+  .regression-metrics {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -3214,6 +3784,13 @@ body.reveal-ready .stagger.is-visible > * {
   .footer-next-step__intro,
   .footer-module-card {
     grid-template-columns: 1fr;
+  }
+
+  .scroll-to-top {
+    bottom: 18px;
+    height: 46px;
+    right: 18px;
+    width: 46px;
   }
 
   .site-footer {

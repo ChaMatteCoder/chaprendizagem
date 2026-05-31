@@ -3,6 +3,9 @@ import {
   BrainCircuit,
   Calculator,
   ChartNoAxesCombined,
+  ChevronLeft,
+  ChevronRight,
+  Download,
   Eraser,
   GitCompareArrows,
   ListChecks,
@@ -62,16 +65,56 @@ const theoryCards = [
 ];
 
 const steps = [
-  'Carregar os dados x e y.',
-  'Normalizar x para facilitar o treinamento.',
-  'Inicializar peso w e bias b em zero.',
-  'Percorrer todas as observações em cada época.',
-  'Calcular a saída estimada pela reta da Adaline.',
-  'Calcular o erro entre o valor observado e o valor estimado.',
-  'Atualizar peso e bias proporcionalmente ao erro.',
-  'Acumular o erro quadrático total da época.',
-  'Repetir até terminar o número de épocas.',
-  'Converter a reta da Adaline para a escala original e comparar.',
+  {
+    title: 'Carregar dados',
+    text: 'Ler os pares observados da base, separando cada valor de entrada x e cada saída real y.',
+    code: 'base = [(x1, y1), ...]',
+  },
+  {
+    title: 'Normalizar x',
+    text: 'Colocar a entrada em uma escala mais confortável para o treinamento iterativo da Adaline.',
+    code: 'x_norm = (x - x̄) / σ',
+  },
+  {
+    title: 'Iniciar parâmetros',
+    text: 'Começar com peso e bias iguais a zero para deixar o experimento reproduzível.',
+    code: 'w = 0, b = 0',
+  },
+  {
+    title: 'Percorrer a época',
+    text: 'Apresentar todas as observações ao modelo. Uma passagem completa pela base forma uma época.',
+    code: 'para cada (x, y)',
+  },
+  {
+    title: 'Estimar a saída',
+    text: 'Usar a reta atual da Adaline para gerar uma previsão linear para o ponto observado.',
+    code: 'ŷ = w x + b',
+  },
+  {
+    title: 'Medir o erro',
+    text: 'Comparar o valor real com o valor estimado para saber a direção do ajuste.',
+    code: 'e = y - ŷ',
+  },
+  {
+    title: 'Ajustar peso e bias',
+    text: 'Mover os parâmetros um pouco na direção que reduz o erro para aquela observação.',
+    code: 'w ← w + η e x',
+  },
+  {
+    title: 'Somar erro quadrático',
+    text: 'Acumular o erro ao quadrado para acompanhar se a época melhorou o ajuste.',
+    code: 'E ← E + e²',
+  },
+  {
+    title: 'Repetir épocas',
+    text: 'Executar várias épocas até a reta ficar estável ou o número configurado terminar.',
+    code: 'época 1 ... N',
+  },
+  {
+    title: 'Comparar as retas',
+    text: 'Converter os coeficientes para a escala original e comparar Adaline com a regressão clássica.',
+    code: 'w, b ≈ a, b',
+  },
 ];
 
 function Formula({ children }) {
@@ -117,6 +160,12 @@ export default function AdalineRegressionPage() {
   const chartsRef = useRef(null);
   const [workOpen, setWorkOpen] = useState(false);
   const workContentRef = useRef(null);
+  const [activeRegressionStep, setActiveRegressionStep] = useState(0);
+  const [comparisonZoom, setComparisonZoom] = useState(1);
+  const [showAdalineCurve, setShowAdalineCurve] = useState(true);
+  const [showClassicCurve, setShowClassicCurve] = useState(true);
+  const [chartDisplayMode, setChartDisplayMode] = useState('simplified');
+  const activeStep = steps[activeRegressionStep];
 
   const metrics = useMemo(() => {
     if (!simulation) return null;
@@ -171,6 +220,7 @@ export default function AdalineRegressionPage() {
   }
 
   function resetSimulation() {
+    setRows((currentRows) => currentRows.map((row, index) => ({ id: row.id ?? index + 1, x: '', y: '' })));
     setSimulation(null);
     setError('');
   }
@@ -187,6 +237,82 @@ export default function AdalineRegressionPage() {
     setRows(makeRandomDataset(randomCount));
     setError('');
     setSimulation(null);
+  }
+
+  function goToPreviousStep() {
+    setActiveRegressionStep((current) => (current - 1 + steps.length) % steps.length);
+  }
+
+  function goToNextStep() {
+    setActiveRegressionStep((current) => (current + 1) % steps.length);
+  }
+
+  function downloadChart(chartId, filename) {
+    const chartSvgs = Array.from(document.querySelectorAll(`[data-chart="${chartId}"] .chart-frame svg`));
+    const svg =
+      chartSvgs.find((item) => item.getAttribute('role') === 'application') ??
+      chartSvgs
+        .map((item) => ({ item, rect: item.getBoundingClientRect() }))
+        .sort((a, b) => b.rect.width * b.rect.height - a.rect.width * a.rect.height)[0]?.item;
+
+    if (!svg) return;
+
+    const serializer = new XMLSerializer();
+    const clonedSvg = svg.cloneNode(true);
+    const chartRect = svg.getBoundingClientRect();
+    const width = Math.max(1, Math.round(chartRect.width || Number(svg.getAttribute('width')) || 900));
+    const height = Math.max(1, Math.round(chartRect.height || Number(svg.getAttribute('height')) || 520));
+
+    clonedSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    clonedSvg.setAttribute('width', String(width));
+    clonedSvg.setAttribute('height', String(height));
+
+    if (!clonedSvg.getAttribute('viewBox')) {
+      clonedSvg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    }
+
+    const background = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    background.setAttribute('x', '0');
+    background.setAttribute('y', '0');
+    background.setAttribute('width', '100%');
+    background.setAttribute('height', '100%');
+    background.setAttribute('fill', '#fbfaf6');
+    clonedSvg.insertBefore(background, clonedSvg.firstChild);
+
+    const svgText = serializer.serializeToString(clonedSvg);
+    const svgBlob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+    const image = new Image();
+
+    image.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = width * 2;
+      canvas.height = height * 2;
+
+      const context = canvas.getContext('2d');
+      context.fillStyle = '#fbfaf6';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = filename;
+      link.click();
+    };
+
+    image.src = url;
+  }
+
+  function downloadAllCharts() {
+    [
+      ['regression-error', 'adaline-regressao-erro.png'],
+      ['regression-adaline', 'adaline-regressao-reta-adaline.png'],
+      ['regression-classic', 'adaline-regressao-reta-classica.png'],
+      ['regression-comparison', 'adaline-regressao-comparacao.png'],
+    ].forEach(([chartId, filename], index) => {
+      window.setTimeout(() => downloadChart(chartId, filename), index * 250);
+    });
   }
 
   function runSimulation() {
@@ -347,7 +473,7 @@ export default function AdalineRegressionPage() {
             relação, mas faz isso por ajuste iterativo dos pesos ao longo das épocas de treinamento.
           </p>
         </div>
-        <div className="theory-highlight-grid">
+        <div className="theory-highlight-grid regression-objective-grid">
           {theoryCards.map((item) => {
             const Icon = item.icon;
 
@@ -510,13 +636,48 @@ export default function AdalineRegressionPage() {
             volta para a escala original da base.
           </p>
         </div>
-        <div className="regression-steps">
-          {steps.map((step, index) => (
-            <article key={step}>
-              <span>{index + 1}</span>
-              <p>{step}</p>
-            </article>
-          ))}
+        <div className="regression-steps regression-timeline">
+          <article className="timeline-stage">
+            <div className="timeline-stage__meta">
+              <span>
+                Etapa {String(activeRegressionStep + 1).padStart(2, '0')} de {steps.length}
+              </span>
+              <strong>{activeStep.title}</strong>
+            </div>
+            <p>{activeStep.text}</p>
+            <code>{activeStep.code}</code>
+            <div className="timeline-controls">
+              <button className="icon-button" onClick={goToPreviousStep} title="Etapa anterior" type="button">
+                <ChevronLeft size={19} />
+              </button>
+              <div className="timeline-progress" aria-hidden="true">
+                <span style={{ width: `${((activeRegressionStep + 1) / steps.length) * 100}%` }} />
+              </div>
+              <button className="icon-button" onClick={goToNextStep} title="Próxima etapa" type="button">
+                <ChevronRight size={19} />
+              </button>
+            </div>
+          </article>
+
+          <div className="timeline-track" aria-label="Etapas do treinamento da Adaline">
+            {steps.map((step, index) => (
+              <button
+                className={[
+                  'timeline-step',
+                  index === activeRegressionStep ? 'is-active' : '',
+                  index < activeRegressionStep ? 'is-complete' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                key={step.title}
+                onClick={() => setActiveRegressionStep(index)}
+                type="button"
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <small>{step.title}</small>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -525,8 +686,8 @@ export default function AdalineRegressionPage() {
           <p className="eyebrow">Simulação com a base de observações</p>
           <h2>Ajuste a taxa, edite pontos e gere os resultados.</h2>
           <p>
-            Os dados do arquivo <code>basedeobservacoes_trabalho06.txt</code> já foram carregados. Os gráficos aparecem
-            somente após clicar em Simular.
+            Os dados presentes na base <code>x</code> e <code>y</code> são exemplos para ilustrar a regressão. Você é
+            livre para alterar os valores, limpar a tabela ou gerar novos pontos.
           </p>
         </div>
         <div className="regression-workspace">
@@ -638,6 +799,140 @@ export default function AdalineRegressionPage() {
 
       {simulation && metrics ? (
         <>
+          <section className="wide-panel regression-results-panel" ref={chartsRef}>
+            <div className="section-heading section-heading--with-actions">
+              <div>
+                <p className="eyebrow">Gráficos</p>
+                <h2>Erro, retas individuais e comparação.</h2>
+              </div>
+              <div className="chart-section-actions">
+                <div className="segmented-control" aria-label="Formato dos gráficos">
+                  <button
+                    className={chartDisplayMode === 'simplified' ? 'is-active' : ''}
+                    onClick={() => setChartDisplayMode('simplified')}
+                    type="button"
+                  >
+                    Simplificada
+                  </button>
+                  <button
+                    className={chartDisplayMode === 'academic' ? 'is-active' : ''}
+                    onClick={() => setChartDisplayMode('academic')}
+                    type="button"
+                  >
+                    Acadêmica
+                  </button>
+                </div>
+                <button className="button button--ghost" onClick={downloadAllCharts} type="button">
+                  <Download size={17} /> Baixar todos
+                </button>
+              </div>
+            </div>
+            <div className="regression-chart-grid">
+              <RegressionErrorChart
+                actions={
+                  <button
+                    className="icon-button"
+                    onClick={() => downloadChart('regression-error', 'adaline-regressao-erro.png')}
+                    title="Baixar gráfico de erro"
+                    type="button"
+                  >
+                    <Download size={18} />
+                  </button>
+                }
+                data={simulation.adaline.errorHistory}
+                displayMode={chartDisplayMode}
+              />
+              <AdalineRegressionLineChart
+                actions={
+                  <button
+                    className="icon-button"
+                    onClick={() => downloadChart('regression-adaline', 'adaline-regressao-reta-adaline.png')}
+                    title="Baixar gráfico da Adaline"
+                    type="button"
+                  >
+                    <Download size={18} />
+                  </button>
+                }
+                data={simulation.adalineLine}
+                dataset={simulation.dataset}
+                displayMode={chartDisplayMode}
+              />
+              <ClassicRegressionLineChart
+                actions={
+                  <button
+                    className="icon-button"
+                    onClick={() => downloadChart('regression-classic', 'adaline-regressao-reta-classica.png')}
+                    title="Baixar gráfico da regressão clássica"
+                    type="button"
+                  >
+                    <Download size={18} />
+                  </button>
+                }
+                data={simulation.classicLine}
+                dataset={simulation.dataset}
+                displayMode={chartDisplayMode}
+              />
+              <ComparisonRegressionChart
+                actions={
+                  <div className="comparison-chart-actions">
+                    <button
+                      className="icon-button"
+                      onClick={() => downloadChart('regression-comparison', 'adaline-regressao-comparacao.png')}
+                      title="Baixar gráfico de comparação"
+                      type="button"
+                    >
+                      <Download size={18} />
+                    </button>
+                  </div>
+                }
+                data={simulation.comparisonLine}
+                dataset={simulation.dataset}
+                displayMode={chartDisplayMode}
+                showAdaline={showAdalineCurve}
+                showClassic={showClassicCurve}
+                zoomLevel={comparisonZoom}
+              />
+            </div>
+            <div className="comparison-study-panel">
+              <div>
+                <span>Zoom da comparação</span>
+                <div className="segmented-control" aria-label="Zoom do gráfico de comparação">
+                  {[1, 1.5, 2, 3].map((zoom) => (
+                    <button
+                      className={comparisonZoom === zoom ? 'is-active' : ''}
+                      key={zoom}
+                      onClick={() => setComparisonZoom(zoom)}
+                      type="button"
+                    >
+                      {zoom}x
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <span>Camadas visíveis</span>
+                <div className="curve-toggle-row">
+                  <label>
+                    <input
+                      checked={showAdalineCurve}
+                      onChange={(event) => setShowAdalineCurve(event.target.checked)}
+                      type="checkbox"
+                    />
+                    Adaline
+                  </label>
+                  <label>
+                    <input
+                      checked={showClassicCurve}
+                      onChange={(event) => setShowClassicCurve(event.target.checked)}
+                      type="checkbox"
+                    />
+                    Regressão clássica
+                  </label>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="wide-panel regression-results-panel">
             <div className="section-heading">
               <p className="eyebrow">Resultados numéricos</p>
@@ -654,19 +949,6 @@ export default function AdalineRegressionPage() {
               <MetricCard icon={ChartNoAxesCombined} label="Pearson r" value={formatNumber(simulation.pearson)} />
               <MetricCard icon={Sigma} label="R²" value={formatNumber(metrics.rSquared)} />
               <MetricCard icon={ListChecks} label="Correlação" value={metrics.correlationLabel} />
-            </div>
-          </section>
-
-          <section className="wide-panel regression-results-panel" ref={chartsRef}>
-            <div className="section-heading">
-              <p className="eyebrow">Gráficos obrigatórios</p>
-              <h2>Erro, retas individuais e comparação.</h2>
-            </div>
-            <div className="regression-chart-grid">
-              <RegressionErrorChart data={simulation.adaline.errorHistory} />
-              <AdalineRegressionLineChart data={simulation.adalineLine} dataset={simulation.dataset} />
-              <ClassicRegressionLineChart data={simulation.classicLine} dataset={simulation.dataset} />
-              <ComparisonRegressionChart data={simulation.comparisonLine} dataset={simulation.dataset} />
             </div>
           </section>
 
