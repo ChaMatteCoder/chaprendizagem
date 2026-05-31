@@ -12,8 +12,9 @@ import {
   Network,
   Sigma,
   UserRound,
+  X,
 } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import BrandMark from './BrandMark.jsx';
 import ScrollToTop from './ScrollToTop.jsx';
@@ -49,6 +50,103 @@ const resourceLinks = [
   { href: 'https://www.instagram.com/cha_matheus/', label: 'Instagram', icon: Instagram },
   { href: 'https://x.com/ChaMatteh_', label: 'Perfil no X', icon: null },
 ];
+
+const policyContent = {
+  privacy: {
+    eyebrow: 'Políticas do Chaprendizagem',
+    title: 'Política de Privacidade',
+    updatedAt: 'Última atualização: 31 de maio de 2026',
+    intro:
+      'O Chaprendizagem é um projeto acadêmico e pessoal desenvolvido para fins de estudo, apresentação e revisão de conteúdos relacionados à Aprendizagem de Máquina.',
+    sections: [
+      {
+        title: 'Dados pessoais',
+        paragraphs: [
+          'O Chaprendizagem não tem como objetivo coletar dados pessoais sensíveis dos visitantes.',
+          'Caso o usuário entre em contato por meio de links externos, e-mail, redes sociais ou outras plataformas indicadas no site, os dados fornecidos voluntariamente, como nome, e-mail ou mensagem, poderão ser utilizados apenas para responder à solicitação.',
+        ],
+      },
+      {
+        title: 'Recursos técnicos e links externos',
+        paragraphs: [
+          'O site pode utilizar recursos técnicos comuns de navegação, como informações básicas do navegador, endereço IP, dados de acesso ou cookies necessários ao funcionamento da aplicação, dependendo do ambiente em que estiver hospedado.',
+          'Não vendemos, alugamos ou compartilhamos dados pessoais dos visitantes para fins comerciais.',
+          'Alguns links do site podem direcionar para plataformas externas, como GitHub, LinkedIn, serviços de hospedagem ou outros ambientes acadêmicos. Nesses casos, o tratamento de dados será regido pelas políticas de privacidade das respectivas plataformas.',
+        ],
+      },
+      {
+        title: 'Solicitações',
+        paragraphs: [
+          'Caso deseje solicitar informações, correção ou exclusão de algum dado eventualmente enviado por contato direto, entre em contato pelo canal informado na página de contato do projeto.',
+        ],
+      },
+    ],
+  },
+  terms: {
+    eyebrow: 'Políticas do Chaprendizagem',
+    title: 'Termos de Uso',
+    updatedAt: 'Última atualização: 31 de maio de 2026',
+    intro:
+      'Ao acessar o Chaprendizagem, o usuário concorda em utilizar o site apenas para fins lícitos, educacionais e informativos.',
+    sections: [
+      {
+        title: 'Finalidade do conteúdo',
+        paragraphs: [
+          'O conteúdo disponibilizado no projeto tem finalidade acadêmica e didática. As explicações, gráficos, simulações e experimentos não devem ser interpretados como orientação profissional, científica definitiva ou solução única para problemas de Aprendizagem de Máquina.',
+        ],
+      },
+      {
+        title: 'Uso adequado',
+        paragraphs: [
+          'O usuário se compromete a não tentar comprometer a segurança, disponibilidade ou funcionamento do site, bem como a não utilizar o conteúdo de forma indevida, ofensiva, ilegal ou prejudicial a terceiros.',
+          'Os textos, códigos, componentes visuais, gráficos, simulações e demais materiais do projeto pertencem ao autor do Chaprendizagem, salvo quando indicado o uso de bibliotecas, bases, referências ou ferramentas de terceiros.',
+          'É permitido utilizar o conteúdo como referência de estudo, desde que seja dada a devida atribuição ao projeto e ao autor, quando aplicável.',
+        ],
+      },
+      {
+        title: 'Atualizações',
+        paragraphs: [
+          'O projeto pode passar por alterações, correções, remoções ou atualizações sem aviso prévio, especialmente por se tratar de um ambiente acadêmico em desenvolvimento contínuo.',
+        ],
+      },
+    ],
+  },
+  accessibility: {
+    eyebrow: 'Políticas do Chaprendizagem',
+    title: 'Acessibilidade',
+    updatedAt: 'Última atualização: 31 de maio de 2026',
+    intro:
+      'O Chaprendizagem busca oferecer uma experiência acessível e compreensível para diferentes usuários.',
+    sections: [
+      {
+        title: 'Boas práticas consideradas',
+        paragraphs: [
+          'Durante o desenvolvimento do projeto, são consideradas boas práticas como organização semântica das páginas, clareza visual, contraste adequado, navegação compreensível, textos explicativos e componentes reutilizáveis.',
+        ],
+      },
+      {
+        title: 'Limitações e melhoria contínua',
+        paragraphs: [
+          'Como o projeto contém gráficos, simulações e elementos visuais interativos, alguns recursos podem apresentar limitações de acessibilidade dependendo do dispositivo, navegador ou tecnologia assistiva utilizada.',
+          'O objetivo é melhorar progressivamente a acessibilidade do site, tornando os conteúdos de Aprendizagem de Máquina mais claros, navegáveis e inclusivos.',
+        ],
+      },
+      {
+        title: 'Contato',
+        paragraphs: [
+          'Caso encontre alguma barreira de acesso, erro de navegação, dificuldade de leitura ou problema em algum componente interativo, utilize o canal de contato disponível no projeto para informar o problema.',
+        ],
+      },
+      {
+        title: 'Aviso acadêmico',
+        paragraphs: [
+          'Este site foi desenvolvido como parte de estudos e atividades acadêmicas na área de Aprendizagem de Máquina. O conteúdo pode conter simplificações didáticas, exemplos experimentais e implementações voltadas ao aprendizado.',
+          'O projeto não coleta intencionalmente dados sensíveis, não realiza vendas, não possui sistema de pagamento e não oferece serviços comerciais.',
+        ],
+      },
+    ],
+  },
+};
 
 function getNextStep(location) {
   if (location.pathname.startsWith('/perceptron')) {
@@ -121,6 +219,8 @@ export default function Layout({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
   const nextStep = getNextStep(location);
+  const [activePolicy, setActivePolicy] = useState(null);
+  const policy = activePolicy ? policyContent[activePolicy] : null;
 
   useEffect(() => {
     if (location.hash) {
@@ -140,6 +240,17 @@ export default function Layout({ children }) {
     const email = data.get('email')?.toString().trim();
     navigate(email ? `/contato?email=${encodeURIComponent(email)}` : '/contato');
   }
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        setActivePolicy(null);
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <div className="app-shell">
@@ -294,12 +405,46 @@ export default function Layout({ children }) {
             <Code2 size={17} /> Do conceito ao código.
           </strong>
           <div>
-            <Link to="/contato">Privacidade</Link>
-            <Link to="/contato">Termos de uso</Link>
-            <Link to="/contato">Acessibilidade</Link>
+            <button onClick={() => setActivePolicy('privacy')} type="button">Privacidade</button>
+            <button onClick={() => setActivePolicy('terms')} type="button">Termos de uso</button>
+            <button onClick={() => setActivePolicy('accessibility')} type="button">Acessibilidade</button>
           </div>
         </div>
       </footer>
+
+      {policy ? (
+        <div className="policy-modal-backdrop" onClick={() => setActivePolicy(null)} role="presentation">
+          <section
+            aria-labelledby="policy-modal-title"
+            aria-modal="true"
+            className="policy-modal"
+            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+          >
+            <div className="policy-modal__header">
+              <div>
+                <p className="eyebrow">{policy.eyebrow}</p>
+                <h2 id="policy-modal-title">{policy.title}</h2>
+                <span>{policy.updatedAt}</span>
+              </div>
+              <button className="icon-button" onClick={() => setActivePolicy(null)} title="Fechar" type="button">
+                <X size={18} />
+              </button>
+            </div>
+            <p className="policy-modal__intro">{policy.intro}</p>
+            <div className="policy-modal__content">
+              {policy.sections.map((section) => (
+                <article key={section.title}>
+                  <h3>{section.title}</h3>
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </article>
+              ))}
+            </div>
+          </section>
+        </div>
+      ) : null}
     </div>
   );
 }
