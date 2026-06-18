@@ -2,7 +2,7 @@
 
 Chaprendizagem é um laboratório digital sobre aprendizagem de máquina. O projeto combina explicações teóricas, visualizações interativas e pequenos experimentos de código para transformar conceitos de modelos em páginas navegáveis e fáceis de revisar.
 
-Os módulos atuais são **Perceptron - Reconhecimento de Dígitos** e **Adaline**, com o Trabalho 05 de classificação na base B2 e o Trabalho 06 de regressão linear com Adaline.
+Os módulos atuais são **Perceptron - Reconhecimento de Dígitos**, **Adaline** e **Aproximação Funcional**, com o Trabalho 05 de classificação na base B2, o Trabalho 06 de regressão linear com Adaline e o Trabalho 07 com uma MLP aproximando uma função a partir de pontos amostrados.
 
 ## Stack
 
@@ -26,6 +26,7 @@ chaprendizagem/
 |   |-- components/               # Componentes reutilizáveis entre módulos
 |   |-- features/                 # Módulos de estudo organizados por assunto
 |   |   |-- adaline/
+|   |   |-- functional-approximation/
 |   |   `-- perceptron/
 |   |       |-- components/
 |   |       |-- data/
@@ -77,6 +78,7 @@ npm run serve:dist
 - `/contato` - Sobre mim e links principais.
 - `/adaline` - Trabalho 05 com teoria, simulação, erro quadrático e teste da rede.
 - `/adaline/regressao` - Trabalho 06 com regressão linear usando Adaline, comparação com regressão clássica, Pearson e R².
+- `/aproximacao-funcional` - Trabalho 07 com MLP para aproximação funcional, pontos editáveis, curva aproximada, erro por época e métricas.
 - `/perceptron/teoria` - Base teórica do Perceptron.
 - `/perceptron/modelo` - Modelo visual com matriz interativa.
 - `/perceptron/resultados` - Painel de treinamento, métricas e resultados.
@@ -112,6 +114,9 @@ Componentes compartilhados entre vários assuntos ficam em `src/components/`. Ex
 - A base do Trabalho 06 está em `src/features/adaline/data/observationsDataset.js`.
 - As funções matemáticas da regressão com Adaline estão em `src/features/adaline/lib/regressionAdaline.js`.
 - Os gráficos do Trabalho 06 estão em `src/features/adaline/components/RegressionCharts.jsx`.
+- A base do Trabalho 07 está em `src/features/functional-approximation/data/sampledPoints.js`.
+- A MLP didática do Trabalho 07 está em `src/features/functional-approximation/lib/mlpApproximator.js`.
+- As métricas do Trabalho 07 estão em `src/features/functional-approximation/lib/metrics.js`.
 
 ## Trabalho 06 - Regressão Linear com Adaline
 
@@ -128,3 +133,19 @@ A página permite:
 - alternar curvas no gráfico de comparação;
 - aplicar zoom no gráfico comparativo;
 - exportar os gráficos no estado atual da visualização.
+
+## Trabalho 07 - Aproximação Funcional
+
+O Trabalho 07 fica na rota `/aproximacao-funcional` e apresenta uma rede neural MLP treinada para aproximar uma função a partir de pontos amostrados.
+
+A página permite:
+
+- treinar uma MLP com entrada escalar, camada oculta configurável e saída linear;
+- editar, adicionar, remover, restaurar ou perturbar os pontos da base do professor;
+- alterar quantidade de neurônios ocultos, taxa de aprendizagem, épocas, função de ativação e seed;
+- usar presets como modelo suave, aprendizado rápido, aprendizado instável, mais neurônios e poucas épocas;
+- visualizar os pontos reais e a curva aproximada pela rede;
+- acompanhar o erro quadrático médio por época;
+- comparar `x`, `t`, `y_predito`, erro e erro absoluto em tabela;
+- calcular MSE, erro quadrático total, RMSE, MAE, R² e extremos do erro absoluto;
+- exportar os gráficos de curva e erro em PNG.

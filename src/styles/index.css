@@ -703,6 +703,21 @@ input {
   transform: translateY(-1px);
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+  transform: none;
+}
+
+.button-spinner {
+  animation: buttonSpin 720ms linear infinite;
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  border-top-color: #ffffff;
+  height: 18px;
+  width: 18px;
+}
+
 .button svg,
 .text-link svg,
 .footer-inline-link svg,
@@ -1364,6 +1379,40 @@ p {
     opacity 280ms var(--ease-out),
     transform 520ms var(--ease-out);
   z-index: -1;
+}
+
+.functional-objective-grid .theory-feature-card {
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+  transition:
+    border-color 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    transform 220ms var(--ease-out);
+}
+
+.functional-objective-grid .theory-feature-card::before {
+  background: radial-gradient(circle at 22% 0%, rgba(168, 255, 241, 0.22), transparent 44%);
+  content: "";
+  inset: -28px;
+  opacity: 0;
+  position: absolute;
+  transform: translateY(12px) scale(0.96);
+  transition:
+    opacity 260ms var(--ease-out),
+    transform 260ms var(--ease-out);
+  z-index: -1;
+}
+
+.functional-objective-grid .theory-feature-card:hover {
+  border-color: rgba(0, 87, 91, 0.32);
+  box-shadow: 0 22px 48px rgba(0, 63, 66, 0.12);
+  transform: translateY(-5px);
+}
+
+.functional-objective-grid .theory-feature-card:hover::before {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .regression-objective-grid .theory-feature-card::after {
@@ -2276,6 +2325,17 @@ p {
   padding: 28px;
   position: fixed;
   z-index: 20;
+}
+
+.modal-backdrop--viewport {
+  backdrop-filter: blur(8px);
+  height: 100dvh;
+  isolation: isolate;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  position: fixed;
+  width: 100vw;
+  z-index: 60;
 }
 
 .python-modal {
@@ -3402,6 +3462,361 @@ body.reveal-ready .stagger.is-visible > * {
   padding: 20px;
 }
 
+.functional-hero {
+  grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+}
+
+.functional-hero-visual {
+  aspect-ratio: 1.38;
+  background:
+    radial-gradient(circle at 22% 22%, rgba(168, 255, 241, 0.18), transparent 28%),
+    radial-gradient(circle at 82% 18%, rgba(232, 221, 255, 0.18), transparent 24%),
+    linear-gradient(135deg, #00575b, #25394b 54%, #171b1d);
+  border-radius: 8px;
+  box-shadow: 0 28px 80px rgba(20, 27, 29, 0.18);
+  overflow: hidden;
+  position: relative;
+}
+
+.functional-hero-visual svg {
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.functional-hero-grid-lines line {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1;
+}
+
+.functional-curve-path,
+.functional-shadow-path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.functional-shadow-path {
+  filter: blur(14px);
+  opacity: 0.5;
+  stroke: #a8fff1;
+  stroke-width: 16;
+}
+
+.functional-curve-path {
+  animation: functionalCurveDraw 6.8s ease-in-out infinite;
+  stroke: url("#functionalCurveGradient");
+  stroke-dasharray: 620;
+  stroke-width: 5.5;
+}
+
+.functional-sample-dot {
+  animation: functionalDotBreath 3.6s ease-in-out infinite;
+  fill: #a8fff1;
+  stroke: rgba(255, 255, 255, 0.84);
+  stroke-width: 2;
+  transform-origin: center;
+}
+
+.functional-sample-dot:nth-of-type(2n) {
+  animation-delay: 220ms;
+  fill: #e8ddff;
+}
+
+.functional-network-sketch {
+  color: #ffffff;
+}
+
+.functional-link {
+  animation: functionalSignalStroke 4.2s linear infinite;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.22);
+  stroke-dasharray: 8 16;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.functional-link--b {
+  animation-delay: 320ms;
+}
+
+.functional-link--c {
+  animation-delay: 640ms;
+}
+
+.functional-node {
+  animation: functionalNodeFloat 4.8s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.13);
+  stroke: rgba(255, 255, 255, 0.68);
+  stroke-width: 2;
+}
+
+.functional-node--hidden {
+  animation-delay: 160ms;
+  fill: rgba(246, 208, 111, 0.2);
+  stroke: rgba(246, 208, 111, 0.86);
+}
+
+.functional-node--output {
+  animation-delay: 320ms;
+  fill: rgba(232, 221, 255, 0.22);
+  stroke: rgba(232, 221, 255, 0.9);
+}
+
+.functional-network-sketch text {
+  fill: #ffffff;
+  font-size: 18px;
+  font-weight: 900;
+  text-anchor: middle;
+}
+
+.functional-signal-dots circle {
+  animation: functionalSignalMove 3.8s ease-in-out infinite;
+  fill: url("#functionalNodeGlow");
+  opacity: 0;
+}
+
+.functional-signal-dots circle:nth-child(2) {
+  animation-delay: 520ms;
+}
+
+.functional-signal-dots circle:nth-child(3) {
+  animation-delay: 1040ms;
+}
+
+.functional-chart-stage {
+  animation: functionalChartFloat 6s ease-in-out infinite;
+}
+
+.functional-axis {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.34);
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.functional-chart-label {
+  fill: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.functional-chart-label--curve {
+  fill: #f6d06f;
+}
+
+.functional-objective-grid,
+.functional-theory-grid,
+.functional-workspace {
+  display: grid;
+  gap: 18px;
+}
+
+.functional-objective-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.functional-theory-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.functional-workspace {
+  align-items: start;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.4fr);
+}
+
+.functional-controls {
+  display: grid;
+  gap: 16px;
+}
+
+.functional-controls .panel-heading p,
+.functional-chart-card .panel-heading p {
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+.functional-controls label,
+.functional-select-label {
+  color: var(--muted);
+  display: grid;
+  font-weight: 800;
+  gap: 8px;
+}
+
+.functional-controls input,
+.functional-controls select,
+.functional-table-wrap input {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  font: inherit;
+  min-height: 42px;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.preset-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preset-list .button {
+  min-height: 38px;
+}
+
+.form-warning {
+  background: rgba(216, 155, 24, 0.12);
+  border: 1px solid rgba(216, 155, 24, 0.28);
+  border-radius: 8px;
+  color: #6d4f13;
+  font-weight: 800;
+  line-height: 1.55;
+  margin: 0;
+  padding: 12px 14px;
+}
+
+.functional-action-row {
+  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.functional-action-row .button {
+  justify-content: center;
+  width: 100%;
+}
+
+.functional-table-wrap {
+  max-height: 470px;
+}
+
+.functional-chart-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.functional-chart-card .chart-frame {
+  height: 330px;
+}
+
+.functional-feedback {
+  align-items: flex-start;
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.functional-feedback h3,
+.functional-feedback p {
+  margin: 0;
+}
+
+.functional-feedback p {
+  margin-top: 6px;
+}
+
+.functional-metrics {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.functional-metrics .metric-card strong {
+  font-size: clamp(1.08rem, 1.5vw, 1.52rem);
+  word-break: break-word;
+}
+
+.functional-parameter-strip {
+  margin-top: 20px;
+}
+
+.functional-loading-panel {
+  align-items: center;
+  animation: resultsRise 520ms var(--ease-out) both;
+  background:
+    radial-gradient(circle at 16% 30%, rgba(168, 255, 241, 0.24), transparent 32%),
+    linear-gradient(135deg, rgba(0, 87, 91, 0.96), rgba(37, 57, 75, 0.96));
+  color: #ffffff;
+  display: grid;
+  gap: 26px;
+  grid-template-columns: auto 1fr;
+  overflow: hidden;
+  position: relative;
+}
+
+.functional-loading-panel::after {
+  animation: objectiveGlowSweep 3.2s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  content: "";
+  height: 180%;
+  left: -40%;
+  position: absolute;
+  top: -40%;
+  transform: rotate(18deg);
+  width: 24%;
+}
+
+.functional-loading-panel .eyebrow {
+  color: #a8fff1;
+}
+
+.functional-loading-panel h2,
+.functional-loading-panel p {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.functional-loading-panel h2 {
+  color: #ffffff;
+}
+
+.functional-loading-panel p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 10px;
+  max-width: 700px;
+}
+
+.functional-loader {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  display: flex;
+  gap: 8px;
+  height: 86px;
+  justify-content: center;
+  position: relative;
+  width: 112px;
+  z-index: 1;
+}
+
+.functional-loader span {
+  animation: functionalBarPulse 900ms ease-in-out infinite;
+  background: linear-gradient(180deg, #a8fff1, #f6d06f);
+  border-radius: 999px;
+  display: block;
+  height: 26px;
+  width: 10px;
+}
+
+.functional-loader span:nth-child(2) {
+  animation-delay: 130ms;
+}
+
+.functional-loader span:nth-child(3) {
+  animation-delay: 260ms;
+}
+
+.functional-python-modal {
+  width: min(100%, 980px);
+}
+
+.functional-python-modal .python-code {
+  max-height: min(560px, calc(100dvh - 250px));
+  overflow: auto;
+}
+
 @keyframes riseIn {
   from {
     opacity: 0;
@@ -3437,6 +3852,91 @@ body.reveal-ready .stagger.is-visible > * {
   }
   50% {
     transform: translateY(-12px) scale(1.03);
+  }
+}
+
+@keyframes buttonSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes functionalBarPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scaleY(0.72);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.35);
+  }
+}
+
+@keyframes functionalCurveDraw {
+  0%,
+  18% {
+    stroke-dashoffset: 620;
+  }
+  42%,
+  78% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -620;
+  }
+}
+
+@keyframes functionalDotBreath {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes functionalSignalStroke {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+@keyframes functionalNodeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes functionalSignalMove {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.7);
+  }
+  18%,
+  58% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(270px, 32px) scale(1.05);
+  }
+}
+
+@keyframes functionalChartFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
   }
 }
 
@@ -3762,6 +4262,10 @@ body.reveal-ready .stagger.is-visible > * {
   .regression-workspace,
   .regression-chart-grid,
   .regression-objective-grid,
+  .functional-hero,
+  .functional-theory-grid,
+  .functional-workspace,
+  .functional-chart-grid,
   .regression-steps,
   .comparison-study-panel {
     grid-template-columns: 1fr;
@@ -3783,6 +4287,7 @@ body.reveal-ready .stagger.is-visible > * {
   .flow-grid,
   .tests-grid,
   .next-grid,
+  .functional-objective-grid,
   .results-comment-grid {
     grid-template-columns: 1fr;
   }
@@ -3790,6 +4295,7 @@ body.reveal-ready .stagger.is-visible > * {
   .metrics-grid,
   .digit-strategy,
   .result-metrics-strip,
+  .functional-metrics,
   .regression-metrics {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -3830,6 +4336,11 @@ body.reveal-ready .stagger.is-visible > * {
   .footer-bottom strong {
     justify-content: flex-start;
   }
+
+  .functional-loading-panel {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 560px) {
@@ -3852,6 +4363,7 @@ body.reveal-ready .stagger.is-visible > * {
   .metrics-grid,
   .settings-grid,
   .result-metrics-strip,
+  .functional-metrics,
   .regression-metrics,
   .regression-steps {
     grid-template-columns: 1fr;

@@ -10,6 +10,7 @@ import {
   Instagram,
   Mail,
   Network,
+  FunctionSquare,
   Sigma,
   UserRound,
   X,
@@ -42,6 +43,7 @@ const footerNavItems = [
 const moduleLinks = [
   { to: '/perceptron/modelo', label: 'Perceptron', icon: Sigma, tone: 'teal' },
   { to: '/adaline', label: 'Adaline', icon: Network, tone: 'violet' },
+  { to: '/aproximacao-funcional', label: 'Aproximação', icon: FunctionSquare, tone: 'teal' },
 ];
 
 const resourceLinks = [
@@ -180,14 +182,28 @@ function getNextStep(location) {
   if (location.pathname === '/adaline/regressao') {
     return {
       eyebrow: 'Próximo trabalho',
-      title: 'Trabalho 07 em preparação',
-      description: 'A próxima atividade ainda não foi publicada. Este espaço já fica reservado para continuar a trilha.',
-      cardLabel: 'Em breve',
-      cardTitle: 'Trabalho 07',
-      cardDescription: 'Novo experimento será disponibilizado quando o próximo conteúdo estiver pronto.',
-      buttonLabel: 'Trabalho 07 em breve',
-      to: null,
+      title: 'Avance para aproximação funcional',
+      description: 'Depois da regressão linear, explore uma MLP aprendendo uma curva a partir de pontos amostrados.',
+      cardLabel: 'Trabalho 07',
+      cardTitle: 'Aproximação Funcional',
+      cardDescription: 'MLP com camada oculta, curva aproximada, erro por época e base editável.',
+      buttonLabel: 'Abrir Trabalho 07',
+      to: '/aproximacao-funcional',
       mark: '07',
+    };
+  }
+
+  if (location.pathname === '/aproximacao-funcional') {
+    return {
+      eyebrow: 'Trilha em expansão',
+      title: 'Novos trabalhos em breve',
+      description: 'Este é o módulo mais recente publicado. Quando sair o próximo trabalho, este card passa a apontar para a nova etapa da trilha.',
+      cardLabel: 'Em breve',
+      cardTitle: 'Próximo módulo',
+      cardDescription: 'O próximo laboratório será adicionado quando um novo trabalho da disciplina estiver pronto.',
+      buttonLabel: 'Novos módulos em breve',
+      to: null,
+      mark: '+',
     };
   }
 

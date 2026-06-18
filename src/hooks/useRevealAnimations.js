@@ -35,9 +35,38 @@ export default function useRevealAnimations() {
       },
     );
 
-    revealTargets.forEach((target) => observer.observe(target));
+    const observeTarget = (target) => {
+      if (target.classList.contains('is-visible')) {
+        return;
+      }
+
+      observer.observe(target);
+    };
+
+    revealTargets.forEach(observeTarget);
+
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (!(node instanceof HTMLElement)) {
+            return;
+          }
+
+          if (node.matches('.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .stagger')) {
+            observeTarget(node);
+          }
+
+          node
+            .querySelectorAll?.('.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .stagger')
+            .forEach(observeTarget);
+        });
+      });
+    });
+
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
+      mutationObserver.disconnect();
       observer.disconnect();
     };
   }, [location.pathname, location.hash]);

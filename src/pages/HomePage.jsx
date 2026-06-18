@@ -6,6 +6,7 @@ import {
   ChartNoAxesCombined,
   ChevronLeft,
   ChevronRight,
+  FunctionSquare,
   MonitorUp,
   Network,
   Sigma,
@@ -44,6 +45,14 @@ const projects = [
     visual: 'R',
     cover: adalineCover,
     to: '/adaline/regressao',
+    featured: true,
+  },
+  {
+    title: 'Trabalho 07 - Aproximação Funcional',
+    status: 'Publicado',
+    description: 'MLP treinada para aproximar uma função a partir de pontos amostrados, com curva, erro e base editável.',
+    visual: '07',
+    to: '/aproximacao-funcional',
     featured: true,
   },
   {
@@ -186,6 +195,13 @@ export default function HomePage() {
             <p>Treinamento por erro quadrático com dados B2 e fronteira de decisão.</p>
             <ArrowRight size={18} />
           </Link>
+          <Link className="module-card module-card--active" to="/aproximacao-funcional">
+            <FunctionSquare size={34} />
+            <span>Módulo 03</span>
+            <h3>Aproximação Funcional</h3>
+            <p>MLP com camada oculta para aprender uma curva a partir de observações.</p>
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
 
@@ -193,10 +209,10 @@ export default function HomePage() {
         <Beaker size={34} />
         <div>
           <h2>Pronto para explorar o novo trabalho?</h2>
-          <p>A nova seção do Adaline compara aprendizagem iterativa, regressão clássica e correlação.</p>
+          <p>O Trabalho 07 mostra uma MLP aproximando uma função com pontos editáveis e erro por época.</p>
         </div>
-        <Link className="button button--primary" to="/adaline/regressao">
-          Abrir Trabalho 06 <BrainCircuit size={18} />
+        <Link className="button button--primary" to="/aproximacao-funcional">
+          Abrir Trabalho 07 <BrainCircuit size={18} />
         </Link>
       </section>
     </div>

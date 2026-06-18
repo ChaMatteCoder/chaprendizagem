@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from '../components/Layout.jsx';
 import AdalinePage from '../features/adaline/pages/AdalinePage.jsx';
 import AdalineRegressionPage from '../features/adaline/pages/AdalineRegressionPage.jsx';
+import FunctionalApproximationPage from '../features/functional-approximation/pages/FunctionalApproximationPage.jsx';
 import HomePage from '../pages/HomePage.jsx';
 import AboutPage from '../pages/AboutPage.jsx';
 import ContactPage from '../pages/ContactPage.jsx';
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/contato" element={<ContactPage />} />
         <Route path="/adaline" element={<AdalinePage />} />
         <Route path="/adaline/regressao" element={<AdalineRegressionPage />} />
+        <Route path="/aproximacao-funcional" element={<FunctionalApproximationPage />} />
         <Route path="/perceptron/teoria" element={<TheoryPage />} />
         <Route path="/perceptron/modelo" element={<ModelPage />} />
         <Route path="/perceptron/resultados" element={<ResultsPage />} />
