@@ -9,13 +9,17 @@ import {
   FunctionSquare,
   MonitorUp,
   Network,
+  PenLine,
   Sigma,
   TerminalSquare,
 } from 'lucide-react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import adalineCover from '../assets/Adaline-BaseB2.png';
+import adalineBaseCover from '../assets/Adaline-BaseB2.png';
+import functionalApproximationCover from '../assets/Aproximação-funcional-com-MLP.png';
 import perceptronCover from '../assets/Perceptron-Reconhecimento.png';
+import adalineRegressionCover from '../assets/Regressão-Linear-com-Adaline.png';
+import handwritingRecognitionCover from '../assets/Reconhecimento-Manuscrito-com-MLP.png';
 import ProjectCard from '../components/ProjectCard.jsx';
 import StudyStepCard from '../components/StudyStepCard.jsx';
 
@@ -34,7 +38,7 @@ const projects = [
     status: 'Publicado',
     description: 'Treinamento de uma rede Adaline, curva de erro quadrático e teste da classificação.',
     visual: 'A',
-    cover: adalineCover,
+    cover: adalineBaseCover,
     to: '/adaline',
     featured: true,
   },
@@ -43,7 +47,7 @@ const projects = [
     status: 'Publicado',
     description: 'Ajuste de reta com Adaline, regressão clássica, Pearson, R² e comentários automáticos.',
     visual: 'R',
-    cover: adalineCover,
+    cover: adalineRegressionCover,
     to: '/adaline/regressao',
     featured: true,
   },
@@ -52,7 +56,17 @@ const projects = [
     status: 'Publicado',
     description: 'MLP treinada para aproximar uma função a partir de pontos amostrados, com curva, erro e base editável.',
     visual: '07',
+    cover: functionalApproximationCover,
     to: '/aproximacao-funcional',
+    featured: true,
+  },
+  {
+    title: 'Trabalho 08 - Reconhecimento Manuscrito com MLP',
+    status: 'Publicado',
+    description: 'Lousa, upload, pré-processamento 28×28, MLP TensorFlow.js e probabilidades para dígitos e letras.',
+    visual: '08',
+    cover: handwritingRecognitionCover,
+    to: '/mlp/reconhecimento-manuscrito',
     featured: true,
   },
   {
@@ -202,6 +216,13 @@ export default function HomePage() {
             <p>MLP com camada oculta para aprender uma curva a partir de observações.</p>
             <ArrowRight size={18} />
           </Link>
+          <Link className="module-card module-card--active" to="/mlp/reconhecimento-manuscrito">
+            <PenLine size={34} />
+            <span>Módulo 04</span>
+            <h3>Reconhecimento Manuscrito</h3>
+            <p>MLP para classificar dígitos e letras manuscritas a partir de imagens 28×28.</p>
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
 
@@ -209,10 +230,10 @@ export default function HomePage() {
         <Beaker size={34} />
         <div>
           <h2>Pronto para explorar o novo trabalho?</h2>
-          <p>O Trabalho 07 mostra uma MLP aproximando uma função com pontos editáveis e erro por época.</p>
+          <p>O Trabalho 08 mostra uma MLP classificando dígitos e letras manuscritas com lousa e upload.</p>
         </div>
-        <Link className="button button--primary" to="/aproximacao-funcional">
-          Abrir Trabalho 07 <BrainCircuit size={18} />
+        <Link className="button button--primary" to="/mlp/reconhecimento-manuscrito">
+          Abrir Trabalho 08 <BrainCircuit size={18} />
         </Link>
       </section>
     </div>

@@ -7,16 +7,20 @@
     "dev": "vite --host 127.0.0.1 --clearScreen false",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "serve:dist": "node scripts/serve-dist.mjs"
+    "serve:dist": "node scripts/serve-dist.mjs",
+    "train:digits": "python training/train_digits_mnist.py",
+    "export:digits-weights": "python training/export_digits_weights_json.py",
+    "train:alphanumeric": "python training/train_alphanumeric_mnist_emnist.py",
+    "export:alphanumeric-weights": "python training/export_alphanumeric_weights_json.py"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^4.22.0",
     "@vitejs/plugin-react": "^5.0.4",
-    "vite": "^7.1.7",
+    "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3",
-    "lucide-react": "^0.544.0",
-    "recharts": "^3.2.1"
-  },
-  "devDependencies": {}
+    "recharts": "^3.2.1",
+    "vite": "^7.1.7"
+  }
 }

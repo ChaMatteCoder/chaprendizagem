@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import Layout from '../components/Layout.jsx';
 import AdalinePage from '../features/adaline/pages/AdalinePage.jsx';
 import AdalineRegressionPage from '../features/adaline/pages/AdalineRegressionPage.jsx';
@@ -10,6 +11,10 @@ import ModelPage from '../features/perceptron/pages/ModelPage.jsx';
 import ResultsPage from '../features/perceptron/pages/ResultsPage.jsx';
 import TheoryPage from '../features/perceptron/pages/TheoryPage.jsx';
 import useRevealAnimations from '../hooks/useRevealAnimations.js';
+
+const HandwritingRecognitionPage = lazy(() =>
+  import('../features/handwriting-recognition/pages/HandwritingRecognitionPage.jsx'),
+);
 
 export default function App() {
   useRevealAnimations();
@@ -23,6 +28,14 @@ export default function App() {
         <Route path="/adaline" element={<AdalinePage />} />
         <Route path="/adaline/regressao" element={<AdalineRegressionPage />} />
         <Route path="/aproximacao-funcional" element={<FunctionalApproximationPage />} />
+        <Route
+          path="/mlp/reconhecimento-manuscrito"
+          element={
+            <Suspense fallback={<div className="page wide-panel">Carregando Trabalho 08...</div>}>
+              <HandwritingRecognitionPage />
+            </Suspense>
+          }
+        />
         <Route path="/perceptron/teoria" element={<TheoryPage />} />
         <Route path="/perceptron/modelo" element={<ModelPage />} />
         <Route path="/perceptron/resultados" element={<ResultsPage />} />

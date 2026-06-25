@@ -11,6 +11,7 @@ import {
   Mail,
   Network,
   FunctionSquare,
+  PenLine,
   Sigma,
   UserRound,
   X,
@@ -44,6 +45,7 @@ const moduleLinks = [
   { to: '/perceptron/modelo', label: 'Perceptron', icon: Sigma, tone: 'teal' },
   { to: '/adaline', label: 'Adaline', icon: Network, tone: 'violet' },
   { to: '/aproximacao-funcional', label: 'Aproximação', icon: FunctionSquare, tone: 'teal' },
+  { to: '/mlp/reconhecimento-manuscrito', label: 'Trabalho 08', icon: PenLine, tone: 'violet' },
 ];
 
 const resourceLinks = [
@@ -194,6 +196,20 @@ function getNextStep(location) {
   }
 
   if (location.pathname === '/aproximacao-funcional') {
+    return {
+      eyebrow: 'Próximo trabalho',
+      title: 'Avance para reconhecimento manuscrito',
+      description: 'Depois da aproximação funcional, explore uma MLP classificando imagens 28x28 de digitos e letras.',
+      cardLabel: 'Trabalho 08',
+      cardTitle: 'Reconhecimento Manuscrito',
+      cardDescription: 'Lousa, upload, pre-processamento, probabilidades e matriz de confusao.',
+      buttonLabel: 'Abrir Trabalho 08',
+      to: '/mlp/reconhecimento-manuscrito',
+      mark: '08',
+    };
+  }
+
+  if (location.pathname === '/mlp/reconhecimento-manuscrito') {
     return {
       eyebrow: 'Trilha em expansão',
       title: 'Novos trabalhos em breve',
