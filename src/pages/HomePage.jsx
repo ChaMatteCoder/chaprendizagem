@@ -7,6 +7,7 @@ import {
   ChevronLeft,
   ChevronRight,
   FunctionSquare,
+  Flower2,
   MonitorUp,
   Network,
   PenLine,
@@ -67,6 +68,14 @@ const projects = [
     visual: '08',
     cover: handwritingRecognitionCover,
     to: '/mlp/reconhecimento-manuscrito',
+    featured: true,
+  },
+  {
+    title: 'Trabalho 09 - Classificação Iris Dataset com MLP',
+    status: 'Em implementação',
+    description: 'MLP para classificar espécies de flores Iris a partir de medidas de sépalas e pétalas.',
+    visual: '09',
+    to: '/mlp/classificacao-iris',
     featured: true,
   },
   {
@@ -209,18 +218,22 @@ export default function HomePage() {
             <p>Treinamento por erro quadrático com dados B2 e fronteira de decisão.</p>
             <ArrowRight size={18} />
           </Link>
-          <Link className="module-card module-card--active" to="/aproximacao-funcional">
-            <FunctionSquare size={34} />
+          <Link className="module-card module-card--active module-card--mlp" to="/mlp">
+            <BrainCircuit size={34} />
             <span>Módulo 03</span>
-            <h3>Aproximação Funcional</h3>
-            <p>MLP com camada oculta para aprender uma curva a partir de observações.</p>
-            <ArrowRight size={18} />
-          </Link>
-          <Link className="module-card module-card--active" to="/mlp/reconhecimento-manuscrito">
-            <PenLine size={34} />
-            <span>Módulo 04</span>
-            <h3>Reconhecimento Manuscrito</h3>
-            <p>MLP para classificar dígitos e letras manuscritas a partir de imagens 28×28.</p>
+            <h3>MLP - Redes Neurais Multicamadas</h3>
+            <p>Trabalhos 07, 08 e 09 reunidos em uma trilha de regressão, imagens vetorizadas e classificação tabular.</p>
+            <div className="module-card__subitems" aria-hidden="true">
+              <small>
+                <FunctionSquare size={14} /> Trabalho 07
+              </small>
+              <small>
+                <PenLine size={14} /> Trabalho 08
+              </small>
+              <small>
+                <Flower2 size={14} /> Trabalho 09
+              </small>
+            </div>
             <ArrowRight size={18} />
           </Link>
         </div>
@@ -230,10 +243,10 @@ export default function HomePage() {
         <Beaker size={34} />
         <div>
           <h2>Pronto para explorar o novo trabalho?</h2>
-          <p>O Trabalho 08 mostra uma MLP classificando dígitos e letras manuscritas com lousa e upload.</p>
+          <p>O módulo MLP reúne aproximação funcional, reconhecimento manuscrito e a nova classificação Iris.</p>
         </div>
-        <Link className="button button--primary" to="/mlp/reconhecimento-manuscrito">
-          Abrir Trabalho 08 <BrainCircuit size={18} />
+        <Link className="button button--primary" to="/mlp">
+          Abrir módulo MLP <BrainCircuit size={18} />
         </Link>
       </section>
     </div>

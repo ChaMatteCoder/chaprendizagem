@@ -1,0 +1,30 @@
+export const mlpLabs = [
+  {
+    id: 'functional-approximation',
+    work: 'Trabalho 07',
+    title: 'Aproximação funcional',
+    route: '/mlp/aproximacao-funcional',
+    legacyRoute: '/aproximacao-funcional',
+    description: 'Uma MLP aprende a aproximar uma função não linear a partir de pontos amostrados.',
+    focus: 'Regressão e aproximação de curvas',
+    status: 'Disponível',
+  },
+  {
+    id: 'handwriting-recognition',
+    work: 'Trabalho 08',
+    title: 'Reconhecimento manuscrito',
+    route: '/mlp/reconhecimento-manuscrito',
+    description: 'Uma MLP transforma pixels 28×28 em probabilidades para dígitos e letras manuscritas.',
+    focus: 'Classificação de imagens vetorizadas',
+    status: 'Disponível',
+  },
+  {
+    id: 'iris-classification',
+    work: 'Trabalho 09',
+    title: 'Classificação Iris Dataset',
+    route: '/mlp/classificacao-iris',
+    description: 'Uma MLP classifica espécies de flores Iris a partir de medidas de sépalas e pétalas.',
+    focus: 'Classificação multiclasse tabular',
+    status: 'Em implementação',
+  },
+];

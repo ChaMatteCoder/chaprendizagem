@@ -12,6 +12,8 @@ import ResultsPage from '../features/perceptron/pages/ResultsPage.jsx';
 import TheoryPage from '../features/perceptron/pages/TheoryPage.jsx';
 import useRevealAnimations from '../hooks/useRevealAnimations.js';
 
+const IrisClassificationPage = lazy(() => import('../features/iris-classification/pages/IrisClassificationPage.jsx'));
+const MlpHubPage = lazy(() => import('../features/mlp/pages/MlpHubPage.jsx'));
 const HandwritingRecognitionPage = lazy(() =>
   import('../features/handwriting-recognition/pages/HandwritingRecognitionPage.jsx'),
 );
@@ -29,10 +31,27 @@ export default function App() {
         <Route path="/adaline/regressao" element={<AdalineRegressionPage />} />
         <Route path="/aproximacao-funcional" element={<FunctionalApproximationPage />} />
         <Route
+          path="/mlp"
+          element={
+            <Suspense fallback={<div className="page wide-panel">Carregando módulo MLP...</div>}>
+              <MlpHubPage />
+            </Suspense>
+          }
+        />
+        <Route path="/mlp/aproximacao-funcional" element={<FunctionalApproximationPage />} />
+        <Route
           path="/mlp/reconhecimento-manuscrito"
           element={
             <Suspense fallback={<div className="page wide-panel">Carregando Trabalho 08...</div>}>
               <HandwritingRecognitionPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/mlp/classificacao-iris"
+          element={
+            <Suspense fallback={<div className="page wide-panel">Carregando Trabalho 09...</div>}>
+              <IrisClassificationPage />
             </Suspense>
           }
         />

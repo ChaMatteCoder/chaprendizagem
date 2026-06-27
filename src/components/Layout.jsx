@@ -11,7 +11,6 @@ import {
   Mail,
   Network,
   FunctionSquare,
-  PenLine,
   Sigma,
   UserRound,
   X,
@@ -44,8 +43,7 @@ const footerNavItems = [
 const moduleLinks = [
   { to: '/perceptron/modelo', label: 'Perceptron', icon: Sigma, tone: 'teal' },
   { to: '/adaline', label: 'Adaline', icon: Network, tone: 'violet' },
-  { to: '/aproximacao-funcional', label: 'Aproximação', icon: FunctionSquare, tone: 'teal' },
-  { to: '/mlp/reconhecimento-manuscrito', label: 'Trabalho 08', icon: PenLine, tone: 'violet' },
+  { to: '/mlp', label: 'MLP', icon: FunctionSquare, tone: 'amber' },
 ];
 
 const resourceLinks = [
@@ -153,6 +151,20 @@ const policyContent = {
 };
 
 function getNextStep(location) {
+  if (location.pathname === '/mlp') {
+    return {
+      eyebrow: 'Laboratório em destaque',
+      title: 'Comece pela classificação Iris',
+      description: 'Abra o Trabalho 09 para estudar MLP em dados tabulares multiclasse.',
+      cardLabel: 'Trabalho 09',
+      cardTitle: 'Classificação Iris Dataset',
+      cardDescription: 'Medidas de sépalas e pétalas alimentando uma rede neural multicamada.',
+      buttonLabel: 'Abrir Trabalho 09',
+      to: '/mlp/classificacao-iris',
+      mark: '09',
+    };
+  }
+
   if (location.pathname.startsWith('/perceptron')) {
     return {
       eyebrow: 'Próximo trabalho',
@@ -195,7 +207,7 @@ function getNextStep(location) {
     };
   }
 
-  if (location.pathname === '/aproximacao-funcional') {
+  if (location.pathname === '/aproximacao-funcional' || location.pathname === '/mlp/aproximacao-funcional') {
     return {
       eyebrow: 'Próximo trabalho',
       title: 'Avance para reconhecimento manuscrito',
@@ -211,15 +223,29 @@ function getNextStep(location) {
 
   if (location.pathname === '/mlp/reconhecimento-manuscrito') {
     return {
-      eyebrow: 'Trilha em expansão',
-      title: 'Novos trabalhos em breve',
-      description: 'Este é o módulo mais recente publicado. Quando sair o próximo trabalho, este card passa a apontar para a nova etapa da trilha.',
-      cardLabel: 'Em breve',
-      cardTitle: 'Próximo módulo',
-      cardDescription: 'O próximo laboratório será adicionado quando um novo trabalho da disciplina estiver pronto.',
-      buttonLabel: 'Novos módulos em breve',
-      to: null,
-      mark: '+',
+      eyebrow: 'Próximo trabalho',
+      title: 'Avance para classificação Iris',
+      description: 'Depois das imagens vetorizadas, explore a MLP em dados tabulares com medidas de sépalas e pétalas.',
+      cardLabel: 'Trabalho 09',
+      cardTitle: 'Classificação Iris Dataset',
+      cardDescription: 'Classificação multiclasse de flores Iris usando atributos morfológicos.',
+      buttonLabel: 'Abrir Trabalho 09',
+      to: '/mlp/classificacao-iris',
+      mark: '09',
+    };
+  }
+
+  if (location.pathname === '/mlp/classificacao-iris') {
+    return {
+      eyebrow: 'Trilha MLP',
+      title: 'Módulo MLP organizado',
+      description: 'Volte ao hub para navegar entre aproximação funcional, reconhecimento manuscrito e Iris Dataset.',
+      cardLabel: 'Módulo MLP',
+      cardTitle: 'Redes Neurais Multicamadas',
+      cardDescription: 'Três laboratórios independentes reunidos pela mesma arquitetura de rede.',
+      buttonLabel: 'Voltar ao módulo MLP',
+      to: '/mlp',
+      mark: 'MLP',
     };
   }
 
@@ -480,3 +506,4 @@ export default function Layout({ children }) {
     </div>
   );
 }
+
