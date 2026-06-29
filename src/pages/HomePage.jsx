@@ -21,6 +21,7 @@ import functionalApproximationCover from '../assets/Aproximação-funcional-com-
 import perceptronCover from '../assets/Perceptron-Reconhecimento.png';
 import adalineRegressionCover from '../assets/Regressão-Linear-com-Adaline.png';
 import handwritingRecognitionCover from '../assets/Reconhecimento-Manuscrito-com-MLP.png';
+import irisClassificationCover from '../assets/Iris-Classification.png';
 import ProjectCard from '../components/ProjectCard.jsx';
 import StudyStepCard from '../components/StudyStepCard.jsx';
 
