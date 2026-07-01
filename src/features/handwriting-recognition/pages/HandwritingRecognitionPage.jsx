@@ -9,6 +9,7 @@ import {
   Grid3X3,
   Images,
   Layers3,
+  PenLine,
   Sigma,
   Target,
 } from 'lucide-react';
@@ -70,6 +71,7 @@ export default function HandwritingRecognitionPage() {
   const [trainingInfo, setTrainingInfo] = useState(null);
   const [isTraining, setIsTraining] = useState(false);
   const [prediction, setPrediction] = useState(null);
+  const [inputSource, setInputSource] = useState('canvas');
   const [statusMessage, setStatusMessage] = useState('Desenhe um caractere na lousa para iniciar o experimento.');
   const [pipelinePlayback, setPipelinePlayback] = useState({
     completedSteps: [],
@@ -262,13 +264,21 @@ export default function HandwritingRecognitionPage() {
     }, 80);
   }
 
+  function handleInputSourceChange(nextSource) {
+    if (nextSource === inputSource) return;
+    setInputSource(nextSource);
+    setStatusMessage(
+      nextSource === 'canvas'
+        ? 'Lousa selecionada. Desenhe um caractere dentro do limite seguro.'
+        : 'Imagem selecionada. Envie um arquivo PNG ou JPG com um caractere isolado.',
+    );
+  }
+
   function playPipeline({
     finalMessage = 'A rede analisou o padrão dos pixels e retornou uma distribuição de probabilidade.',
-    revealResultsOnComplete = false,
   } = {}) {
     playbackTimersRef.current.forEach((timerId) => window.clearTimeout(timerId));
     playbackTimersRef.current = [];
-    setResultsVisible(false);
     setPipelinePlayback({ completedSteps: [], currentStep: 0, isPlaying: true });
 
     window.requestAnimationFrame(() => {
@@ -303,9 +313,7 @@ export default function HandwritingRecognitionPage() {
         currentStep: messages.length - 1,
         isPlaying: false,
       });
-      if (revealResultsOnComplete) {
-        setResultsVisible(true);
-      }
+      setResultsVisible(true);
     }, messages.length * 420 + 180);
     playbackTimersRef.current.push(doneTimerId);
   }
@@ -335,6 +343,7 @@ export default function HandwritingRecognitionPage() {
 
       replaceDidacticModel(result.model);
       setTrainingInfo({ sampleCount: result.sampleCount, trainTimeMs: result.trainTimeMs });
+      setResultsVisible(true);
       setStatusMessage(
         ['digits', 'all'].includes(mode) && pretrainedModelRef.current
           ? 'Treino didático concluído. A predição continua priorizando o modelo pré-treinado do modo atual.'
@@ -364,7 +373,6 @@ export default function HandwritingRecognitionPage() {
       finalMessage: canPredict
         ? 'A rede analisou o padrão dos pixels e retornou uma distribuição de probabilidade.'
         : 'Imagem processada. Treine a MLP didática no modo atual para gerar a predição.',
-      revealResultsOnComplete: canPredict,
     });
 
     if (canPredict) {
@@ -657,7 +665,7 @@ export default function HandwritingRecognitionPage() {
         className="wide-panel handwriting-lab reveal-up"
         id="input-section"
       >
-        <div className="section-heading section-heading--with-actions">
+        <div className="section-heading section-heading--with-actions handwriting-lab__heading">
           <div>
             <p className="eyebrow">Laboratório interativo</p>
             <h2>Escolha o modo, treine e teste um caractere.</h2>
@@ -671,26 +679,79 @@ export default function HandwritingRecognitionPage() {
             {statusMessage}
           </div>
           <div className="handwriting-workspace">
-            <DrawingCanvas
-              onProcess={(source) => processSource(source, 'canvas')}
-              warnings={processed?.sourceType === 'canvas' ? processed.warnings : []}
-            />
-            <ImageUploadPanel
-              onImageReady={(source) => processSource(source, 'upload')}
-              warnings={processed?.sourceType === 'upload' ? processed.warnings : []}
-            />
-            <ModelArchitectureCard
-              activeModelType={activeModelType}
-              pretrainedModelStatus={pretrainedModelStatus}
-              modeConfig={modeConfig}
-            />
-            <TrainingControls
-              disabled={isTraining}
-              isTraining={isTraining}
-              modeConfig={modeConfig}
-              onTrain={handleTrain}
-              pretrainedModelStatus={pretrainedModelStatus}
-            />
+            <div className="handwriting-input-stage">
+              <div aria-label="Fonte do caractere" className="handwriting-source-tabs" role="tablist">
+                <button
+                  aria-controls="handwriting-source-canvas"
+                  aria-selected={inputSource === 'canvas'}
+                  className={inputSource === 'canvas' ? 'is-active' : ''}
+                  id="handwriting-source-tab-canvas"
+                  onClick={() => handleInputSourceChange('canvas')}
+                  role="tab"
+                  type="button"
+                >
+                  <PenLine size={18} /> Lousa
+                </button>
+                <button
+                  aria-controls="handwriting-source-upload"
+                  aria-selected={inputSource === 'upload'}
+                  className={inputSource === 'upload' ? 'is-active' : ''}
+                  id="handwriting-source-tab-upload"
+                  onClick={() => handleInputSourceChange('upload')}
+                  role="tab"
+                  type="button"
+                >
+                  <Images size={18} /> Imagem
+                </button>
+              </div>
+              <div className="handwriting-input-panels">
+                <div
+                  aria-labelledby="handwriting-source-tab-canvas"
+                  hidden={inputSource !== 'canvas'}
+                  id="handwriting-source-canvas"
+                  role="tabpanel"
+                >
+                  <DrawingCanvas
+                    onProcess={(source) => processSource(source, 'canvas')}
+                    warnings={processed?.sourceType === 'canvas' ? processed.warnings : []}
+                  />
+                </div>
+                <div
+                  aria-labelledby="handwriting-source-tab-upload"
+                  hidden={inputSource !== 'upload'}
+                  id="handwriting-source-upload"
+                  role="tabpanel"
+                >
+                  <ImageUploadPanel
+                    onImageReady={(source) => processSource(source, 'upload')}
+                    warnings={processed?.sourceType === 'upload' ? processed.warnings : []}
+                  />
+                </div>
+              </div>
+            </div>
+            <section className="handwriting-model-workbench" aria-labelledby="model-workbench-title">
+              <div className="handwriting-model-workbench__heading">
+                <div>
+                  <span>Modelo do laboratório</span>
+                  <h3 id="model-workbench-title">Entenda a rede e experimente o treinamento</h3>
+                </div>
+                <p>A arquitetura explica o caminho dos pixels; o treino didático permite observar esse aprendizado.</p>
+              </div>
+              <div className="handwriting-support-grid">
+                <ModelArchitectureCard
+                  activeModelType={activeModelType}
+                  pretrainedModelStatus={pretrainedModelStatus}
+                  modeConfig={modeConfig}
+                />
+                <TrainingControls
+                  disabled={isTraining}
+                  isTraining={isTraining}
+                  modeConfig={modeConfig}
+                  onTrain={handleTrain}
+                  pretrainedModelStatus={pretrainedModelStatus}
+                />
+              </div>
+            </section>
           </div>
         </div>
       </section>

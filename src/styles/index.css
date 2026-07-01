@@ -637,41 +637,75 @@ input {
   }
 }
 
-.architecture-flow span {
-  background: rgba(220, 239, 235, 0.72);
-  border: 1px solid rgba(0, 87, 91, 0.16);
-  border-radius: 8px;
-  color: var(--teal-dark);
-  font-weight: 900;
-}
-
 .recognition-tabs {
-  background: rgba(238, 242, 235, 0.9);
+  background: rgba(238, 242, 235, 0.76);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  display: flex;
-  gap: 6px;
+  border-radius: 10px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   padding: 6px;
+  width: 100%;
 }
 
 .recognition-tabs button {
   align-items: center;
   background: transparent;
   border: 0;
-  border-radius: 7px;
+  border-radius: 8px;
   color: var(--muted);
   cursor: pointer;
-  display: inline-flex;
-  font-weight: 900;
-  gap: 8px;
-  min-height: 42px;
-  padding: 0 14px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto minmax(0, 1fr);
+  min-height: 56px;
+  padding: 8px 14px;
+  text-align: left;
+  transition:
+    background 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out),
+    color 180ms var(--ease-out);
+}
+
+.recognition-tabs button > span {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+
+.recognition-tabs button strong,
+.recognition-tabs button small {
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.recognition-tabs button strong {
+  color: inherit;
+  font-size: 0.88rem;
+}
+
+.recognition-tabs button small {
+  font-size: 0.7rem;
+  font-weight: 800;
+  opacity: 0.76;
 }
 
 .recognition-tabs button.is-active {
   background: white;
-  box-shadow: 0 10px 24px rgba(31, 43, 40, 0.08);
+  box-shadow: 0 10px 24px rgba(31, 43, 40, 0.1);
   color: var(--teal-dark);
+}
+
+.recognition-tabs button:focus-visible {
+  outline: 3px solid rgba(216, 155, 24, 0.42);
+  outline-offset: 1px;
+}
+
+.section-heading--with-actions.handwriting-lab__heading {
+  align-items: stretch;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .status-strip {
@@ -705,7 +739,129 @@ input {
 }
 
 .handwriting-workspace {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.handwriting-input-stage {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(220, 239, 235, 0.76), transparent 42%),
+    rgba(248, 249, 246, 0.72);
+  border: 1px solid rgba(0, 87, 91, 0.14);
+  border-radius: 10px;
+  display: grid;
+  gap: 22px;
+  justify-items: center;
+  padding: clamp(18px, 3vw, 32px);
+}
+
+.handwriting-source-tabs {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(31, 43, 40, 0.08);
+  display: inline-grid;
+  gap: 5px;
+  grid-template-columns: repeat(2, minmax(126px, 1fr));
+  padding: 5px;
+}
+
+.handwriting-source-tabs button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-weight: 900;
+  gap: 8px;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 20px;
+  transition:
+    background 180ms var(--ease-out),
+    color 180ms var(--ease-out),
+    transform 180ms var(--ease-out);
+}
+
+.handwriting-source-tabs button:hover {
+  color: var(--teal-dark);
+}
+
+.handwriting-source-tabs button.is-active {
+  background: var(--teal-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.handwriting-source-tabs button:focus-visible {
+  outline: 3px solid rgba(216, 155, 24, 0.45);
+  outline-offset: 2px;
+}
+
+.handwriting-input-panels,
+.handwriting-input-panels > [role="tabpanel"] {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+
+.handwriting-input-panels > [role="tabpanel"][hidden] {
+  display: none;
+}
+
+.handwriting-input-panels .handwriting-panel {
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 50px rgba(31, 43, 40, 0.08);
+  max-width: 780px;
+  width: 100%;
+}
+
+.handwriting-support-grid {
+  display: grid;
+  gap: 20px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.handwriting-model-workbench {
+  background: rgba(238, 242, 235, 0.48);
+  border: 1px solid rgba(0, 87, 91, 0.13);
+  border-radius: 10px;
+  display: grid;
+  gap: 18px;
+  padding: clamp(18px, 2.6vw, 28px);
+}
+
+.handwriting-model-workbench__heading {
+  align-items: end;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.75fr);
+}
+
+.handwriting-model-workbench__heading span,
+.support-card-heading small,
+.model-status-card > span {
+  color: var(--teal-dark);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.handwriting-model-workbench__heading h3,
+.handwriting-model-workbench__heading p {
+  margin: 0;
+}
+
+.handwriting-model-workbench__heading h3 {
+  margin-top: 5px;
+}
+
+.handwriting-model-workbench__heading > p {
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .handwriting-panel,
@@ -718,16 +874,59 @@ input {
   padding: 22px;
 }
 
+.drawing-canvas-frame {
+  justify-self: center;
+  max-width: 100%;
+  position: relative;
+  width: min(100%, 480px);
+}
+
 .drawing-canvas {
   aspect-ratio: 1;
   background: white;
   border: 1px solid var(--line);
   border-radius: 8px;
-  box-shadow: inset 0 0 0 10px rgba(238, 242, 235, 0.72);
+  box-shadow: inset 0 0 0 10px rgba(238, 242, 235, 0.5);
+  display: block;
   max-width: 100%;
   touch-action: none;
-  width: min(100%, 360px);
-  justify-self: center;
+  width: 100%;
+}
+
+.drawing-safe-guide {
+  border: 2px dashed rgba(0, 87, 91, 0.46);
+  border-radius: 6px;
+  inset: 10%;
+  pointer-events: none;
+  position: absolute;
+  transition:
+    border-color 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out);
+}
+
+.drawing-safe-guide span {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 87, 91, 0.16);
+  border-radius: 999px;
+  color: var(--teal-dark);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  padding: 4px 8px;
+  position: absolute;
+  right: 8px;
+  text-transform: uppercase;
+  top: 8px;
+}
+
+.drawing-canvas-frame.is-warning .drawing-safe-guide {
+  border-color: rgba(198, 95, 69, 0.88);
+  box-shadow: 0 0 0 5px rgba(198, 95, 69, 0.1);
+}
+
+.drawing-canvas-frame.is-warning .drawing-safe-guide span {
+  border-color: rgba(198, 95, 69, 0.3);
+  color: #8f3827;
 }
 
 .canvas-toolbar {
@@ -735,17 +934,145 @@ input {
   gap: 14px;
 }
 
-.canvas-toolbar label {
-  align-items: center;
+.canvas-toolbar__controls {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(210px, 0.8fr) minmax(340px, 1.2fr);
+}
+
+.canvas-brush-control,
+.canvas-color-picker {
+  background: rgba(238, 242, 235, 0.52);
+  border: 1px solid rgba(0, 87, 91, 0.12);
+  border-radius: 9px;
+  box-sizing: border-box;
+  min-height: 104px;
+  padding: 14px;
+}
+
+.canvas-brush-control {
   color: var(--muted);
   display: grid;
   font-weight: 800;
-  gap: 10px;
-  grid-template-columns: auto auto 1fr auto;
+  gap: 14px;
+}
+
+.canvas-control-heading {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: auto 1fr auto;
+}
+
+.canvas-control-heading strong {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--teal-dark);
+  font-size: 0.78rem;
+  min-width: 46px;
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.canvas-brush-control > input {
+  cursor: pointer;
+  margin: 0;
+  width: 100%;
 }
 
 .canvas-toolbar input {
   accent-color: var(--teal);
+}
+
+.canvas-color-picker {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  min-width: 0;
+}
+
+.canvas-color-picker legend {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-weight: 800;
+  gap: 8px;
+  padding: 0 4px;
+}
+
+.canvas-color-picker__options {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.canvas-color-swatch,
+.canvas-custom-color__preview {
+  background: var(--swatch-color);
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(31, 43, 40, 0.22);
+  display: block;
+  height: 30px;
+  width: 30px;
+}
+
+.canvas-color-swatch {
+  cursor: pointer;
+  padding: 0;
+}
+
+.canvas-color-swatch[aria-pressed="true"] {
+  box-shadow:
+    0 0 0 2px #ffffff,
+    0 0 0 4px var(--teal);
+  transform: scale(0.9);
+}
+
+.canvas-color-swatch:focus-visible,
+.canvas-custom-color:focus-within {
+  outline: 3px solid rgba(216, 155, 24, 0.42);
+  outline-offset: 3px;
+}
+
+.canvas-custom-color {
+  align-items: center;
+  background: white;
+  border: 1px dashed rgba(0, 87, 91, 0.34);
+  border-radius: 999px;
+  color: var(--teal-dark);
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  min-height: 38px;
+  padding: 3px 11px 3px 5px;
+  position: relative;
+}
+
+.canvas-custom-color:hover {
+  border-style: solid;
+  box-shadow: 0 8px 18px rgba(31, 43, 40, 0.09);
+}
+
+.canvas-custom-color strong {
+  font-size: 0.76rem;
+  white-space: nowrap;
+}
+
+.canvas-custom-color .canvas-custom-color__preview {
+  height: 26px;
+  width: 26px;
+}
+
+.canvas-custom-color input {
+  cursor: pointer;
+  height: 100%;
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .canvas-toolbar__actions {
@@ -791,6 +1118,20 @@ input {
   color: var(--muted);
   font-size: 0.92rem;
   margin: 0;
+}
+
+.quality-alert {
+  display: grid;
+  gap: 8px;
+}
+
+.quality-alert__border-warning {
+  display: grid;
+  gap: 4px;
+}
+
+.quality-alert__border-warning strong {
+  color: #8f3827;
 }
 
 .pipeline-grid {
@@ -1038,23 +1379,98 @@ input {
 }
 
 .architecture-flow {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.architecture-flow span {
-  align-items: center;
-  display: inline-flex;
-  gap: 10px;
-  min-height: 42px;
-  padding: 0 12px;
+.architecture-flow__item {
+  min-width: 0;
+  position: relative;
 }
 
-.architecture-flow i {
+.architecture-layer {
+  background: rgba(220, 239, 235, 0.72);
+  border: 1px solid rgba(0, 87, 91, 0.16);
+  border-radius: 8px;
+  display: grid;
+  gap: 5px;
+  min-height: 78px;
+  padding: 12px;
+}
+
+.architecture-layer small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.architecture-layer strong {
+  color: var(--teal-dark);
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+.architecture-flow__arrow {
   color: var(--coral);
-  font-style: normal;
+  position: absolute;
+  right: -18px;
+  top: 31px;
+  z-index: 1;
+}
+
+.support-card-heading {
+  align-items: start;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.support-card-heading > svg {
+  color: var(--teal-dark);
+}
+
+.support-card-heading h3,
+.support-card-heading p {
+  margin: 0;
+}
+
+.support-card-heading h3 {
+  margin: 3px 0 5px;
+}
+
+.support-card-heading p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.support-card-step {
+  align-items: center;
+  background: var(--teal-dark);
+  border-radius: 50%;
+  color: white;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 900;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+}
+
+.architecture-card,
+.training-controls {
+  grid-template-rows: auto auto 1fr auto;
+}
+
+.training-controls {
+  grid-template-rows: auto auto 1fr auto auto;
+}
+
+.architecture-explainer {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0;
 }
 
 .model-status-card {
@@ -1066,6 +1482,10 @@ input {
   padding: 14px;
 }
 
+.model-status-card > span {
+  color: var(--muted);
+}
+
 .model-status-card strong {
   color: var(--teal-dark);
 }
@@ -1073,6 +1493,80 @@ input {
 .model-status-card p {
   font-size: 0.92rem;
   margin: 0;
+}
+
+.training-facts {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.training-facts > span {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 3px;
+  justify-items: center;
+  min-width: 0;
+  padding: 11px 6px;
+  text-align: center;
+}
+
+.training-facts svg {
+  color: var(--teal-dark);
+}
+
+.training-facts strong {
+  color: var(--ink);
+  font-size: 0.85rem;
+}
+
+.training-facts small {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.training-guidance {
+  background: rgba(220, 239, 235, 0.64);
+  border: 1px solid rgba(0, 87, 91, 0.15);
+  border-radius: 8px;
+  display: grid;
+  gap: 5px;
+  padding: 14px;
+}
+
+.training-guidance--optional {
+  background: rgba(216, 155, 24, 0.09);
+  border-color: rgba(216, 155, 24, 0.25);
+}
+
+.training-guidance strong {
+  color: var(--teal-dark);
+}
+
+.training-guidance p {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.training-action {
+  justify-content: center;
+  min-height: 48px;
+  width: 100%;
+}
+
+.training-footnote {
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .canvas-toolbar__controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .handwriting-metrics {
@@ -1099,15 +1593,17 @@ input {
 
 .prediction-card {
   display: grid;
-  gap: 20px;
+  gap: 16px;
   overflow: hidden;
 }
 
 .prediction-card__header {
-  align-items: flex-start;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  padding: 4px 0 8px;
+  text-align: center;
 }
 
 .prediction-card__header h3,
@@ -1122,19 +1618,27 @@ input {
 
 .prediction-card__header p {
   color: var(--muted);
-  font-weight: 800;
+  font-size: 0.86rem;
+  font-weight: 850;
   margin-top: 4px;
 }
 
-.prediction-card__header svg {
+.prediction-card__header-icon {
+  align-items: center;
+  background: rgba(0, 87, 91, 0.1);
+  border: 1px solid rgba(0, 87, 91, 0.14);
+  border-radius: 50%;
   color: var(--teal-dark);
-  flex: 0 0 auto;
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
 }
 
 .prediction-card__summary {
   display: grid;
-  gap: 16px;
-  grid-template-columns: minmax(160px, 0.42fr) minmax(0, 0.58fr);
+  gap: 12px;
+  grid-template-columns: minmax(132px, 0.36fr) minmax(0, 0.64fr);
 }
 
 .prediction-card__class,
@@ -1143,12 +1647,18 @@ input {
   border: 1px solid rgba(0, 87, 91, 0.16);
   border-radius: 8px;
   display: grid;
-  gap: 8px;
+  gap: 6px;
   min-width: 0;
-  padding: 18px;
+  padding: 14px;
 }
 
 .prediction-card__class {
+  justify-items: center;
+  text-align: center;
+}
+
+.prediction-card__confidence {
+  align-content: center;
   justify-items: center;
   text-align: center;
 }
@@ -1172,26 +1682,27 @@ input {
   border-radius: 8px;
   color: var(--teal-dark);
   display: flex;
-  font-size: clamp(3.2rem, 8vw, 5.2rem);
+  font-size: clamp(2.7rem, 6vw, 4rem);
   font-weight: 950;
-  height: 128px;
+  height: 92px;
   justify-content: center;
   line-height: 1;
-  width: min(100%, 148px);
+  width: min(100%, 104px);
 }
 
 .prediction-card__confidence strong {
   color: var(--teal-dark);
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 950;
   line-height: 1;
+  margin: 0;
 }
 
 .prediction-card__confidence span {
-  align-self: end;
   color: var(--ink-soft);
-  font-size: 0.92rem;
+  font-size: 0.76rem;
   font-weight: 800;
+  line-height: 1.35;
 }
 
 .prediction-card__narrative,
@@ -1214,8 +1725,8 @@ input {
 .prediction-card__details {
   align-items: start;
   display: grid;
-  gap: 18px;
-  grid-template-columns: minmax(240px, 0.38fr) minmax(0, 0.62fr);
+  gap: 14px;
+  grid-template-columns: minmax(210px, 0.32fr) minmax(0, 0.68fr);
 }
 
 .prediction-card__top-list,
@@ -1224,14 +1735,14 @@ input {
   border: 1px solid var(--line);
   border-radius: 8px;
   display: grid;
-  gap: 14px;
+  gap: 12px;
   min-width: 0;
-  padding: 16px;
+  padding: 14px;
 }
 
 .prediction-card__top-list ol {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   margin: 0;
   padding: 0;
 }
@@ -1242,10 +1753,11 @@ input {
   border: 1px solid rgba(0, 87, 91, 0.1);
   border-radius: 8px;
   display: grid;
-  gap: 10px;
-  grid-template-columns: 34px minmax(0, 1fr) 76px;
+  gap: 8px;
+  grid-template-columns: 26px minmax(0, 1fr) 58px;
   list-style: none;
-  padding: 10px;
+  min-height: 42px;
+  padding: 7px 9px;
 }
 
 .prediction-card__top-list li.is-best {
@@ -1259,21 +1771,23 @@ input {
   border-radius: 999px;
   color: #ffffff;
   display: inline-flex;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 900;
-  height: 28px;
+  height: 23px;
   justify-content: center;
-  width: 28px;
+  width: 23px;
 }
 
 .prediction-card__top-list li strong {
   color: var(--teal-dark);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 950;
+  margin: 0;
 }
 
 .prediction-card__top-list li > span:last-child {
   color: var(--ink);
+  font-size: 0.78rem;
   font-weight: 900;
   justify-self: end;
 }
@@ -1311,37 +1825,41 @@ input {
   border: 1px solid rgba(0, 87, 91, 0.1);
   border-radius: 8px;
   color: var(--muted);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-between;
-  padding: 10px 12px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 9px 11px;
 }
 
 .probability-bars__summary span {
-  font-size: 0.88rem;
+  font-size: 0.76rem;
   font-weight: 800;
 }
 
 .probability-bars__toggle {
   border: 0;
   cursor: pointer;
+  font-size: 0.76rem;
   padding: 0;
+  white-space: nowrap;
 }
 
 .probability-bars__list {
   display: grid;
-  gap: 10px;
-  max-height: 520px;
+  gap: 7px;
+  max-height: 330px;
   overflow-y: auto;
-  padding-right: 2px;
+  padding-right: 6px;
+  scrollbar-color: rgba(0, 87, 91, 0.38) rgba(238, 242, 235, 0.68);
+  scrollbar-width: thin;
 }
 
 .probability-row {
   align-items: center;
   display: grid;
-  gap: 10px;
-  grid-template-columns: 34px minmax(0, 1fr) 64px;
+  gap: 9px;
+  grid-template-columns: 28px minmax(0, 1fr) 56px;
+  min-height: 28px;
   max-width: 100%;
   min-width: 0;
 }
@@ -1353,18 +1871,29 @@ input {
 }
 
 .probability-row__label {
+  align-items: center;
+  background: rgba(0, 87, 91, 0.08);
+  border-radius: 6px;
+  display: flex;
+  font-size: 0.78rem;
+  height: 26px;
+  justify-content: center;
   text-align: center;
 }
 
 .probability-row__value {
+  display: block;
+  font-size: 0.8rem;
   justify-self: end;
+  line-height: 1;
+  margin: 0;
   text-align: right;
 }
 
 .probability-row__track {
   background: rgba(217, 223, 216, 0.72);
   border-radius: 999px;
-  height: 12px;
+  height: 8px;
   min-width: 0;
   overflow: hidden;
 }
@@ -1399,24 +1928,108 @@ input {
   overflow: hidden;
 }
 
+.confusion-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.confusion-panel__header {
+  align-items: start;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.confusion-panel__header .section-heading,
+.confusion-panel__header .section-heading p:last-child {
+  margin-bottom: 0;
+}
+
+.confusion-panel__header h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  max-width: 920px;
+}
+
+.confusion-download {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(0, 87, 91, 0.2);
+  border-radius: 8px;
+  color: var(--teal-dark);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 900;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 14px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.confusion-download:hover {
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+  color: white;
+}
+
+.confusion-download:focus-visible {
+  outline: 3px solid rgba(216, 155, 24, 0.42);
+  outline-offset: 2px;
+}
+
+.confusion-legend {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.72rem;
+  font-weight: 850;
+  gap: 14px;
+}
+
+.confusion-legend span {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.confusion-legend i {
+  background: rgba(0, 87, 91, 0.55);
+  border: 2px solid rgba(246, 208, 111, 0.95);
+  border-radius: 3px;
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+}
+
 .confusion-scroll {
+  background: rgba(248, 249, 246, 0.68);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  max-height: 68vh;
   overflow: auto;
+  padding: 12px;
+  scrollbar-color: rgba(0, 87, 91, 0.38) rgba(238, 242, 235, 0.68);
+  scrollbar-width: thin;
 }
 
 .confusion-matrix {
   display: grid;
-  gap: 4px;
-  min-width: max-content;
+  gap: 2px;
+  margin: 0 auto;
+  width: max-content;
 }
 
 .confusion-matrix strong,
 .confusion-matrix span {
   align-items: center;
-  border-radius: 6px;
+  border-radius: 3px;
   display: flex;
-  font-size: 0.82rem;
+  font-size: var(--confusion-font-size, 0.74rem);
   font-weight: 900;
-  height: 34px;
+  height: var(--confusion-cell-size, 30px);
   justify-content: center;
 }
 
@@ -1424,12 +2037,21 @@ input {
   color: var(--teal-dark);
 }
 
-.confusion-matrix span {
-  color: white;
+.confusion-matrix__corner {
+  font-size: 0.58rem !important;
+  opacity: 0.72;
 }
 
 .confusion-matrix span.is-diagonal {
-  box-shadow: inset 0 0 0 2px rgba(246, 208, 111, 0.9);
+  box-shadow: inset 0 0 0 1.5px rgba(246, 208, 111, 0.95);
+}
+
+.confusion-matrix--compact {
+  gap: 1px;
+}
+
+.confusion-matrix--compact span {
+  border-radius: 2px;
 }
 
 .confusion-insights {
@@ -1445,6 +2067,22 @@ input {
 .confusion-insights h3,
 .confusion-insights p {
   margin: 0;
+}
+
+@media (max-width: 720px) {
+  .confusion-panel__header {
+    grid-template-columns: 1fr;
+  }
+
+  .confusion-download {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .confusion-scroll {
+    max-height: 62vh;
+    padding: 8px;
+  }
 }
 
 .confusion-empty-state {
@@ -1480,6 +2118,7 @@ input {
 @media (max-width: 980px) {
   .handwriting-hero,
   .handwriting-workspace,
+  .handwriting-support-grid,
   .pipeline-grid,
   .pipeline-diagnostics,
   .handwriting-results-grid,
@@ -1502,23 +2141,73 @@ input {
     width: min(100%, 240px);
   }
 
+  .handwriting-model-workbench__heading {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
 }
 
 @media (max-width: 560px) {
-  .recognition-tabs,
   .canvas-toolbar__actions {
     flex-direction: column;
   }
 
-  .canvas-toolbar label,
+  .canvas-toolbar__controls,
+  .canvas-brush-control,
   .prediction-card__summary,
   .vector-preview dl {
     grid-template-columns: 1fr;
   }
 
+  .handwriting-input-stage {
+    padding: 14px;
+  }
+
+  .handwriting-source-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .handwriting-source-tabs button {
+    padding: 0 12px;
+  }
+
+  .recognition-tabs {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .recognition-tabs button {
+    gap: 6px;
+    min-height: 52px;
+    padding: 7px 8px;
+  }
+
+  .recognition-tabs button svg {
+    height: 15px;
+    width: 15px;
+  }
+
+  .recognition-tabs button strong {
+    font-size: 0.78rem;
+  }
+
+  .recognition-tabs button small {
+    font-size: 0.64rem;
+  }
+
+  .architecture-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .architecture-flow__item:nth-child(2) .architecture-flow__arrow {
+    display: none;
+  }
+
   .prediction-card__class strong {
-    height: 112px;
-    width: 112px;
+    height: 86px;
+    width: 96px;
   }
 
   .pipeline-overview__track {
@@ -3494,17 +4183,17 @@ p {
   color: var(--teal-dark);
 }
 
-.result-panel {
+.page-hero > .result-panel {
   text-align: center;
 }
 
-.result-panel span,
-.result-panel small {
+.page-hero > .result-panel span,
+.page-hero > .result-panel small {
   color: var(--muted);
   display: block;
 }
 
-.result-panel strong {
+.page-hero > .result-panel strong {
   color: var(--teal);
   display: block;
   font-size: 8rem;

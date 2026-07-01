@@ -1,6 +1,12 @@
 import { Hash, Sigma, Type } from 'lucide-react';
 import { recognitionModes } from '../data/classLabels.js';
 
+const modeDetails = {
+  digits: { name: 'Dígitos', range: '0 a 9' },
+  letters: { name: 'Letras', range: 'A a Z' },
+  all: { name: 'Todos', range: '36 classes' },
+};
+
 export default function RecognitionModeTabs({ mode, onChange }) {
   const modes = Object.values(recognitionModes);
 
@@ -23,6 +29,7 @@ export default function RecognitionModeTabs({ mode, onChange }) {
     <div className="recognition-tabs" role="tablist" aria-label="Modo de reconhecimento">
       {modes.map((item, index) => {
         const Icon = item.id === 'digits' ? Hash : item.id === 'all' ? Sigma : Type;
+        const detail = modeDetails[item.id];
         const selected = mode === item.id;
 
         return (
@@ -39,7 +46,10 @@ export default function RecognitionModeTabs({ mode, onChange }) {
             type="button"
           >
             <Icon size={18} />
-            {item.label}
+            <span>
+              <strong>{detail.name}</strong>
+              <small>{detail.range}</small>
+            </span>
           </button>
         );
       })}

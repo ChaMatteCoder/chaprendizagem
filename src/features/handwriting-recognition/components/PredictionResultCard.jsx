@@ -59,11 +59,11 @@ export default function PredictionResultCard({ activeModelType = 'none', predict
     return (
       <article className="result-panel prediction-card prediction-card--empty">
         <div className="prediction-card__header">
+          <span className="prediction-card__header-icon"><HelpCircle size={22} /></span>
           <div>
             <h3>Predição da MLP</h3>
             <p>{modelLabel}</p>
           </div>
-          <HelpCircle size={26} />
         </div>
         <div className="prediction-empty-state">
           <strong>Nenhuma predição ainda.</strong>
@@ -77,11 +77,11 @@ export default function PredictionResultCard({ activeModelType = 'none', predict
   return (
     <article className="result-panel prediction-card">
       <div className="prediction-card__header">
+        <span className="prediction-card__header-icon"><BadgeCheck size={22} /></span>
         <div>
           <h3>Predição da MLP</h3>
           <p>{modelLabel}</p>
         </div>
-        <BadgeCheck size={26} />
       </div>
 
       <div className="prediction-card__summary">

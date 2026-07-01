@@ -260,7 +260,7 @@ function buildWarnings({ bounds, contrast, crop, finalStats, originalCanvas, sou
   }
 
   if (bounds.minX <= 2 || bounds.minY <= 2 || bounds.maxX >= originalCanvas.width - 3 || bounds.maxY >= originalCanvas.height - 3) {
-    warnings.push('Desenho muito proximo da borda.');
+    warnings.push('Desenho muito próximo da borda.');
   }
 
   if (crop.x === 0 || crop.y === 0 || crop.x + crop.width >= originalCanvas.width || crop.y + crop.height >= originalCanvas.height) {
