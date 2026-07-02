@@ -71,6 +71,24 @@ Sirva o build localmente:
 npm run serve:dist
 ```
 
+### Newsletter com Resend
+
+A base da newsletter usa Vercel Functions e Resend com confirmação de inscrição. Copie `.env.example` para `.env`, preencha as variáveis e execute `npx vercel dev` para disponibilizar tanto o Vite quanto as rotas em `/api`. O `npm run dev` comum continua servindo apenas a interface.
+
+Fluxo disponível:
+
+- `POST /api/newsletter/subscribe`: valida o e-mail e envia o link de confirmação.
+- `GET /api/newsletter/confirm`: confirma o token e adiciona o contato ao segmento configurado.
+- `POST /api/newsletter/announce`: cria um Broadcast protegido por segredo. Com `NEWSLETTER_SEND_ENABLED=false`, ele permanece como rascunho.
+
+Para criar o anúncio de um novo módulo:
+
+```bash
+npm run newsletter:announce -- --slug=iris --title="Classificação Iris" --description="Novo laboratório interativo." --url=/mlp/classificacao-iris
+```
+
+Use `--endpoint=https://seu-dominio.com/api/newsletter/announce` quando quiser chamar explicitamente o ambiente de produção. Antes do primeiro envio, verifique o domínio no Resend, crie um segmento para a newsletter e replique as variáveis da `.env` nas configurações do projeto na Vercel.
+
 ## Rotas atuais
 
 - `/` - Landing page do laboratório, com projetos em carrossel.

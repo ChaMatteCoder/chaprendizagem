@@ -1,8 +1,12 @@
 node_modules/
 dist/
+.env
+.env.local
+.env.*.local
 .venv/
 __pycache__/
 *.log
 playwright-*.png
 training/artifacts/
 training/reports/
+!.env.example

@@ -2641,6 +2641,22 @@ input {
   padding: 0 14px;
 }
 
+.footer-newsletter input:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.footer-newsletter .footer-newsletter__honeypot {
+  height: 1px;
+  left: -10000px;
+  min-height: 0;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 1px;
+}
+
 .footer-newsletter .button {
   font-size: 0.8rem;
   gap: 8px;
@@ -8364,6 +8380,43 @@ body.reveal-ready .stagger.is-visible > * {
   color: var(--teal-dark);
   font-size: 0.78rem;
   white-space: nowrap;
+}
+
+.footer-newsletter .footer-newsletter__status {
+  align-items: flex-start;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  display: flex;
+  font-size: 0.78rem;
+  font-weight: 750;
+  gap: 7px;
+  margin-top: 2px;
+  padding: 9px 10px;
+}
+
+.footer-newsletter__status svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.footer-newsletter .footer-newsletter__status--success {
+  background: rgba(0, 87, 91, 0.08);
+  border-color: rgba(0, 87, 91, 0.16);
+  color: var(--teal-dark);
+}
+
+.footer-newsletter .footer-newsletter__status--error {
+  background: rgba(198, 95, 69, 0.09);
+  border-color: rgba(198, 95, 69, 0.2);
+  color: #843c2b;
+}
+
+.newsletter-spinner {
+  animation: newsletterSpin 800ms linear infinite;
+}
+
+@keyframes newsletterSpin {
+  to { transform: rotate(360deg); }
 }
 
 .contact-closing {

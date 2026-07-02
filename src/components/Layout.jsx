@@ -1,6 +1,8 @@
 import {
+  AlertCircle,
   ArrowDown,
   ArrowRight,
+  CheckCircle2,
   Code2,
   FileText,
   FlaskConical,
@@ -8,6 +10,7 @@ import {
   Github,
   Home,
   Instagram,
+  LoaderCircle,
   Mail,
   Network,
   FunctionSquare,
@@ -16,7 +19,7 @@ import {
   X,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import BrandMark from './BrandMark.jsx';
 import ScrollToTop from './ScrollToTop.jsx';
 
@@ -57,7 +60,7 @@ const policyContent = {
   privacy: {
     eyebrow: 'Políticas do Chaprendizagem',
     title: 'Política de Privacidade',
-    updatedAt: 'Última atualização: 31 de maio de 2026',
+    updatedAt: 'Última atualização: 2 de julho de 2026',
     intro:
       'O Chaprendizagem é um projeto acadêmico e pessoal desenvolvido para fins de estudo, apresentação e revisão de conteúdos relacionados à Aprendizagem de Máquina.',
     sections: [
@@ -66,6 +69,7 @@ const policyContent = {
         paragraphs: [
           'O Chaprendizagem não tem como objetivo coletar dados pessoais sensíveis dos visitantes.',
           'Caso o usuário entre em contato por meio de links externos, e-mail, redes sociais ou outras plataformas indicadas no site, os dados fornecidos voluntariamente, como nome, e-mail ou mensagem, poderão ser utilizados apenas para responder à solicitação.',
+          'Ao assinar o recurso “Fique por dentro”, o endereço de e-mail informado será utilizado exclusivamente para enviar confirmações de inscrição e novidades do laboratório. A inscrição só será concluída após a confirmação enviada ao endereço informado, e poderá ser cancelada pelos links presentes nas mensagens.',
         ],
       },
       {
@@ -275,9 +279,9 @@ function XLogo({ size = 20 }) {
 
 export default function Layout({ children }) {
   const location = useLocation();
-  const navigate = useNavigate();
   const nextStep = getNextStep(location);
   const [activePolicy, setActivePolicy] = useState(null);
+  const [newsletterState, setNewsletterState] = useState({ status: 'idle', message: '' });
   const policy = activePolicy ? policyContent[activePolicy] : null;
 
   useEffect(() => {
@@ -292,11 +296,51 @@ export default function Layout({ children }) {
     window.scrollTo({ top: 0, left: 0 });
   }, [location.pathname, location.hash]);
 
-  function handleFooterSubscribe(event) {
+  useEffect(() => {
+    const result = new URLSearchParams(location.search).get('newsletter');
+
+    if (result === 'confirmed') {
+      setNewsletterState({ status: 'success', message: 'Inscrição confirmada. Agora você faz parte da lista.' });
+    } else if (result === 'invalid') {
+      setNewsletterState({ status: 'error', message: 'Este link de confirmação é inválido ou expirou.' });
+    } else if (result === 'error') {
+      setNewsletterState({ status: 'error', message: 'Não foi possível confirmar a inscrição. Tente novamente.' });
+    } else {
+      setNewsletterState({ status: 'idle', message: '' });
+    }
+  }, [location.pathname, location.search]);
+
+  async function handleFooterSubscribe(event) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const email = data.get('email')?.toString().trim();
-    navigate(email ? `/contato?email=${encodeURIComponent(email)}` : '/contato');
+
+    setNewsletterState({ status: 'loading', message: 'Enviando confirmação...' });
+
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, company: data.get('company')?.toString() ?? '' }),
+      });
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload.message || 'Não foi possível processar sua inscrição.');
+      }
+
+      form.reset();
+      setNewsletterState({
+        status: 'success',
+        message: payload.message || 'Confira seu e-mail para confirmar a inscrição.',
+      });
+    } catch (error) {
+      setNewsletterState({
+        status: 'error',
+        message: error instanceof Error ? error.message : 'Não foi possível processar sua inscrição agora.',
+      });
+    }
   }
 
   useEffect(() => {
@@ -449,11 +493,47 @@ export default function Layout({ children }) {
             </span>
             <h2>Fique por dentro</h2>
             <p>Receba novidades sobre novos módulos, artigos e atualizações do laboratório.</p>
-            <input aria-label="Email para novidades" name="email" placeholder="seu@email.com" type="email" />
-            <button className="button button--primary" type="submit">
-              Receber atualizações <ArrowRight size={18} />
+            <input
+              aria-hidden="true"
+              autoComplete="off"
+              className="footer-newsletter__honeypot"
+              name="company"
+              tabIndex={-1}
+              type="text"
+            />
+            <input
+              aria-describedby="newsletter-consent"
+              aria-label="Email para novidades"
+              autoComplete="email"
+              disabled={newsletterState.status === 'loading'}
+              name="email"
+              placeholder="seu@email.com"
+              required
+              type="email"
+            />
+            <button className="button button--primary" disabled={newsletterState.status === 'loading'} type="submit">
+              {newsletterState.status === 'loading' ? (
+                <>
+                  <LoaderCircle className="newsletter-spinner" size={18} /> Enviando...
+                </>
+              ) : (
+                <>
+                  Receber atualizações <ArrowRight size={18} />
+                </>
+              )}
             </button>
-            <small>Sem spam. Você pode sair quando quiser.</small>
+            {newsletterState.message ? (
+              <p
+                aria-live="polite"
+                className={`footer-newsletter__status footer-newsletter__status--${newsletterState.status}`}
+                role="status"
+              >
+                {newsletterState.status === 'success' ? <CheckCircle2 size={16} /> : null}
+                {newsletterState.status === 'error' ? <AlertCircle size={16} /> : null}
+                {newsletterState.message}
+              </p>
+            ) : null}
+            <small id="newsletter-consent">Confirmação por e-mail, sem spam. Você pode sair quando quiser.</small>
           </form>
         </div>
 

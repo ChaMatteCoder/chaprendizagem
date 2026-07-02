@@ -8,6 +8,8 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
     "serve:dist": "node scripts/serve-dist.mjs",
+    "test:newsletter": "node --test tests/newsletter.test.js",
+    "newsletter:announce": "node --env-file-if-exists=.env scripts/announce-module.mjs",
     "train:digits": "python training/train_digits_mnist.py",
     "export:digits-weights": "python training/export_digits_weights_json.py",
     "train:alphanumeric": "python training/train_alphanumeric_mnist_emnist.py",
@@ -21,6 +23,7 @@
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3",
     "recharts": "^3.2.1",
+    "resend": "^6.16.0",
     "vite": "^7.1.7"
   }
 }
