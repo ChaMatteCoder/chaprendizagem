@@ -43,7 +43,7 @@ export default function ModelPage() {
       <section className="page-hero">
         <div>
           <p className="eyebrow">Modelo funcional</p>
-          <h1>Teste o Perceptron na prática.</h1>
+          <h1>Teste o Perceptron na prática</h1>
           <p>
             Altere a matriz de entrada, carregue exemplos de dígitos e acompanhe a previsão simulada dos 10
             perceptrons.

@@ -11,7 +11,7 @@ export default function TheoryPage() {
       <section className="page-hero">
         <div>
           <p className="eyebrow">Base teórica</p>
-          <h1>Base teórica do Perceptron.</h1>
+          <h1>Base teórica do Perceptron</h1>
           <p>
             O Perceptron é um classificador linear simples. Ele combina entradas, pesos e bias para decidir se um
             padrão pertence ou não a uma classe.

@@ -1,7 +1,6 @@
 export const mlpLabs = [
   {
     id: 'functional-approximation',
-    work: 'Trabalho 07',
     title: 'Aproximação funcional',
     route: '/mlp/aproximacao-funcional',
     legacyRoute: '/aproximacao-funcional',
@@ -11,7 +10,6 @@ export const mlpLabs = [
   },
   {
     id: 'handwriting-recognition',
-    work: 'Trabalho 08',
     title: 'Reconhecimento manuscrito',
     route: '/mlp/reconhecimento-manuscrito',
     description: 'Uma MLP transforma pixels 28×28 em probabilidades para dígitos e letras manuscritas.',
@@ -20,11 +18,10 @@ export const mlpLabs = [
   },
   {
     id: 'iris-classification',
-    work: 'Trabalho 09',
     title: 'Classificação Iris Dataset',
     route: '/mlp/classificacao-iris',
     description: 'Uma MLP classifica espécies de flores Iris a partir de medidas de sépalas e pétalas.',
     focus: 'Classificação multiclasse tabular',
-    status: 'Em implementação',
+    status: 'Disponível',
   },
 ];

@@ -12,17 +12,17 @@ const conceptCards = [
   {
     icon: FunctionSquare,
     title: 'Aproximação funcional',
-    text: 'No Trabalho 07, a MLP atua como modelo de regressão para aprender uma curva contínua a partir de pontos.',
+    text: 'A MLP atua como modelo de regressão para aprender uma curva contínua a partir de pontos.',
   },
   {
     icon: Grid3X3,
     title: 'Imagens vetorizadas',
-    text: 'No Trabalho 08, imagens 28×28 são convertidas em vetores de 784 valores antes de chegar às camadas densas.',
+    text: 'Imagens 28×28 são convertidas em vetores de 784 valores antes de chegar às camadas densas.',
   },
   {
     icon: Table2,
     title: 'Dados tabulares',
-    text: 'No Trabalho 09, medidas morfológicas do Iris Dataset formam a entrada numérica para classificação multiclasse.',
+    text: 'Medidas morfológicas do Iris Dataset formam a entrada numérica para classificação multiclasse.',
   },
 ];
 
@@ -32,7 +32,7 @@ export default function MlpHubPage() {
       <section className="page-hero mlp-hub-hero reveal-up">
         <div>
           <p className="eyebrow">Módulo MLP — Redes Neurais Multicamadas</p>
-          <h1>Três laboratórios para entender MLPs por ângulos diferentes.</h1>
+          <h1>Três laboratórios para entender MLPs por ângulos diferentes</h1>
           <p>
             Uma MLP é uma rede neural feedforward composta por camadas densas. No Chaprendizagem, este módulo reúne três
             formas de usar a mesma ideia: aproximar funções contínuas, classificar imagens simples e classificar dados
@@ -43,7 +43,7 @@ export default function MlpHubPage() {
               Ver laboratórios <ArrowRight size={18} />
             </a>
             <Link className="button button--ghost" to="/mlp/classificacao-iris">
-              Abrir Trabalho 09 <Flower2 size={18} />
+              Abrir classificação Iris <Flower2 size={18} />
             </Link>
           </div>
         </div>
@@ -93,7 +93,7 @@ export default function MlpHubPage() {
       <section className="section reveal-up" id="laboratorios-mlp">
         <div className="section-heading">
           <p className="eyebrow">Laboratórios do módulo</p>
-          <h2>Trilha MLP organizada por trabalhos.</h2>
+          <h2>Trilha MLP organizada por experimentos.</h2>
         </div>
         <div className="mlp-lab-grid">
           {mlpLabs.map((lab) => {
@@ -105,7 +105,6 @@ export default function MlpHubPage() {
                 </div>
                 <div className="mlp-lab-card__content">
                   <span className="status-pill">{lab.status}</span>
-                  <small>{lab.work}</small>
                   <h3>{lab.title}</h3>
                   <p>{lab.description}</p>
                   <strong>{lab.focus}</strong>

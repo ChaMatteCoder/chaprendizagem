@@ -400,7 +400,7 @@ export default function HandwritingRecognitionPage() {
     <div className="page handwriting-page">
       <section className="page-hero handwriting-hero reveal-up">
         <div>
-          <p className="eyebrow">Trabalho 08 - Reconhecimento Manuscrito com MLP</p>
+          <p className="eyebrow">Reconhecimento Manuscrito · MLP</p>
           <h1>Números e letras manuscritas em uma MLP visual</h1>
           <p>
             Um laboratório para desenhar ou enviar um caractere, acompanhar o pré-processamento em 28×28 e observar como
@@ -411,7 +411,7 @@ export default function HandwritingRecognitionPage() {
               Abrir laboratório <BrainCircuit size={18} />
             </button>
             <Link className="button button--ghost" to="/aproximacao-funcional">
-              <ArrowLeft size={18} /> Voltar ao Trabalho 07
+              <ArrowLeft size={18} /> Voltar à aproximação funcional
             </Link>
           </div>
         </div>

@@ -445,15 +445,15 @@ def classificar(entradas, pesos, bias):
     <div className="page adaline-page">
       <section className="page-hero adaline-hero">
         <div>
-          <p className="eyebrow">Trabalho 05 - Classificação com Adaline</p>
-          <h1>Adaline treinado com a base B2.</h1>
+          <p className="eyebrow">Classificação com Adaline</p>
+          <h1>Adaline treinado com a base B2</h1>
           <p>
             Página base para documentar a teoria, treinar o modelo, acompanhar o erro quadrático total e testar a rede
             neural treinada.
           </p>
           <div className="hero-actions">
             <button className="button button--primary" onClick={() => setWorkOpen(true)} type="button">
-              Abrir Trabalho 05 <Calculator size={18} />
+              Abrir laboratório <Calculator size={18} />
             </button>
           </div>
         </div>
@@ -660,7 +660,7 @@ def classificar(entradas, pesos, bias):
             <article className="theory-section">
               <Table2 size={28} />
               <div>
-                <h3>Adaline em classificação e relação com o Trabalho 05</h3>
+                <h3>Adaline aplicada à classificação</h3>
                 <p>
                   Embora calcule uma saída linear, a Adaline pode ser usada para classificação binária ao aplicar um
                   limiar em zero. Em duas dimensões, ela aprende uma fronteira de decisão linear; em mais dimensões,

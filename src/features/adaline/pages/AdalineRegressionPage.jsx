@@ -350,7 +350,7 @@ export default function AdalineRegressionPage() {
     <div className="page adaline-page regression-page">
       <section className="page-hero adaline-hero regression-hero">
         <div>
-          <p className="eyebrow">Trabalho 06 - Regressão Linear com Adaline</p>
+          <p className="eyebrow">Regressão Linear · Adaline</p>
           <h1>Regressão Linear com Adaline</h1>
           <p>
             Como um neurônio linear adaptativo pode aprender uma reta a partir de dados observados e comparar seu ajuste
@@ -358,10 +358,10 @@ export default function AdalineRegressionPage() {
           </p>
           <div className="hero-actions">
             <button className="button button--primary" onClick={() => setWorkOpen(true)} type="button">
-              Abrir Trabalho 06 <Calculator size={18} />
+              Abrir laboratório <Calculator size={18} />
             </button>
             <Link className="button button--ghost" to="/adaline">
-              <ArrowLeft size={18} /> Voltar ao Trabalho 05
+              <ArrowLeft size={18} /> Voltar à classificação com Adaline
             </Link>
           </div>
         </div>

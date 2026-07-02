@@ -159,7 +159,7 @@ const algorithmSteps = [
   },
 ];
 
-const pythonCode = `# Trabalho 07 - Aproximação Funcional com MLP
+const pythonCode = `# Aproximação Funcional com MLP
 # Implementação didática em Python puro, sem NumPy e sem bibliotecas de Machine Learning.
 # A rede possui:
 # - uma entrada escalar x;
@@ -486,7 +486,7 @@ export default function FunctionalApproximationPage() {
     <div className="page functional-page">
       <section className="page-hero functional-hero reveal-up">
         <div>
-          <p className="eyebrow">Trabalho 07 - Aproximação Funcional</p>
+          <p className="eyebrow">Aproximação Funcional · MLP</p>
           <h1>Aproximação funcional com MLP</h1>
           <p>
             Um laboratório para observar como uma rede neural multicamada aprende o comportamento de uma função mesmo
@@ -497,7 +497,7 @@ export default function FunctionalApproximationPage() {
               Iniciar laboratório <Calculator size={18} />
             </button>
             <Link className="button button--ghost" to="/adaline/regressao">
-              <ArrowLeft size={18} /> Voltar ao Trabalho 06
+              <ArrowLeft size={18} /> Voltar à regressão com Adaline
             </Link>
           </div>
         </div>
@@ -656,7 +656,7 @@ export default function FunctionalApproximationPage() {
                 <article className="theory-section">
                   <Table2 size={28} />
                   <div>
-                    <h3>A base do Trabalho 07</h3>
+                    <h3>A base do experimento</h3>
                     <p>
                       O enunciado do Trabalho 07 informa que o experimento consiste em treinar uma rede neural
                       multicamada MLP para aproximar uma função a partir de pontos amostrados. Na base fornecida, x varia

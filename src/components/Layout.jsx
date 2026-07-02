@@ -155,25 +155,25 @@ function getNextStep(location) {
     return {
       eyebrow: 'Laboratório em destaque',
       title: 'Comece pela classificação Iris',
-      description: 'Abra o Trabalho 09 para estudar MLP em dados tabulares multiclasse.',
-      cardLabel: 'Trabalho 09',
+      description: 'Explore uma MLP aplicada a dados tabulares e classificação multiclasse.',
+      cardLabel: 'Experimento em destaque',
       cardTitle: 'Classificação Iris Dataset',
       cardDescription: 'Medidas de sépalas e pétalas alimentando uma rede neural multicamada.',
-      buttonLabel: 'Abrir Trabalho 09',
+      buttonLabel: 'Abrir classificação Iris',
       to: '/mlp/classificacao-iris',
-      mark: '09',
+      mark: 'IR',
     };
   }
 
   if (location.pathname.startsWith('/perceptron')) {
     return {
-      eyebrow: 'Próximo trabalho',
+      eyebrow: 'Próximo experimento',
       title: 'Continue com Adaline',
-      description: 'Abra o Trabalho 05 para estudar erro quadrático, regra delta e classificação com a base B2.',
-      cardLabel: 'Trabalho 05',
+      description: 'Estude erro quadrático, regra delta e classificação com a base B2.',
+      cardLabel: 'Adaline',
       cardTitle: 'Adaline - Base B2',
       cardDescription: 'Treinamento por erro quadrático, fronteira linear e teste da rede.',
-      buttonLabel: 'Abrir Trabalho 05',
+      buttonLabel: 'Abrir Adaline',
       to: '/adaline',
       mark: 'ŷ',
     };
@@ -181,13 +181,13 @@ function getNextStep(location) {
 
   if (location.pathname === '/adaline') {
     return {
-      eyebrow: 'Próximo trabalho',
+      eyebrow: 'Próximo experimento',
       title: 'Avance para regressão',
-      description: 'Depois do Trabalho 05, compare a Adaline com a regressão linear clássica no Trabalho 06.',
-      cardLabel: 'Trabalho 06',
+      description: 'Compare a Adaline com a regressão linear clássica em uma nova aplicação.',
+      cardLabel: 'Regressão linear',
       cardTitle: 'Regressão com Adaline',
       cardDescription: 'Reta aprendida, regressão clássica, Pearson, R² e interpretação automática.',
-      buttonLabel: 'Abrir Trabalho 06',
+      buttonLabel: 'Abrir regressão',
       to: '/adaline/regressao',
       mark: 'ŷ',
     };
@@ -195,43 +195,43 @@ function getNextStep(location) {
 
   if (location.pathname === '/adaline/regressao') {
     return {
-      eyebrow: 'Próximo trabalho',
+      eyebrow: 'Próximo experimento',
       title: 'Avance para aproximação funcional',
       description: 'Depois da regressão linear, explore uma MLP aprendendo uma curva a partir de pontos amostrados.',
-      cardLabel: 'Trabalho 07',
+      cardLabel: 'MLP · Regressão',
       cardTitle: 'Aproximação Funcional',
       cardDescription: 'MLP com camada oculta, curva aproximada, erro por época e base editável.',
-      buttonLabel: 'Abrir Trabalho 07',
+      buttonLabel: 'Abrir aproximação funcional',
       to: '/aproximacao-funcional',
-      mark: '07',
+      mark: 'ƒ',
     };
   }
 
   if (location.pathname === '/aproximacao-funcional' || location.pathname === '/mlp/aproximacao-funcional') {
     return {
-      eyebrow: 'Próximo trabalho',
+      eyebrow: 'Próximo experimento',
       title: 'Avance para reconhecimento manuscrito',
       description: 'Depois da aproximação funcional, explore uma MLP classificando imagens 28x28 de digitos e letras.',
-      cardLabel: 'Trabalho 08',
+      cardLabel: 'MLP · Imagens',
       cardTitle: 'Reconhecimento Manuscrito',
       cardDescription: 'Lousa, upload, pre-processamento, probabilidades e matriz de confusao.',
-      buttonLabel: 'Abrir Trabalho 08',
+      buttonLabel: 'Abrir reconhecimento',
       to: '/mlp/reconhecimento-manuscrito',
-      mark: '08',
+      mark: 'Aa',
     };
   }
 
   if (location.pathname === '/mlp/reconhecimento-manuscrito') {
     return {
-      eyebrow: 'Próximo trabalho',
+      eyebrow: 'Próximo experimento',
       title: 'Avance para classificação Iris',
       description: 'Depois das imagens vetorizadas, explore a MLP em dados tabulares com medidas de sépalas e pétalas.',
-      cardLabel: 'Trabalho 09',
+      cardLabel: 'MLP · Dados tabulares',
       cardTitle: 'Classificação Iris Dataset',
       cardDescription: 'Classificação multiclasse de flores Iris usando atributos morfológicos.',
-      buttonLabel: 'Abrir Trabalho 09',
+      buttonLabel: 'Abrir classificação Iris',
       to: '/mlp/classificacao-iris',
-      mark: '09',
+      mark: 'IR',
     };
   }
 

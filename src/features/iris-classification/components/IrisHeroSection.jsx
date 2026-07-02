@@ -5,8 +5,8 @@ export default function IrisHeroSection({ isOpen, onOpenLab }) {
   return (
     <section className="page-hero iris-hero reveal-up">
       <div>
-        <p className="eyebrow">Trabalho 09 — Classificação Iris Dataset com MLP</p>
-        <h1>Classificação de flores Iris com uma rede neural multicamada.</h1>
+        <p className="eyebrow">Classificação Iris Dataset · MLP</p>
+        <h1>Classificação de flores Iris com uma rede neural multicamada</h1>
         <p>
           Um laboratório interativo para treinar uma MLP com dados tabulares, visualizar a separação entre espécies e
           testar novas flores a partir de quatro medidas morfológicas.

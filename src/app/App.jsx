@@ -42,7 +42,7 @@ export default function App() {
         <Route
           path="/mlp/reconhecimento-manuscrito"
           element={
-            <Suspense fallback={<div className="page wide-panel">Carregando Trabalho 08...</div>}>
+            <Suspense fallback={<div className="page wide-panel">Carregando reconhecimento manuscrito...</div>}>
               <HandwritingRecognitionPage />
             </Suspense>
           }
@@ -50,7 +50,7 @@ export default function App() {
         <Route
           path="/mlp/classificacao-iris"
           element={
-            <Suspense fallback={<div className="page wide-panel">Carregando Trabalho 09...</div>}>
+            <Suspense fallback={<div className="page wide-panel">Carregando classificação Iris...</div>}>
               <IrisClassificationPage />
             </Suspense>
           }

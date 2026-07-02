@@ -11,7 +11,7 @@ export default function ResultsPage() {
       <section className="page-hero">
         <div>
           <p className="eyebrow">Treinamento e resultados</p>
-          <h1>Curva de aprendizado do Perceptron.</h1>
+          <h1>Curva de aprendizado do Perceptron</h1>
           <p>
             Painel inicial para documentar o treino, interpretar erros e registrar os próximos experimentos do projeto.
           </p>

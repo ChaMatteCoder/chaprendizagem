@@ -54,7 +54,7 @@ const projects = [
     featured: true,
   },
   {
-    title: 'Trabalho 07 - Aproximação Funcional',
+    title: 'Aproximação Funcional com MLP',
     status: 'Publicado',
     description: 'MLP treinada para aproximar uma função a partir de pontos amostrados, com curva, erro e base editável.',
     visual: '07',
@@ -63,7 +63,7 @@ const projects = [
     featured: true,
   },
   {
-    title: 'Trabalho 08 - Reconhecimento Manuscrito com MLP',
+    title: 'Reconhecimento Manuscrito com MLP',
     status: 'Publicado',
     description: 'Lousa, upload, pré-processamento 28×28, MLP TensorFlow.js e probabilidades para dígitos e letras.',
     visual: '08',
@@ -72,10 +72,11 @@ const projects = [
     featured: true,
   },
   {
-    title: 'Trabalho 09 - Classificação Iris Dataset com MLP',
-    status: 'Em implementação',
+    title: 'Classificação Iris Dataset com MLP',
+    status: 'Publicado',
     description: 'MLP para classificar espécies de flores Iris a partir de medidas de sépalas e pétalas.',
     visual: '09',
+    cover: irisClassificationCover,
     to: '/mlp/classificacao-iris',
     featured: true,
   },
@@ -223,16 +224,16 @@ export default function HomePage() {
             <BrainCircuit size={34} />
             <span>Módulo 03</span>
             <h3>MLP - Redes Neurais Multicamadas</h3>
-            <p>Trabalhos 07, 08 e 09 reunidos em uma trilha de regressão, imagens vetorizadas e classificação tabular.</p>
+            <p>Três experimentos reunidos em uma trilha de regressão, imagens vetorizadas e classificação tabular.</p>
             <div className="module-card__subitems" aria-hidden="true">
               <small>
-                <FunctionSquare size={14} /> Trabalho 07
+                <FunctionSquare size={14} /> Aproximação funcional
               </small>
               <small>
-                <PenLine size={14} /> Trabalho 08
+                <PenLine size={14} /> Reconhecimento manuscrito
               </small>
               <small>
-                <Flower2 size={14} /> Trabalho 09
+                <Flower2 size={14} /> Classificação Iris
               </small>
             </div>
             <ArrowRight size={18} />
@@ -243,7 +244,7 @@ export default function HomePage() {
       <section className="cta-band reveal-scale">
         <Beaker size={34} />
         <div>
-          <h2>Pronto para explorar o novo trabalho?</h2>
+          <h2>Pronto para explorar o novo experimento?</h2>
           <p>O módulo MLP reúne aproximação funcional, reconhecimento manuscrito e a nova classificação Iris.</p>
         </div>
         <Link className="button button--primary" to="/mlp">
