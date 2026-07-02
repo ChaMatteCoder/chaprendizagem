@@ -1,5 +1,6 @@
-﻿import { ArrowLeft, ArrowRight, BrainCircuit, Flower2, Ruler } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import IrisHeroAnimation from './IrisHeroAnimation.jsx';
 
 export default function IrisHeroSection({ isOpen, onOpenLab }) {
   return (
@@ -21,19 +22,8 @@ export default function IrisHeroSection({ isOpen, onOpenLab }) {
         </div>
       </div>
 
-      <div className="iris-hero-card" aria-hidden="true">
-        <div className="iris-hero-card__flowers">
-          <Flower2 size={78} />
-          <Flower2 size={62} />
-          <Flower2 size={70} />
-        </div>
-        <div className="iris-measurement-lines">
-          <span><Ruler size={16} /> sépala: comprimento + largura</span>
-          <i />
-          <span><Ruler size={16} /> pétala: comprimento + largura</span>
-          <i />
-          <strong><BrainCircuit size={18} /> MLP → espécie provável</strong>
-        </div>
+      <div className="iris-hero-visual reveal-right" aria-hidden="true">
+        <IrisHeroAnimation />
       </div>
     </section>
   );

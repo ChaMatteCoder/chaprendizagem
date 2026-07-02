@@ -1,4 +1,29 @@
-﻿function percent(value) {
+import setosaImage from '../assets/iris-setosa.png';
+import versicolorImage from '../assets/iris-versicolor.png';
+import virginicaImage from '../assets/iris-virginica.png';
+
+const speciesVisuals = {
+  'Iris-setosa': {
+    alt: 'Representação visual de uma flor Iris-setosa prevista pela MLP.',
+    image: setosaImage,
+    label: 'Iris-setosa',
+    tone: 'setosa',
+  },
+  'Iris-versicolor': {
+    alt: 'Representação visual de uma flor Iris-versicolor prevista pela MLP.',
+    image: versicolorImage,
+    label: 'Iris-versicolor',
+    tone: 'versicolor',
+  },
+  'Iris-virginica': {
+    alt: 'Representação visual de uma flor Iris-virginica prevista pela MLP.',
+    image: virginicaImage,
+    label: 'Iris-virginica',
+    tone: 'virginica',
+  },
+};
+
+function percent(value) {
   const safeValue = Number.isFinite(Number(value)) ? Number(value) : 0;
   return `${(safeValue * 100).toFixed(1)}%`;
 }
@@ -40,8 +65,10 @@ export default function IrisPredictionPanel({ isTraining, isUpdating, prediction
     );
   }
 
+  const speciesVisual = speciesVisuals[prediction.predictedClass];
+
   return (
-    <section className="iris-prediction-panel" aria-labelledby="iris-prediction-title">
+    <section className="iris-prediction-panel" aria-labelledby="iris-prediction-title" aria-live="polite">
       <div className="iris-prediction-panel__header">
         <div>
           <h3 id="iris-prediction-title">Predição da MLP</h3>
@@ -49,6 +76,19 @@ export default function IrisPredictionPanel({ isTraining, isUpdating, prediction
         </div>
         {isUpdating ? <span className="iris-prediction-panel__updating">Calculando probabilidades...</span> : null}
       </div>
+
+      {speciesVisual ? (
+        <figure
+          className={`iris-prediction-panel__visual iris-prediction-panel__visual--${speciesVisual.tone} ${isUpdating ? 'iris-prediction-panel__visual--updating' : ''}`}
+          key={prediction.predictedClass}
+        >
+          <img alt={speciesVisual.alt} decoding="async" loading="lazy" src={speciesVisual.image} />
+          <figcaption>
+            <small>Espécie identificada</small>
+            <strong>{speciesVisual.label}</strong>
+          </figcaption>
+        </figure>
+      ) : null}
 
       <div className="iris-prediction-panel__summary">
         <div className="iris-prediction-panel__summary-card iris-prediction-panel__species">

@@ -10,6 +10,7 @@ import IrisPredictionPanel from '../components/IrisPredictionPanel.jsx';
 import IrisSampleTable from '../components/IrisSampleTable.jsx';
 import IrisTheorySection from '../components/IrisTheorySection.jsx';
 import IrisTrainingControls from '../components/IrisTrainingControls.jsx';
+import IrisTrainingModal from '../components/IrisTrainingModal.jsx';
 import { defaultIrisSample, irisClasses, irisDataset } from '../data/irisDataset.js';
 import useDebouncedValue from '../hooks/useDebouncedValue.js';
 import { calculateFeatureStats, normalizeIrisSample } from '../lib/normalizeIrisData.js';
@@ -56,6 +57,7 @@ export default function IrisClassificationPage() {
   const [isTraining, setIsTraining] = useState(false);
   const [isPredictionUpdating, setIsPredictionUpdating] = useState(false);
   const [isLabOpen, setIsLabOpen] = useState(false);
+  const [isTrainingModalOpen, setIsTrainingModalOpen] = useState(false);
   const [status, setStatus] = useState({ kind: 'idle', message: 'Modelo ainda não treinado.' });
   const modelRef = useRef(null);
   const debouncedSample = useDebouncedValue(sample, 180);
@@ -75,6 +77,23 @@ export default function IrisClassificationPage() {
       modelRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    if (!isTrainingModalOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setIsTrainingModalOpen(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isTrainingModalOpen]);
 
   useEffect(() => {
     const model = modelRef.current;
@@ -111,6 +130,7 @@ export default function IrisClassificationPage() {
 
   const handleTrain = useCallback(async () => {
     setIsLabOpen(true);
+    setIsTrainingModalOpen(true);
     setIsTraining(true);
     setHistory([]);
     setIsPredictionUpdating(false);
@@ -246,6 +266,16 @@ export default function IrisClassificationPage() {
           <IrisSampleTable dataset={irisDataset} />
           <IrisTheorySection />
         </div>
+      ) : null}
+
+      {isTrainingModalOpen ? (
+        <IrisTrainingModal
+          history={history}
+          isTraining={isTraining}
+          onClose={() => setIsTrainingModalOpen(false)}
+          status={status}
+          totalEpochs={config.epochs}
+        />
       ) : null}
     </div>
   );

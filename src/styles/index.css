@@ -5007,8 +5007,7 @@ code {
   align-items: center;
 }
 
-.mlp-hub-visual,
-.iris-hero-card {
+.mlp-hub-visual {
   background:
     linear-gradient(135deg, rgba(0, 87, 91, 0.94), rgba(17, 30, 41, 0.96)),
     var(--teal-dark);
@@ -5028,8 +5027,7 @@ code {
   padding: 38px;
 }
 
-.mlp-hub-visual::before,
-.iris-hero-card::before {
+.mlp-hub-visual::before {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
@@ -5151,44 +5149,6 @@ code {
 
 .text-link--muted {
   color: var(--muted);
-}
-
-.iris-hero-card {
-  align-items: center;
-  color: #ffffff;
-  display: grid;
-  gap: 24px;
-  justify-items: center;
-  padding: 40px;
-  text-align: center;
-}
-
-.iris-hero-card > svg,
-.iris-measurement-lines {
-  position: relative;
-  z-index: 1;
-}
-
-.iris-hero-card > svg {
-  color: var(--amber);
-}
-
-.iris-measurement-lines {
-  display: grid;
-  gap: 12px;
-  width: min(100%, 320px);
-}
-
-.iris-measurement-lines i {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.18), var(--amber));
-  border-radius: 999px;
-  display: block;
-  height: 8px;
-}
-
-.iris-measurement-lines span,
-.iris-measurement-lines strong {
-  font-weight: 900;
 }
 
 .iris-roadmap-grid article {
@@ -7042,37 +7002,530 @@ body.reveal-ready .stagger.is-visible > * {
 
 
 /* Iris classification laboratory */
+.iris-hero {
+  grid-template-columns: minmax(0, 0.86fr) minmax(430px, 1.14fr);
+}
+
+.iris-hero-visual {
+  aspect-ratio: 1.65;
+  background: linear-gradient(135deg, #052f35, #151928);
+  border: 1px solid rgba(187, 255, 242, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 30px 86px rgba(20, 27, 29, 0.22);
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.iris-hero-visual::after {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: inherit;
+  content: "";
+  inset: 8px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.iris-hero-animation {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.iris-hero-animation__scene {
+  animation: irisHeroCamera 12s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.iris-hero-animation__backdrop {
+  fill: url("#irisHeroBackdrop");
+}
+
+.iris-hero-animation__bloom {
+  animation: irisHeroBloom 12s ease-in-out infinite;
+  fill: url("#irisHeroBloom");
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.iris-hero-animation__bloom--right {
+  animation-delay: -6s;
+  opacity: 0.5;
+}
+
+.iris-hero-animation__grid line {
+  animation: irisHeroGrid 12s ease-in-out infinite;
+  stroke: rgba(232, 255, 248, 0.065);
+  stroke-width: 1;
+}
+
+.iris-hero-animation__sheen {
+  animation: irisHeroSheen 12s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  fill: url("#irisHeroSheen");
+  opacity: 0;
+}
+
+.iris-hero-animation__particle {
+  animation: irisHeroParticle 7s ease-in-out infinite;
+  animation-delay: var(--particle-delay);
+  fill: rgba(220, 239, 235, 0.72);
+}
+
+.iris-hero-animation__caption {
+  fill: rgba(232, 255, 248, 0.72);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-anchor: middle;
+  text-transform: uppercase;
+}
+
+.iris-hero-animation__botanical-stage {
+  animation: irisHeroBotanicalStage 12s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.iris-hero-animation__botanical-halo {
+  fill: rgba(4, 31, 36, 0.4);
+  stroke: rgba(168, 255, 241, 0.1);
+}
+
+.iris-hero-animation__flower--main {
+  animation: irisHeroFlowerSway 6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.iris-hero-animation__petal {
+  animation: irisHeroPetalBreath 6s ease-in-out infinite;
+  fill: url("#irisHeroPetal");
+  stroke: rgba(255, 255, 255, 0.48);
+  stroke-width: 1;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.iris-hero-animation__petal--2,
+.iris-hero-animation__petal--4 {
+  animation-delay: -2s;
+  fill: url("#irisHeroPetalGold");
+  opacity: 0.88;
+}
+
+.iris-hero-animation__stem,
+.iris-hero-animation__leaf {
+  fill: rgba(43, 130, 104, 0.58);
+  stroke: #91d7bd;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 5;
+}
+
+.iris-hero-animation__leaf {
+  stroke-width: 2;
+}
+
+.iris-hero-animation__flower-core {
+  fill: #f6d06f;
+  stroke: rgba(255, 255, 255, 0.8);
+}
+
+.iris-hero-animation__flower-core-dot {
+  animation: irisHeroCorePulse 3s ease-in-out infinite;
+  fill: #fff8d7;
+  filter: url("#irisHeroGlow");
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.iris-hero-animation__measure {
+  animation: irisHeroMeasureDraw 12s ease-in-out infinite;
+  fill: none;
+  stroke: rgba(246, 208, 111, 0.78);
+  stroke-dasharray: 230;
+  stroke-linecap: round;
+  stroke-width: 1.4;
+}
+
+.iris-hero-animation__measure--horizontal {
+  animation-delay: 180ms;
+}
+
+.iris-hero-animation__measure-label {
+  animation: irisHeroMeasureLabel 12s ease-in-out infinite;
+  fill: rgba(255, 235, 170, 0.72);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+  text-transform: uppercase;
+}
+
+.iris-hero-animation__scanner {
+  animation: irisHeroScanner 12s ease-in-out infinite;
+  fill: #a8fff1;
+  filter: url("#irisHeroGlow");
+  opacity: 0;
+}
+
+.iris-hero-animation__ground {
+  fill: none;
+  stroke: rgba(168, 255, 241, 0.18);
+  stroke-width: 1.5;
+}
+
+.iris-hero-animation__panel {
+  fill: rgba(3, 17, 28, 0.58);
+  stroke: rgba(220, 239, 235, 0.18);
+  stroke-width: 1;
+}
+
+.iris-hero-animation__feature-stage {
+  animation: irisHeroFeatureStage 12s ease-in-out infinite;
+}
+
+.iris-hero-animation__feature {
+  animation: irisHeroFeature 12s ease-in-out infinite;
+  animation-delay: var(--feature-delay);
+}
+
+.iris-hero-animation__feature-label,
+.iris-hero-animation__feature-value {
+  fill: rgba(232, 255, 248, 0.76);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.iris-hero-animation__feature-value {
+  fill: #f6d06f;
+  text-anchor: end;
+}
+
+.iris-hero-animation__feature-track,
+.iris-hero-animation__species-track {
+  fill: rgba(220, 239, 235, 0.12);
+}
+
+.iris-hero-animation__feature-bar {
+  animation: irisHeroFeatureBar 12s ease-in-out infinite;
+  fill: url("#irisHeroSignal");
+  transform: scaleX(var(--feature-scale));
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+.iris-hero-animation__flow path {
+  animation: irisHeroFlowPath 12s ease-in-out infinite;
+  fill: none;
+  stroke: rgba(232, 255, 248, 0.28);
+  stroke-dasharray: 5 7;
+  stroke-linecap: round;
+  stroke-width: 1.5;
+}
+
+.iris-hero-animation__flow circle {
+  animation: irisHeroFlowDot 12s linear infinite;
+  animation-delay: var(--flow-delay);
+  fill: #f6d06f;
+  filter: url("#irisHeroGlow");
+  offset-rotate: 0deg;
+}
+
+.iris-hero-animation__flow--features circle {
+  offset-path: path("M210 224 C222 216 230 210 242 206");
+}
+
+.iris-hero-animation__flow--network circle {
+  offset-path: path("M374 224 C390 216 400 210 420 204");
+}
+
+.iris-hero-animation__flow--result circle {
+  offset-path: path("M546 226 C556 222 564 214 574 206");
+}
+
+.iris-hero-animation__network-stage {
+  animation: irisHeroNetworkStage 12s ease-in-out infinite;
+}
+
+.iris-hero-animation__connection {
+  animation: irisHeroConnection 12s ease-in-out infinite;
+  animation-delay: var(--connection-delay);
+  stroke: rgba(220, 239, 235, 0.14);
+  stroke-width: 1;
+}
+
+.iris-hero-animation__node {
+  animation: irisHeroNode 12s ease-in-out infinite;
+  animation-delay: var(--node-delay);
+  fill: #dcefeb;
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 1;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.iris-hero-animation__result-stage {
+  animation: irisHeroResultStage 12s ease-in-out infinite;
+}
+
+.iris-hero-animation__panel--result {
+  fill: rgba(238, 242, 235, 0.09);
+}
+
+.iris-hero-animation__species circle {
+  fill: #8a75c7;
+}
+
+.iris-hero-animation__species--featured circle {
+  fill: #f6d06f;
+  filter: url("#irisHeroGlow");
+}
+
+.iris-hero-animation__species-label,
+.iris-hero-animation__species-value {
+  fill: rgba(255, 255, 255, 0.78);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.iris-hero-animation__species-value {
+  fill: rgba(220, 239, 235, 0.7);
+  text-anchor: end;
+}
+
+.iris-hero-animation__species--featured .iris-hero-animation__species-label,
+.iris-hero-animation__species--featured .iris-hero-animation__species-value {
+  fill: #f6d06f;
+}
+
+.iris-hero-animation__species-bar {
+  animation: irisHeroSpeciesBar 12s ease-in-out infinite;
+  fill: #8a75c7;
+  transform: scaleX(var(--species-scale));
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+.iris-hero-animation__species--featured .iris-hero-animation__species-bar {
+  fill: url("#irisHeroSignal");
+  filter: drop-shadow(0 0 5px rgba(246, 208, 111, 0.42));
+}
+
+.iris-hero-animation__prediction {
+  animation: irisHeroPrediction 12s ease-in-out infinite;
+}
+
+.iris-hero-animation__prediction rect {
+  fill: rgba(246, 208, 111, 0.12);
+  stroke: rgba(246, 208, 111, 0.34);
+}
+
+.iris-hero-animation__prediction path {
+  fill: none;
+  stroke: #f6d06f;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.iris-hero-animation__prediction text {
+  fill: rgba(255, 246, 215, 0.9);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.iris-hero-animation__timeline > rect:first-child {
+  fill: rgba(220, 239, 235, 0.14);
+}
+
+.iris-hero-animation__timeline-progress {
+  animation: irisHeroTimeline 12s linear infinite;
+  fill: url("#irisHeroSignal");
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+.iris-hero-animation__timeline text {
+  fill: rgba(232, 255, 248, 0.46);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.iris-hero-animation__timeline text:last-child {
+  text-anchor: end;
+}
+
+@keyframes irisHeroCamera {
+  0%, 100% { transform: scale(1.01) translate(0, 0); }
+  50% { transform: scale(1.035) translate(-5px, -2px); }
+}
+
+@keyframes irisHeroBloom {
+  0%, 100% { opacity: 0.45; transform: scale(0.92); transform-origin: center; }
+  50% { opacity: 0.78; transform: scale(1.08); transform-origin: center; }
+}
+
+@keyframes irisHeroGrid {
+  0%, 100% { opacity: 0.48; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes irisHeroSheen {
+  0%, 8% { opacity: 0; transform: translateX(0); }
+  18% { opacity: 0.72; }
+  44%, 100% { opacity: 0; transform: translateX(980px); }
+}
+
+@keyframes irisHeroParticle {
+  0%, 100% { opacity: 0.28; transform: translateY(4px); }
+  50% { opacity: 0.9; transform: translateY(-8px); }
+}
+
+@keyframes irisHeroBotanicalStage {
+  0%, 100% { opacity: 0.72; transform: scale(0.97); }
+  10%, 88% { opacity: 1; transform: scale(1); }
+  94% { opacity: 0.82; transform: scale(0.985); }
+}
+
+@keyframes irisHeroFlowerSway {
+  0%, 100% { transform: rotate(-1.2deg) translateY(1px); }
+  50% { transform: rotate(1.2deg) translateY(-2px); }
+}
+
+@keyframes irisHeroPetalBreath {
+  0%, 100% { opacity: 0.82; }
+  50% { opacity: 1; }
+}
+
+@keyframes irisHeroCorePulse {
+  0%, 100% { opacity: 0.72; transform: scale(0.82); transform-origin: center; }
+  50% { opacity: 1; transform: scale(1.18); transform-origin: center; }
+}
+
+@keyframes irisHeroMeasureDraw {
+  0%, 4% { opacity: 0; stroke-dashoffset: 230; }
+  18%, 88% { opacity: 1; stroke-dashoffset: 0; }
+  100% { opacity: 0; stroke-dashoffset: -30; }
+}
+
+@keyframes irisHeroMeasureLabel {
+  0%, 8%, 100% { opacity: 0; }
+  18%, 88% { opacity: 1; }
+}
+
+@keyframes irisHeroScanner {
+  0%, 7%, 42%, 100% { opacity: 0; transform: translateX(0); }
+  12% { opacity: 0.9; }
+  34% { opacity: 0.72; transform: translateX(118px); }
+}
+
+@keyframes irisHeroFeatureStage {
+  0%, 15%, 100% { opacity: 0.55; }
+  28%, 90% { opacity: 1; }
+}
+
+@keyframes irisHeroFeature {
+  0%, 18%, 100% { opacity: 0.32; }
+  30%, 92% { opacity: 1; }
+}
+
+@keyframes irisHeroFeatureBar {
+  0%, 18%, 100% { opacity: 0.36; transform: scaleX(0.04); }
+  34%, 92% { opacity: 1; transform: scaleX(var(--feature-scale)); }
+}
+
+@keyframes irisHeroFlowPath {
+  0%, 20%, 100% { opacity: 0.18; stroke-dashoffset: 0; }
+  42%, 88% { opacity: 0.9; stroke-dashoffset: -38; }
+}
+
+@keyframes irisHeroFlowDot {
+  0%, 24% { opacity: 0; offset-distance: 0%; }
+  30% { opacity: 1; }
+  62% { opacity: 1; offset-distance: 100%; }
+  68%, 100% { opacity: 0; offset-distance: 100%; }
+}
+
+@keyframes irisHeroNetworkStage {
+  0%, 28%, 100% { opacity: 0.5; }
+  42%, 92% { opacity: 1; }
+}
+
+@keyframes irisHeroConnection {
+  0%, 32%, 100% { stroke: rgba(220, 239, 235, 0.14); }
+  46%, 58% { stroke: rgba(246, 208, 111, 0.82); }
+  72%, 90% { stroke: rgba(168, 255, 241, 0.46); }
+}
+
+@keyframes irisHeroNode {
+  0%, 34%, 100% { fill: #dcefeb; transform: scale(0.88); transform-origin: center; }
+  48%, 60% { fill: #f6d06f; transform: scale(1.16); transform-origin: center; }
+  76%, 90% { fill: #a8fff1; transform: scale(1); transform-origin: center; }
+}
+
+@keyframes irisHeroResultStage {
+  0%, 48%, 100% { opacity: 0.56; }
+  62%, 94% { opacity: 1; }
+}
+
+@keyframes irisHeroSpeciesBar {
+  0%, 52%, 100% { opacity: 0.32; transform: scaleX(0.04); }
+  68%, 94% { opacity: 1; transform: scaleX(var(--species-scale)); }
+}
+
+@keyframes irisHeroPrediction {
+  0%, 62%, 100% { opacity: 0.28; }
+  72%, 94% { opacity: 1; }
+  80% { filter: drop-shadow(0 0 8px rgba(246, 208, 111, 0.28)); }
+}
+
+@keyframes irisHeroTimeline {
+  0% { transform: scaleX(0); }
+  92% { transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(1); }
+}
+
+@media (max-width: 980px) {
+  .iris-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .iris-hero-visual {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 560px) {
+  .iris-hero-visual {
+    aspect-ratio: 1.48;
+  }
+
+  .iris-hero-animation {
+    height: 112%;
+    width: 112%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iris-hero-animation * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 .iris-page {
   display: grid;
   gap: 42px;
-}
-
-.iris-hero-card__flowers {
-  align-items: end;
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-
-.iris-hero-card__flowers svg:nth-child(2) {
-  color: #ffffff;
-  opacity: 0.9;
-  transform: translateY(12px) rotate(-8deg);
-}
-
-.iris-hero-card__flowers svg:nth-child(3) {
-  color: rgba(216, 155, 24, 0.9);
-  transform: translateY(6px) rotate(9deg);
-}
-
-.iris-measurement-lines span,
-.iris-measurement-lines strong {
-  align-items: center;
-  display: inline-flex;
-  gap: 8px;
-  justify-content: center;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
 }
 
 .iris-overview-grid,
@@ -7515,6 +7968,7 @@ body.reveal-ready .stagger.is-visible > * {
 .iris-lab-content {
   display: grid;
   gap: 42px;
+  grid-template-columns: minmax(0, 1fr);
   min-width: 0;
 }
 
@@ -7536,6 +7990,7 @@ body.reveal-ready .stagger.is-visible > * {
   gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   min-width: 0;
+  width: 100%;
 }
 
 .iris-control-panel,
@@ -7598,6 +8053,120 @@ body.reveal-ready .stagger.is-visible > * {
 @keyframes iris-prediction-pulse {
   0%, 100% { opacity: 0.36; transform: scale(0.76); }
   50% { opacity: 1; transform: scale(1); }
+}
+
+.iris-prediction-panel__visual {
+  --iris-visual-accent: rgba(0, 87, 91, 0.58);
+  animation: iris-prediction-visual-enter 560ms var(--ease-out) both;
+  aspect-ratio: 8 / 5;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.96), rgba(220, 239, 235, 0.72)),
+    #eef4f1;
+  border: 1px solid var(--iris-visual-accent);
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 18px 38px rgba(31, 43, 40, 0.11);
+  isolation: isolate;
+  margin: 0;
+  max-height: 260px;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.iris-prediction-panel__visual--versicolor {
+  --iris-visual-accent: rgba(216, 155, 24, 0.62);
+}
+
+.iris-prediction-panel__visual--virginica {
+  --iris-visual-accent: rgba(112, 72, 189, 0.58);
+}
+
+.iris-prediction-panel__visual::before {
+  background:
+    linear-gradient(135deg, rgba(168, 255, 241, 0.18), transparent 42%),
+    linear-gradient(315deg, rgba(112, 72, 189, 0.12), transparent 38%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.iris-prediction-panel__visual img {
+  animation: iris-prediction-image-reveal 760ms var(--ease-out) both;
+  display: block;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  transition:
+    filter 240ms var(--ease-out),
+    opacity 240ms var(--ease-out),
+    transform 520ms var(--ease-out);
+  width: 100%;
+}
+
+.iris-prediction-panel__visual figcaption {
+  align-items: end;
+  background: linear-gradient(180deg, transparent, rgba(7, 27, 30, 0.84));
+  bottom: 0;
+  color: #ffffff;
+  display: grid;
+  gap: 3px;
+  inset-inline: 0;
+  min-height: 42%;
+  padding: 36px 16px 14px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+}
+
+.iris-prediction-panel__visual figcaption small {
+  color: rgba(232, 255, 248, 0.72);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.iris-prediction-panel__visual figcaption strong {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.1;
+}
+
+.iris-prediction-panel__visual--updating img {
+  filter: saturate(0.72) brightness(0.94);
+  opacity: 0.72;
+  transform: scale(1.018);
+}
+
+.iris-prediction-panel__visual--updating::after {
+  animation: iris-prediction-visual-scan 900ms ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.66), transparent);
+  content: "";
+  inset: 0 auto 0 -34%;
+  pointer-events: none;
+  position: absolute;
+  transform: skewX(-12deg);
+  width: 28%;
+  z-index: 2;
+}
+
+@keyframes iris-prediction-visual-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes iris-prediction-image-reveal {
+  from { filter: saturate(0.7) blur(4px); opacity: 0.24; transform: scale(1.045); }
+  to { filter: saturate(1) blur(0); opacity: 1; transform: scale(1); }
+}
+
+@keyframes iris-prediction-visual-scan {
+  from { left: -34%; }
+  to { left: 112%; }
 }
 
 .iris-prediction-panel__summary {
@@ -7801,6 +8370,428 @@ body.reveal-ready .stagger.is-visible > * {
 
   .iris-prediction-panel__updating {
     white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iris-prediction-panel__visual,
+  .iris-prediction-panel__visual img,
+  .iris-prediction-panel__visual--updating::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .iris-prediction-panel__visual--updating::after {
+    display: none;
+  }
+}
+
+/* Iris live training experience */
+.iris-training-modal-backdrop {
+  align-items: center;
+  animation: iris-training-backdrop-in 240ms ease-out both;
+  backdrop-filter: blur(12px);
+  background: rgba(5, 18, 22, 0.76);
+  display: flex;
+  height: 100dvh;
+  inset: 0;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+  position: fixed;
+  width: 100vw;
+  z-index: 90;
+}
+
+.iris-training-modal {
+  animation: iris-training-modal-in 380ms var(--ease-out) both;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(0, 122, 124, 0.28), transparent 32%),
+    radial-gradient(circle at 92% 14%, rgba(112, 72, 189, 0.2), transparent 28%),
+    linear-gradient(145deg, #102f35, #111d29 58%, #171826);
+  border: 1px solid rgba(168, 255, 241, 0.17);
+  border-radius: 12px;
+  box-shadow: 0 34px 110px rgba(0, 0, 0, 0.48);
+  color: #ffffff;
+  display: grid;
+  gap: 18px;
+  isolation: isolate;
+  max-height: calc(100dvh - 40px);
+  max-width: 1180px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: clamp(20px, 2.5vw, 30px);
+  position: relative;
+  width: 100%;
+}
+
+.iris-training-modal__ambient {
+  animation: iris-training-ambient 7s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(168, 255, 241, 0.15), transparent 64%);
+  height: 360px;
+  pointer-events: none;
+  position: absolute;
+  right: -140px;
+  top: -170px;
+  width: 420px;
+  z-index: -1;
+}
+
+.iris-training-modal__header,
+.iris-training-modal__footer {
+  align-items: center;
+  display: flex;
+  gap: 22px;
+  justify-content: space-between;
+}
+
+.iris-training-modal__title {
+  align-items: flex-start;
+  display: flex;
+  gap: 15px;
+  min-width: 0;
+}
+
+.iris-training-modal__icon {
+  align-items: center;
+  background: linear-gradient(145deg, rgba(168, 255, 241, 0.18), rgba(112, 72, 189, 0.2));
+  border: 1px solid rgba(168, 255, 241, 0.2);
+  border-radius: 10px;
+  color: #a8fff1;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 46px;
+  justify-content: center;
+  width: 46px;
+}
+
+.iris-training-modal .eyebrow {
+  color: #a8fff1;
+  margin-bottom: 8px;
+}
+
+.iris-training-modal h2,
+.iris-training-modal h3,
+.iris-training-modal p {
+  margin: 0;
+}
+
+.iris-training-modal h2 {
+  color: #ffffff;
+  font-size: clamp(1.45rem, 3vw, 2.25rem);
+  line-height: 1.05;
+  max-width: 18em;
+}
+
+.iris-training-modal h2::after {
+  color: #f6d06f;
+}
+
+.iris-training-modal__title > div > p:last-child {
+  color: rgba(232, 255, 248, 0.62);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-top: 8px;
+  max-width: 720px;
+}
+
+.iris-training-modal__header-actions {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 10px;
+}
+
+.iris-training-modal__state {
+  align-items: center;
+  background: rgba(246, 208, 111, 0.12);
+  border: 1px solid rgba(246, 208, 111, 0.28);
+  border-radius: 999px;
+  color: #ffe08a;
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 900;
+  gap: 7px;
+  letter-spacing: 0.04em;
+  padding: 8px 11px;
+  text-transform: uppercase;
+}
+
+.iris-training-modal__state--complete {
+  background: rgba(168, 255, 241, 0.1);
+  border-color: rgba(168, 255, 241, 0.24);
+  color: #a8fff1;
+}
+
+.iris-training-modal__state--error,
+.iris-training-modal__error {
+  color: #ffb4a8 !important;
+}
+
+.iris-training-modal__close {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  width: 38px;
+}
+
+.iris-training-modal__close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: rotate(4deg);
+}
+
+.iris-training-modal__progress-block {
+  display: grid;
+  gap: 9px;
+}
+
+.iris-training-modal__progress-block > div:first-child {
+  align-items: center;
+  color: rgba(232, 255, 248, 0.72);
+  display: flex;
+  font-size: 0.82rem;
+  font-weight: 850;
+  justify-content: space-between;
+}
+
+.iris-training-modal__progress-block strong {
+  color: #f6d06f;
+  font-variant-numeric: tabular-nums;
+}
+
+.iris-training-modal__progress-track {
+  background: rgba(220, 239, 235, 0.11);
+  border-radius: 999px;
+  height: 7px;
+  overflow: hidden;
+}
+
+.iris-training-modal__progress-track i {
+  background: linear-gradient(90deg, #38c9bd, #a8fff1 58%, #f6d06f);
+  border-radius: inherit;
+  box-shadow: 0 0 18px rgba(168, 255, 241, 0.42);
+  display: block;
+  height: 100%;
+  transition: width 180ms linear;
+}
+
+.iris-training-modal__metrics {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.iris-training-modal__metric {
+  background: rgba(3, 17, 28, 0.42);
+  border: 1px solid rgba(220, 239, 235, 0.12);
+  border-radius: 9px;
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 12px 14px;
+}
+
+.iris-training-modal__metric small {
+  color: rgba(232, 255, 248, 0.52);
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.iris-training-modal__metric strong {
+  color: #a8fff1;
+  font-size: clamp(1rem, 2vw, 1.32rem);
+  font-variant-numeric: tabular-nums;
+}
+
+.iris-training-modal__metric--gold strong {
+  color: #f6d06f;
+}
+
+.iris-training-modal__charts {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-width: 0;
+}
+
+.iris-training-modal__chart {
+  background: linear-gradient(160deg, rgba(3, 17, 28, 0.64), rgba(26, 26, 42, 0.62));
+  border: 1px solid rgba(220, 239, 235, 0.12);
+  border-radius: 10px;
+  min-width: 0;
+  overflow: hidden;
+  padding: 15px;
+}
+
+.iris-training-modal__chart-heading {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  padding: 0 4px 8px;
+}
+
+.iris-training-modal__chart-heading > span {
+  align-items: center;
+  background: rgba(168, 255, 241, 0.1);
+  border-radius: 8px;
+  color: #a8fff1;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 34px;
+  justify-content: center;
+  width: 34px;
+}
+
+.iris-training-modal__chart:nth-child(2) .iris-training-modal__chart-heading > span {
+  background: rgba(246, 208, 111, 0.1);
+  color: #f6d06f;
+}
+
+.iris-training-modal__chart h3 {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.iris-training-modal__chart p {
+  color: rgba(232, 255, 248, 0.5);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.iris-training-modal__chart-frame {
+  height: min(30vh, 280px);
+  min-height: 220px;
+  min-width: 0;
+  position: relative;
+}
+
+.iris-training-modal__chart-empty {
+  color: rgba(232, 255, 248, 0.48);
+  font-size: 0.78rem;
+  font-weight: 800;
+  left: 50%;
+  position: absolute;
+  top: 54%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.iris-training-modal__legend-label {
+  color: rgba(232, 255, 248, 0.68);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.iris-training-modal__footer {
+  border-top: 1px solid rgba(220, 239, 235, 0.1);
+  padding-top: 14px;
+}
+
+.iris-training-modal__footer p {
+  color: rgba(232, 255, 248, 0.58);
+  font-size: 0.82rem;
+}
+
+.iris-training-modal__footer .button {
+  flex: 0 0 auto;
+  min-height: 42px;
+}
+
+@keyframes iris-training-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes iris-training-modal-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes iris-training-ambient {
+  0%, 100% { opacity: 0.55; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@media (max-width: 900px) {
+  .iris-training-modal__charts {
+    grid-template-columns: 1fr;
+  }
+
+  .iris-training-modal {
+    max-width: 720px;
+  }
+
+  .iris-training-modal__chart-frame {
+    height: 240px;
+  }
+}
+
+@media (max-width: 620px) {
+  .iris-training-modal-backdrop {
+    align-items: stretch;
+    padding: 8px;
+  }
+
+  .iris-training-modal {
+    border-radius: 10px;
+    gap: 15px;
+    max-height: calc(100dvh - 16px);
+    padding: 16px;
+  }
+
+  .iris-training-modal__header,
+  .iris-training-modal__footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .iris-training-modal__header-actions {
+    justify-content: space-between;
+    order: -1;
+  }
+
+  .iris-training-modal__icon {
+    display: none;
+  }
+
+  .iris-training-modal__metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .iris-training-modal__chart {
+    padding: 12px 8px 8px;
+  }
+
+  .iris-training-modal__chart-frame {
+    height: 225px;
+    min-height: 210px;
+  }
+
+  .iris-training-modal__footer .button {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iris-training-modal-backdrop,
+  .iris-training-modal,
+  .iris-training-modal__ambient {
+    animation: none !important;
+  }
+
+  .iris-training-modal__progress-track i {
+    transition: none !important;
   }
 }
 
