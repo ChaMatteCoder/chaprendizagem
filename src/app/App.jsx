@@ -17,6 +17,7 @@ const MlpHubPage = lazy(() => import('../features/mlp/pages/MlpHubPage.jsx'));
 const HandwritingRecognitionPage = lazy(() =>
   import('../features/handwriting-recognition/pages/HandwritingRecognitionPage.jsx'),
 );
+const KMeansPage = lazy(() => import('../features/kmeans/pages/KMeansPage.jsx'));
 
 export default function App() {
   useRevealAnimations();
@@ -58,6 +59,14 @@ export default function App() {
         <Route path="/perceptron/teoria" element={<TheoryPage />} />
         <Route path="/perceptron/modelo" element={<ModelPage />} />
         <Route path="/perceptron/resultados" element={<ResultsPage />} />
+        <Route
+          path="/kmeans"
+          element={
+            <Suspense fallback={<div className="page wide-panel">Carregando laboratório K-Means...</div>}>
+              <KMeansPage />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>

@@ -3,6 +3,7 @@ import {
   ArrowDown,
   ArrowRight,
   CheckCircle2,
+  Boxes,
   Code2,
   FileText,
   FlaskConical,
@@ -47,6 +48,7 @@ const moduleLinks = [
   { to: '/perceptron/modelo', label: 'Perceptron', icon: Sigma, tone: 'teal' },
   { to: '/adaline', label: 'Adaline', icon: Network, tone: 'violet' },
   { to: '/mlp', label: 'MLP', icon: FunctionSquare, tone: 'amber' },
+  { to: '/kmeans', label: 'K-Means', icon: Boxes, tone: 'teal' },
 ];
 
 const resourceLinks = [
@@ -241,15 +243,29 @@ function getNextStep(location) {
 
   if (location.pathname === '/mlp/classificacao-iris') {
     return {
-      eyebrow: 'Trilha MLP',
-      title: 'Módulo MLP organizado',
-      description: 'Volte ao hub para navegar entre aproximação funcional, reconhecimento manuscrito e Iris Dataset.',
-      cardLabel: 'Módulo MLP',
-      cardTitle: 'Redes Neurais Multicamadas',
-      cardDescription: 'Três laboratórios independentes reunidos pela mesma arquitetura de rede.',
-      buttonLabel: 'Voltar ao módulo MLP',
-      to: '/mlp',
-      mark: 'MLP',
+      eyebrow: 'Próximo experimento',
+      title: 'Avance para aprendizagem não supervisionada',
+      description: 'Depois das classes conhecidas de Iris, descubra grupos quando nenhum rótulo é fornecido.',
+      cardLabel: 'Trabalho 10',
+      cardTitle: 'K-Means',
+      cardDescription: 'Centroides, clusters, curva EQT e análise do cotovelo em um laboratório interativo.',
+      buttonLabel: 'Abrir K-Means',
+      to: '/kmeans',
+      mark: 'K4',
+    };
+  }
+
+  if (location.pathname === '/kmeans') {
+    return {
+      eyebrow: 'Ciclo de estudos',
+      title: 'Compare com um modelo supervisionado',
+      description: 'Volte ao início da trilha e contraste agrupamento sem rótulos com classificação supervisionada.',
+      cardLabel: 'Módulo 01',
+      cardTitle: 'Perceptron',
+      cardDescription: 'Classificador linear com entradas binárias e respostas conhecidas.',
+      buttonLabel: 'Abrir Perceptron',
+      to: '/perceptron/modelo',
+      mark: 'Σ',
     };
   }
 

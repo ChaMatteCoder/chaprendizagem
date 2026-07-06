@@ -2,6 +2,7 @@ import {
   ArrowRight,
   Beaker,
   BookOpen,
+  Boxes,
   BrainCircuit,
   ChartNoAxesCombined,
   ChevronLeft,
@@ -22,6 +23,7 @@ import perceptronCover from '../assets/Perceptron-Reconhecimento.png';
 import adalineRegressionCover from '../assets/Regressão-Linear-com-Adaline.png';
 import handwritingRecognitionCover from '../assets/Reconhecimento-Manuscrito-com-MLP.png';
 import irisClassificationCover from '../assets/Iris-Classification.png';
+import kmeansCover from '../assets/k-means.png';
 import ProjectCard from '../components/ProjectCard.jsx';
 import StudyStepCard from '../components/StudyStepCard.jsx';
 
@@ -78,6 +80,15 @@ const projects = [
     visual: '09',
     cover: irisClassificationCover,
     to: '/mlp/classificacao-iris',
+    featured: true,
+  },
+  {
+    title: 'K-Means — Agrupamento de Observações',
+    status: 'Publicado',
+    description: 'Experimento interativo do Trabalho 10 com centroides, clusters e curva EQT × iteração.',
+    visual: '10',
+    cover: kmeansCover,
+    to: '/kmeans',
     featured: true,
   },
   {
@@ -238,6 +249,13 @@ export default function HomePage() {
             </div>
             <ArrowRight size={18} />
           </Link>
+          <Link className="module-card module-card--active" to="/kmeans">
+            <Boxes size={34} />
+            <span>Módulo 04</span>
+            <h3>K-Means</h3>
+            <p>Agrupamento não supervisionado com centroides, iterações e análise do cotovelo.</p>
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
 
@@ -245,10 +263,10 @@ export default function HomePage() {
         <Beaker size={34} />
         <div>
           <h2>Pronto para explorar o novo experimento?</h2>
-          <p>O módulo MLP reúne aproximação funcional, reconhecimento manuscrito e a nova classificação Iris.</p>
+          <p>O Trabalho 10 transforma K-Means, centroides e a curva EQT em uma experiência interativa.</p>
         </div>
-        <Link className="button button--primary" to="/mlp">
-          Abrir módulo MLP <BrainCircuit size={18} />
+        <Link className="button button--primary" to="/kmeans">
+          Abrir K-Means <Boxes size={18} />
         </Link>
       </section>
     </div>
