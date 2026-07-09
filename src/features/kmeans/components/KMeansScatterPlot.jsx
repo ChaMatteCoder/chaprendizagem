@@ -1,7 +1,8 @@
-import { Eye, EyeOff } from 'lucide-react';
-import { useMemo } from 'react';
+import { Download, Eye, EyeOff } from 'lucide-react';
+import { useMemo, useRef } from 'react';
 import { CartesianGrid, ComposedChart, Line, ResponsiveContainer, Scatter, Tooltip, XAxis, YAxis } from 'recharts';
 import { euclideanDistance } from '../lib/kmeans.js';
+import { downloadRechartsPng } from '../lib/downloadRechartsPng.js';
 import { clusterColors } from './KMeansCentroidTable.jsx';
 
 function CentroidShape({ cx, cy, payload }) {
@@ -34,6 +35,7 @@ function ScatterTooltip({ active, payload }) {
 }
 
 export default function KMeansScatterPlot({ points, snapshot, phase, showConnections, onToggleConnections }) {
+  const chartRef = useRef(null);
   const plottedPoints = useMemo(() => points.map((point, index) => ({
     ...point,
     cluster: snapshot.labels[index],
@@ -55,11 +57,21 @@ export default function KMeansScatterPlot({ points, snapshot, phase, showConnect
     <section className={`kmeans-chart-card kmeans-scatter-card is-${phase}`}>
       <div className="kmeans-chart-card__heading">
         <div><p>Mapa dos grupos · {phase === 'complete' ? 'resultado' : 'em execução'}</p><h3>Observações e centroides</h3></div>
-        <button aria-label={showConnections ? 'Ocultar linhas até os centroides' : 'Mostrar linhas até os centroides'} className={showConnections ? 'is-active' : ''} onClick={onToggleConnections} type="button">
-          {showConnections ? <Eye size={16} /> : <EyeOff size={16} />} Ligações
-        </button>
+        <div className="kmeans-chart-actions">
+          <button
+            aria-label="Baixar mapa dos grupos em PNG"
+            onClick={() => downloadRechartsPng(chartRef.current, 'kmeans-mapa-grupos.png')}
+            title="Baixar PNG"
+            type="button"
+          >
+            <Download size={16} /> Baixar
+          </button>
+          <button aria-label={showConnections ? 'Ocultar linhas até os centroides' : 'Mostrar linhas até os centroides'} className={showConnections ? 'is-active' : ''} onClick={onToggleConnections} type="button">
+            {showConnections ? <Eye size={16} /> : <EyeOff size={16} />} Ligações
+          </button>
+        </div>
       </div>
-      <div className="kmeans-scatter-chart" role="img" aria-label={`Gráfico de dispersão com ${points.length} observações e ${snapshot.centroids.length} clusters`}>
+      <div className="kmeans-scatter-chart" ref={chartRef} role="img" aria-label={`Gráfico de dispersão com ${points.length} observações e ${snapshot.centroids.length} clusters`}>
         <ResponsiveContainer height="100%" minWidth={0} width="100%">
           <ComposedChart margin={{ top: 14, right: 14, bottom: 8, left: -12 }}>
             <CartesianGrid stroke="rgba(0, 87, 91, .09)" strokeDasharray="4 5" />

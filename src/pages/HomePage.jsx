@@ -85,8 +85,8 @@ const projects = [
   {
     title: 'K-Means — Agrupamento de Observações',
     status: 'Publicado',
-    description: 'Experimento interativo do Trabalho 10 com centroides, clusters e curva EQT × iteração.',
-    visual: '10',
+    description: 'Experimento interativo com centroides, clusters e curva EQT × iteração.',
+    visual: 'K',
     cover: kmeansCover,
     to: '/kmeans',
     featured: true,
@@ -263,7 +263,7 @@ export default function HomePage() {
         <Beaker size={34} />
         <div>
           <h2>Pronto para explorar o novo experimento?</h2>
-          <p>O Trabalho 10 transforma K-Means, centroides e a curva EQT em uma experiência interativa.</p>
+          <p>O laboratório transforma K-Means, centroides e a curva EQT em uma experiência interativa.</p>
         </div>
         <Link className="button button--primary" to="/kmeans">
           Abrir K-Means <Boxes size={18} />

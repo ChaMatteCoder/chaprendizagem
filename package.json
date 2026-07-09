@@ -8,6 +8,8 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
     "serve:dist": "node scripts/serve-dist.mjs",
+    "test": "node --test tests/*.test.js",
+    "test:kmeans": "node --test tests/kmeans.test.js",
     "test:newsletter": "node --test tests/newsletter.test.js",
     "newsletter:announce": "node --env-file-if-exists=.env scripts/announce-module.mjs",
     "train:digits": "python training/train_digits_mnist.py",

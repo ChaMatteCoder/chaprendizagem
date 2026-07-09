@@ -246,7 +246,7 @@ function getNextStep(location) {
       eyebrow: 'Próximo experimento',
       title: 'Avance para aprendizagem não supervisionada',
       description: 'Depois das classes conhecidas de Iris, descubra grupos quando nenhum rótulo é fornecido.',
-      cardLabel: 'Trabalho 10',
+      cardLabel: 'Agrupamento',
       cardTitle: 'K-Means',
       cardDescription: 'Centroides, clusters, curva EQT e análise do cotovelo em um laboratório interativo.',
       buttonLabel: 'Abrir K-Means',
@@ -291,6 +291,35 @@ function XLogo({ size = 20 }) {
       />
     </svg>
   );
+}
+
+const localNewsletterSetupMessage =
+  'No desenvolvimento local com npm run dev, a newsletter precisa das rotas da Vercel. Rode npx vercel dev com a .env configurada ou teste no ambiente publicado.';
+
+const unconfiguredNewsletterMessage =
+  'A newsletter ainda não foi configurada neste ambiente. Quando Resend e Vercel estiverem configurados, o cadastro volta a funcionar.';
+
+function isLocalNewsletterSetup() {
+  if (typeof window === 'undefined') return false;
+
+  return ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
+}
+
+function getNewsletterErrorMessage(response, payload) {
+  if (payload?.code === 'NEWSLETTER_NOT_CONFIGURED' || response.status === 503) {
+    return unconfiguredNewsletterMessage;
+  }
+
+  const contentType = response.headers.get('content-type') ?? '';
+
+  if (
+    isLocalNewsletterSetup() &&
+    (response.status === 404 || response.status === 405 || contentType.includes('text/html'))
+  ) {
+    return localNewsletterSetupMessage;
+  }
+
+  return payload?.message || 'Não foi possível processar sua inscrição.';
 }
 
 export default function Layout({ children }) {
@@ -343,7 +372,7 @@ export default function Layout({ children }) {
       const payload = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(payload.message || 'Não foi possível processar sua inscrição.');
+        throw new Error(getNewsletterErrorMessage(response, payload));
       }
 
       form.reset();
@@ -354,7 +383,12 @@ export default function Layout({ children }) {
     } catch (error) {
       setNewsletterState({
         status: 'error',
-        message: error instanceof Error ? error.message : 'Não foi possível processar sua inscrição agora.',
+        message:
+          isLocalNewsletterSetup() && error instanceof TypeError
+            ? localNewsletterSetupMessage
+            : error instanceof Error
+              ? error.message
+              : 'Não foi possível processar sua inscrição agora.',
       });
     }
   }

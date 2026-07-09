@@ -59,7 +59,10 @@ export default async function handler(request, response) {
   } catch (error) {
     if (error instanceof NewsletterConfigurationError) {
       console.error(error.message);
-      return response.status(503).json({ message: 'A newsletter ainda não foi configurada neste ambiente.' });
+      return response.status(503).json({
+        code: 'NEWSLETTER_NOT_CONFIGURED',
+        message: 'A newsletter ainda não foi configurada neste ambiente.',
+      });
     }
 
     console.error('Erro inesperado ao assinar newsletter:', error);

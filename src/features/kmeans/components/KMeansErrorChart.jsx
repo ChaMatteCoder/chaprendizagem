@@ -1,5 +1,7 @@
-import { TrendingDown } from 'lucide-react';
+import { Download, TrendingDown } from 'lucide-react';
+import { useRef } from 'react';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { downloadRechartsPng } from '../lib/downloadRechartsPng.js';
 import { computeErrorReduction } from '../lib/kmeansMetrics.js';
 
 function ErrorTooltip({ active, payload, label }) {
@@ -8,15 +10,26 @@ function ErrorTooltip({ active, payload, label }) {
 }
 
 export default function KMeansErrorChart({ errorHistory }) {
+  const chartRef = useRef(null);
   const reduction = computeErrorReduction(errorHistory);
   return (
     <section className="kmeans-chart-card kmeans-error-card">
       <div className="kmeans-chart-card__heading">
         <div><p>Convergência</p><h3>Curva EQT × iteração</h3></div>
-        <span className="kmeans-reduction"><TrendingDown size={17} /> {reduction.toFixed(1)}% de redução</span>
+        <div className="kmeans-chart-actions">
+          <button
+            aria-label="Baixar curva EQT por iteração em PNG"
+            onClick={() => downloadRechartsPng(chartRef.current, 'kmeans-curva-eqt.png')}
+            title="Baixar PNG"
+            type="button"
+          >
+            <Download size={16} /> Baixar
+          </button>
+          <span className="kmeans-reduction"><TrendingDown size={17} /> {reduction.toFixed(1)}% de redução</span>
+        </div>
       </div>
       <p className="kmeans-chart-intro">A linha nunca deve subir no K-Means clássico: cada ciclo mantém ou reduz a soma dos erros quadráticos.</p>
-      <div className="kmeans-error-chart" role="img" aria-label="Curva do erro quadrático total por iteração">
+      <div className="kmeans-error-chart" ref={chartRef} role="img" aria-label="Curva do erro quadrático total por iteração">
         <ResponsiveContainer height="100%" minWidth={0} width="100%">
           <LineChart data={errorHistory} margin={{ top: 18, right: 20, bottom: 8, left: 2 }}>
             <CartesianGrid stroke="rgba(0, 87, 91, .09)" strokeDasharray="4 5" />

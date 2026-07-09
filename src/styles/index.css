@@ -8783,7 +8783,7 @@ body.reveal-ready .stagger.is-visible > * {
   }
 }
 
-/* K-Means · Trabalho 10 */
+/* K-Means · Laboratório de agrupamento */
 .kmeans-page {
   --kmeans-navy: #082b32;
   --kmeans-mint: #78d7ca;
@@ -8819,7 +8819,7 @@ body.reveal-ready .stagger.is-visible > * {
   letter-spacing: -.055em;
   line-height: .93;
   margin: 15px 0 24px;
-  max-width: 9.5em;
+  max-width: 10.5em;
 }
 
 .kmeans-hero__copy > p:not(.eyebrow) { font-size: 1.06rem; line-height: 1.72; max-width: 36rem; }
@@ -8852,17 +8852,111 @@ body.reveal-ready .stagger.is-visible > * {
   overflow: hidden;
   padding: 14px 14px 0;
   position: relative;
+  isolation: isolate;
 }
 
-.kmeans-hero__visual::after { background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.06), transparent 68%); content: ''; inset: 0; pointer-events: none; position: absolute; }
-.kmeans-hero__visual svg { display: block; width: 100%; }
-.kmeans-hero__links line { stroke: rgba(255,255,255,.13); stroke-dasharray: 4 5; }
-.kmeans-hero__point { filter: drop-shadow(0 3px 5px rgba(0,0,0,.28)); }
-.kmeans-hero__centroid circle { stroke: rgba(255,255,255,.9); stroke-width: 3; }
-.kmeans-hero__centroid path { fill: none; stroke: white; stroke-linecap: round; stroke-width: 3; }
+.kmeans-hero__visual::before {
+  animation: kmeansHeroAura 18s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 22% 72%, rgba(36, 211, 192, .12), transparent 30%),
+    radial-gradient(circle at 78% 30%, rgba(169, 137, 255, .13), transparent 31%),
+    radial-gradient(circle at 76% 72%, rgba(255, 137, 106, .1), transparent 30%);
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.kmeans-hero__visual::after {
+  background: radial-gradient(circle at 50% 55%, rgba(255,255,255,.055), transparent 54%);
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.kmeans-hero__visual svg { display: block; overflow: visible; width: 100%; }
+.kmeans-hero__core-glow { animation: kmeansHeroGlow 16s ease-in-out infinite; transform-origin: center; }
+.kmeans-hero__contour {
+  animation: kmeansHeroContour 24s linear infinite;
+  fill: none;
+  opacity: .38;
+  stroke: rgba(255,255,255,.2);
+  stroke-dasharray: 3 13;
+  stroke-linecap: round;
+  stroke-width: 1.25;
+}
+.kmeans-hero__contour--two { animation-direction: reverse; opacity: .26; stroke-dasharray: 2 15; }
+.kmeans-hero__links line {
+  animation: kmeansHeroLinkFlow 18s linear infinite;
+  animation-delay: var(--delay);
+  opacity: .36;
+  stroke: rgba(255,255,255,.22);
+  stroke-dasharray: 2 10;
+  stroke-linecap: round;
+}
+.kmeans-hero__point-node { filter: drop-shadow(0 4px 7px rgba(0,0,0,.22)); }
+.kmeans-hero__point-halo {
+  animation: kmeansHeroPointBreathe 9s ease-in-out infinite;
+  animation-delay: var(--delay);
+  opacity: .13;
+  transform-origin: center;
+}
+.kmeans-hero__point { stroke: rgba(255,255,255,.64); stroke-width: 1.25; }
+.kmeans-hero__centroid-ring {
+  animation: kmeansHeroCentroidRing 12s ease-in-out infinite;
+  opacity: .45;
+  stroke-dasharray: 3 5;
+  stroke-linecap: round;
+  stroke-width: 2;
+  transform-origin: center;
+}
+.kmeans-hero__centroid-body { stroke: rgba(255,255,255,.96); stroke-width: 3.2; }
+.kmeans-hero__centroid path { fill: none; stroke: #06242b; stroke-linecap: round; stroke-width: 3.2; }
 .kmeans-hero__readout { align-items: center; background: rgba(3, 22, 27, .66); border-top: 1px solid rgba(255,255,255,.1); color: white; display: flex; justify-content: space-between; margin: 0 -14px; padding: 17px 22px; }
 .kmeans-hero__readout span { color: rgba(255,255,255,.56); font-size: .69rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .kmeans-hero__readout strong { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .9rem; }
+
+@keyframes kmeansHeroAura {
+  0%, 100% { opacity: .82; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.018); }
+}
+
+@keyframes kmeansHeroGlow {
+  0%, 100% { opacity: .74; transform: scale(.995); }
+  50% { opacity: .94; transform: scale(1.015); }
+}
+
+@keyframes kmeansHeroContour {
+  to { stroke-dashoffset: -32; }
+}
+
+@keyframes kmeansHeroLinkFlow {
+  to { stroke-dashoffset: -48; }
+}
+
+@keyframes kmeansHeroPointBreathe {
+  0%, 100% { opacity: .1; transform: scale(.88); }
+  50% { opacity: .18; transform: scale(1.08); }
+}
+
+@keyframes kmeansHeroCentroidRing {
+  0%, 100% { opacity: .35; transform: scale(.96); stroke-dashoffset: 0; }
+  50% { opacity: .58; transform: scale(1.03); }
+  100% { stroke-dashoffset: -16; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kmeans-hero__visual::before,
+  .kmeans-hero__core-glow,
+  .kmeans-hero__contour,
+  .kmeans-hero__links line,
+  .kmeans-hero__point-halo,
+  .kmeans-hero__centroid-ring {
+    animation: none;
+  }
+}
 
 .kmeans-section { margin-top: 86px; scroll-margin-top: 24px; }
 .kmeans-glass-card { background: rgba(255,255,255,.68); backdrop-filter: blur(15px); }
@@ -8907,7 +9001,8 @@ body.reveal-ready .stagger.is-visible > * {
 .kmeans-chart-card__heading, .kmeans-card-heading { align-items: center; display: flex; justify-content: space-between; gap: 16px; }
 .kmeans-chart-card__heading p, .kmeans-card-heading p { color: var(--teal); font-size: .66rem; font-weight: 900; letter-spacing: .11em; margin: 0 0 3px; text-transform: uppercase; }
 .kmeans-chart-card__heading h3, .kmeans-card-heading h3 { font-size: 1.08rem; margin: 0; }
-.kmeans-chart-card__heading button { align-items: center; background: var(--surface-soft); border: 1px solid var(--line); border-radius: 9px; color: var(--muted); cursor: pointer; display: flex; font: inherit; font-size: .75rem; font-weight: 800; gap: 6px; padding: 8px 10px; }
+.kmeans-chart-actions { align-items: center; display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.kmeans-chart-card__heading button { align-items: center; background: var(--surface-soft); border: 1px solid var(--line); border-radius: 9px; color: var(--muted); cursor: pointer; display: flex; font: inherit; font-size: .75rem; font-weight: 800; gap: 6px; min-height: 36px; padding: 8px 10px; }
 .kmeans-chart-card__heading button.is-active { background: var(--teal-soft); border-color: rgba(0,87,91,.2); color: var(--teal-dark); }
 .kmeans-scatter-chart { height: 500px; margin-top: 12px; width: 100%; }
 .kmeans-chart-legend { display: flex; flex-wrap: wrap; gap: 8px 14px; justify-content: center; }
@@ -9252,6 +9347,9 @@ body.reveal-ready .stagger.is-visible > * {
 }
 
 @media (max-width: 760px) {
+  .kmeans-chart-card__heading { align-items: stretch; flex-direction: column; }
+  .kmeans-chart-actions { justify-content: flex-start; }
+  .kmeans-chart-actions button { justify-content: center; }
   .kmeans-setup-grid .kmeans-dataset-card { grid-template-columns: 1fr; }
   .kmeans-launch-card { align-items: stretch; flex-direction: column; }
   .kmeans-launch-card .button { width: 100%; }

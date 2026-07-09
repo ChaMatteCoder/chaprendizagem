@@ -3,6 +3,7 @@ import test from 'node:test';
 import {
   buildModuleBroadcast,
   createConfirmationToken,
+  getNewsletterConfig,
   isValidEmail,
   normalizeEmail,
   verifyConfirmationToken,
@@ -46,6 +47,34 @@ test('gera campanha com descadastro e conteúdo escapado', () => {
   assert.match(broadcast.html, /Classificação &amp; métricas/);
   assert.match(broadcast.html, /RESEND_UNSUBSCRIBE_URL/);
   assert.match(broadcast.text, /RESEND_UNSUBSCRIBE_URL/);
+});
+
+test('mantem anuncios como rascunho quando NEWSLETTER_SEND_ENABLED nao e true', () => {
+  const testEnvironment = {
+    RESEND_API_KEY: 're_teste',
+    RESEND_FROM_EMAIL: 'Chaprendizagem <teste@example.com>',
+    RESEND_NEWSLETTER_SEGMENT_ID: 'segmento_teste',
+    NEWSLETTER_SITE_URL: 'https://chaprendizagem.example',
+    NEWSLETTER_TOKEN_SECRET: 'segredo-de-token-com-mais-de-trinta-caracteres',
+    NEWSLETTER_SEND_ENABLED: 'false',
+  };
+  const previousValues = Object.fromEntries(Object.keys(testEnvironment).map((key) => [key, process.env[key]]));
+  Object.assign(process.env, testEnvironment);
+
+  try {
+    assert.equal(getNewsletterConfig().sendEnabled, false);
+
+    process.env.NEWSLETTER_SEND_ENABLED = 'true';
+    assert.equal(getNewsletterConfig().sendEnabled, true);
+  } finally {
+    Object.entries(previousValues).forEach(([key, value]) => {
+      if (value === undefined) {
+        delete process.env[key];
+      } else {
+        process.env[key] = value;
+      }
+    });
+  }
 });
 
 function createResponseMock() {

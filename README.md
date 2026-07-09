@@ -81,13 +81,13 @@ Fluxo disponível:
 - `GET /api/newsletter/confirm`: confirma o token e adiciona o contato ao segmento configurado.
 - `POST /api/newsletter/announce`: cria um Broadcast protegido por segredo. Com `NEWSLETTER_SEND_ENABLED=false`, ele permanece como rascunho.
 
-Para criar o anúncio de um novo módulo:
+Para criar o anúncio do lançamento atual do K-Means:
 
 ```bash
-npm run newsletter:announce -- --slug=iris --title="Classificação Iris" --description="Novo laboratório interativo." --url=/mlp/classificacao-iris
+npm run newsletter:announce
 ```
 
-Use `--endpoint=https://seu-dominio.com/api/newsletter/announce` quando quiser chamar explicitamente o ambiente de produção. Antes do primeiro envio, verifique o domínio no Resend, crie um segmento para a newsletter e replique as variáveis da `.env` nas configurações do projeto na Vercel.
+O script usa o preset `/kmeans` por padrão. Também é possível ser explícito com `npm run newsletter:announce -- --preset=kmeans` ou enviar todos os campos manualmente com `--slug`, `--title`, `--description` e `--url`. Use `--endpoint=https://seu-dominio.com/api/newsletter/announce` quando quiser chamar explicitamente o ambiente de produção. Antes do primeiro envio, verifique o domínio no Resend, crie um segmento para a newsletter e replique as variáveis da `.env` nas configurações do projeto na Vercel.
 
 ## Rotas atuais
 
@@ -97,6 +97,8 @@ Use `--endpoint=https://seu-dominio.com/api/newsletter/announce` quando quiser c
 - `/adaline` - Trabalho 05 com teoria, simulação, erro quadrático e teste da rede.
 - `/adaline/regressao` - Trabalho 06 com regressão linear usando Adaline, comparação com regressão clássica, Pearson e R².
 - `/aproximacao-funcional` - Trabalho 07 com MLP para aproximação funcional, pontos editáveis, curva aproximada, erro por época e métricas.
+- `/mlp/classificacao-iris` - Classificação multiclasse da base Iris com uma MLP didática.
+- `/kmeans` - Laboratório de agrupamento não supervisionado com centroides, curva EQT e análise do cotovelo.
 - `/perceptron/teoria` - Base teórica do Perceptron.
 - `/perceptron/modelo` - Modelo visual com matriz interativa.
 - `/perceptron/resultados` - Painel de treinamento, métricas e resultados.
