@@ -8,7 +8,7 @@ function cloneCentroids(centroids) {
   return centroids.map(({ x, y }) => ({ x, y }));
 }
 
-function createSeededRandom(seed = 42) {
+export function createSeededRandom(seed = 42) {
   let state = Math.trunc(Math.abs(Number(seed))) % 2147483647;
   if (state === 0) state = 1;
 
@@ -123,6 +123,131 @@ function initializeKMeansPlusPlus(points, k, random) {
   }
 
   return centroids;
+}
+
+export function traceKMeansPlusPlusInitialization(points, options = {}) {
+  if (!Array.isArray(points) || points.length === 0) {
+    throw new RangeError('O K-Means++ precisa de pelo menos um ponto.');
+  }
+  points.forEach((point, index) => assertPoint(point, `O ponto ${index + 1}`));
+
+  const k = Math.trunc(Number(options.k ?? 4));
+  const seed = Number.isFinite(Number(options.seed)) ? Number(options.seed) : 42;
+
+  if (!Number.isInteger(k) || k < 1 || k > points.length) {
+    throw new RangeError(`K deve estar entre 1 e ${points.length}.`);
+  }
+
+  const random = createSeededRandom(seed);
+  const firstRandomValue = random();
+  const firstIndex = Math.floor(firstRandomValue * points.length);
+  const chosen = new Set([firstIndex]);
+  const centroids = [{ x: Number(points[firstIndex].x), y: Number(points[firstIndex].y) }];
+  const selectedIndices = [firstIndex];
+  const steps = [
+    {
+      step: 1,
+      kind: 'first-centroid',
+      selectedIndex: firstIndex,
+      selectedPointId: points[firstIndex].id ?? firstIndex + 1,
+      selectedCentroid: { ...centroids[0] },
+      randomValue: firstRandomValue,
+      totalWeight: null,
+      selectionProbability: null,
+      distancesSquared: null,
+      weights: null,
+      probabilities: null,
+      candidates: points.map((point, index) => ({
+        index,
+        id: point.id ?? index + 1,
+        x: Number(point.x),
+        y: Number(point.y),
+        distanceSquared: null,
+        weight: null,
+        probability: null,
+        isAlreadyChosen: index === firstIndex,
+        isSelected: index === firstIndex,
+      })),
+      centroids: cloneCentroids(centroids),
+    },
+  ];
+
+  while (centroids.length < k) {
+    const chosenBeforeSelection = new Set(chosen);
+    const distancesSquared = points.map((point) =>
+      Math.min(...centroids.map((centroid) => squaredDistance(point, centroid))),
+    );
+    const weights = distancesSquared.map((distance, index) =>
+      chosenBeforeSelection.has(index) ? 0 : distance,
+    );
+    const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+    const probabilities = weights.map((weight) => (totalWeight === 0 ? 0 : weight / totalWeight));
+
+    let selectedIndex;
+    let randomValue = null;
+    let target = null;
+
+    if (totalWeight === 0) {
+      selectedIndex = points.findIndex((_, index) => !chosenBeforeSelection.has(index));
+    } else {
+      randomValue = random();
+      target = randomValue * totalWeight;
+      let remainingTarget = target;
+      selectedIndex = weights.length - 1;
+
+      for (let index = 0; index < weights.length; index += 1) {
+        remainingTarget -= weights[index];
+        if (remainingTarget <= 0 && !chosenBeforeSelection.has(index)) {
+          selectedIndex = index;
+          break;
+        }
+      }
+    }
+
+    chosen.add(selectedIndex);
+    selectedIndices.push(selectedIndex);
+    const selectedCentroid = {
+      x: Number(points[selectedIndex].x),
+      y: Number(points[selectedIndex].y),
+    };
+    centroids.push(selectedCentroid);
+
+    steps.push({
+      step: centroids.length,
+      kind: totalWeight === 0 ? 'fallback' : 'distance-weighted',
+      selectedIndex,
+      selectedPointId: points[selectedIndex].id ?? selectedIndex + 1,
+      selectedCentroid: { ...selectedCentroid },
+      randomValue,
+      target,
+      totalWeight,
+      selectionProbability: probabilities[selectedIndex],
+      distancesSquared: [...distancesSquared],
+      weights: [...weights],
+      probabilities: [...probabilities],
+      candidates: points.map((point, index) => ({
+        index,
+        id: point.id ?? index + 1,
+        x: Number(point.x),
+        y: Number(point.y),
+        distanceSquared: distancesSquared[index],
+        weight: weights[index],
+        probability: probabilities[index],
+        isAlreadyChosen: chosenBeforeSelection.has(index),
+        isSelected: index === selectedIndex,
+      })),
+      centroids: cloneCentroids(centroids),
+    });
+  }
+
+  return {
+    k,
+    seed,
+    centroids: cloneCentroids(centroids),
+    initialCentroids: cloneCentroids(centroids),
+    selectedIndices: [...selectedIndices],
+    steps,
+  };
 }
 
 function initializeCentroids(points, k, initialization, seed) {

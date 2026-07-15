@@ -18,6 +18,8 @@ const HandwritingRecognitionPage = lazy(() =>
   import('../features/handwriting-recognition/pages/HandwritingRecognitionPage.jsx'),
 );
 const KMeansPage = lazy(() => import('../features/kmeans/pages/KMeansPage.jsx'));
+const KMeansPlusPlusPage = lazy(() => import('../features/kmeans/pages/KMeansPlusPlusPage.jsx'));
+const KMeansHubPage = lazy(() => import('../features/kmeans/pages/KMeansHubPage.jsx'));
 
 export default function App() {
   useRevealAnimations();
@@ -64,6 +66,22 @@ export default function App() {
           element={
             <Suspense fallback={<div className="page wide-panel">Carregando laboratório K-Means...</div>}>
               <KMeansPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/kmeans/hub"
+          element={
+            <Suspense fallback={<div className="page wide-panel">Carregando família K-Means...</div>}>
+              <KMeansHubPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/kmeans/plusplus"
+          element={
+            <Suspense fallback={<div className="page wide-panel">Carregando laboratório K-Means++...</div>}>
+              <KMeansPlusPlusPage />
             </Suspense>
           }
         />

@@ -4,6 +4,7 @@ import KMeansCentroidTable from '../components/KMeansCentroidTable.jsx';
 import KMeansControls from '../components/KMeansControls.jsx';
 import KMeansDatasetEditor from '../components/KMeansDatasetEditor.jsx';
 import KMeansErrorChart from '../components/KMeansErrorChart.jsx';
+import KMeansExperimentSwitcher from '../components/KMeansExperimentSwitcher.jsx';
 import KMeansHero from '../components/KMeansHero.jsx';
 import KMeansIterationPanel from '../components/KMeansIterationPanel.jsx';
 import KMeansKSelectionPanel from '../components/KMeansKSelectionPanel.jsx';
@@ -198,6 +199,7 @@ export default function KMeansPage() {
 
   return (
     <div className="page kmeans-page">
+      <KMeansExperimentSwitcher activeLabId="classic" />
       <KMeansHero isOpen={isLabOpen} onOpenLab={openLab} />
 
       {isLabOpen ? (

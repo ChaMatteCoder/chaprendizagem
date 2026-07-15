@@ -13,6 +13,7 @@ import {
   Network,
   PenLine,
   Sigma,
+  Sparkles,
   TerminalSquare,
 } from 'lucide-react';
 import { useRef } from 'react';
@@ -83,12 +84,20 @@ const projects = [
     featured: true,
   },
   {
-    title: 'K-Means — Agrupamento de Observações',
+    title: 'Trabalho 10 — K-Means clássico',
     status: 'Publicado',
-    description: 'Experimento interativo com centroides, clusters e curva EQT × iteração.',
-    visual: 'K',
+    description: 'Ciclo de Lloyd, movimentação dos centroides, EQT por iteração e análise da escolha de K.',
+    visual: 'K10',
     cover: kmeansCover,
     to: '/kmeans',
+    featured: true,
+  },
+  {
+    title: 'Trabalho 11 — K-Means++',
+    status: 'Novo laboratório',
+    description: 'Compare K-Means clássico, K-Means++ e MiniBatchKMeans com EQT, dados editáveis e execução passo a passo.',
+    visual: 'K++',
+    to: '/kmeans/plusplus',
     featured: true,
   },
   {
@@ -249,11 +258,19 @@ export default function HomePage() {
             </div>
             <ArrowRight size={18} />
           </Link>
-          <Link className="module-card module-card--active" to="/kmeans">
+          <Link className="module-card module-card--active module-card--kmeans" to="/kmeans/hub">
             <Boxes size={34} />
             <span>Módulo 04</span>
             <h3>K-Means</h3>
-            <p>Agrupamento não supervisionado com centroides, iterações e análise do cotovelo.</p>
+            <p>Uma família com dois trabalhos independentes sobre agrupamento, inicialização, convergência e escala.</p>
+            <div className="module-card__subitems" aria-hidden="true">
+              <small>
+                <Boxes size={14} /> Trabalho 10 · K-Means clássico
+              </small>
+              <small>
+                <Sparkles size={14} /> Trabalho 11 · K-Means++
+              </small>
+            </div>
             <ArrowRight size={18} />
           </Link>
         </div>
@@ -262,11 +279,11 @@ export default function HomePage() {
       <section className="cta-band reveal-scale">
         <Beaker size={34} />
         <div>
-          <h2>Pronto para explorar o novo experimento?</h2>
-          <p>O laboratório transforma K-Means, centroides e a curva EQT em uma experiência interativa.</p>
+          <h2>Pronto para comparar duas formas de começar?</h2>
+          <p>O Trabalho 11 revela como a semeadura K-Means++ muda a trajetória e leva o experimento até grandes bases.</p>
         </div>
-        <Link className="button button--primary" to="/kmeans">
-          Abrir K-Means <Boxes size={18} />
+        <Link className="button button--primary" to="/kmeans/plusplus">
+          Abrir K-Means++ <Sparkles size={18} />
         </Link>
       </section>
     </div>

@@ -48,7 +48,7 @@ const moduleLinks = [
   { to: '/perceptron/modelo', label: 'Perceptron', icon: Sigma, tone: 'teal' },
   { to: '/adaline', label: 'Adaline', icon: Network, tone: 'violet' },
   { to: '/mlp', label: 'MLP', icon: FunctionSquare, tone: 'amber' },
-  { to: '/kmeans', label: 'K-Means', icon: Boxes, tone: 'teal' },
+  { to: '/kmeans/hub', label: 'K-Means', icon: Boxes, tone: 'teal' },
 ];
 
 const resourceLinks = [
@@ -250,12 +250,40 @@ function getNextStep(location) {
       cardTitle: 'K-Means',
       cardDescription: 'Centroides, clusters, curva EQT e análise do cotovelo em um laboratório interativo.',
       buttonLabel: 'Abrir K-Means',
-      to: '/kmeans',
+      to: '/kmeans/hub',
       mark: 'K4',
     };
   }
 
+  if (location.pathname === '/kmeans/hub') {
+    return {
+      eyebrow: 'Primeiro laboratório da família',
+      title: 'Comece pelo ciclo de Lloyd',
+      description: 'Acompanhe o K-Means clássico atribuindo pontos, movendo centroides e reduzindo o EQT.',
+      cardLabel: 'Trabalho 10',
+      cardTitle: 'K-Means clássico',
+      cardDescription: 'Agrupamento visual, curva de convergência e análise da escolha de K.',
+      buttonLabel: 'Abrir Trabalho 10',
+      to: '/kmeans',
+      mark: 'K10',
+    };
+  }
+
   if (location.pathname === '/kmeans') {
+    return {
+      eyebrow: 'Próximo laboratório K-Means',
+      title: 'Agora compare duas formas de iniciar',
+      description: 'Mantenha o ciclo de Lloyd e veja como a semeadura K-Means++ altera a trajetória até a convergência.',
+      cardLabel: 'Trabalho 11',
+      cardTitle: 'K-Means++ e MiniBatchKMeans',
+      cardDescription: 'Curvas duplas de EQT, inicialização D², dados editáveis e desafio com grandes bases.',
+      buttonLabel: 'Abrir K-Means++',
+      to: '/kmeans/plusplus',
+      mark: 'K++',
+    };
+  }
+
+  if (location.pathname === '/kmeans/plusplus') {
     return {
       eyebrow: 'Ciclo de estudos',
       title: 'Compare com um modelo supervisionado',

@@ -98,7 +98,9 @@ O script usa o preset `/kmeans` por padrão. Também é possível ser explícito
 - `/adaline/regressao` - Trabalho 06 com regressão linear usando Adaline, comparação com regressão clássica, Pearson e R².
 - `/aproximacao-funcional` - Trabalho 07 com MLP para aproximação funcional, pontos editáveis, curva aproximada, erro por época e métricas.
 - `/mlp/classificacao-iris` - Classificação multiclasse da base Iris com uma MLP didática.
+- `/kmeans/hub` - Hub da família K-Means com cards separados para os Trabalhos 10 e 11.
 - `/kmeans` - Laboratório de agrupamento não supervisionado com centroides, curva EQT e análise do cotovelo.
+- `/kmeans/plusplus` - Trabalho 11 com comparação K-Means clássico × K-Means++, curva dupla de EQT e MiniBatchKMeans.
 - `/perceptron/teoria` - Base teórica do Perceptron.
 - `/perceptron/modelo` - Modelo visual com matriz interativa.
 - `/perceptron/resultados` - Painel de treinamento, métricas e resultados.
