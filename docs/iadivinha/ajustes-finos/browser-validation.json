@@ -1,0 +1,28 @@
+{
+  "normalGame": true,
+  "catDrawingRepeated": 6,
+  "allPredictedCat": true,
+  "rare": {
+    "id": "airplane",
+    "round": 4
+  },
+  "finale": {
+    "currentTime": 11.8535,
+    "duration": 11.8535,
+    "ended": true,
+    "loop": false,
+    "paused": true,
+    "src": "/audio/iadivinha/finale.mp3"
+  },
+  "finaleDidNotRestartOnMuteToggle": true,
+  "menu": {
+    "loop": true,
+    "muted": false,
+    "paused": false
+  },
+  "mutePauses": true,
+  "responsiveWidths": [
+    390,
+    1280
+  ]
+}

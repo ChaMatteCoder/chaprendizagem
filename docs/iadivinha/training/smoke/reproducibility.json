@@ -1,0 +1,7 @@
+{
+  "dataset_identical": true,
+  "weights_identical": {
+    "mlp": true,
+    "cnn": true
+  }
+}

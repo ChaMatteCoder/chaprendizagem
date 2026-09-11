@@ -1,0 +1,198 @@
+@font-face { font-family: 'IA Lilita'; src: url('/fonts/iadivinha/LilitaOne-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'IA Patrick'; src: url('/fonts/iadivinha/PatrickHand-Regular.ttf') format('truetype'); font-display: swap; }
+
+.iadivinha {
+  --iad-paper: #f7f1e5; --iad-ink: #172a2d; --iad-coral: #ff6547;
+  --iad-yellow: #ffc94a; --iad-teal: #42b7a8; --iad-purple: #7587ff;
+  min-height: 100svh; color: var(--iad-ink); font-family: 'IA Patrick', 'Segoe UI', sans-serif;
+  background-color: var(--iad-paper);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23987643' opacity='.09' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+  font-size: 1.25rem; line-height: 1.35; isolation: isolate;
+}
+.iadivinha :where(h1,h2,p,ul,ol) { margin: 0; max-width: none; color: inherit; }
+.iadivinha p { line-height: 1.35; }
+.iadivinha button, .iadivinha a { -webkit-tap-highlight-color: transparent; }
+.iadivinha button { color: inherit; cursor: pointer; }
+.iadivinha :where(a,button):focus-visible { outline: 3px solid var(--iad-ink); outline-offset: 6px; }
+.iadivinha :where(#inicio,#jogar,#como-funciona) { scroll-margin-top: 24px; }
+.iad-header { width: min(1370px, calc(100% - 96px)); margin: auto; min-height: 99px; display: flex; align-items: center; gap: 48px; border-bottom: 1px solid #172a2d25; }
+.iad-logo { display: inline-flex; align-items: center; font-family: 'IA Lilita', sans-serif; font-size: clamp(2rem, 3.3vw, 3.6rem); letter-spacing: -2px; line-height: 1; }
+.iad-logo-ia { color: var(--iad-coral); }
+.iad-logo svg { width: 45px; height: 55px; margin-left: 4px; transform: rotate(5deg); }
+.iad-header nav { display: flex; align-items: center; gap: 48px; margin-left: auto; font-size: 1.4rem; }
+.iad-header nav button { border: 0; background: none; padding: 8px 0; }
+.iad-header nav a { padding: 8px 0; }
+.iad-header nav :where(a,button):hover { text-decoration: underline; text-decoration-color: var(--iad-coral); text-underline-offset: 6px; }
+.iad-heart svg { width: 43px; height: 43px; display: block; }
+.iad-home { max-width: 1450px; margin: auto; padding: 32px 24px 22px; position: relative; text-align: center; }
+.iad-heading h1 { font-family: 'IA Lilita', sans-serif; font-weight: 400; font-size: clamp(3rem, 6.65vw, 6.4rem); line-height: 1.1; letter-spacing: -1.5px; max-width: none; }
+.iad-heading p { font-size: clamp(1.6rem, 3vw, 2.65rem); letter-spacing: 1.2px; margin-top: 2px; }
+.iad-heading h1::before, .iad-heading h1::after { content: ''; display: inline-block; width: 32px; height: 9px; border-radius: 10px; background: var(--iad-yellow); vertical-align: middle; margin: 0 15px; box-shadow: 0 -22px var(--iad-yellow), 0 22px var(--iad-yellow); transform: rotate(-12deg); }
+.iad-heading h1::after { transform: rotate(12deg); }
+.iad-art-stage { position: relative; margin: 25px auto 28px; }
+.iad-class-cards { list-style: none; padding: 0; display: flex; justify-content: center; gap: 27px; }
+.iad-class-card { width: clamp(170px, 19vw, 275px); aspect-ratio: 1 / 1.02; border: 5px solid var(--iad-ink); border-radius: 18% 15% 16% 14% / 15% 17% 15% 19%; box-shadow: 2px 6px 0 var(--iad-ink), inset 3px 3px 0 #ffffff75; padding: 13px 12px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.iad-class-card span { font-size: clamp(2.2rem, 3.6vw, 3.25rem); line-height: 1; }
+.iad-doodle { width: 100%; flex: 1; min-height: 0; overflow: visible; }
+.iad-cat { background: var(--iad-yellow); transform: rotate(-3deg); }
+.iad-duck { background: var(--iad-teal); transform: rotate(-.6deg); }
+.iad-shoe { background: var(--iad-coral); transform: rotate(3deg); }
+.iad-note { position: absolute; font-size: 1.65rem; line-height: 1.18; letter-spacing: 1px; pointer-events: none; }
+.iad-note svg { width: 90px; display: block; margin: 0 auto; }
+.iad-note-left { left: 3%; top: 40px; transform: rotate(-15deg); }
+.iad-note-right { right: 2%; top: 40px; transform: rotate(-12deg); }
+.iad-note-right svg { display: none; }
+.iad-start { margin: auto; }
+.iad-cta-wrap { max-width: 610px; width: 65%; margin: auto; position: relative; }
+.iad-primary { display: block; width: 100%; min-height: 94px; border: 5px solid var(--iad-ink); border-radius: 65px 58px 62px 56px; background: var(--iad-coral); box-shadow: 1px 6px var(--iad-ink), inset 2px 3px #ffffff80; font-family: 'IA Lilita', sans-serif; font-size: clamp(2rem, 3.6vw, 3.4rem); letter-spacing: 1px; transition: transform 150ms, box-shadow 150ms; }
+.iad-primary:hover { transform: translateY(-3px) rotate(-.5deg); box-shadow: 2px 9px var(--iad-ink), inset 2px 3px #ffffff80; }
+.iad-primary:active { transform: translateY(3px); box-shadow: 0 2px var(--iad-ink); }
+.iad-cta-wrap::before,.iad-cta-wrap::after { content: ''; position: absolute; top: 46%; width: 25px; height: 5px; background: var(--iad-ink); border-radius: 10px; box-shadow: 0 -28px var(--iad-ink), 0 28px var(--iad-ink); }
+.iad-cta-wrap::before { left: -48px; transform: rotate(-9deg); }.iad-cta-wrap::after { right: -48px; transform: rotate(9deg); }
+.iad-score-pill { display: table; margin: 20px auto 0 !important; border: 2px solid var(--iad-ink); border-radius: 40px; padding: 8px 40px; background: var(--iad-yellow); box-shadow: inset 2px 3px #ffffff95; font-size: 1.85rem; }
+.iad-availability { font-family: 'Segoe UI', sans-serif; font-size: .875rem; margin: 13px 0 0 !important; }
+.iad-rules { max-width: 1000px; margin: 24px auto 0; }
+.iad-rules ol { list-style: none; padding: 0; display: flex; gap: 16px; }
+.iad-rules li { display: flex; flex: 1; align-items: center; gap: 15px; text-align: left; padding: 8px 18px 8px 9px; border: 1.5px solid #172a2d30; border-radius: 60px; background: #ffffff30; font-size: 1.5rem; }
+.iad-step-number { display: grid; place-items: center; flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; background: var(--iad-yellow); font: 2.6rem 'IA Lilita', sans-serif; }
+.iad-rules li:nth-child(2) .iad-step-number { background: var(--iad-teal); }.iad-rules li:nth-child(3) .iad-step-number { background: var(--iad-purple); }
+.iad-rules > p { font-size: 1.1rem; margin-top: 15px; }
+.iad-note-art { left: 5%; bottom: 160px; transform: rotate(-17deg); }.iad-note-everyone { right: 4%; bottom: 90px; transform: rotate(-16deg); }
+.iad-footer { max-width: 1320px; padding: 14px 24px 20px; margin: auto; display: flex; justify-content: space-between; gap: 20px; font-size: 1rem; }
+.iad-footer a { text-decoration: underline; text-underline-offset: 4px; }
+.iad-skip-link { position: absolute; left: 16px; top: 8px; z-index: 5; padding: 10px 18px; background: white; transform: translateY(-160%); }.iad-skip-link:focus { transform: translateY(0); }
+.iad-dialog { width: min(520px, calc(100% - 32px)); max-height: 85svh; background: var(--iad-paper); color: var(--iad-ink); padding: 38px; border: 4px solid var(--iad-ink); border-radius: 28px; box-shadow: 5px 6px var(--iad-ink); font-family: 'IA Patrick', sans-serif; }
+.iad-dialog::backdrop { background: #172a2d85; }
+.iad-dialog h2 { font: 2.2rem/1.1 'IA Lilita', sans-serif; margin: 8px 0 20px; }
+.iad-dialog p { margin-bottom: 15px; }.iad-dialog-kicker { color: #a63421; }
+.iad-dialog-close { position: absolute; top: 6px; right: 12px; border: 0; background: transparent; width: 44px; height: 44px; font-size: 2rem; }
+.iad-secondary { border: 2px solid var(--iad-ink); border-radius: 24px; padding: 9px 28px; background: var(--iad-yellow); font-size: 1.3rem; }
+@media (min-width: 1400px) { .iad-home { padding-top: 34px; }.iad-art-stage { margin-top: 28px; margin-bottom: 34px; }.iad-class-card { width: 280px; }.iad-primary { min-height: 100px; } }
+@media (max-width: 1100px) { .iad-note { display: none; }.iad-header { width: calc(100% - 48px); gap: 30px; }.iad-header nav { gap: 28px; }.iad-heading h1::before,.iad-heading h1::after { display: none; }.iad-rules { max-width: 880px; }.iad-rules li { font-size: 1.25rem; gap: 10px; }.iad-class-card { width: 24vw; } }
+@media (max-width: 640px) {
+  .iad-header { width: calc(100% - 32px); min-height: 110px; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 13px 0 10px; }
+  .iad-logo { font-size: 2.2rem; letter-spacing: -1px; }.iad-logo svg { width: 28px; height: 35px; }.iad-heart svg { width: 30px; height: 30px; }
+  .iad-header nav { order: 3; margin: 0; width: 100%; justify-content: center; gap: 32px; font-size: 1.125rem; }.iad-header nav :where(a,button) { min-height: 40px; padding: 5px 0; }
+  .iad-home { padding: 25px 16px 16px; }.iad-heading h1 { font-size: clamp(2.5rem, 10vw, 4rem); line-height: 1.02; max-width: 11em; margin: auto; letter-spacing: -.7px; }.iad-heading p { font-size: 1.35rem; letter-spacing: .3px; margin-top: 10px; }
+  .iad-art-stage { margin: 25px 0 26px; }.iad-class-cards { gap: 10px; }.iad-class-card { width: calc((100% - 20px) / 3); border-width: 3px; padding: 6px 4px 12px; box-shadow: 1px 4px var(--iad-ink); }.iad-class-card span { font-size: 1.65rem; }.iad-doodle { min-height: 80px; }
+  .iad-cta-wrap { width: calc(100% - 38px); }.iad-primary { min-height: 72px; border-width: 3px; font-size: 2rem; }.iad-cta-wrap::before,.iad-cta-wrap::after { width: 12px; height: 4px; box-shadow: 0 -19px var(--iad-ink), 0 19px var(--iad-ink); }.iad-cta-wrap::before { left: -22px; }.iad-cta-wrap::after { right: -22px; }
+  .iad-score-pill { font-size: 1.35rem; padding: 8px 24px; margin-top: 18px !important; }.iad-availability { font-size: .875rem; max-width: 285px; margin: 14px auto 0 !important; }
+  .iad-rules { margin-top: 24px; }.iad-rules ol { flex-direction: column; gap: 9px; max-width: 320px; margin: auto; }.iad-rules li { font-size: 1.3rem; padding: 6px 12px; gap: 20px; }.iad-step-number { width: 40px; height: 40px; font-size: 1.8rem; }.iad-rules > p { font-size: 1rem; max-width: 310px; margin: 15px auto 0; }
+  .iad-footer { padding: 12px 16px 20px; justify-content: center; }.iad-footer > span { display: none; }.iad-dialog { padding: 34px 24px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .iadivinha *, .iadivinha *::before, .iadivinha *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* Game surfaces share the paper and ink of the initial screen. */
+.iadivinha button:disabled { cursor: not-allowed; opacity: .52; transform: none; }
+.iadivinha .iad-game { max-width: 1380px; padding: 18px 24px 40px; margin: auto; text-align: center; outline: none; }
+.iad-demo-badge { font: 600 .8rem/1.4 'Segoe UI', sans-serif; letter-spacing: .08em; margin-bottom: 18px !important; }
+.iad-game-title { font: 400 clamp(2.3rem, 5.4vw, 5.4rem)/1.06 'IA Lilita', sans-serif; max-width: none; margin: 16px 0 20px !important; letter-spacing: -.02em; }
+.iad-game-title::after { content: none; }
+.iad-game-cta { width: min(470px, 100%); margin: 28px auto 20px; min-height: 78px; font-size: clamp(1.6rem, 2.8vw, 2.5rem); }
+.iad-small-print { font: .9rem/1.5 'Segoe UI', sans-serif; margin: 14px auto !important; max-width: 600px !important; }
+.iad-round-label { display: inline-block; padding: 9px 30px; border: 3px solid var(--iad-ink); background: var(--iad-yellow); border-radius: 32px; font-size: 1.4rem; }
+.iad-round-label span { white-space: nowrap; }
+.iad-preparation { padding-top: 22px; }
+.iad-preparation > p:not(.iad-small-print) { font-size: 1.6rem; }
+.iad-preparation-doodle { width: 230px; height: 215px; border: 4px solid var(--iad-ink); border-radius: 30px; margin: 28px auto; padding: 12px; box-shadow: 3px 5px var(--iad-ink); }
+.iad-preparation-doodle svg { height: 100%; }
+.iad-game-stats { display: flex; align-items: center; justify-content: center; gap: 48px; }
+.iad-game-stats > span:not(.iad-sr-only) { background: var(--iad-yellow); border: 4px solid var(--iad-ink); border-radius: 40px; padding: 12px 26px; font: 1.65rem 'IA Lilita', sans-serif; min-width: 190px; box-shadow: 1px 3px var(--iad-ink); }
+.iad-game-stats > span:last-child { background: var(--iad-teal); }
+.iad-game-stats > .iad-timer { display: grid; place-items: center; border-radius: 50% !important; width: 94px; height: 94px; min-width: 0 !important; padding: 0 !important; background: var(--iad-coral) !important; font-size: 2.8rem !important; }
+.iad-timer-urgent { outline: 3px dashed var(--iad-coral); outline-offset: 5px; }
+.iad-canvas-stage { position: relative; display: flex; justify-content: center; }
+.iad-preview-notice { padding: 12px; background: #ffd15c; text-align: center; font: 600 .9rem/1.4 'Segoe UI', sans-serif; }
+.iad-music-status { text-align: center; font: .9rem/1.4 'Segoe UI', sans-serif; padding: 8px 16px; }
+.iad-matrix-scroll { overflow-x: auto; max-width: 100%; }
+.iad-matrix-scroll table { min-width: 720px; }
+@media (max-width: 640px) { .iad-header nav { gap: 18px; flex-wrap: wrap; } }
+.iad-rare-badge { display: inline-block; background: #ffd15c; color: #172a2d; border: 2px solid #172a2d; border-radius: 9px; padding: 3px 12px; font: 1rem 'IA Lilita', sans-serif; }
+.iad-final-cards li.iad-final-rare { border-color: #a67100; box-shadow: 0 0 0 4px #ffd15c; }
+.iad-mystery { font: 8rem 'IA Lilita', sans-serif; }
+.iad-rare-reveal { min-height: 600px; display: grid; place-items: center; background: #172a2d18; padding: 24px; border-radius: 24px; animation: iad-rare-overlay 2.4s both; }
+.iad-rare-card { position: relative; width: min(560px, 100%); padding: 24px; border: 4px solid #172a2d; border-radius: 25px; background: #fff9e9; box-shadow: 7px 8px #172a2d; animation: iad-rare-pop 2.4s both; }
+.iad-rare-stamp { display: inline-block; padding: 12px 24px; background: #ffd15c; border: 3px solid #172a2d; border-radius: 15px; font: clamp(1.6rem, 5vw, 2.8rem) 'IA Lilita', sans-serif; transform: rotate(-4deg); }
+.iad-rare-card h1 { font: clamp(1.3rem, 4vw, 2rem) 'IA Lilita', sans-serif; margin: 22px 0 6px; }
+.iad-rare-card .iad-doodle { display: block; width: 180px; height: 150px; margin: auto; }
+.iad-rare-card strong { font-size: 1.6rem; }.iad-rare-card p { margin: 12px 0; }
+.iad-rare-prompt { font-family: 'IA Lilita', sans-serif; animation: iad-rare-prompt 2.4s both; }
+.iad-rare-confetti { display: block; color: #696dc5; font-size: 2rem; letter-spacing: 12px; text-shadow: 8px 3px #ff6547, -8px -3px #42b7a8; }
+@keyframes iad-rare-overlay { 0% { opacity: 0; } 13%, 80% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes iad-rare-pop { 0%, 12% { opacity: 0; transform: scale(.75) rotate(-5deg); } 38% { opacity: 1; transform: scale(1.02) rotate(1deg); } 50%, 80% { transform: scale(1); opacity: 1; } 100% { opacity: 0; transform: translateY(-8px); } }
+@keyframes iad-rare-prompt { 0%, 70% { opacity: 0; } 78%, 100% { opacity: 1; } }
+@media (max-width: 640px) { .iad-rare-reveal { min-height: 520px; padding: 12px; }.iad-rare-card { padding: 16px 10px; }.iad-probabilities li { grid-template-columns: 32px minmax(72px, 1fr) minmax(36px, 1fr) 38px; }.iad-probabilities li > span { overflow-wrap: anywhere; } }
+.iad-canvas-wrap { position: relative; width: min(480px, 100%); }
+.iad-canvas-wrap .iad-drawing-canvas { width: 100%; }
+.iad-keyboard-cursor { position: absolute; width: 14px; height: 14px; border: 2px solid #172a2d; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+.iad-performance { font: 1rem/1.5 'Segoe UI', sans-serif; }
+.iad-performance table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: .9rem; }
+.iad-performance caption { text-align: left; font-weight: 600; margin-bottom: 8px; }
+.iad-performance th, .iad-performance td { border: 1px solid #667576; padding: 8px 4px; text-align: center; }
+.iad-performance a { text-decoration: underline; }
+.iadivinha :where(button, a, input, canvas):focus-visible { outline: 3px solid #172a2d; outline-offset: 4px; }
+.iad-drawing-canvas { width: min(480px, 100%); height: auto; aspect-ratio: 1; display: block; background: white; border: 5px solid var(--iad-ink); border-radius: 25px; touch-action: none; cursor: crosshair; box-shadow: 2px 3px var(--iad-ink); }
+.iad-drawing-note { position: absolute; left: calc(50% - 465px); top: 35%; transform: rotate(-12deg); font-size: 1.8rem; }
+.iad-drawing-note-right { left: auto; right: calc(50% - 505px); background: var(--iad-yellow); padding: 6px 18px; border-radius: 20px; }
+.iad-canvas-hint { margin: 15px auto !important; font-size: 1rem; }
+.iad-canvas-actions { display: flex; align-items: center; justify-content: center; gap: 12px; max-width: 930px; margin: auto; }
+.iad-tool { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 60px; border: 2px solid var(--iad-ink); border-radius: 20px; padding: 10px 22px; background: #fffdf9; font-size: 1.35rem; }
+.iad-tool:hover:not(:disabled) { background: #fff3cb; }
+.iad-tool svg { width: 26px; height: 26px; }
+.iad-finish { background: var(--iad-teal); width: 280px; min-height: 75px; font-size: 2.3rem; margin-left: 10px; }
+.iad-brush { display: flex; align-items: center; gap: 15px; justify-content: center; margin-top: 20px; }
+.iad-brush input { width: 190px; accent-color: var(--iad-ink); }
+.iad-result .iad-game-title,.iad-final .iad-game-title { font-size: clamp(3rem, 7vw, 6.4rem); }
+.iad-result-subtitle { font-size: clamp(1.5rem, 3.1vw, 2.8rem); }
+.iad-result-subtitle strong { color: #087c7e; }
+.iad-result-grid { display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 520px); justify-content: center; align-items: center; gap: 38px; margin: 30px auto; }
+.iad-result-image { aspect-ratio: 1; background: white; border: 5px solid var(--iad-ink); border-radius: 25px; overflow: hidden; display: grid; place-items: center; }
+.iad-result-image img { width: 100%; height: 100%; object-fit: contain; }
+.iad-result-image > p { padding: 20px; font-size: 1.6rem; }
+.iad-confidence { border: 4px solid var(--iad-ink); border-radius: 35px; padding: 12px; background: var(--iad-yellow); font-size: clamp(1.3rem, 2.2vw, 2rem); margin-bottom: 18px !important; }
+.iad-probabilities { list-style: none; padding: 0; display: grid; gap: 12px; }
+.iad-probabilities li { display: grid; grid-template-columns: 48px 70px 1fr 48px; align-items: center; gap: 10px; border: 2px solid var(--iad-ink); border-radius: 17px; background: white; padding: 8px 12px; text-align: left; font-size: 1.3rem; }
+.iad-probabilities svg { height: 48px; }
+.iad-probability-track { height: 26px; background: #e2e7e7; border-radius: 20px; overflow: hidden; }
+.iad-probability-fill { display: block; height: 100%; border-radius: inherit; }
+.iad-probability-cat { background: var(--iad-purple); }.iad-probability-duck { background: var(--iad-teal); }.iad-probability-shoe { background: var(--iad-coral); }
+.iad-points { display: inline-block; margin: 16px auto 0; color: #b63b25; border: 5px solid var(--iad-coral); border-radius: 22px; padding: 5px 22px; transform: rotate(-6deg); font: 3.7rem 'IA Lilita', sans-serif; }
+.iad-final-score { display: table; margin: 0 auto 20px !important; padding: 8px 36px; border: 4px solid var(--iad-ink); border-radius: 48px; background: var(--iad-yellow); font: clamp(2rem, 4vw, 3.8rem) 'IA Lilita', sans-serif; }
+.iad-final-cards { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; margin: 30px 0 !important; }
+.iad-final-cards li { border: 3px solid var(--iad-ink); border-radius: 18px; background: white; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 1.3rem; }
+.iad-final-cards img,.iad-empty-thumbnail { width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 12px; }
+.iad-empty-thumbnail { display: grid; place-items: center; font-size: 1rem; background: #f6f6f2; }
+.iad-final-cards strong { color: #087c7e; }
+.iad-outcome { width: 44px; height: 44px; display: grid; place-items: center; border: 3px solid var(--iad-ink); border-radius: 50%; background: var(--iad-coral); margin-top: 8px; }
+.iad-outcome-correct { background: var(--iad-teal); }
+.iad-outcome svg { width: 30px; height: 30px; stroke-width: 3; }
+.iad-final-actions { display: flex; align-items: center; justify-content: center; gap: 28px; margin-bottom: 25px; }
+.iad-final-actions .iad-game-cta { margin: 0; width: min(440px, 55%); }
+.iad-processing { min-height: 450px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.iad-processing-dots { font-size: 3.5rem; color: #087c7e; letter-spacing: 12px; }
+.iad-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 1050px) { .iad-drawing-note { display: none; }.iad-result-grid { gap: 24px; }.iad-final-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 740px; margin-left: auto !important; margin-right: auto !important; }.iad-final-cards img { max-height: 160px; } }
+@media (max-width: 640px) {
+  .iadivinha .iad-game { padding: 14px 16px 26px; }.iad-demo-badge { font-size: .7rem; letter-spacing: .04em; margin-bottom: 15px !important; }
+  .iad-game-stats { gap: 14px; }.iad-game-stats > span:not(.iad-sr-only) { padding: 10px 13px; min-width: 90px; font-size: 1rem; border-width: 3px; }.iad-game-stats > .iad-timer { width: 64px; height: 64px; font-size: 2rem !important; }
+  .iad-game-title { margin: 18px 0 !important; font-size: 2rem; }.iad-drawing-canvas { border-width: 3px; border-radius: 20px; width: min(360px, 100%); }
+  .iad-canvas-actions { flex-wrap: wrap; gap: 8px; }.iad-tool { flex: 1; min-height: 50px; gap: 5px; padding: 8px; font-size: 1rem; border-radius: 14px; }.iad-tool svg { width: 20px; height: 20px; }
+  .iad-finish { flex-basis: 100%; min-height: 64px; margin: 7px 0 0; font-size: 2rem; }.iad-canvas-hint { font-size: .875rem; }.iad-brush { font-size: 1rem; }.iad-brush input { width: 140px; }
+  .iad-preparation { padding-top: 10px; }.iad-preparation-doodle { width: 180px; height: 170px; margin: 24px auto; }.iad-round-label { font-size: 1.2rem !important; }.iad-preparation > p:not(.iad-small-print) { font-size: 1.3rem; }
+  .iad-result-grid { grid-template-columns: 1fr; gap: 20px; margin: 20px auto; }.iad-result-image { width: min(280px, 100%); margin: auto; border-width: 3px; }.iad-confidence { font-size: 1.3rem; padding: 8px; border-width: 3px; }.iad-probabilities li { grid-template-columns: 36px 52px 1fr 40px; gap: 7px; padding: 5px 8px; font-size: 1.1rem; }.iad-probabilities svg { height: 36px; }.iad-probability-track { height: 20px; }.iad-points { font-size: 2.6rem; }
+  .iad-game-cta { min-height: 65px; font-size: 1.7rem; }.iad-final-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }.iad-final-cards li { font-size: 1.1rem; }.iad-final-actions { flex-direction: column; gap: 14px; }.iad-final-actions .iad-game-cta,.iad-final-actions .iad-tool { width: 100%; }.iad-small-print { font-size: .85rem; }
+}
+/* Turma do ÃO: each figure keeps the palette from its collectible card. */
+.iad-special-gallery { max-width: 1180px; margin: 44px auto 20px; padding: 26px 16px; text-align: center; }
+.iad-home:has(.iad-special-gallery) > .iad-note { display: none; }
+.iad-special-gallery h2 { font: clamp(2rem, 5vw, 4rem) 'IA Lilita', sans-serif; margin: 0 0 8px; }
+.iad-special-gallery > p { margin: 0 0 25px; }
+.iad-special-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 15px; }
+.iad-special-cards .iad-special-card { width: 100%; min-width: 0; aspect-ratio: .92; padding: 10px 6px 18px; background: linear-gradient(135deg, #ffffff18, transparent 55%), var(--iad-card-color); border-radius: 17%; border-width: 5px; }
+.iad-special-card .iad-doodle { width: 100%; height: auto; min-height: 0; }
+.iad-special-cards .iad-special-card span { font: clamp(1.5rem, 3vw, 2.6rem) 'IA Lilita', sans-serif; }
+.iad-rare-card { background: linear-gradient(135deg, #ffffff24, transparent 55%), var(--iad-card-color, #fff9e9); box-shadow: 7px 8px #172a2d, inset 4px 4px #ffffff66; }
+.iad-rare-card .iad-doodle { width: 240px; max-width: 90%; height: 190px; }
+.iad-rare-card strong { font: 2.5rem 'IA Lilita', sans-serif; }
+@media (max-width: 760px) { .iad-special-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }.iad-special-gallery { margin-top: 22px; padding: 20px 6px; } }
+@media (max-width: 430px) { .iad-special-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }.iad-special-cards .iad-special-card { border-width: 3px; } }

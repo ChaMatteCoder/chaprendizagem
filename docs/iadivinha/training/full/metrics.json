@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "smoke": false,
+  "classes": [
+    {
+      "index": 0,
+      "id": "cat",
+      "label": "Gato"
+    },
+    {
+      "index": 1,
+      "id": "duck",
+      "label": "Pato"
+    },
+    {
+      "index": 2,
+      "id": "shoe",
+      "label": "Sapato"
+    }
+  ],
+  "preprocessing": {
+    "version": "quickdraw-bitmap-v1",
+    "shape": [
+      28,
+      28,
+      1
+    ],
+    "dtype": "float32",
+    "range": [
+      0,
+      1
+    ],
+    "background": 0,
+    "ink": 1,
+    "normalization": "Official uint8 bitmap / 255; channels_last; no further crop or inversion",
+    "geometry": "Official Quick Draw bitmap, centered on drawing bounding box"
+  },
+  "dataset": {
+    "seed": 42,
+    "per_class": 10000,
+    "sources": {
+      "cat": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/cat.npy",
+        "sha256": "21a281839d3f2eef601d57d2338a4eafdf24649f8d0a0e42d3ec3e595911463e",
+        "bytes": 96590448,
+        "rows": 123202,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-09T23:17:38.914196+00:00"
+      },
+      "duck": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/duck.npy",
+        "sha256": "67f9dd5f83ac76ac6696ddccf5f1f3f7ba02e3be2a32b403c78ec1cac217921e",
+        "bytes": 106216400,
+        "rows": 135480,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-09T23:17:43.857181+00:00"
+      },
+      "shoe": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/shoe.npy",
+        "sha256": "bdd13192cd5139efaacf6932761e747d29864acf688be5ae2fcad89a07a7ef3d",
+        "bytes": 94261184,
+        "rows": 120231,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-09T23:17:48.284661+00:00"
+      }
+    },
+    "split_counts": {
+      "train": [
+        8000,
+        8000,
+        8000
+      ],
+      "val": [
+        1000,
+        1000,
+        1000
+      ],
+      "test": [
+        1000,
+        1000,
+        1000
+      ]
+    },
+    "deduplication": "Exact bitmap SHA256 globally across selected classes and splits; blanks excluded",
+    "npz_sha256": "7527ebc662514b9658db1431b1c7cffd340f70c6f93cb85a5e3912d357391289",
+    "sampling_exclusions": {
+      "cat": {
+        "blank": 0,
+        "duplicate": 0
+      },
+      "duck": {
+        "blank": 0,
+        "duplicate": 0
+      },
+      "shoe": {
+        "blank": 0,
+        "duplicate": 0
+      }
+    }
+  },
+  "training": {
+    "seed": 42,
+    "dataset_sha256": "7527ebc662514b9658db1431b1c7cffd340f70c6f93cb85a5e3912d357391289",
+    "epochs_max": 15,
+    "batch_size": 128,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "early_stopping": {
+      "monitor": "val_loss",
+      "patience": 3,
+      "restore_best_weights": true
+    },
+    "source_sha256": {
+      "common.py": "e1403175c624b245022f16126c2f98ae7ea6ecc90256c9e393c1820b067604d4",
+      "download_quickdraw.py": "3049861bdb263298a0601a2451ec51c69a1b1b5f7561eb6c3ca2dd506b208df5",
+      "evaluate_models.py": "4ea1f13d06500657fdf44b0cf9dfe902700543df121bdf8b887b99a8da865882",
+      "export_tfjs.py": "6b2cbdebb154995b4cda3b308a6eb5b5755f5acadbdc33b84693671486a8793c",
+      "prepare_dataset.py": "1b3063a412fa8bc972772fd53788f46c0ce5d65ac4a5ed6be8b9d2c40095dec8",
+      "run_pipeline.py": "38ecfaa6ba1d0cf616ae6f896d3d09b79e10476173b2716505939e4670ca2912",
+      "test_pipeline.py": "a07cc30d3a666f777683b7a41745e3ee2f5a47dffd5b32d1111c3794b98e3c93",
+      "train_models.py": "52cad1c3c81b86f6bee0ce09d88af5a77809eb998805eb15e5dadb66c7ddf2f9"
+    },
+    "environment": {
+      "python": "3.12.14",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "tensorflow": "2.19.0",
+      "numpy": "1.26.4",
+      "devices": [
+        "/physical_device:CPU:0"
+      ],
+      "deterministic_ops": true,
+      "onednn": false,
+      "intra_threads": 4,
+      "inter_threads": 2
+    }
+  },
+  "models": {
+    "mlp": {
+      "history": {
+        "loss": [
+          0.4125628173351288,
+          0.2713334560394287,
+          0.2212369441986084,
+          0.18507584929466248,
+          0.15682467818260193,
+          0.13533717393875122,
+          0.11052177846431732
+        ],
+        "accuracy": [
+          0.8449583053588867,
+          0.9034166932106018,
+          0.9223750233650208,
+          0.9356666803359985,
+          0.9444166421890259,
+          0.953374981880188,
+          0.9632499814033508
+        ],
+        "val_loss": [
+          0.3338792622089386,
+          0.29099658131599426,
+          0.28215381503105164,
+          0.2648947834968567,
+          0.2820187509059906,
+          0.2758195996284485,
+          0.2978893518447876
+        ],
+        "val_accuracy": [
+          0.8799999952316284,
+          0.8956666588783264,
+          0.8986666798591614,
+          0.906333327293396,
+          0.9056666493415833,
+          0.9073333144187927,
+          0.9026666879653931
+        ]
+      },
+      "parameters": 108931,
+      "epochs_completed": 7,
+      "best_epoch": 4,
+      "training_seconds": 7.763942799999768,
+      "h5_bytes": 452968,
+      "h5_sha256": "03d1d3e76673f96cd37d6edc089cf8298e5688597c4ea8e8b7f61a11a5c2ea99",
+      "validation": {
+        "accuracy": 0.9063333333333333,
+        "loss": 0.2648947871825078,
+        "macro_f1": 0.9065161005256405,
+        "classification_report": {
+          "cat": {
+            "precision": 0.8689788053949904,
+            "recall": 0.902,
+            "f1-score": 0.8851815505397449,
+            "support": 1000.0
+          },
+          "duck": {
+            "precision": 0.8968335035750766,
+            "recall": 0.878,
+            "f1-score": 0.8873168266801414,
+            "support": 1000.0
+          },
+          "shoe": {
+            "precision": 0.9552390640895219,
+            "recall": 0.939,
+            "f1-score": 0.9470499243570348,
+            "support": 1000.0
+          },
+          "accuracy": 0.9063333333333333,
+          "macro avg": {
+            "precision": 0.9070171243531963,
+            "recall": 0.9063333333333333,
+            "f1-score": 0.9065161005256405,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.9070171243531964,
+            "recall": 0.9063333333333333,
+            "f1-score": 0.9065161005256405,
+            "support": 3000.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            902,
+            75,
+            23
+          ],
+          [
+            101,
+            878,
+            21
+          ],
+          [
+            35,
+            26,
+            939
+          ]
+        ],
+        "samples": 3000
+      },
+      "test": {
+        "accuracy": 0.9176666666666666,
+        "loss": 0.2230407441026152,
+        "macro_f1": 0.9178362602578415,
+        "classification_report": {
+          "cat": {
+            "precision": 0.8902912621359224,
+            "recall": 0.917,
+            "f1-score": 0.903448275862069,
+            "support": 1000.0
+          },
+          "duck": {
+            "precision": 0.9022177419354839,
+            "recall": 0.895,
+            "f1-score": 0.8985943775100401,
+            "support": 1000.0
+          },
+          "shoe": {
+            "precision": 0.9621676891615542,
+            "recall": 0.941,
+            "f1-score": 0.9514661274014156,
+            "support": 1000.0
+          },
+          "accuracy": 0.9176666666666666,
+          "macro avg": {
+            "precision": 0.9182255644109868,
+            "recall": 0.9176666666666667,
+            "f1-score": 0.9178362602578415,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.9182255644109867,
+            "recall": 0.9176666666666666,
+            "f1-score": 0.9178362602578415,
+            "support": 3000.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            917,
+            65,
+            18
+          ],
+          [
+            86,
+            895,
+            19
+          ],
+          [
+            27,
+            32,
+            941
+          ]
+        ],
+        "samples": 3000
+      },
+      "tfjs_bytes": 441780,
+      "tfjs_sha256": {
+        "model.json": "066c29494e014cd228462974817be607527005ff05ee57708373b4ee1a0f266c",
+        "weights.bin": "fcc78f23aba0e4c636daea67fd06a2ea364f406c4c8caccb8cc9f19161ca13ee"
+      }
+    },
+    "cnn": {
+      "history": {
+        "loss": [
+          0.39961621165275574,
+          0.23773878812789917,
+          0.18733380734920502,
+          0.15736813843250275,
+          0.13899847865104675,
+          0.12498938292264938,
+          0.11219506710767746,
+          0.10140416771173477,
+          0.09092359244823456,
+          0.08222673833370209,
+          0.07456692308187485,
+          0.06407036632299423
+        ],
+        "accuracy": [
+          0.8492500185966492,
+          0.9141666889190674,
+          0.9327916502952576,
+          0.9442916512489319,
+          0.9502916932106018,
+          0.9545833468437195,
+          0.9584583044052124,
+          0.9626250267028809,
+          0.9668333530426025,
+          0.9697083234786987,
+          0.9725833535194397,
+          0.9771666526794434
+        ],
+        "val_loss": [
+          0.2737399637699127,
+          0.2089419811964035,
+          0.1842900663614273,
+          0.16107487678527832,
+          0.1600862443447113,
+          0.15976613759994507,
+          0.14191347360610962,
+          0.14152377843856812,
+          0.13571913540363312,
+          0.1416749358177185,
+          0.1552543193101883,
+          0.14851054549217224
+        ],
+        "val_accuracy": [
+          0.8986666798591614,
+          0.9243333339691162,
+          0.9353333115577698,
+          0.9356666803359985,
+          0.940666675567627,
+          0.940666675567627,
+          0.9490000009536743,
+          0.9520000219345093,
+          0.949999988079071,
+          0.9536666870117188,
+          0.9466666579246521,
+          0.9520000219345093
+        ]
+      },
+      "parameters": 121475,
+      "epochs_completed": 12,
+      "best_epoch": 9,
+      "training_seconds": 147.13837090000015,
+      "h5_bytes": 509800,
+      "h5_sha256": "2f37b5e0cadd4c1db0a002b568b53a670664472a66aa18beae4ec5ccc7fbfa72",
+      "validation": {
+        "accuracy": 0.95,
+        "loss": 0.13571912801727248,
+        "macro_f1": 0.9500153095461248,
+        "classification_report": {
+          "cat": {
+            "precision": 0.9298245614035088,
+            "recall": 0.954,
+            "f1-score": 0.9417571569595261,
+            "support": 1000.0
+          },
+          "duck": {
+            "precision": 0.9519427402862985,
+            "recall": 0.931,
+            "f1-score": 0.9413549039433772,
+            "support": 1000.0
+          },
+          "shoe": {
+            "precision": 0.9688755020080321,
+            "recall": 0.965,
+            "f1-score": 0.966933867735471,
+            "support": 1000.0
+          },
+          "accuracy": 0.95,
+          "macro avg": {
+            "precision": 0.9502142678992799,
+            "recall": 0.9500000000000001,
+            "f1-score": 0.9500153095461248,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.9502142678992799,
+            "recall": 0.95,
+            "f1-score": 0.9500153095461248,
+            "support": 3000.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            954,
+            33,
+            13
+          ],
+          [
+            51,
+            931,
+            18
+          ],
+          [
+            21,
+            14,
+            965
+          ]
+        ],
+        "samples": 3000
+      },
+      "test": {
+        "accuracy": 0.9523333333333334,
+        "loss": 0.13404146514520096,
+        "macro_f1": 0.9523082336705043,
+        "classification_report": {
+          "cat": {
+            "precision": 0.9354207436399217,
+            "recall": 0.956,
+            "f1-score": 0.9455984174085065,
+            "support": 1000.0
+          },
+          "duck": {
+            "precision": 0.9558521560574949,
+            "recall": 0.931,
+            "f1-score": 0.9432624113475178,
+            "support": 1000.0
+          },
+          "shoe": {
+            "precision": 0.9661354581673307,
+            "recall": 0.97,
+            "f1-score": 0.9680638722554891,
+            "support": 1000.0
+          },
+          "accuracy": 0.9523333333333334,
+          "macro avg": {
+            "precision": 0.9524694526215823,
+            "recall": 0.9523333333333334,
+            "f1-score": 0.9523082336705043,
+            "support": 3000.0
+          },
+          "weighted avg": {
+            "precision": 0.9524694526215824,
+            "recall": 0.9523333333333334,
+            "f1-score": 0.9523082336705044,
+            "support": 3000.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            956,
+            28,
+            16
+          ],
+          [
+            51,
+            931,
+            18
+          ],
+          [
+            15,
+            15,
+            970
+          ]
+        ],
+        "samples": 3000
+      },
+      "tfjs_bytes": 496354,
+      "tfjs_sha256": {
+        "model.json": "3bc970caf552a9fd557b12626e51d08935fae7d5de23500c73fe880f695d8cc3",
+        "weights.bin": "c4256933ce8fdb072b024069bc944367ce78fd494b5e9ebf6b5a98ae90cbf01c"
+      }
+    }
+  },
+  "selection": {
+    "model": "cnn",
+    "criterion": "validation macro-F1; ties: validation accuracy, then fewer parameters",
+    "test_used_for_selection": false
+  },
+  "browser_inference_ms": null,
+  "limitations": [
+    "Single seed; Quick Draw test is not a test of game canvas drawings",
+    "Exact duplicates removed; similar drawings and author overlap cannot be excluded with bitmap-only data",
+    "Browser latency and canvas preprocessing will be validated in Stage 4"
+  ],
+  "export_validation": {
+    "runtime": "Node v24.19.0",
+    "tensorflowjs": "4.22.0",
+    "backend": "cpu",
+    "browser_test": false,
+    "models": {
+      "mlp": {
+        "samples": 32,
+        "repeats": 3,
+        "max_absolute_error": 1.1920928955078125e-07,
+        "tolerance": 0.0001,
+        "argmax_identical": true,
+        "tensor_leak": false
+      },
+      "cnn": {
+        "samples": 32,
+        "repeats": 3,
+        "max_absolute_error": 1.1920928955078125e-07,
+        "tolerance": 0.0001,
+        "argmax_identical": true,
+        "tensor_leak": false
+      }
+    }
+  }
+}

@@ -25,6 +25,7 @@ import adalineRegressionCover from '../assets/Regressão-Linear-com-Adaline.png'
 import handwritingRecognitionCover from '../assets/Reconhecimento-Manuscrito-com-MLP.png';
 import irisClassificationCover from '../assets/Iris-Classification.png';
 import kmeansCover from '../assets/k-means.png';
+import iadivinhaCover from '../assets/iadivinha-cover.png';
 import ProjectCard from '../components/ProjectCard.jsx';
 import StudyStepCard from '../components/StudyStepCard.jsx';
 
@@ -184,6 +185,24 @@ export default function HomePage() {
           {projects.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
+        </div>
+      </section>
+
+      <section className="section reveal-up" id="jogos" aria-labelledby="games-title">
+        <div className="section-heading">
+          <p className="eyebrow">Jogos</p>
+          <h2 id="games-title">Aprenda brincando com a IA.</h2>
+          <p>Solte o traço, encare o relógio e descubra o que a inteligência artificial vê.</p>
+        </div>
+        <div className="games-grid stagger">
+          <ProjectCard
+            kind="game"
+            title="IAdivinha! — Gato, pato ou sapato?"
+            status="Jogue agora"
+            description="Seis rodadas, dez segundos por desenho e uma visita surpresa da Turma do ÃO. Rabisque e desafie os palpites da IA!"
+            cover={iadivinhaCover}
+            to="/iadivinha"
+          />
         </div>
       </section>
 

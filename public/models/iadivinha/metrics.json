@@ -1,0 +1,1060 @@
+{
+  "schema_version": 1,
+  "smoke": false,
+  "classes": [
+    {
+      "id": "cat",
+      "datasetLabel": "cat",
+      "label": "Gato",
+      "article": "UM",
+      "type": "core",
+      "outputIndex": 0,
+      "color": "#ffd15c",
+      "index": 0,
+      "prompt": "DESENHE UM GATO!"
+    },
+    {
+      "id": "duck",
+      "datasetLabel": "duck",
+      "label": "Pato",
+      "article": "UM",
+      "type": "core",
+      "outputIndex": 1,
+      "color": "#42b7a8",
+      "index": 1,
+      "prompt": "DESENHE UM PATO!"
+    },
+    {
+      "id": "shoe",
+      "datasetLabel": "shoe",
+      "label": "Sapato",
+      "article": "UM",
+      "type": "core",
+      "outputIndex": 2,
+      "color": "#ff6547",
+      "index": 2,
+      "prompt": "DESENHE UM SAPATO!"
+    },
+    {
+      "id": "bread",
+      "datasetLabel": "bread",
+      "label": "Pão",
+      "article": "UM",
+      "type": "special",
+      "outputIndex": 3,
+      "color": "#cd9146",
+      "index": 3,
+      "prompt": "DESENHE UM PÃO!"
+    },
+    {
+      "id": "hand",
+      "datasetLabel": "hand",
+      "label": "Mão",
+      "article": "UMA",
+      "type": "special",
+      "outputIndex": 4,
+      "color": "#a293e0",
+      "index": 4,
+      "prompt": "DESENHE UMA MÃO!"
+    },
+    {
+      "id": "hot-air-balloon",
+      "datasetLabel": "hot air balloon",
+      "label": "Balão",
+      "article": "UM",
+      "type": "special",
+      "outputIndex": 5,
+      "color": "#50b3e7",
+      "index": 5,
+      "prompt": "DESENHE UM BALÃO!"
+    },
+    {
+      "id": "airplane",
+      "datasetLabel": "airplane",
+      "label": "Avião",
+      "article": "UM",
+      "type": "special",
+      "outputIndex": 6,
+      "color": "#5cc69a",
+      "index": 6,
+      "prompt": "DESENHE UM AVIÃO!"
+    },
+    {
+      "id": "guitar",
+      "datasetLabel": "guitar",
+      "label": "Violão",
+      "article": "UM",
+      "type": "special",
+      "outputIndex": 7,
+      "color": "#d46a9b",
+      "index": 7,
+      "prompt": "DESENHE UM VIOLÃO!"
+    }
+  ],
+  "preprocessing": {
+    "version": "quickdraw-bitmap-v1",
+    "shape": [
+      28,
+      28,
+      1
+    ],
+    "dtype": "float32",
+    "range": [
+      0,
+      1
+    ],
+    "background": 0,
+    "ink": 1,
+    "normalization": "Official uint8 bitmap / 255; channels_last; no further crop or inversion",
+    "geometry": "Official Quick Draw bitmap, centered on drawing bounding box"
+  },
+  "dataset": {
+    "seed": 42,
+    "per_class": 10000,
+    "sources": {
+      "cat": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/cat.npy",
+        "sha256": "21a281839d3f2eef601d57d2338a4eafdf24649f8d0a0e42d3ec3e595911463e",
+        "bytes": 96590448,
+        "rows": 123202,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-09T23:17:38.914196+00:00"
+      },
+      "duck": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/duck.npy",
+        "sha256": "67f9dd5f83ac76ac6696ddccf5f1f3f7ba02e3be2a32b403c78ec1cac217921e",
+        "bytes": 106216400,
+        "rows": 135480,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-09T23:17:43.857181+00:00"
+      },
+      "shoe": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/shoe.npy",
+        "sha256": "bdd13192cd5139efaacf6932761e747d29864acf688be5ae2fcad89a07a7ef3d",
+        "bytes": 94261184,
+        "rows": 120231,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-09T23:17:48.284661+00:00"
+      },
+      "bread": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/bread.npy",
+        "sha256": "0557124d90ae854993970dbeaf3546c13506b8ced5db61303551c05ee5a5ceff",
+        "bytes": 94526960,
+        "rows": 120570,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-11T00:26:34.220291+00:00"
+      },
+      "hand": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/hand.npy",
+        "sha256": "d09dfb7721dccead99cf2842f1c80bfdf4f65fc334f83646c91ed708aaa8ec68",
+        "bytes": 228750112,
+        "rows": 291773,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-11T00:26:48.255602+00:00"
+      },
+      "hot-air-balloon": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/hot%20air%20balloon.npy",
+        "sha256": "b2755de2cbbd090b05f49087b6a488210bf69f5cfd142e6c763fcb5a310635c4",
+        "bytes": 99058480,
+        "rows": 126350,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-11T00:26:57.031964+00:00"
+      },
+      "airplane": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/airplane.npy",
+        "sha256": "88c5a8801901e6841ee249115a2a1f8b72e79c0eb7b0fb507044122ad3e78843",
+        "bytes": 118872512,
+        "rows": 151623,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-11T00:27:18.121982+00:00"
+      },
+      "guitar": {
+        "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/guitar.npy",
+        "sha256": "ee444b13b72376bba2d1ed47ee0fe04cff4b06fac31c45c12347860fed232a73",
+        "bytes": 94433664,
+        "rows": 120451,
+        "dtype": "uint8",
+        "downloaded_at": "2026-09-11T00:27:45.356784+00:00"
+      }
+    },
+    "split_counts": {
+      "train": [
+        8000,
+        8000,
+        8000,
+        8000,
+        8000,
+        8000,
+        8000,
+        8000
+      ],
+      "val": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "test": [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ]
+    },
+    "deduplication": "Exact bitmap SHA256 globally across selected classes and splits; blanks excluded",
+    "npz_sha256": "e70c1c267347747820f6ac1e2349a41789620fc13ebefdbd1e9a6325ce7e8ef1",
+    "sampling_exclusions": {
+      "cat": {
+        "blank": 0,
+        "duplicate": 0
+      },
+      "duck": {
+        "blank": 0,
+        "duplicate": 0
+      },
+      "shoe": {
+        "blank": 0,
+        "duplicate": 0
+      },
+      "bread": {
+        "blank": 0,
+        "duplicate": 0
+      },
+      "hand": {
+        "blank": 0,
+        "duplicate": 0
+      },
+      "hot-air-balloon": {
+        "blank": 0,
+        "duplicate": 0
+      },
+      "airplane": {
+        "blank": 0,
+        "duplicate": 0
+      },
+      "guitar": {
+        "blank": 0,
+        "duplicate": 0
+      }
+    }
+  },
+  "training": {
+    "seed": 42,
+    "dataset_sha256": "e70c1c267347747820f6ac1e2349a41789620fc13ebefdbd1e9a6325ce7e8ef1",
+    "epochs_max": 15,
+    "batch_size": 128,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "early_stopping": {
+      "monitor": "val_loss",
+      "patience": 3,
+      "restore_best_weights": true
+    },
+    "source_sha256": {
+      "common.py": "1895ff19417c75cf498382154340c6cc05138652a2d3048d810fdd865aa44561",
+      "download_quickdraw.py": "ad020dbf69dada322b037f6e039c3b8ed615abac130b3b35e73366601ba4667f",
+      "evaluate_models.py": "a21b11c1727c8a662f00072ae45a6730fdc17a5640746642ff14e11e662372dd",
+      "export_tfjs.py": "bc89a981d26c17e6cf9aa4fe3bbf5bc1716ec7379a8ed2c68cb574fe7f49740a",
+      "prepare_dataset.py": "2a1ffde3e10aeea04b08f26dc5ea14a96ce0b0da833b963791c159990e334f33",
+      "run_pipeline.py": "38ecfaa6ba1d0cf616ae6f896d3d09b79e10476173b2716505939e4670ca2912",
+      "test_pipeline.py": "04ccf90f90a0b096e5e8271d3319609e7ede3a38c4e53d87aea7fdbdea540fa5",
+      "train_models.py": "b2b888c8c675d95fe5a6ebe78c8c159b298e10033a14923c111f7bee2ffda569"
+    },
+    "environment": {
+      "python": "3.12.14",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "tensorflow": "2.19.0",
+      "numpy": "1.26.4",
+      "devices": [
+        "/physical_device:CPU:0"
+      ],
+      "deterministic_ops": true,
+      "onednn": false,
+      "intra_threads": 4,
+      "inter_threads": 2
+    }
+  },
+  "models": {
+    "mlp": {
+      "history": {
+        "loss": [
+          0.6667712926864624,
+          0.45492058992385864,
+          0.3897148370742798,
+          0.34534940123558044,
+          0.31320181488990784,
+          0.28371137380599976,
+          0.25997069478034973,
+          0.2358824461698532,
+          0.21708239614963531
+        ],
+        "accuracy": [
+          0.7912812232971191,
+          0.8620625138282776,
+          0.8815781474113464,
+          0.8946093916893005,
+          0.9036250114440918,
+          0.9123281240463257,
+          0.9205468893051147,
+          0.9264062643051147,
+          0.933343768119812
+        ],
+        "val_loss": [
+          0.5248183012008667,
+          0.4685512185096741,
+          0.44807085394859314,
+          0.4375321865081787,
+          0.42939823865890503,
+          0.4275970458984375,
+          0.43650275468826294,
+          0.44748151302337646,
+          0.4663126766681671
+        ],
+        "val_accuracy": [
+          0.843999981880188,
+          0.859624981880188,
+          0.8659999966621399,
+          0.8707500100135803,
+          0.8726249933242798,
+          0.8783749938011169,
+          0.8743749856948853,
+          0.8709999918937683,
+          0.8684999942779541
+        ]
+      },
+      "parameters": 109256,
+      "epochs_completed": 9,
+      "best_epoch": 6,
+      "training_seconds": 14.21037250000063,
+      "h5_bytes": 455016,
+      "h5_sha256": "991c9d5780a6b85b2bb6cb261f208e9f9dbfe9fac76df70638bd0fe812b7f486",
+      "validation": {
+        "accuracy": 0.878375,
+        "loss": 0.42749458786821387,
+        "macro_f1": 0.8783583694447669,
+        "classification_report": {
+          "cat": {
+            "precision": 0.8036053130929791,
+            "recall": 0.847,
+            "f1-score": 0.824732229795521,
+            "support": 1000.0
+          },
+          "duck": {
+            "precision": 0.8463157894736842,
+            "recall": 0.804,
+            "f1-score": 0.8246153846153846,
+            "support": 1000.0
+          },
+          "shoe": {
+            "precision": 0.898989898989899,
+            "recall": 0.89,
+            "f1-score": 0.8944723618090452,
+            "support": 1000.0
+          },
+          "bread": {
+            "precision": 0.8607467204843592,
+            "recall": 0.853,
+            "f1-score": 0.8568558513309894,
+            "support": 1000.0
+          },
+          "hand": {
+            "precision": 0.87857847976308,
+            "recall": 0.89,
+            "f1-score": 0.8842523596621957,
+            "support": 1000.0
+          },
+          "hot-air-balloon": {
+            "precision": 0.9440628066732091,
+            "recall": 0.962,
+            "f1-score": 0.9529470034670628,
+            "support": 1000.0
+          },
+          "airplane": {
+            "precision": 0.8594217347956131,
+            "recall": 0.862,
+            "f1-score": 0.8607089365951074,
+            "support": 1000.0
+          },
+          "guitar": {
+            "precision": 0.9377551020408164,
+            "recall": 0.919,
+            "f1-score": 0.9282828282828283,
+            "support": 1000.0
+          },
+          "accuracy": 0.878375,
+          "macro avg": {
+            "precision": 0.878684480664205,
+            "recall": 0.878375,
+            "f1-score": 0.8783583694447669,
+            "support": 8000.0
+          },
+          "weighted avg": {
+            "precision": 0.878684480664205,
+            "recall": 0.878375,
+            "f1-score": 0.8783583694447669,
+            "support": 8000.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            847,
+            52,
+            15,
+            13,
+            23,
+            5,
+            39,
+            6
+          ],
+          [
+            62,
+            804,
+            14,
+            19,
+            26,
+            18,
+            45,
+            12
+          ],
+          [
+            19,
+            12,
+            890,
+            49,
+            11,
+            3,
+            8,
+            8
+          ],
+          [
+            32,
+            9,
+            41,
+            853,
+            27,
+            18,
+            13,
+            7
+          ],
+          [
+            31,
+            17,
+            7,
+            19,
+            890,
+            8,
+            18,
+            10
+          ],
+          [
+            4,
+            8,
+            4,
+            6,
+            7,
+            962,
+            2,
+            7
+          ],
+          [
+            41,
+            30,
+            11,
+            21,
+            22,
+            2,
+            862,
+            11
+          ],
+          [
+            18,
+            18,
+            8,
+            11,
+            7,
+            3,
+            16,
+            919
+          ]
+        ],
+        "samples": 8000
+      },
+      "test": {
+        "accuracy": 0.881625,
+        "loss": 0.3952958660978733,
+        "macro_f1": 0.8816987977767267,
+        "classification_report": {
+          "cat": {
+            "precision": 0.8265107212475633,
+            "recall": 0.848,
+            "f1-score": 0.8371174728529122,
+            "support": 1000.0
+          },
+          "duck": {
+            "precision": 0.8480492813141683,
+            "recall": 0.826,
+            "f1-score": 0.8368794326241135,
+            "support": 1000.0
+          },
+          "shoe": {
+            "precision": 0.8929663608562691,
+            "recall": 0.876,
+            "f1-score": 0.8844018172640081,
+            "support": 1000.0
+          },
+          "bread": {
+            "precision": 0.857286432160804,
+            "recall": 0.853,
+            "f1-score": 0.8551378446115289,
+            "support": 1000.0
+          },
+          "hand": {
+            "precision": 0.872216844143272,
+            "recall": 0.901,
+            "f1-score": 0.8863748155435317,
+            "support": 1000.0
+          },
+          "hot-air-balloon": {
+            "precision": 0.941351888667992,
+            "recall": 0.947,
+            "f1-score": 0.9441674975074775,
+            "support": 1000.0
+          },
+          "airplane": {
+            "precision": 0.8637709772951628,
+            "recall": 0.875,
+            "f1-score": 0.8693492300049677,
+            "support": 1000.0
+          },
+          "guitar": {
+            "precision": 0.9537037037037037,
+            "recall": 0.927,
+            "f1-score": 0.9401622718052738,
+            "support": 1000.0
+          },
+          "accuracy": 0.881625,
+          "macro avg": {
+            "precision": 0.8819820261736169,
+            "recall": 0.881625,
+            "f1-score": 0.8816987977767267,
+            "support": 8000.0
+          },
+          "weighted avg": {
+            "precision": 0.881982026173617,
+            "recall": 0.881625,
+            "f1-score": 0.8816987977767267,
+            "support": 8000.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            848,
+            50,
+            17,
+            6,
+            31,
+            4,
+            39,
+            5
+          ],
+          [
+            46,
+            826,
+            18,
+            19,
+            26,
+            12,
+            46,
+            7
+          ],
+          [
+            20,
+            13,
+            876,
+            58,
+            12,
+            2,
+            11,
+            8
+          ],
+          [
+            13,
+            17,
+            40,
+            853,
+            30,
+            27,
+            14,
+            6
+          ],
+          [
+            33,
+            14,
+            3,
+            25,
+            901,
+            6,
+            13,
+            5
+          ],
+          [
+            7,
+            9,
+            5,
+            10,
+            18,
+            947,
+            1,
+            3
+          ],
+          [
+            47,
+            23,
+            16,
+            12,
+            13,
+            3,
+            875,
+            11
+          ],
+          [
+            12,
+            22,
+            6,
+            12,
+            2,
+            5,
+            14,
+            927
+          ]
+        ],
+        "samples": 8000
+      },
+      "tfjs_bytes": 443080,
+      "tfjs_sha256": {
+        "model.json": "add1bd2558fde1bb03145967590012acf9cfe0d71cb89d4854bf7c65cc040b3b",
+        "weights.bin": "4b30f617e0a511fb3c8f29d0ea790aad0fb51141936e75e6382e11f3e8753aa2"
+      }
+    },
+    "cnn": {
+      "history": {
+        "loss": [
+          0.6196189522743225,
+          0.38324111700057983,
+          0.32399535179138184,
+          0.283751517534256,
+          0.25721386075019836,
+          0.23689904808998108,
+          0.22089114785194397,
+          0.20575487613677979,
+          0.19126145541667938,
+          0.17871041595935822,
+          0.16712911427021027,
+          0.15848016738891602,
+          0.14810682833194733
+        ],
+        "accuracy": [
+          0.8037187457084656,
+          0.881640613079071,
+          0.9004843831062317,
+          0.9123437404632568,
+          0.9204843640327454,
+          0.926156222820282,
+          0.9311093688011169,
+          0.9352656006813049,
+          0.9388124942779541,
+          0.9428593516349792,
+          0.9457187652587891,
+          0.9482812285423279,
+          0.9506250023841858
+        ],
+        "val_loss": [
+          0.3857859671115875,
+          0.33266228437423706,
+          0.29088786244392395,
+          0.27878278493881226,
+          0.26635682582855225,
+          0.258480429649353,
+          0.25982677936553955,
+          0.2528659701347351,
+          0.25108540058135986,
+          0.2412135750055313,
+          0.24829356372356415,
+          0.2489491105079651,
+          0.24810460209846497
+        ],
+        "val_accuracy": [
+          0.8833749890327454,
+          0.8999999761581421,
+          0.9121249914169312,
+          0.9158750176429749,
+          0.9213749766349792,
+          0.9235000014305115,
+          0.9213749766349792,
+          0.9268749952316284,
+          0.9291250109672546,
+          0.9306250214576721,
+          0.9276250004768372,
+          0.9283750057220459,
+          0.9300000071525574
+        ]
+      },
+      "parameters": 121800,
+      "epochs_completed": 13,
+      "best_epoch": 10,
+      "training_seconds": 564.7100891,
+      "h5_bytes": 509800,
+      "h5_sha256": "a872a9511c8e13fac9b04f145128236b339845825b6cc81058561a5c5f82478c",
+      "validation": {
+        "accuracy": 0.930625,
+        "loss": 0.24121356254612908,
+        "macro_f1": 0.930672833020294,
+        "classification_report": {
+          "cat": {
+            "precision": 0.8762790697674419,
+            "recall": 0.942,
+            "f1-score": 0.9079518072289157,
+            "support": 1000.0
+          },
+          "duck": {
+            "precision": 0.9181347150259067,
+            "recall": 0.886,
+            "f1-score": 0.9017811704834605,
+            "support": 1000.0
+          },
+          "shoe": {
+            "precision": 0.93,
+            "recall": 0.93,
+            "f1-score": 0.93,
+            "support": 1000.0
+          },
+          "bread": {
+            "precision": 0.9271255060728745,
+            "recall": 0.916,
+            "f1-score": 0.9215291750503019,
+            "support": 1000.0
+          },
+          "hand": {
+            "precision": 0.9608247422680413,
+            "recall": 0.932,
+            "f1-score": 0.9461928934010152,
+            "support": 1000.0
+          },
+          "hot-air-balloon": {
+            "precision": 0.9632571996027806,
+            "recall": 0.97,
+            "f1-score": 0.966616841056303,
+            "support": 1000.0
+          },
+          "airplane": {
+            "precision": 0.9266331658291457,
+            "recall": 0.922,
+            "f1-score": 0.9243107769423559,
+            "support": 1000.0
+          },
+          "guitar": {
+            "precision": 0.947,
+            "recall": 0.947,
+            "f1-score": 0.947,
+            "support": 1000.0
+          },
+          "accuracy": 0.930625,
+          "macro avg": {
+            "precision": 0.9311567998207738,
+            "recall": 0.930625,
+            "f1-score": 0.930672833020294,
+            "support": 8000.0
+          },
+          "weighted avg": {
+            "precision": 0.9311567998207738,
+            "recall": 0.930625,
+            "f1-score": 0.930672833020294,
+            "support": 8000.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            942,
+            16,
+            7,
+            8,
+            3,
+            3,
+            14,
+            7
+          ],
+          [
+            42,
+            886,
+            7,
+            13,
+            9,
+            11,
+            22,
+            10
+          ],
+          [
+            17,
+            8,
+            930,
+            23,
+            4,
+            4,
+            8,
+            6
+          ],
+          [
+            11,
+            9,
+            28,
+            916,
+            6,
+            10,
+            11,
+            9
+          ],
+          [
+            18,
+            10,
+            5,
+            8,
+            932,
+            5,
+            10,
+            12
+          ],
+          [
+            5,
+            5,
+            5,
+            11,
+            3,
+            970,
+            1,
+            0
+          ],
+          [
+            29,
+            23,
+            6,
+            4,
+            6,
+            1,
+            922,
+            9
+          ],
+          [
+            11,
+            8,
+            12,
+            5,
+            7,
+            3,
+            7,
+            947
+          ]
+        ],
+        "samples": 8000
+      },
+      "test": {
+        "accuracy": 0.936,
+        "loss": 0.21267985039055878,
+        "macro_f1": 0.9359780969702416,
+        "classification_report": {
+          "cat": {
+            "precision": 0.8916116870876531,
+            "recall": 0.946,
+            "f1-score": 0.9180009704027171,
+            "support": 1000.0
+          },
+          "duck": {
+            "precision": 0.9296794208893485,
+            "recall": 0.899,
+            "f1-score": 0.9140823589222166,
+            "support": 1000.0
+          },
+          "shoe": {
+            "precision": 0.9287863590772317,
+            "recall": 0.926,
+            "f1-score": 0.927391086629945,
+            "support": 1000.0
+          },
+          "bread": {
+            "precision": 0.9216683621566633,
+            "recall": 0.906,
+            "f1-score": 0.913767019667171,
+            "support": 1000.0
+          },
+          "hand": {
+            "precision": 0.9653767820773931,
+            "recall": 0.948,
+            "f1-score": 0.9566094853683148,
+            "support": 1000.0
+          },
+          "hot-air-balloon": {
+            "precision": 0.9595660749506904,
+            "recall": 0.973,
+            "f1-score": 0.9662363455809335,
+            "support": 1000.0
+          },
+          "airplane": {
+            "precision": 0.9411167512690355,
+            "recall": 0.927,
+            "f1-score": 0.9340050377833753,
+            "support": 1000.0
+          },
+          "guitar": {
+            "precision": 0.9525222551928784,
+            "recall": 0.963,
+            "f1-score": 0.95773247140726,
+            "support": 1000.0
+          },
+          "accuracy": 0.936,
+          "macro avg": {
+            "precision": 0.9362909615876117,
+            "recall": 0.9359999999999999,
+            "f1-score": 0.9359780969702416,
+            "support": 8000.0
+          },
+          "weighted avg": {
+            "precision": 0.9362909615876117,
+            "recall": 0.936,
+            "f1-score": 0.9359780969702417,
+            "support": 8000.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            946,
+            15,
+            7,
+            5,
+            8,
+            2,
+            12,
+            5
+          ],
+          [
+            42,
+            899,
+            6,
+            2,
+            8,
+            8,
+            19,
+            16
+          ],
+          [
+            9,
+            14,
+            926,
+            31,
+            3,
+            1,
+            9,
+            7
+          ],
+          [
+            4,
+            12,
+            38,
+            906,
+            6,
+            23,
+            6,
+            5
+          ],
+          [
+            15,
+            5,
+            5,
+            14,
+            948,
+            0,
+            8,
+            5
+          ],
+          [
+            7,
+            4,
+            3,
+            9,
+            2,
+            973,
+            0,
+            2
+          ],
+          [
+            28,
+            15,
+            9,
+            5,
+            4,
+            4,
+            927,
+            8
+          ],
+          [
+            10,
+            3,
+            3,
+            11,
+            3,
+            3,
+            4,
+            963
+          ]
+        ],
+        "samples": 8000
+      },
+      "tfjs_bytes": 497654,
+      "tfjs_sha256": {
+        "model.json": "af68d136260eae2e59efd23318a57ea28017ee6781d97dff6b23c7a805b85aae",
+        "weights.bin": "07b0e24d71a26a71bc03e56b0373cc867c1c092b7a4b966a56a41792c2bb1d0b"
+      }
+    }
+  },
+  "selection": {
+    "model": "cnn",
+    "criterion": "validation macro-F1; ties: validation accuracy, then fewer parameters",
+    "test_used_for_selection": false
+  },
+  "browser_inference_ms": null,
+  "limitations": [
+    "Single seed; Quick Draw test is not a test of game canvas drawings",
+    "Exact duplicates removed; similar drawings and author overlap cannot be excluded with bitmap-only data",
+    "Browser latency and canvas preprocessing will be validated in Stage 4"
+  ],
+  "export_validation": {
+    "runtime": "Node v24.19.0",
+    "tensorflowjs": "4.22.0",
+    "backend": "cpu",
+    "browser_test": false,
+    "models": {
+      "mlp": {
+        "samples": 82,
+        "repeats": 3,
+        "max_absolute_error": 3.8743019104003906e-07,
+        "tolerance": 0.0001,
+        "argmax_identical": true,
+        "tensor_leak": false
+      },
+      "cnn": {
+        "samples": 82,
+        "repeats": 3,
+        "max_absolute_error": 3.5762786865234375e-07,
+        "tolerance": 0.0001,
+        "argmax_identical": true,
+        "tensor_leak": false
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../components/Layout.jsx';
 import AdalinePage from '../features/adaline/pages/AdalinePage.jsx';
@@ -20,13 +20,24 @@ const HandwritingRecognitionPage = lazy(() =>
 const KMeansPage = lazy(() => import('../features/kmeans/pages/KMeansPage.jsx'));
 const KMeansPlusPlusPage = lazy(() => import('../features/kmeans/pages/KMeansPlusPlusPage.jsx'));
 const KMeansHubPage = lazy(() => import('../features/kmeans/pages/KMeansHubPage.jsx'));
+const IAdivinhaPage = lazy(() => import('../features/iadivinha/pages/IAdivinhaPage.jsx'));
+
+function RouteLayout({ children }) {
+  const { pathname } = useLocation();
+  return /^\/iadivinha\/?$/.test(pathname) ? children : <Layout>{children}</Layout>;
+}
 
 export default function App() {
   useRevealAnimations();
 
   return (
-    <Layout>
+    <RouteLayout>
       <Routes>
+        <Route path="/iadivinha" element={
+          <Suspense fallback={<p role="status">Carregando IAdivinha…</p>}>
+            <IAdivinhaPage />
+          </Suspense>
+        } />
         <Route path="/" element={<HomePage />} />
         <Route path="/sobre" element={<AboutPage />} />
         <Route path="/contato" element={<ContactPage />} />
@@ -87,6 +98,6 @@ export default function App() {
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </Layout>
+    </RouteLayout>
   );
 }

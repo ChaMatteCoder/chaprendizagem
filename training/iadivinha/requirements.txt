@@ -1,0 +1,6 @@
+# Python 3.12; isolated environment. No changes to the frontend dependencies.
+tensorflow==2.19.0
+tf-keras==2.19.0
+numpy==1.26.4
+scikit-learn==1.5.2
+matplotlib==3.9.2

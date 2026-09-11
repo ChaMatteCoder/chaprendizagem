@@ -10857,3 +10857,14 @@ body.reveal-ready .stagger.is-visible > * {
   .kmeans-plus-chart-actions { align-items: flex-start; width: 100%; }
   .kmeans-plus-download { justify-content: center; width: 100%; }
 }
+
+/* Games have their own catalog shelf and a complete cover, separate from project modules. */
+.games-grid { display: grid; grid-template-columns: minmax(0, 820px); gap: 24px; }
+.games-grid .project-card--game { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); grid-template-rows: auto; min-height: 0; }
+.project-card--game .project-card__visual { aspect-ratio: 3 / 2; align-self: center; background: #faf4e6; }
+.project-card--game .project-card__visual img { object-fit: contain; }
+.project-card--game .project-card__body { align-self: center; }
+.project-card--game .status-pill { background: #dff2e7; color: #236041; }
+@media (max-width: 680px) {
+  .games-grid .project-card--game { grid-template-columns: minmax(0, 1fr); }
+}

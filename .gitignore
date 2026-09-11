@@ -9,4 +9,6 @@ __pycache__/
 playwright-*.png
 training/artifacts/
 training/reports/
+training/iadivinha/data/
+training/iadivinha/runs/
 !.env.example

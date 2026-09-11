@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><title>IAdivinha — validação local da modelo de oito classes</title>
+<style>body{font:16px system-ui;max-width:1100px;margin:32px auto;padding:16px}pre{white-space:pre-wrap}canvas{width:112px;height:112px;image-rendering:pixelated;margin:4px;border:1px solid #888}figure{display:inline-block;margin:8px}figcaption{font-size:13px}</style>
+<h1>Validação local da modelo de oito classes</h1>
+<p>Usa os 80 bitmaps de validação e 2 extremos da fixture da treinamento de oito classes. Não é uma medição de acurácia no jogo.</p>
+<button id="run">Executar validação</button><p id="status" role="status">Pronto para iniciar.</p>
+<div id="previews"></div><pre id="result"></pre>
+<script type="module">
+import * as tf from '@tensorflow/tfjs';
+import { loadDrawingModel } from '/src/features/iadivinha/lib/loadDrawingModel.js';
+import { preprocessDrawing } from '/src/features/iadivinha/lib/preprocessDrawing.js';
+const button = document.querySelector('#run'), status = document.querySelector('#status');
+const argmax = values => values.indexOf(Math.max(...values));
+function rgba(values) {
+  const data = new Uint8ClampedArray(560 * 560 * 4);
+  for (let y = 0; y < 560; y++) for (let x = 0; x < 560; x++) {
+    const v = values[Math.floor(y / 20) * 28 + Math.floor(x / 20)], i = (y * 560 + x) * 4;
+    data.set([Math.round(255 - 232*v), Math.round(255 - 213*v), Math.round(255 - 210*v), 255], i);
+  }
+  return {width:560,height:560,data};
+}
+function preview(values, label) {
+  const figure=document.createElement('figure'), canvas=document.createElement('canvas'), caption=document.createElement('figcaption');
+  canvas.width=28;canvas.height=28;const context=canvas.getContext('2d'), image=context.createImageData(28,28);
+  for(let i=0;i<784;i++){const v=Math.round(values[i]*255);image.data.set([v,v,v,255],i*4);}
+  context.putImageData(image,0,0);caption.textContent=label;figure.append(canvas,caption);document.querySelector('#previews').append(figure);
+}
+button.onclick = async () => {
+  button.disabled=true;status.textContent='Verificando modelo e pixels…';
+  document.querySelector('#previews').replaceChildren();
+  let model, service;
+  try {
+    await tf.ready(); const baseline=tf.memory().numTensors;
+    const fixtures=await (await fetch('./runs/eight-full/parity-fixtures.json')).json();
+    const selected=(await (await fetch('/models/iadivinha/metrics.json')).json()).selection.model;
+    model=await tf.loadLayersModel('/models/iadivinha/model.json');
+    const output=tf.tidy(()=>model.predict(tf.tensor4d(fixtures.images,fixtures.shape)));
+    const values=await output.array();output.dispose();
+    let maxError=0;
+    for(let i=0;i<values.length;i++)for(let j=0;j<values[i].length;j++)maxError=Math.max(maxError,Math.abs(values[i][j]-fixtures.predictions[selected][i][j]));
+    if(maxError>0.0001)throw new Error(`Paridade fora da tolerância: ${maxError}`);
+    model.dispose();model=null;
+    service=await loadDrawingModel();
+    const loaded=tf.memory().numTensors, timings=[], totals=[];let agreement=0, pixelError=0;
+    const input=rgba(fixtures.images.slice(0,784));
+    for(let i=0;i<80;i++) {
+      const original=fixtures.images.slice(i*784,(i+1)*784), image=rgba(original), prepared=preprocessDrawing(image);
+      const prediction=await service.classify(image);
+      if(prediction.probabilities.map(p=>p.probability).indexOf(prediction.confidence)===argmax(fixtures.predictions[selected][i]))agreement++;
+      for(let p=0;p<784;p++)pixelError+=Math.abs(original[p]-prepared.pixels[p]);
+      if(i%10===0){preview(original,`Original ${i}`);preview(prepared.pixels,`Canvas normalizado ${i}`);}
+      await tf.nextFrame();
+    }
+    for(let i=0;i<50;i++) {const p=await service.classify(input);timings.push(p.inferenceMs);totals.push(p.totalMs);await tf.nextFrame();}
+    const after=tf.memory().numTensors;
+    service.dispose();service=null;
+    const final=tf.memory().numTensors;
+    if(after!==loaded||final!==baseline)throw new Error('Contagem de tensores aumentou');
+    const summarize=rows=>{const a=[...rows].sort((a,b)=>a-b);return {samples:a.length,min:a[0],median:(a[24]+a[25])/2,p95:a[47],max:a.at(-1)}};
+    document.querySelector('#result').textContent=JSON.stringify({userAgent:navigator.userAgent,backend:tf.getBackend(),
+      exportedModelParity:{samples:82,maxAbsoluteError:maxError,tolerance:0.0001},
+      bitmapCanvasBridge:{samples:80,predictionAgreement:agreement,meanAbsolutePixelError:pixelError/(80*784),note:'Proxy ampliado do bitmap; não é acurácia de desenhos humanos nem identidade pixel a pixel com Cairo'},
+      warmInferenceMs:summarize(timings),warmTotalMs:summarize(totals),
+      tensors:{baseline,loaded,afterPredictions:after,afterDispose:final}},null,2);
+    status.textContent='Validação concluída.';
+  } catch(error){status.textContent='Falha na validação.';document.querySelector('#result').textContent=String(error);}
+  finally {model?.dispose();service?.dispose();button.disabled=false;}
+};
+</script></html>

@@ -1,0 +1,56 @@
+{
+  "cat": {
+    "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/cat.npy",
+    "sha256": "21a281839d3f2eef601d57d2338a4eafdf24649f8d0a0e42d3ec3e595911463e",
+    "bytes": 96590448,
+    "rows": 123202,
+    "dtype": "uint8",
+    "downloaded_at": "2026-09-09T23:17:38.914196+00:00"
+  },
+  "duck": {
+    "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/duck.npy",
+    "sha256": "67f9dd5f83ac76ac6696ddccf5f1f3f7ba02e3be2a32b403c78ec1cac217921e",
+    "bytes": 106216400,
+    "rows": 135480,
+    "dtype": "uint8",
+    "downloaded_at": "2026-09-09T23:17:43.857181+00:00"
+  },
+  "shoe": {
+    "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/shoe.npy",
+    "sha256": "bdd13192cd5139efaacf6932761e747d29864acf688be5ae2fcad89a07a7ef3d",
+    "bytes": 94261184,
+    "rows": 120231,
+    "dtype": "uint8",
+    "downloaded_at": "2026-09-09T23:17:48.284661+00:00"
+  },
+  "bread": {
+    "sha256": "0557124d90ae854993970dbeaf3546c13506b8ced5db61303551c05ee5a5ceff",
+    "bytes": 94526960,
+    "rows": 120570,
+    "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/bread.npy"
+  },
+  "hand": {
+    "sha256": "d09dfb7721dccead99cf2842f1c80bfdf4f65fc334f83646c91ed708aaa8ec68",
+    "bytes": 228750112,
+    "rows": 291773,
+    "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/hand.npy"
+  },
+  "hot-air-balloon": {
+    "sha256": "b2755de2cbbd090b05f49087b6a488210bf69f5cfd142e6c763fcb5a310635c4",
+    "bytes": 99058480,
+    "rows": 126350,
+    "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/hot%20air%20balloon.npy"
+  },
+  "airplane": {
+    "sha256": "88c5a8801901e6841ee249115a2a1f8b72e79c0eb7b0fb507044122ad3e78843",
+    "bytes": 118872512,
+    "rows": 151623,
+    "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/airplane.npy"
+  },
+  "guitar": {
+    "sha256": "ee444b13b72376bba2d1ed47ee0fe04cff4b06fac31c45c12347860fed232a73",
+    "bytes": 94433664,
+    "rows": 120451,
+    "url": "https://storage.googleapis.com/quickdraw_dataset/full/numpy_bitmap/guitar.npy"
+  }
+}

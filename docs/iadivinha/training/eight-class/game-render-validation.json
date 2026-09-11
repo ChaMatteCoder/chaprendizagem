@@ -1,0 +1,98 @@
+{
+  "validation": "React server render of actual game components and reducer",
+  "browserVisualTest": false,
+  "simulatedClassifier": false,
+  "inferenceTest": "separate npm test using published weights",
+  "sessions": [
+    {
+      "seed": 0,
+      "sequence": [
+        "duck",
+        "shoe",
+        "hand",
+        "shoe",
+        "cat",
+        "shoe"
+      ],
+      "rare": "hand",
+      "round": 3,
+      "preparationHidden": true,
+      "revealWithoutCanvasOrTimer": true,
+      "drawingPromptAndCanvas": true,
+      "finalCards": 6,
+      "rareCards": 1
+    },
+    {
+      "seed": 23757,
+      "sequence": [
+        "duck",
+        "hot-air-balloon",
+        "cat",
+        "duck",
+        "shoe",
+        "cat"
+      ],
+      "rare": "hot-air-balloon",
+      "round": 2,
+      "preparationHidden": true,
+      "revealWithoutCanvasOrTimer": true,
+      "drawingPromptAndCanvas": true,
+      "finalCards": 6,
+      "rareCards": 1
+    },
+    {
+      "seed": 47514,
+      "sequence": [
+        "shoe",
+        "cat",
+        "duck",
+        "cat",
+        "duck",
+        "airplane"
+      ],
+      "rare": "airplane",
+      "round": 6,
+      "preparationHidden": true,
+      "revealWithoutCanvasOrTimer": true,
+      "drawingPromptAndCanvas": true,
+      "finalCards": 6,
+      "rareCards": 1
+    },
+    {
+      "seed": 71271,
+      "sequence": [
+        "cat",
+        "shoe",
+        "duck",
+        "shoe",
+        "duck",
+        "guitar"
+      ],
+      "rare": "guitar",
+      "round": 6,
+      "preparationHidden": true,
+      "revealWithoutCanvasOrTimer": true,
+      "drawingPromptAndCanvas": true,
+      "finalCards": 6,
+      "rareCards": 1
+    },
+    {
+      "seed": 95028,
+      "sequence": [
+        "cat",
+        "shoe",
+        "duck",
+        "cat",
+        "bread",
+        "cat"
+      ],
+      "rare": "bread",
+      "round": 5,
+      "preparationHidden": true,
+      "revealWithoutCanvasOrTimer": true,
+      "drawingPromptAndCanvas": true,
+      "finalCards": 6,
+      "rareCards": 1
+    }
+  ]
+}

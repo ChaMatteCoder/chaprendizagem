@@ -1,0 +1,35 @@
+{
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+  "backend": "webgl",
+  "exportedModelParity": {
+    "samples": 32,
+    "maxAbsoluteError": 1.1920928955078125e-7,
+    "tolerance": 0.0001
+  },
+  "bitmapCanvasBridge": {
+    "samples": 30,
+    "predictionAgreement": 30,
+    "meanAbsolutePixelError": 0.04483760140800998,
+    "note": "Proxy ampliado do bitmap; não é acurácia de desenhos humanos nem identidade pixel a pixel com Cairo"
+  },
+  "warmInferenceMs": {
+    "samples": 50,
+    "min": 5.8999999994412065,
+    "median": 6.75,
+    "p95": 9.200000000186265,
+    "max": 16.799999999813735
+  },
+  "warmTotalMs": {
+    "samples": 50,
+    "min": 9.400000000372529,
+    "median": 11.400000000372529,
+    "p95": 16,
+    "max": 21.399999999441206
+  },
+  "tensors": {
+    "baseline": 0,
+    "loaded": 8,
+    "afterPredictions": 8,
+    "afterDispose": 0
+  }
+}

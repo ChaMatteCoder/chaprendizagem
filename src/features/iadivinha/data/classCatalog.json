@@ -1,0 +1,90 @@
+[
+  {
+    "id": "cat",
+    "datasetLabel": "cat",
+    "label": "Gato",
+    "article": "UM",
+    "type": "core",
+    "outputIndex": 0,
+    "color": "#ffd15c",
+    "index": 0,
+    "prompt": "DESENHE UM GATO!"
+  },
+  {
+    "id": "duck",
+    "datasetLabel": "duck",
+    "label": "Pato",
+    "article": "UM",
+    "type": "core",
+    "outputIndex": 1,
+    "color": "#42b7a8",
+    "index": 1,
+    "prompt": "DESENHE UM PATO!"
+  },
+  {
+    "id": "shoe",
+    "datasetLabel": "shoe",
+    "label": "Sapato",
+    "article": "UM",
+    "type": "core",
+    "outputIndex": 2,
+    "color": "#ff6547",
+    "index": 2,
+    "prompt": "DESENHE UM SAPATO!"
+  },
+  {
+    "id": "bread",
+    "datasetLabel": "bread",
+    "label": "Pão",
+    "article": "UM",
+    "type": "special",
+    "outputIndex": 3,
+    "color": "#cd9146",
+    "index": 3,
+    "prompt": "DESENHE UM PÃO!"
+  },
+  {
+    "id": "hand",
+    "datasetLabel": "hand",
+    "label": "Mão",
+    "article": "UMA",
+    "type": "special",
+    "outputIndex": 4,
+    "color": "#a293e0",
+    "index": 4,
+    "prompt": "DESENHE UMA MÃO!"
+  },
+  {
+    "id": "hot-air-balloon",
+    "datasetLabel": "hot air balloon",
+    "label": "Balão",
+    "article": "UM",
+    "type": "special",
+    "outputIndex": 5,
+    "color": "#50b3e7",
+    "index": 5,
+    "prompt": "DESENHE UM BALÃO!"
+  },
+  {
+    "id": "airplane",
+    "datasetLabel": "airplane",
+    "label": "Avião",
+    "article": "UM",
+    "type": "special",
+    "outputIndex": 6,
+    "color": "#5cc69a",
+    "index": 6,
+    "prompt": "DESENHE UM AVIÃO!"
+  },
+  {
+    "id": "guitar",
+    "datasetLabel": "guitar",
+    "label": "Violão",
+    "article": "UM",
+    "type": "special",
+    "outputIndex": 7,
+    "color": "#d46a9b",
+    "index": 7,
+    "prompt": "DESENHE UM VIOLÃO!"
+  }
+]

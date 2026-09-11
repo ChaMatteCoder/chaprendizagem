@@ -41,6 +41,32 @@ chaprendizagem/
 
 ## Como rodar
 
+### IAdivinha! — Turma do “ÃO”
+
+Na página inicial, encontre o card com capa própria na seção **Jogos** (`/#jogos`), separado dos projetos acadêmicos. As tags são Desenho, 10 segundos e IA.
+
+Acesse `/iadivinha` para jogar **Gato, pato ou sapato?** com uma CNN executada localmente pelo TensorFlow.js.
+São seis rodadas: cinco de gato/pato/sapato e uma surpresa da Turma do “ÃO” (pão, mão, balão de ar quente, avião ou violão), entre as rodadas 2 e 6. São dez segundos para desenhar, contados após a revelação, e até 600 pontos.
+O canvas aceita mouse, toque e caneta, com desfazer, limpar e espessura de pincel.
+Também aceita teclado: Tab até a folha, setas movem o cursor, Espaço inicia/encerra um traço e Shift + seta move mais rápido.
+“Ver desempenho”, disponível em Sobre e no placar final, apresenta as métricas reais e a matriz de confusão do experimento.
+O início fica disponível após carregar o modelo; falhas exibem uma opção de tentar novamente.
+O desafio não é enviado ao classificador; a ordem das classes vem de `public/models/iadivinha/classes.json`.
+Rodadas vazias por tempo esgotado valem zero e não são classificadas.
+As partidas ficam apenas na memória do navegador; recarregar ou voltar ao início descarta a sessão.
+O pipeline de treinamento fica em `training/iadivinha/`. Os desenhos não são enviados a um servidor;
+a classificação usa os pesos treinados para as oito categorias. Não há backend de inferência.
+Os laboratórios anteriores permanecem disponíveis nas suas rotas.
+
+Validação: `npm test`, `npm run lint` e `npm run build`. O lint cobre a nova feature e os pontos de integração
+`App.jsx` e `HomePage.jsx`, sem impor regras retroativamente aos módulos antigos.
+Treinamento, dados e reprodução: [training/iadivinha/README.md](training/iadivinha/README.md).
+Checkpoint atual: [reconhecimento, cards e áudio](docs/iadivinha-ajustes-finos.md).
+Arquitetura e limitações: [guia do módulo](docs/iadivinha-arquitetura.md).
+Histórico da ampliação: [Turma do “ÃO” — prévia de oito classes](docs/iadivinha-turma-ao.md).
+Trilha em loop no menu e na partida; faixa final toca uma vez, com mute: [checkpoint de áudio](docs/iadivinha-trilha-sonora.md).
+Histórico: [Etapa 1](docs/iadivinha-etapa-1.md), [Etapa 2](docs/iadivinha-etapa-2.md) e [Etapa 3](docs/iadivinha-etapa-3.md).
+
 Instale as dependências:
 
 ```bash

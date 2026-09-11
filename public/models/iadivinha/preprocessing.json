@@ -1,0 +1,17 @@
+{
+  "version": "quickdraw-bitmap-v1",
+  "shape": [
+    28,
+    28,
+    1
+  ],
+  "dtype": "float32",
+  "range": [
+    0,
+    1
+  ],
+  "background": 0,
+  "ink": 1,
+  "normalization": "Official uint8 bitmap / 255; channels_last; no further crop or inversion",
+  "geometry": "Official Quick Draw bitmap, centered on drawing bounding box"
+}
