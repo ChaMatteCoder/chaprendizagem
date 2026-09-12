@@ -1,0 +1,64 @@
+{
+  "undoEvidence": {
+    "feedback": "Traço desfeito ↶",
+    "finishDisabled": true
+  },
+  "clearEvidence": {
+    "feedback": "Folha limpa ✓",
+    "finishDisabled": true
+  },
+  "timerSamples": [
+    {
+      "elapsed": 1919,
+      "phase": "drawing",
+      "progress": "scaleX(0.78844)",
+      "timer": "8 segundos restantes"
+    },
+    {
+      "elapsed": 2948,
+      "phase": "drawing",
+      "progress": "scaleX(0.68797)",
+      "timer": "7 segundos restantes"
+    },
+    {
+      "elapsed": 3963,
+      "phase": "drawing",
+      "progress": "scaleX(0.57884)",
+      "timer": "6 segundos restantes"
+    },
+    {
+      "elapsed": 4988,
+      "phase": "drawing",
+      "progress": "scaleX(0.47826)",
+      "timer": "5 segundos restantes"
+    },
+    {
+      "elapsed": 6011,
+      "phase": "drawing",
+      "progress": "scaleX(0.37888)",
+      "timer": "4 segundos restantes"
+    },
+    {
+      "elapsed": 7080,
+      "phase": "drawing",
+      "progress": "scaleX(0.26864)",
+      "timer": "3 segundos restantes"
+    },
+    {
+      "elapsed": 8097,
+      "phase": "drawing",
+      "progress": "scaleX(0.16888)",
+      "timer": "2 segundos restantes"
+    },
+    {
+      "elapsed": 9124,
+      "phase": "drawing",
+      "progress": "scaleX(0.06891)",
+      "timer": "1 segundo restante"
+    },
+    {
+      "elapsed": 10140,
+      "phase": "result"
+    }
+  ]
+}

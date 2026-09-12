@@ -1,0 +1,37 @@
+[
+  {
+    "roundNo": 2,
+    "title": "DESENHE UM PATO!",
+    "result": "- link \"Pular para o conteúdo\":\n  - /url: \"#inicio\"\n- banner:\n  - link \"IAdivinha! Início\":\n    - /url: \"#inicio\"\n    - generic: IAdivinha!\n  - navigation \"Navegação IAdivinha\":\n    - button \"Início\"\n    - button \"Como funciona\"\n    - button \"Sobre\"\n    - button \"Mutar música\" [pressed]: ♪ Mutar\n- main [active]:\n  - paragraph: IA NO SEU DISPOSITIVO · SEU DESENHO FICA AQUI\n  - heading \"QUASE!\" [level=1]\n  - paragraph:\n    - text: O desafio era\n    - strong: PATO\n    - text: O palpite foi\n    - strong: GATO\n  - img \"Seu desenho na rodada de Pato\"\n  - paragraph: 93% de confiança\n  - list \"Três maiores probabilidades\":\n    - generic: Gato\n    - strong: 93%\n    - generic: Mão\n    - strong: 2%\n    - generic: Avião\n    - strong: 2%\n  - paragraph: \"Inferência local: 16.5 ms. A confiança é um palpite, não uma certeza.\"\n  - strong: +0 PTS\n  - button \"PRÓXIMA RODADA\"\n- contentinfo:\n  - link \"← Voltar ao Chaprendizagem\":\n    - /url: /\n  - generic: Um pouco de arte. Um palpite de IA."
+  },
+  {
+    "roundNo": 3,
+    "title": "DESENHE UM GATO!",
+    "result": "- link \"Pular para o conteúdo\":\n  - /url: \"#inicio\"\n- banner:\n  - link \"IAdivinha! Início\":\n    - /url: \"#inicio\"\n    - generic: IAdivinha!\n  - navigation \"Navegação IAdivinha\":\n    - button \"Início\"\n    - button \"Como funciona\"\n    - button \"Sobre\"\n    - button \"Mutar música\" [pressed]: ♪ Mutar\n- main [active]:\n  - paragraph: IA NO SEU DISPOSITIVO · SEU DESENHO FICA AQUI\n  - heading \"ACERTOU!\" [level=1]\n  - paragraph:\n    - text: O palpite foi\n    - strong: GATO\n  - img \"Seu desenho na rodada de Gato\"\n  - paragraph: 93% de confiança\n  - list \"Três maiores probabilidades\":\n    - generic: Gato\n    - strong: 93%\n    - generic: Mão\n    - strong: 2%\n    - generic: Avião\n    - strong: 2%\n  - paragraph: \"Inferência local: 14.0 ms. A confiança é um palpite, não uma certeza.\"\n  - strong: +100 PTS\n  - button \"PRÓXIMA RODADA\"\n- contentinfo:\n  - link \"← Voltar ao Chaprendizagem\":\n    - /url: /\n  - generic: Um pouco de arte. Um palpite de IA."
+  },
+  {
+    "roundNo": 4,
+    "title": "UM RABISCO SURPRESA!",
+    "revealEvidence": {
+      "characterDelay": "0.65s",
+      "stampOpacity": "1",
+      "timerPresent": false
+    },
+    "firstTimer": "10 segundos restantes"
+  },
+  {
+    "roundNo": 4,
+    "title": "UM RABISCO SURPRESA!",
+    "result": "- link \"Pular para o conteúdo\":\n  - /url: \"#inicio\"\n- banner:\n  - link \"IAdivinha! Início\":\n    - /url: \"#inicio\"\n    - generic: IAdivinha!\n  - navigation \"Navegação IAdivinha\":\n    - button \"Início\"\n    - button \"Como funciona\"\n    - button \"Sobre\"\n    - button \"Mutar música\" [pressed]: ♪ Mutar\n- main [active]:\n  - paragraph: IA NO SEU DISPOSITIVO · SEU DESENHO FICA AQUI\n  - generic: RARO\n  - heading \"QUASE!\" [level=1]\n  - paragraph:\n    - text: O desafio era\n    - strong: PÃO\n    - text: O palpite foi\n    - strong: GATO\n  - img \"Seu desenho na rodada de Pão\"\n  - paragraph: 93% de confiança\n  - list \"Três maiores probabilidades\":\n    - generic: Gato\n    - strong: 93%\n    - generic: Mão\n    - strong: 2%\n    - generic: Avião\n    - strong: 2%\n  - paragraph: \"Inferência local: 13.4 ms. A confiança é um palpite, não uma certeza.\"\n  - strong: +0 PTS\n  - button \"PRÓXIMA RODADA\"\n- contentinfo:\n  - link \"← Voltar ao Chaprendizagem\":\n    - /url: /\n  - generic: Um pouco de arte. Um palpite de IA."
+  },
+  {
+    "roundNo": 5,
+    "title": "DESENHE UM SAPATO!",
+    "result": "- link \"Pular para o conteúdo\":\n  - /url: \"#inicio\"\n- banner:\n  - link \"IAdivinha! Início\":\n    - /url: \"#inicio\"\n    - generic: IAdivinha!\n  - navigation \"Navegação IAdivinha\":\n    - button \"Início\"\n    - button \"Como funciona\"\n    - button \"Sobre\"\n    - button \"Mutar música\" [pressed]: ♪ Mutar\n- main [active]:\n  - paragraph: IA NO SEU DISPOSITIVO · SEU DESENHO FICA AQUI\n  - heading \"QUASE!\" [level=1]\n  - paragraph:\n    - text: O desafio era\n    - strong: SAPATO\n    - text: O palpite foi\n    - strong: GATO\n  - img \"Seu desenho na rodada de Sapato\"\n  - paragraph: 93% de confiança\n  - list \"Três maiores probabilidades\":\n    - generic: Gato\n    - strong: 93%\n    - generic: Mão\n    - strong: 2%\n    - generic: Avião\n    - strong: 2%\n  - paragraph: \"Inferência local: 19.3 ms. A confiança é um palpite, não uma certeza.\"\n  - strong: +0 PTS\n  - button \"PRÓXIMA RODADA\"\n- contentinfo:\n  - link \"← Voltar ao Chaprendizagem\":\n    - /url: /\n  - generic: Um pouco de arte. Um palpite de IA."
+  },
+  {
+    "roundNo": 6,
+    "title": "DESENHE UM GATO!",
+    "result": "- link \"Pular para o conteúdo\":\n  - /url: \"#inicio\"\n- banner:\n  - link \"IAdivinha! Início\":\n    - /url: \"#inicio\"\n    - generic: IAdivinha!\n  - navigation \"Navegação IAdivinha\":\n    - button \"Início\"\n    - button \"Como funciona\"\n    - button \"Sobre\"\n    - button \"Mutar música\" [pressed]: ♪ Mutar\n- main [active]:\n  - paragraph: IA NO SEU DISPOSITIVO · SEU DESENHO FICA AQUI\n  - heading \"ACERTOU!\" [level=1]\n  - paragraph:\n    - text: O palpite foi\n    - strong: GATO\n  - img \"Seu desenho na rodada de Gato\"\n  - paragraph: 93% de confiança\n  - list \"Três maiores probabilidades\":\n    - generic: Gato\n    - strong: 93%\n    - generic: Mão\n    - strong: 2%\n    - generic: Avião\n    - strong: 2%\n  - paragraph: \"Inferência local: 9.6 ms. A confiança é um palpite, não uma certeza.\"\n  - strong: +100 PTS\n  - button \"VER PLACAR FINAL\"\n- contentinfo:\n  - link \"← Voltar ao Chaprendizagem\":\n    - /url: /\n  - generic: Um pouco de arte. Um palpite de IA."
+  }
+]

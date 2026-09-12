@@ -41,7 +41,7 @@ test('IAdivinha: acertos somam 100 até 600, seis rodadas terminam e reinício z
   let state = start();
   for (let round = 0; round < 6; round += 1) {
     state = submit(begin(state), round);
-    state = gameReducer(state, { type: 'RESOLVE', token: round, prediction: { id: state.sequence[round].id } });
+    state = gameReducer(state, { type: 'RESOLVE', token: round, prediction: { id: state.sequence[round].id, confidence: 1 } });
     assert.equal(state.score, (round + 1) * 100);
     assert.equal(state.results.length, round + 1);
     state = gameReducer(state, { type: 'NEXT' });
@@ -70,8 +70,9 @@ test('IAdivinha: clique e timeout duplicados e respostas atrasadas não repetem 
   const processing = submit(begin(start()), 1);
   assert.equal(submit(processing, 2, { reason: 'timeout' }), processing);
   assert.equal(gameReducer(processing, { type: 'RESOLVE', token: 7, prediction: classes[0] }), processing);
-  const action = { type: 'RESOLVE', token: 1, prediction: processing.sequence[0] };
+  const action = { type: 'RESOLVE', token: 1, prediction: { ...processing.sequence[0], confidence: .86 } };
   const result = gameReducer(processing, action);
+  assert.equal(result.score, 86);
   assert.equal(gameReducer(result, action), result);
   const home = gameReducer(result, { type: 'HOME' });
   assert.equal(gameReducer(home, action), home);
@@ -95,7 +96,7 @@ test('IAdivinha: falha pode ser repetida sem perder desenho ou contar uma rodada
   assert.equal(failed.pending.imageUrl, processing.pending.imageUrl);
   const retried = gameReducer(failed, { type: 'RETRY' });
   assert.equal(retried.phase, 'processing');
-  const result = gameReducer(retried, { type: 'RESOLVE', token: 9, prediction: retried.sequence[0] });
+  const result = gameReducer(retried, { type: 'RESOLVE', token: 9, prediction: { ...retried.sequence[0], confidence: 1 } });
   assert.equal(result.results.length, 1);
   assert.equal(result.score, 100);
 });

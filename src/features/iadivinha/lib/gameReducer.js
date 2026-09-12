@@ -1,4 +1,5 @@
 import { isSpecial } from '../data/classCatalog.js';
+import { confidencePoints } from './confidence.js';
 export const ROUND_DURATION_MS = 10_000;
 export const initialGameState = { phase: 'home', sequence: [], round: 0, results: [], score: 0, pending: null };
 
@@ -6,7 +7,7 @@ function appendResult(state, prediction, empty = false) {
   const challenge = state.sequence[state.round];
   const correct = !empty && prediction.id === challenge.id;
   const result = {
-    challenge, prediction, correct, empty, points: correct ? 100 : 0,
+    challenge, prediction, correct, empty, points: correct ? confidencePoints(prediction.confidence) : 0,
     imageUrl: state.pending.imageUrl, reason: state.pending.reason,
   };
   return { ...state, phase: 'result', results: [...state.results, result], score: state.score + result.points, pending: null };

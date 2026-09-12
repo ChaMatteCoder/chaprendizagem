@@ -1,0 +1,101 @@
+{
+  "finalRounds": [
+    {
+      "roundNo": 1,
+      "challenge": "DESENHE UM GATO!",
+      "confidence": "78,1% de confiança",
+      "points": "+78 PTS",
+      "probabilities": [
+        "Gato78,1%",
+        "Pato7,9%",
+        "Mão4,2%"
+      ],
+      "title": "ACERTOU!"
+    },
+    {
+      "roundNo": 2,
+      "challenge": "UM RABISCO SURPRESA!",
+      "confidence": "78,1% de confiança",
+      "points": "+0 PTS",
+      "probabilities": [
+        "Gato78,1%",
+        "Pato7,9%",
+        "Mão4,2%"
+      ],
+      "title": "QUASE!"
+    },
+    {
+      "roundNo": 3,
+      "challenge": "DESENHE UM SAPATO!",
+      "confidence": "78,1% de confiança",
+      "points": "+0 PTS",
+      "probabilities": [
+        "Gato78,1%",
+        "Pato7,9%",
+        "Mão4,2%"
+      ],
+      "title": "QUASE!"
+    },
+    {
+      "roundNo": 4,
+      "challenge": "DESENHE UM GATO!",
+      "confidence": "78,1% de confiança",
+      "points": "+78 PTS",
+      "probabilities": [
+        "Gato78,1%",
+        "Pato7,9%",
+        "Mão4,2%"
+      ],
+      "title": "ACERTOU!"
+    },
+    {
+      "roundNo": 5,
+      "challenge": "DESENHE UM PATO!",
+      "confidence": "78,1% de confiança",
+      "points": "+0 PTS",
+      "probabilities": [
+        "Gato78,1%",
+        "Pato7,9%",
+        "Mão4,2%"
+      ],
+      "title": "QUASE!"
+    },
+    {
+      "roundNo": 6,
+      "challenge": "DESENHE UM SAPATO!",
+      "confidence": "78,1% de confiança",
+      "points": "+0 PTS",
+      "probabilities": [
+        "Gato78,1%",
+        "Pato7,9%",
+        "Mão4,2%"
+      ],
+      "title": "QUASE!"
+    }
+  ],
+  "rareStyle": {
+    "color": "rgb(23, 42, 45)",
+    "flourish": true,
+    "textShadow": "none",
+    "timer": false
+  },
+  "finalScore": {
+    "labels": [
+      "Acerto: 78 pontos",
+      "Sem acerto: 0 pontos",
+      "Sem acerto: 0 pontos",
+      "Acerto: 78 pontos",
+      "Sem acerto: 0 pontos",
+      "Sem acerto: 0 pontos"
+    ],
+    "roundPoints": [
+      "+78 PTS",
+      "+0 PTS",
+      "+0 PTS",
+      "+78 PTS",
+      "+0 PTS",
+      "+0 PTS"
+    ],
+    "score": "156\n156\n / 600 PTS"
+  }
+}

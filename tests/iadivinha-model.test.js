@@ -90,7 +90,7 @@ test('CNN real: previsão depende só da imagem; abortos e descarte não vazam t
       if (state.phase === 'revealing') state = gameReducer(state, { type: 'REVEAL_DONE', round, now: 3400 });
       state = gameReducer(state, { type: 'SUBMIT', token, hasInk: true, imageUrl: 'test', reason: 'manual' });
       const prediction = await service.classify(drawing());
-      if (prediction.id === state.sequence[round].id) expectedScore += 100;
+      if (prediction.id === state.sequence[round].id) expectedScore += Math.round(prediction.confidence * 100);
       state = gameReducer(state, { type: 'RESOLVE', token, prediction });
       state = gameReducer(state, { type: 'NEXT' });
       assert.equal(tf.memory().numTensors, loaded);

@@ -51,7 +51,7 @@ test('Revelação: única por rodada rara, bloqueia início/envio, prazo só ap�
     } else { assert.equal(state.phase, 'drawing'); assert.equal(state.deadline, 10100); }
     assert.equal(gameReducer(state, { type: 'REVEAL_DONE', round, now: 5000 }), state);
     state = gameReducer(state, { type: 'SUBMIT', token: round, hasInk: true, reason: 'manual' });
-    state = gameReducer(state, { type: 'RESOLVE', token: round, prediction: { id: state.sequence[round].id } });
+    state = gameReducer(state, { type: 'RESOLVE', token: round, prediction: { id: state.sequence[round].id, confidence: 1 } });
     state = gameReducer(state, { type: 'NEXT' });
   }
   assert.equal(reveals, 1); assert.equal(state.phase, 'finished'); assert.equal(state.score, 600);

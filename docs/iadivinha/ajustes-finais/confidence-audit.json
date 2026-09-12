@@ -1,0 +1,222 @@
+{
+  "model": "cnn",
+  "published_sha256": {
+    "model.json": "af68d136260eae2e59efd23318a57ea28017ee6781d97dff6b23c7a805b85aae",
+    "weights.bin": "07b0e24d71a26a71bc03e56b0373cc867c1c092b7a4b966a56a41792c2bb1d0b"
+  },
+  "splits": {
+    "val": {
+      "samples": 8000,
+      "accuracy": 0.930625,
+      "mean_confidence": 0.9411421418190002,
+      "ece_10_bins": 0.010517141703516236,
+      "confidence_quantiles": {
+        "min": 0.16371716558933258,
+        "p25": 0.9845558553934097,
+        "median": 0.999647855758667,
+        "p75": 0.9999929666519165,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "rounded_to_100_old_ui": 5450,
+      "exact_float32_one": 509,
+      "errors_among_rounded_100": 7,
+      "mean_confidence_on_errors": 0.6030033826828003,
+      "predicted_class_counts": {
+        "cat": 1075,
+        "duck": 965,
+        "shoe": 1000,
+        "bread": 988,
+        "hand": 970,
+        "hot-air-balloon": 1007,
+        "airplane": 995,
+        "guitar": 1000
+      },
+      "reliability_bins": [
+        {
+          "low": 0.1,
+          "high": 0.2,
+          "count": 8,
+          "confidence": 0.1757855862379074,
+          "accuracy": 0.125
+        },
+        {
+          "low": 0.2,
+          "high": 0.30000000000000004,
+          "count": 49,
+          "confidence": 0.2539727985858917,
+          "accuracy": 0.22448979591836735
+        },
+        {
+          "low": 0.30000000000000004,
+          "high": 0.4,
+          "count": 112,
+          "confidence": 0.35122328996658325,
+          "accuracy": 0.3125
+        },
+        {
+          "low": 0.4,
+          "high": 0.5,
+          "count": 132,
+          "confidence": 0.45319026708602905,
+          "accuracy": 0.3484848484848485
+        },
+        {
+          "low": 0.5,
+          "high": 0.6000000000000001,
+          "count": 178,
+          "confidence": 0.5508768558502197,
+          "accuracy": 0.5449438202247191
+        },
+        {
+          "low": 0.6000000000000001,
+          "high": 0.7000000000000001,
+          "count": 179,
+          "confidence": 0.6506145000457764,
+          "accuracy": 0.5865921787709497
+        },
+        {
+          "low": 0.7000000000000001,
+          "high": 0.8,
+          "count": 213,
+          "confidence": 0.7538878917694092,
+          "accuracy": 0.7183098591549296
+        },
+        {
+          "low": 0.8,
+          "high": 0.9,
+          "count": 296,
+          "confidence": 0.8533753156661987,
+          "accuracy": 0.8040540540540541
+        },
+        {
+          "low": 0.9,
+          "high": 1.0,
+          "count": 6833,
+          "confidence": 0.9934779405593872,
+          "accuracy": 0.9891702034245573
+        }
+      ]
+    },
+    "test": {
+      "samples": 8000,
+      "accuracy": 0.936,
+      "mean_confidence": 0.9432230591773987,
+      "ece_10_bins": 0.007926294174045346,
+      "confidence_quantiles": {
+        "min": 0.16036760807037354,
+        "p25": 0.9859258979558945,
+        "median": 0.9996497631072998,
+        "p75": 0.9999912977218628,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "rounded_to_100_old_ui": 5463,
+      "exact_float32_one": 521,
+      "errors_among_rounded_100": 6,
+      "mean_confidence_on_errors": 0.6114051342010498,
+      "predicted_class_counts": {
+        "cat": 1061,
+        "duck": 967,
+        "shoe": 997,
+        "bread": 983,
+        "hand": 982,
+        "hot-air-balloon": 1014,
+        "airplane": 985,
+        "guitar": 1011
+      },
+      "reliability_bins": [
+        {
+          "low": 0.1,
+          "high": 0.2,
+          "count": 10,
+          "confidence": 0.18601228296756744,
+          "accuracy": 0.2
+        },
+        {
+          "low": 0.2,
+          "high": 0.30000000000000004,
+          "count": 46,
+          "confidence": 0.25624731183052063,
+          "accuracy": 0.30434782608695654
+        },
+        {
+          "low": 0.30000000000000004,
+          "high": 0.4,
+          "count": 88,
+          "confidence": 0.3584040403366089,
+          "accuracy": 0.36363636363636365
+        },
+        {
+          "low": 0.4,
+          "high": 0.5,
+          "count": 139,
+          "confidence": 0.4499843120574951,
+          "accuracy": 0.39568345323741005
+        },
+        {
+          "low": 0.5,
+          "high": 0.6000000000000001,
+          "count": 176,
+          "confidence": 0.5508947372436523,
+          "accuracy": 0.5340909090909091
+        },
+        {
+          "low": 0.6000000000000001,
+          "high": 0.7000000000000001,
+          "count": 163,
+          "confidence": 0.6463270783424377,
+          "accuracy": 0.6196319018404908
+        },
+        {
+          "low": 0.7000000000000001,
+          "high": 0.8,
+          "count": 218,
+          "confidence": 0.7537372708320618,
+          "accuracy": 0.6926605504587156
+        },
+        {
+          "low": 0.8,
+          "high": 0.9,
+          "count": 314,
+          "confidence": 0.8556549549102783,
+          "accuracy": 0.8248407643312102
+        },
+        {
+          "low": 0.9,
+          "high": 1.0,
+          "count": 6846,
+          "confidence": 0.9936825037002563,
+          "accuracy": 0.9903593339176161
+        }
+      ]
+    }
+  },
+  "synthetic_probes_not_accuracy": [
+    {
+      "name": "blank_blocked_by_game",
+      "prediction": "bread",
+      "confidence": 0.27353420853614807
+    },
+    {
+      "name": "filled",
+      "prediction": "guitar",
+      "confidence": 0.4052474796772003
+    },
+    {
+      "name": "line",
+      "prediction": "bread",
+      "confidence": 0.3877858817577362
+    },
+    {
+      "name": "noise",
+      "prediction": "shoe",
+      "confidence": 0.24005602300167084
+    }
+  ],
+  "limitations": [
+    "Quick Draw bitmaps are not user canvas drawings",
+    "No retraining or calibration performed",
+    "ECE depends on bins; softmax confidence is not a measure of drawing similarity"
+  ]
+}

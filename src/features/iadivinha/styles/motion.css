@@ -1,0 +1,136 @@
+/* Motion layers: card interaction → entry wrapper → SVG reaction → character/parts.
+   Only short interaction transitions change shadows; loops use transform/opacity. */
+.iad-logo { animation: iad-enter 260ms both; }
+.iad-pencil-entry { transform-origin: 26px 45px; animation: iad-pencil 550ms 90ms both; }
+.iad-logo svg { transition: transform 200ms ease; }
+.iad-logo:is(:hover,:focus-visible) svg { transform: rotate(-8deg); }
+.iad-heading { animation: iad-enter 300ms 60ms both; }
+.iad-card-entry { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 0; animation: iad-enter 340ms var(--iad-entry-delay, 80ms) both; }
+.iad-card-entry > svg { width: 100%; }
+.iad-start .iad-cta-wrap { animation: iad-enter 300ms 480ms both; }
+.iad-cta-label { display: inline-block; }
+.iad-primary:not(:disabled) .iad-cta-label { animation: iad-invite 7.3s 1.2s infinite ease-in-out; }
+.iad-class-card { --iad-rest-tilt: 0deg; transform: rotate(var(--iad-rest-tilt)); cursor: default; transition: transform 200ms ease, box-shadow 200ms ease; animation: iad-fade 340ms var(--iad-entry-delay, 80ms) both; }
+.iad-cat { --iad-rest-tilt: -3deg; }
+.iad-duck { --iad-rest-tilt: -.6deg; }
+.iad-shoe { --iad-rest-tilt: 3deg; }
+.iad-class-card:focus-visible { outline: 3px solid var(--iad-ink); outline-offset: 7px; }
+.iad-class-card:focus-visible { transform: translateY(-6px) rotate(calc(var(--iad-rest-tilt) + 1deg)); box-shadow: 3px 9px 0 var(--iad-ink), inset 3px 3px 0 #ffffff75; }
+.iad-doodle-reaction { transform-origin: 120px 155px; transition: transform 220ms ease; }
+.iad-class-card:focus-visible .iad-doodle-reaction { transform: translateY(-2px) scale(1.025); }
+.iad-cat:focus-visible .iad-doodle-reaction { transform: rotate(-3deg) scale(1.045); }
+@media (hover: hover) {
+  .iad-class-card:hover { transform: translateY(-6px) rotate(calc(var(--iad-rest-tilt) + 1deg)); box-shadow: 3px 9px 0 var(--iad-ink), inset 3px 3px 0 #ffffff75; }
+  .iad-class-card:hover .iad-doodle-reaction { transform: translateY(-2px) scale(1.025); }
+  .iad-cat:hover .iad-doodle-reaction { transform: rotate(-3deg) scale(1.045); }
+  .iad-shoe:hover .iad-doodle-reaction { transform: translate(3px,-5px) rotate(2deg); }
+}
+.iad-shoe:focus-visible .iad-doodle-reaction { transform: translate(3px,-5px) rotate(2deg); }
+.iad-class-card:active { transform: rotate(var(--iad-rest-tilt)) scale(.97); }
+.iadivinha :is(.iad-tool,.iad-secondary,.iad-dialog-close) { transition: transform 180ms ease, background-color 180ms ease; }
+.iadivinha :is(.iad-tool,.iad-secondary,.iad-dialog-close):is(:hover,:focus-visible):not(:disabled) { transform: translateY(-2px); }
+.iadivinha :is(.iad-primary,.iad-tool,.iad-secondary,.iad-dialog-close):active:not(:disabled) { transform: translateY(2px) scale(.97); }
+.iad-primary:focus-visible:not(:disabled) { transform: translateY(-3px); }
+
+.iad-character { transform-origin: 120px 155px; animation-timing-function: ease-in-out; animation-iteration-count: infinite; animation-delay: var(--iad-motion-delay); }
+.iad-motion-cat { --iad-motion-delay: .7s; animation-name: iad-cat-sway; animation-duration: 3.8s; }
+.iad-motion-duck { --iad-motion-delay: .91s; animation-name: iad-duck-walk; animation-duration: 4.1s; }
+.iad-motion-shoe { --iad-motion-delay: 1.13s; animation-name: iad-shoe-step; animation-duration: 3.2s; }
+.iad-motion-bread { --iad-motion-delay: .81s; animation-name: iad-bread-breathe; animation-duration: 3.5s; }
+.iad-motion-hand { --iad-motion-delay: 1.07s; transform-origin: 120px 170px; animation-name: iad-hand-wave; animation-duration: 4.6s; }
+.iad-motion-balloon { --iad-motion-delay: 1.31s; transform-origin: 120px 90px; animation-name: iad-balloon-float; animation-duration: 4.3s; }
+.iad-motion-airplane { --iad-motion-delay: 1.53s; transform-origin: 120px 95px; animation-name: iad-airplane-glide; animation-duration: 3.7s; }
+.iad-motion-guitar { --iad-motion-delay: 1.77s; transform-origin: 115px 130px; animation-name: iad-guitar-groove; animation-duration: 3.1s; }
+.iad-cat-eyes { transform-box: fill-box; transform-origin: center; animation: iad-blink 11s 1.8s infinite; }
+.iad-cat-ears { transform-origin: 120px 70px; animation: iad-ear-twitch 5.7s 1.4s infinite; }
+.iad-duck-foot-left { transform-origin: 99px 151px; animation: iad-foot-left 4.1s .91s infinite ease-in-out; }
+.iad-duck-foot-right { transform-origin: 144px 151px; animation: iad-foot-right 4.1s .91s infinite ease-in-out; }
+.iad-duck-wing { transform-origin: 79px 132px; animation: iad-wing 4.1s .91s infinite ease-in-out; }
+.iad-ground-shadow { transform-origin: 120px 179px; }
+.iad-shadow-duck { animation: iad-duck-shadow 4.1s .91s infinite ease-in-out; }
+.iad-shadow-shoe { animation: iad-shoe-shadow 3.2s 1.13s infinite ease-in-out; }
+.iad-shoe-laces { transform-origin: 115px 85px; animation: iad-laces 3.2s 1.13s infinite ease-in-out; }
+.iad-aroma { animation: iad-aroma-rise 3.5s .81s infinite ease-out; }
+.iad-balloon-basket { transform-origin: 120px 129px; animation: iad-basket 4.3s 1.55s infinite ease-in-out; }
+.iad-plane-lines { animation: iad-motion-lines 3.7s 1.53s infinite ease-in-out; }
+.iad-guitar-strings { animation: iad-strings 3.1s 1.77s infinite ease-in-out; }
+.iad-music-notes { animation: iad-notes 3.1s 1.77s infinite ease-out; }
+
+/* Enter only the new phase: no exit timeout, duplicated controls, or inference delay. */
+.iad-screen-transition { animation: iad-enter 260ms both; }
+.iadivinha[data-phase="drawing"] .iad-screen-transition { animation-name: iad-fade; }
+.iadivinha[data-phase="drawing"] .iad-doodle * { animation: none; }
+.iad-processing-dots > span { display: inline-block; animation: iad-dot 1.2s infinite ease-in-out; }
+.iad-processing-dots > span:nth-child(2) { animation-delay: .16s; }
+.iad-processing-dots > span:nth-child(3) { animation-delay: .32s; }
+.iad-timer { position: relative; overflow: hidden; transition: background-color 500ms ease; }
+.iad-game-stats > .iad-timer { background: #ffc94a !important; }
+.iad-game-stats > .iad-timer-urgent { background: #ff6547 !important; animation: iad-urgent 1s infinite ease-in-out; }
+.iad-timer-track { position: absolute; bottom: 14%; left: 22%; width: 56%; height: 4px; overflow: hidden; border-radius: 4px; background: #172a2d25; }
+.iad-timer-track > span { display: block; height: 100%; background: var(--iad-ink); transform-origin: left; transition: transform 100ms linear; }
+.iad-edit-feedback { pointer-events: none; position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); white-space: nowrap; border-radius: 20px; background: #f7f1e5ed; padding: 5px 14px; font-size: 1rem; opacity: 0; }
+.iad-brush { animation: iad-fade 180ms both; }
+.iad-result { position: relative; }
+.iad-result--correct .iad-game-title { animation: iad-title-pop 480ms both; }
+.iad-result--miss .iad-result-image { animation: iad-gentle-sway 500ms both; }
+.iad-points { animation: iad-stamp 420ms 160ms both; }
+.iad-probability-fill { transform-origin: left center; animation: iad-bar 650ms 120ms both; }
+.iad-probabilities li:nth-child(2) .iad-probability-fill { animation-delay: 200ms; }
+.iad-probabilities li:nth-child(3) .iad-probability-fill { animation-delay: 280ms; }
+.iad-confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.iad-confetti i { position: absolute; left: calc(5% + var(--iad-confetti-index) * 8%); top: 8%; width: 7px; height: 16px; border-radius: 4px; background: var(--iad-yellow); opacity: 0; animation: iad-confetti-fall 950ms calc(var(--iad-confetti-index) * 25ms) both; }
+.iad-confetti i:nth-child(3n) { background: var(--iad-teal); }
+.iad-confetti i:nth-child(3n + 1) { background: var(--iad-coral); }
+.iad-final-cards > li { animation: iad-enter 300ms var(--iad-entry-delay) both; }
+.iad-final-cards .iad-outcome-correct { animation: iad-pop 320ms calc(var(--iad-entry-delay) + 240ms) both; }
+.iad-final-actions { animation: iad-enter 250ms 720ms both; }
+.iad-final-label { display: flex; justify-content: center; align-items: center; gap: 5px; }
+.iad-final-label .iad-doodle { flex: none; width: 32px; height: 28px; min-height: 0; }
+.iad-final-score { font-variant-numeric: tabular-nums; }
+.iad-score-number { display: inline-block; text-align: right; }
+.iad-rare-stamp { animation: iad-rare-stamp-pop 280ms 300ms both; }
+.iad-rare-card .iad-character { animation-delay: 650ms; }
+.iad-rare-card .iad-character > :is(.iad-aroma,.iad-balloon-basket,.iad-plane-lines,.iad-guitar-strings,.iad-music-notes) { animation-delay: 800ms; }
+.iadivinha[data-motion-paused="true"] *, .iadivinha[data-motion-paused="true"] *::before, .iadivinha[data-motion-paused="true"] *::after { animation-play-state: paused !important; }
+
+@keyframes iad-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes iad-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes iad-pencil { 0% { transform: rotate(-15deg); } 55% { transform: rotate(8deg); } 100% { transform: rotate(0); } }
+@keyframes iad-invite { 0%,86%,100% { transform: translateY(0); } 90% { transform: translateY(-2px); } 94% { transform: translateY(0); } 97% { transform: translateY(-1px); } }
+@keyframes iad-cat-sway { 0%,18%,100% { transform: rotate(0); } 38% { transform: rotate(-3deg); } 65% { transform: rotate(3deg); } 84% { transform: rotate(0); } }
+@keyframes iad-blink { 0%,38%,41%,98%,100% { transform: scaleY(1); } 39.5%,99% { transform: scaleY(.08); } }
+@keyframes iad-ear-twitch { 0%,72%,84%,100% { transform: rotate(0); } 76% { transform: rotate(-2deg) scaleY(.96); } 80% { transform: rotate(1.5deg); } }
+@keyframes iad-duck-walk { 0%,12%,100% { transform: translate(0,0) rotate(0); } 22% { transform: translate(4px,-3px) rotate(1.5deg); } 32% { transform: translate(8px,1px) rotate(0); } 42% { transform: translate(10px,-3px) rotate(1.5deg); } 52%,62% { transform: translate(12px,0) rotate(0); } 72% { transform: translate(6px,-3px) rotate(-1.5deg); } 82% { transform: translate(0,0) rotate(0); } }
+@keyframes iad-foot-left { 0%,12%,32%,52%,62%,82%,100% { transform: rotate(0); } 22%,72% { transform: rotate(18deg); } 42% { transform: rotate(-12deg); } }
+@keyframes iad-foot-right { 0%,12%,32%,52%,62%,82%,100% { transform: rotate(0); } 22%,72% { transform: rotate(-12deg); } 42% { transform: rotate(18deg); } }
+@keyframes iad-wing { 0%,16%,54%,100% { transform: rotate(0); } 34% { transform: rotate(-7deg); } 72% { transform: rotate(3deg); } }
+@keyframes iad-duck-shadow { 0%,12%,100% { transform: translateX(0) scale(1); } 22% { transform: translateX(4px) scale(.92,.7); } 32% { transform: translateX(8px) scale(1.03,1); } 42% { transform: translateX(10px) scale(.92,.7); } 52%,62% { transform: translateX(12px) scale(1); } 72% { transform: translateX(6px) scale(.92,.7); } 82% { transform: translateX(0) scale(1); } }
+@keyframes iad-shoe-step { 0%,15%,70%,100% { transform: translate(0,0) rotate(0); transform-origin: 45px 160px; } 24% { transform: translate(2px,-6px) rotate(-2deg); transform-origin: 45px 160px; } 34% { transform: translate(4px,0) rotate(3deg); transform-origin: 200px 151px; } 44% { transform: translate(6px,-5px) rotate(-2deg); transform-origin: 200px 151px; } 54% { transform: translate(8px,0) rotate(3deg); transform-origin: 45px 160px; } }
+@keyframes iad-shoe-shadow { 0%,15%,70%,100% { transform: scale(1); } 24%,44% { transform: scale(.85,.6); } 34%,54% { transform: scale(1.04,1.1); } }
+@keyframes iad-laces { 0%,18%,34%,54%,100% { transform: rotate(0); } 26%,46% { transform: rotate(2deg) translateY(-1px); } }
+@keyframes iad-bread-breathe { 0%,18%,90%,100% { transform: scale(1); } 48% { transform: scale(1.025,1.035); } 70% { transform: scale(1.015,.985); } }
+@keyframes iad-aroma-rise { 0%,15%,85%,100% { opacity: 0; transform: translateY(5px); } 35% { opacity: .32; } 80% { opacity: 0; transform: translateY(-6px); } }
+@keyframes iad-hand-wave { 0%,12%,70%,100% { transform: rotate(0); } 22%,46% { transform: rotate(-7deg); } 34%,58% { transform: rotate(8deg); } }
+@keyframes iad-balloon-float { 0%,12%,100% { transform: translateY(0) rotate(0); } 40% { transform: translateY(-8px) rotate(-2deg); } 74% { transform: translateY(5px) rotate(2deg); } }
+@keyframes iad-basket { 0%,12%,100% { transform: rotate(0); } 42% { transform: rotate(3deg); } 77% { transform: rotate(-3deg); } }
+@keyframes iad-airplane-glide { 0%,15%,100% { transform: translate(0,0) rotate(0); } 42% { transform: translate(7px,-3px) rotate(-2deg); } 60% { transform: translate(7px,-3px) rotate(-1deg); } 82% { transform: translate(-3px,2px) rotate(1deg); } }
+@keyframes iad-motion-lines { 0%,15%,90%,100% { opacity: .3; transform: translateX(0); } 40%,60% { opacity: 1; transform: translateX(-3px); } }
+@keyframes iad-guitar-groove { 0%,15%,85%,100% { transform: rotate(0); } 32%,62% { transform: rotate(-3deg); } 47%,75% { transform: rotate(3deg); } }
+@keyframes iad-strings { 0%,18%,85%,100% { opacity: 1; transform: translateX(0); } 33%,63% { opacity: .65; transform: translateX(.6px); } 48%,78% { opacity: 1; transform: translateX(-.6px); } }
+@keyframes iad-notes { 0%,20%,85%,100% { opacity: 0; transform: translateY(3px); } 40% { opacity: .65; } 80% { opacity: 0; transform: translateY(-7px); } }
+@keyframes iad-dot { 0%,60%,100% { opacity: .35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-4px); } }
+@keyframes iad-urgent { 0%,100% { transform: scale(1); } 45% { transform: scale(1.035); } }
+@keyframes iad-title-pop { 0% { opacity: 0; transform: translateY(8px) scale(.96); } 65% { opacity: 1; transform: translateY(-3px) scale(1.015); } 100% { transform: translateY(0) scale(1); } }
+@keyframes iad-gentle-sway { 0% { transform: rotate(0); } 35% { transform: rotate(-1deg); } 70% { transform: rotate(.7deg); } 100% { transform: rotate(0); } }
+@keyframes iad-stamp { 0% { opacity: 0; transform: scale(1.15) rotate(-9deg); } 70% { opacity: 1; transform: scale(.98) rotate(-6deg); } 100% { transform: scale(1) rotate(-6deg); } }
+@keyframes iad-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes iad-pop { 0% { opacity: 0; transform: scale(.85); } 65% { opacity: 1; transform: scale(1.06); } 100% { transform: scale(1); } }
+@keyframes iad-confetti-fall { 0% { opacity: 0; transform: translateY(-12px) rotate(0); } 15% { opacity: .9; } 100% { opacity: 0; transform: translateY(170px) rotate(120deg); } }
+@keyframes iad-rare-stamp-pop { from { opacity: 0; transform: scale(1.15) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(-4deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .iadivinha :is(.iad-logo,.iad-heading,.iad-class-card,.iad-card-entry,.iad-start .iad-cta-wrap,.iad-screen-transition,.iad-final-cards > li,.iad-final-actions) { animation: iad-fade 120ms both !important; }
+  .iadivinha :is(.iad-class-card,.iad-doodle-reaction,.iad-primary,.iad-tool,.iad-secondary,.iad-dialog-close,.iad-logo svg):is(:hover,:focus-visible,:active) { transform: none; }
+  .iadivinha .iad-class-card:is(:hover,:focus-visible,:active) { transform: rotate(var(--iad-rest-tilt)); }
+  .iad-confetti, .iad-aroma, .iad-music-notes { display: none; }
+}

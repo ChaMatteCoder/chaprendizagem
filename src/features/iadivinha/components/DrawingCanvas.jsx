@@ -27,6 +27,8 @@ function paint(canvas, strokes) {
 
 export default function DrawingCanvas({ ref, deadline, onFinish }) {
   const canvasRef = useRef(null);
+  const editFeedbackRef = useRef(null);
+  const editAnimation = useRef(null);
   const strokes = useRef([]);
   const pointer = useRef(null);
   const [hasInk, setHasInk] = useState(false);
@@ -36,7 +38,10 @@ export default function DrawingCanvas({ ref, deadline, onFinish }) {
   const keyboardDown = useRef(false);
   const [cursor, setCursor] = useState(null);
 
-  useEffect(() => { paint(canvasRef.current, []); }, []);
+  useEffect(() => {
+    paint(canvasRef.current, []);
+    return () => editAnimation.current?.cancel();
+  }, []);
 
   useImperativeHandle(ref, () => ({
     snapshot() {
@@ -89,6 +94,13 @@ export default function DrawingCanvas({ ref, deadline, onFinish }) {
     strokes.current = clear ? [] : strokes.current.slice(0, -1);
     paint(canvasRef.current, strokes.current);
     setHasInk(strokes.current.length > 0);
+    editAnimation.current?.cancel();
+    editFeedbackRef.current.textContent = clear ? 'Folha limpa ✓' : 'Traço desfeito ↶';
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    editAnimation.current = editFeedbackRef.current.animate(
+      [{ opacity: 0 }, { opacity: 1, offset: .15 }, { opacity: 1, offset: .75 }, { opacity: 0 }],
+      { duration: reduced ? 450 : 650, easing: 'ease-out' },
+    );
   }
 
   function keyboardDraw(event) {
@@ -125,6 +137,7 @@ export default function DrawingCanvas({ ref, deadline, onFinish }) {
         onPointerDown={startStroke} onPointerMove={moveStroke} onPointerUp={endStroke}
         onPointerCancel={endStroke} onLostPointerCapture={endStroke}
         aria-label="Área de desenho" aria-describedby="iad-draw-help iad-keyboard-help" />
+      <span className="iad-edit-feedback" ref={editFeedbackRef} aria-hidden="true" />
       {cursor && <span className="iad-keyboard-cursor" aria-hidden="true" style={{ left: `${cursor.x / SIZE * 100}%`, top: `${cursor.y / SIZE * 100}%`, background: cursor.down ? '#ff6547' : '#fff' }} />}</div>
       <span className="iad-drawing-note iad-drawing-note-right" aria-hidden="true">10 SEGUNDOS<br />DE ARTE :)</span>
     </div>

@@ -1,0 +1,530 @@
+[
+  [
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.7s",
+      "duration": "3.8s",
+      "label": "Gato",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.91s",
+      "duration": "4.1s",
+      "label": "Pato",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "1.13s",
+      "duration": "3.2s",
+      "label": "Sapato",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "0.81s",
+      "duration": "3.5s",
+      "label": "Pão",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.07s",
+      "duration": "4.6s",
+      "label": "Mão",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.31s",
+      "duration": "4.3s",
+      "label": "Balão",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.53s",
+      "duration": "3.7s",
+      "label": "Avião",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.77s",
+      "duration": "3.1s",
+      "label": "Violão",
+      "transform": "none"
+    }
+  ],
+  [
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.7s",
+      "duration": "3.8s",
+      "label": "Gato",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.91s",
+      "duration": "4.1s",
+      "label": "Pato",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "1.13s",
+      "duration": "3.2s",
+      "label": "Sapato",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "0.81s",
+      "duration": "3.5s",
+      "label": "Pão",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.07s",
+      "duration": "4.6s",
+      "label": "Mão",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.31s",
+      "duration": "4.3s",
+      "label": "Balão",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.53s",
+      "duration": "3.7s",
+      "label": "Avião",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.77s",
+      "duration": "3.1s",
+      "label": "Violão",
+      "transform": "none"
+    }
+  ],
+  [
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.7s",
+      "duration": "3.8s",
+      "label": "Gato",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.91s",
+      "duration": "4.1s",
+      "label": "Pato",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "1.13s",
+      "duration": "3.2s",
+      "label": "Sapato",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "0.81s",
+      "duration": "3.5s",
+      "label": "Pão",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.07s",
+      "duration": "4.6s",
+      "label": "Mão",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.31s",
+      "duration": "4.3s",
+      "label": "Balão",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.53s",
+      "duration": "3.7s",
+      "label": "Avião",
+      "transform": "none"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.77s",
+      "duration": "3.1s",
+      "label": "Violão",
+      "transform": "none"
+    }
+  ],
+  [
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.7s",
+      "duration": "3.8s",
+      "label": "Gato",
+      "transform": "matrix(0.999194, -0.0401468, 0.0401468, 0.999194, 0, 0)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.91s",
+      "duration": "4.1s",
+      "label": "Pato",
+      "transform": "matrix(0.999706, 0.02425, -0.02425, 0.999706, 4.29451, -2.70549)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "1.13s",
+      "duration": "3.2s",
+      "label": "Sapato",
+      "transform": "matrix(0.999393, -0.0348477, 0.0348477, 0.999393, 1.99703, -5.99108)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "0.81s",
+      "duration": "3.5s",
+      "label": "Pão",
+      "transform": "matrix(1.00946, 0, 0, 1.01324, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.07s",
+      "duration": "4.6s",
+      "label": "Mão",
+      "transform": "matrix(0.996946, -0.0780984, 0.0780984, 0.996946, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.31s",
+      "duration": "4.3s",
+      "label": "Balão",
+      "transform": "matrix(1, -0.000190647, 0.000190647, 1, 0, -0.043693)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.53s",
+      "duration": "3.7s",
+      "label": "Avião",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.77s",
+      "duration": "3.1s",
+      "label": "Violão",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    }
+  ],
+  [
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.7s",
+      "duration": "3.8s",
+      "label": "Gato",
+      "transform": "matrix(0.99928, -0.0379455, 0.0379455, 0.99928, 0, 0)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.91s",
+      "duration": "4.1s",
+      "label": "Pato",
+      "transform": "matrix(0.999939, 0.0110644, -0.0110644, 0.999939, 8.84528, -0.690555)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "1.13s",
+      "duration": "3.2s",
+      "label": "Sapato",
+      "transform": "matrix(0.999986, -0.00529209, 0.00529209, 0.999986, 5.32129, -3.30322)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "0.81s",
+      "duration": "3.5s",
+      "label": "Pão",
+      "transform": "matrix(1.02471, 0, 0, 1.03459, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.07s",
+      "duration": "4.6s",
+      "label": "Mão",
+      "transform": "matrix(0.998792, 0.0491428, -0.0491428, 0.998792, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.31s",
+      "duration": "4.3s",
+      "label": "Balão",
+      "transform": "matrix(0.999864, -0.0164789, 0.0164789, 0.999864, 0, -3.77685)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.53s",
+      "duration": "3.7s",
+      "label": "Avião",
+      "transform": "matrix(0.999971, -0.00763396, 0.00763396, 0.999971, 1.53089, -0.656097)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.77s",
+      "duration": "3.1s",
+      "label": "Violão",
+      "transform": "matrix(0.99993, -0.0118382, 0.0118382, 0.99993, 0, 0)"
+    }
+  ],
+  [
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.7s",
+      "duration": "3.8s",
+      "label": "Gato",
+      "transform": "matrix(0.99919, 0.0402409, -0.0402409, 0.99919, 0, 0)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.91s",
+      "duration": "4.1s",
+      "label": "Pato",
+      "transform": "matrix(0.999991, 0.00428069, -0.00428069, 0.999991, 11.673, -0.490533)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "1.13s",
+      "duration": "3.2s",
+      "label": "Sapato",
+      "transform": "matrix(0.998727, 0.0504395, -0.0504395, 0.998727, 7.70986, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "0.81s",
+      "duration": "3.5s",
+      "label": "Pão",
+      "transform": "matrix(1.01885, 0, 0, 1.00425, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.07s",
+      "duration": "4.6s",
+      "label": "Mão",
+      "transform": "matrix(0.999987, -0.00511981, 0.00511981, 0.999987, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.31s",
+      "duration": "4.3s",
+      "label": "Balão",
+      "transform": "matrix(0.999408, -0.0343986, 0.0343986, 0.999408, 0, -7.88514)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.53s",
+      "duration": "3.7s",
+      "label": "Avião",
+      "transform": "matrix(0.99945, -0.0331633, 0.0331633, 0.99945, 6.65163, -2.8507)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.77s",
+      "duration": "3.1s",
+      "label": "Violão",
+      "transform": "matrix(0.999691, -0.0248721, 0.0248721, 0.999691, 0, 0)"
+    }
+  ],
+  [
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.7s",
+      "duration": "3.8s",
+      "label": "Gato",
+      "transform": "matrix(0.999753, 0.0222371, -0.0222371, 0.999753, 0, 0)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.91s",
+      "duration": "4.1s",
+      "label": "Pato",
+      "transform": "matrix(0.999992, -0.00395657, 0.00395657, 0.999992, 11.0932, -0.453391)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "1.13s",
+      "duration": "3.2s",
+      "label": "Sapato",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "0.81s",
+      "duration": "3.5s",
+      "label": "Pão",
+      "transform": "matrix(1.00923, 0, 0, 0.990772, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.07s",
+      "duration": "4.6s",
+      "label": "Mão",
+      "transform": "matrix(0.996427, 0.0844613, -0.0844613, 0.996427, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.31s",
+      "duration": "4.3s",
+      "label": "Balão",
+      "transform": "matrix(0.999878, -0.0155927, 0.0155927, 0.999878, 0, -4.40366)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.53s",
+      "duration": "3.7s",
+      "label": "Avião",
+      "transform": "matrix(0.999794, -0.0203206, 0.0203206, 0.999794, 7, -3)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.77s",
+      "duration": "3.1s",
+      "label": "Violão",
+      "transform": "matrix(0.999369, -0.0355308, 0.0355308, 0.999369, 0, 0)"
+    }
+  ],
+  [
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.7s",
+      "duration": "3.8s",
+      "label": "Gato",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "0.91s",
+      "duration": "4.1s",
+      "label": "Pato",
+      "transform": "matrix(0.999953, -0.00972523, 0.00972523, 0.999953, 2.22889, -1.11445)"
+    },
+    {
+      "cardHeight": 248,
+      "cardWidth": 243,
+      "delay": "1.13s",
+      "duration": "3.2s",
+      "label": "Sapato",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "0.81s",
+      "duration": "3.5s",
+      "label": "Pão",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.07s",
+      "duration": "4.6s",
+      "label": "Mão",
+      "transform": "matrix(0.999379, 0.0352229, -0.0352229, 0.999379, 0, 0)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.31s",
+      "duration": "4.3s",
+      "label": "Balão",
+      "transform": "matrix(0.999703, 0.0243891, -0.0243891, 0.999703, 0, 3.04197)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.53s",
+      "duration": "3.7s",
+      "label": "Avião",
+      "transform": "matrix(0.999991, -0.00430388, 0.00430388, 0.999991, 3.23298, -1.11649)"
+    },
+    {
+      "cardHeight": 237,
+      "cardWidth": 218,
+      "delay": "1.77s",
+      "duration": "3.1s",
+      "label": "Violão",
+      "transform": "matrix(0.99863, 0.0523266, -0.0523266, 0.99863, 0, 0)"
+    }
+  ]
+]

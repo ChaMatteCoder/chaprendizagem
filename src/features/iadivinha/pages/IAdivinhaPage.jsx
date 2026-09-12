@@ -12,8 +12,10 @@ import useGameSession from '../hooks/useGameSession.js';
 import useDrawingModel from '../hooks/useDrawingModel.js';
 import useSoundtrack from '../hooks/useSoundtrack.js';
 import '../styles/iadivinha.css';
+import '../styles/motion.css';
 
 export default function IAdivinhaPage() {
+  const motionRoot = useRef(null);
   const dialogRef = useRef(null);
   const dialogTitleRef = useRef(null);
   const mainRef = useRef(null);
@@ -41,13 +43,22 @@ export default function IAdivinhaPage() {
     return () => { document.title = previousTitle; };
   }, []);
 
+  useEffect(() => {
+    const updateVisibility = () => {
+      if (motionRoot.current) motionRoot.current.dataset.motionPaused = String(document.hidden);
+    };
+    updateVisibility();
+    document.addEventListener('visibilitychange', updateVisibility);
+    return () => document.removeEventListener('visibilitychange', updateVisibility);
+  }, []);
+
   function openDialog(content) {
     setDialogContent(content);
     dialogRef.current.showModal();
   }
 
   return (
-    <div className="iadivinha">
+    <div className="iadivinha" ref={motionRoot} data-phase={state.phase}>
       <a className="iad-skip-link" href="#inicio">Pular para o conteúdo</a>
       <audio ref={music.audioRef} loop preload="none" aria-hidden="true" />
       <GameHeader onAbout={() => openDialog('about')} onRules={() => openDialog('rules')} onHome={game.home} isPlaying={isPlaying} busy={busy} music={music} />
@@ -55,12 +66,13 @@ export default function IAdivinhaPage() {
       {preview && <p className="iad-preview-notice" role="note">PRÉVIA DE DESENVOLVIMENTO · 8 classes simuladas. Não é reconhecimento por IA.</p>}
       {isPlaying ? <main className="iad-game" id="inicio" ref={mainRef} tabIndex={-1}>
         <p className="iad-demo-badge">{preview ? 'PRÉVIA VISUAL · PALPITES SIMULADOS' : 'IA NO SEU DISPOSITIVO · SEU DESENHO FICA AQUI'}</p>
+        <div className="iad-screen-transition" key={`${state.phase}:${state.round}`}>
         {state.phase === 'preparing' && <RoundPreparation state={state} onBegin={game.begin} />}
         {state.phase === 'revealing' && <SpecialRoundReveal key={state.round} challenge={state.sequence[state.round]} round={state.round} onComplete={game.revealDone} />}
         {state.phase === 'drawing' && <DrawingScreen key={state.round} state={state} onSubmit={game.submit} />}
         {state.phase === 'processing' && <section className="iad-processing" role="status">
           <h1 className="iad-game-title">UM PALPITE VEM AÍ…</h1>
-          <div className="iad-processing-dots" aria-hidden="true">● ● ●</div><p>{preview ? 'Preparando um palpite simulado.' : 'A IA está olhando seu rabisco.'}</p>
+          <div className="iad-processing-dots" aria-hidden="true"><span>●</span> <span>●</span> <span>●</span></div><p>{preview ? 'Preparando um palpite simulado.' : 'A IA está olhando seu rabisco.'}</p>
         </section>}
         {state.phase === 'error' && <section role="alert" className="iad-processing">
           <h1 className="iad-game-title">OPA, UM IMPREVISTO!</h1><p>Não foi possível gerar o palpite. Seu desenho está guardado para tentar novamente.</p>
@@ -68,6 +80,7 @@ export default function IAdivinhaPage() {
         </section>}
         {state.phase === 'result' && <PredictionResult result={state.results.at(-1)} lastRound={state.round === 5} onNext={game.next} />}
         {state.phase === 'finished' && <FinalScore state={state} onRestart={game.start} onHome={game.home} onPerformance={() => openDialog('performance')} />}
+        </div>
       </main> : <HomeScreen ref={mainRef} onPlay={game.start} classes={model.classes} loadError={model.error} modelStatus={model.status} onRetry={model.retry} preview={preview} />}
       <footer className="iad-footer"><Link to="/">← Voltar ao Chaprendizagem</Link><span>Um pouco de arte. Um palpite de IA.</span></footer>
       <dialog className="iad-dialog" ref={dialogRef} aria-labelledby="iad-dialog-title">
@@ -82,7 +95,7 @@ export default function IAdivinhaPage() {
             <button className="iad-secondary" type="button" onClick={() => setDialogContent('performance')}>Ver desempenho</button>
           </> : <>
             <p>{model.classes.length > 3 ? 'São seis rodadas: as três figuras principais, duas principais extras e um rabisco surpresa. A rodada rara começa depois da revelação.' : 'São seis rodadas, com cada classe aparecendo duas vezes.'} Clique em “Vamos lá!” para começar e desenhe com mouse, toque, caneta ou teclado.</p>
-            <p>“Terminei!” antecipa o palpite. Cada acerto vale 100 pontos. Se o tempo acabar sem desenho, a rodada vale zero. Desenhe a figura ocupando uma boa parte da folha.</p>
+            <p>“Terminei!” antecipa o palpite. Nos acertos, a confiança da IA vira pontos, arredondada para o inteiro mais próximo: 86% vale 86 pontos. Um palpite diferente da figura pedida vale zero. Se o tempo acabar sem desenho, a rodada vale zero. Desenhe a figura ocupando uma boa parte da folha.</p>
           </>}
           <button className="iad-secondary" type="submit">Entendi!</button>
         </form>

@@ -3,7 +3,7 @@ export default function GameHeader({ onAbout, onRules, onHome, isPlaying, busy, 
     <header className="iad-header">
       <a className="iad-logo" href="#inicio" aria-label="IAdivinha! Início" onClick={isPlaying ? onHome : undefined}>
         <span><span className="iad-logo-ia">IA</span>divinha!</span>
-        <svg viewBox="0 0 52 64" fill="none" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" aria-hidden="true"><path fill="#42b7a8" d="m9 42 27-34q4-5 9 0l3 3q4 4 0 8L21 53 5 59Z" /><path fill="#ff6547" d="m32 13 5-6q4-3 8 1l3 3q4 4 0 8l-3 4Z" /><path fill="#fffdf7" d="m9 42 12 11-16 6Z" /><path d="m13 40 26-31" stroke="#fffdf7" strokeWidth="3" /></svg>
+        <svg viewBox="0 0 52 64" fill="none" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" aria-hidden="true"><g className="iad-pencil-entry"><path fill="#42b7a8" d="m9 42 27-34q4-5 9 0l3 3q4 4 0 8L21 53 5 59Z" /><path fill="#ff6547" d="m32 13 5-6q4-3 8 1l3 3q4 4 0 8l-3 4Z" /><path fill="#fffdf7" d="m9 42 12 11-16 6Z" /><path d="m13 40 26-31" stroke="#fffdf7" strokeWidth="3" /></g></svg>
       </a>
       <nav aria-label="Navegação IAdivinha">
         {isPlaying ? <button type="button" onClick={onHome}>Início</button> : <a href="#jogar">Jogar</a>}
