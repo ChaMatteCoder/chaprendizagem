@@ -1,33 +1,49 @@
 import { useEffect, useState } from 'react';
-
-const percent = value => (value * 100).toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + '%';
+import { Download } from 'lucide-react';
+import { createConfusionMatrixPng, formatMetric, getConfusionMatrixData, matrixCellColor } from '../lib/confusionMatrixExport.js';
 
 export default function ModelPerformance() {
   const [metrics, setMetrics] = useState(null);
   const [error, setError] = useState(false);
   const [attempt, setAttempt] = useState(0);
+  const [exportError, setExportError] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
     fetch('/models/iadivinha/metrics.json', { signal: controller.signal })
       .then(response => { if (!response.ok) throw new Error(); return response.json(); })
       .then(value => {
         if (value.smoke !== false || !value.models?.cnn?.test || !value.models?.mlp?.test) throw new Error();
+        getConfusionMatrixData(value);
         if (!controller.signal.aborted) setMetrics(value);
       }).catch(() => { if (!controller.signal.aborted) setError(true); });
     return () => controller.abort();
   }, [attempt]);
   if (error) return <div role="alert"><p>Não foi possível carregar as métricas.</p><button type="button" className="iad-secondary" onClick={() => { setError(false); setAttempt(value => value + 1); }}>Tentar novamente</button></div>;
   if (!metrics) return <p role="status">Carregando os resultados do experimento…</p>;
-  const selected = metrics.models[metrics.selection.model];
+  const { model, labels, matrix, samples, accuracy } = getConfusionMatrixData(metrics);
+  const max = Math.max(...matrix.flat());
   return <div className="iad-performance">
-    <p>Resultados no conjunto de teste Quick, Draw!: {selected.test.samples.toLocaleString('pt-BR')} desenhos separados do treinamento.</p>
+    <p>Antes de entrar no jogo, a IA foi avaliada com {samples.toLocaleString('pt-BR')} desenhos do Quick, Draw! que não usou para aprender.</p>
+    <p className="iad-performance-highlight"><strong>{formatMetric(accuracy)}</strong><span>de acertos nesse teste, entre as oito figuras do jogo</span></p>
     <table><caption>Comparação dos modelos no teste</caption><thead><tr><th scope="col">Modelo</th><th scope="col">Acurácia</th><th scope="col">F1 macro</th></tr></thead><tbody>
-      {Object.entries(metrics.models).map(([name, model]) => <tr key={name}><th scope="row">{name.toUpperCase()}{name === metrics.selection.model ? ' · em uso' : ''}</th><td>{percent(model.test.accuracy)}</td><td>{percent(model.test.macro_f1)}</td></tr>)}
+      {Object.entries(metrics.models).map(([name, entry]) => <tr key={name}><th scope="row">{name.toUpperCase()}{name === model ? ' · em uso' : ''}</th><td>{formatMetric(entry.test.accuracy)}</td><td>{formatMetric(entry.test.macro_f1)}</td></tr>)}
     </tbody></table>
-    <p>O modelo {metrics.selection.model.toUpperCase()} foi escolhido pelo F1 macro na validação. O conjunto de teste não participou da escolha.</p>
-    <div className="iad-matrix-scroll" tabIndex={0} role="region" aria-label="Matriz de confusão, role horizontalmente para ver todas as classes"><table><caption>Matriz de confusão de {metrics.selection.model.toUpperCase()}: linhas = classe real; colunas = previsão</caption><thead><tr><th scope="col">Real / previsão</th>{metrics.classes.map(item => <th scope="col" key={item.id}>{item.label}</th>)}</tr></thead><tbody>{selected.test.confusion_matrix.map((row, index) => <tr key={index}><th scope="row">{metrics.classes[index].label}</th>{row.map((count, column) => <td key={column}>{count}</td>)}</tr>)}</tbody></table></div>
-    <p>Acurácia é a proporção de acertos. F1 macro dá o mesmo peso às oito classes ao combinar precisão e recuperação.</p>
-    <p>Esses resultados não medem sua habilidade nem a acurácia de desenhos feitos neste jogo. A adaptação do canvas pode produzir pixels diferentes dos bitmaps de treino, e a IA pode errar.</p>
-    <a href="/models/iadivinha/metrics.json" download>Baixar métricas do experimento (JSON)</a>
+    <p>Acurácia é a proporção de acertos. F1 macro combina precisão e recuperação, dando o mesmo peso a cada figura. MLP e CNN são dois tipos de rede neural que comparamos.</p>
+    <h3>Onde ela acerta e se confunde</h3>
+    <p>Escolha uma figura na linha e veja os palpites nas colunas. Os números na diagonal são acertos; os demais mostram confusões entre figuras.</p>
+    <div className="iad-matrix-scroll" tabIndex={0} role="region" aria-label="Matriz de confusão. Role horizontalmente para ver todas as figuras."><table><caption>Matriz de confusão · {model.toUpperCase()} · quantidade de desenhos</caption><thead><tr><th scope="col">Real ↓ / Palpite →</th>{labels.map(label => <th scope="col" key={label}>{label}</th>)}</tr></thead><tbody>{matrix.map((row, index) => <tr key={labels[index]}><th scope="row">{labels[index]}</th>{row.map((count, column) => <td key={column} className={index === column ? 'iad-matrix-correct' : undefined} style={{ backgroundColor: matrixCellColor(count, max), color: count / max > 0.6 ? '#fff' : '#172a2d' }}>{count}</td>)}</tr>)}</tbody></table></div>
+    <div className="iad-performance-downloads">
+      <a className="iad-secondary" href="data:," download={`iadivinha-matriz-confusao-${model}.png`} onClick={event => {
+        try { event.currentTarget.href = createConfusionMatrixPng(metrics); setExportError(false); }
+        catch { event.preventDefault(); setExportError(true); }
+      }}><Download size={20} aria-hidden="true" />Baixar matriz em PNG</a>
+      <a href="/models/iadivinha/metrics.json" download>Baixar dados (JSON)</a>
+    </div>
+    {exportError && <p role="alert">Não foi possível criar a imagem. Tente baixar novamente ou use os dados em JSON.</p>}
+    <p className="iad-performance-note">A imagem inclui todas as figuras, os valores e a identificação do teste, em alta resolução para o seu relatório.</p>
+    <details className="iad-performance-method"><summary>Sobre a avaliação</summary>
+      <p>O modelo {model.toUpperCase()} foi escolhido pelo F1 macro em um conjunto de validação. O teste apresentado aqui ficou separado e não participou dessa escolha.</p>
+      <p>Esses resultados avaliam a IA, não sua habilidade de desenhar. Os rabiscos feitos no jogo podem ser diferentes dos desenhos do teste, por isso a taxa de acertos durante as partidas pode mudar.</p>
+    </details>
   </div>;
 }

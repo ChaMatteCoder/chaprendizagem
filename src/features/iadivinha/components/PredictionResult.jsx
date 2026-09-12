@@ -17,10 +17,10 @@ export default function PredictionResult({ result, lastRound, onNext }) {
         {result.prediction ? <>
           <p className="iad-confidence">{formatConfidence(result.prediction.confidence)} de confiança</p>
           <ProbabilityBars probabilities={result.prediction.probabilities} />
-          <p className="iad-small-print">{result.prediction.simulated ? 'Palpite simulado para validar a interface; não mede reconhecimento.' : `Inferência local: ${result.prediction.inferenceMs.toFixed(1)} ms. A confiança é um palpite, não uma certeza.`}</p>
-        </> : <p>Nenhuma imagem foi enviada ao classificador. Esta rodada vale zero pontos.</p>}
+          <p className="iad-small-print">{result.prediction.simulated ? 'Palpite simulado para validar a interface; não mede reconhecimento.' : 'A confiança mostra o quanto a IA apostou nesse palpite. Ela também pode se enganar!'}</p>
+        </> : <p>Dessa vez não deu tempo. Na próxima, vale até um rabisco!</p>}
         <strong className="iad-points">+{result.points} PTS</strong>
-        {result.prediction && <p className="iad-scoring-note">{result.correct ? 'Acertou! A confiança vira pontos, arredondada para o inteiro mais próximo.' : 'O palpite não foi a figura pedida. Esta rodada vale zero pontos.'}</p>}
+        {result.prediction && <p className="iad-scoring-note">{result.correct ? 'Mais confiança no acerto, mais pontos para você!' : 'A IA pensou em outra figura. Sem pontos desta vez, mas a arte valeu!'}</p>}
       </div>
     </div>
     <button className="iad-primary iad-game-cta" type="button" onClick={onNext}>{lastRound ? 'VER PLACAR FINAL' : 'PRÓXIMA RODADA'}</button>

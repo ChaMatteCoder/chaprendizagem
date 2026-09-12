@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createSoundtrack, MUSIC_TRACKS } from '../src/features/iadivinha/lib/soundtrack.js';
+import { attachSoundtrackGestures, createSoundtrack, MUSIC_TRACKS } from '../src/features/iadivinha/lib/soundtrack.js';
 const tick = async () => { await Promise.resolve(); await Promise.resolve(); };
 function fakeAudio() {
   return { plays: 0, pauses: 0, events: {}, play() { this.plays++; return Promise.resolve(); }, pause() { this.pauses++; }, addEventListener(name, callback) { this.events[name] = callback; }, removeEventListener(name) { delete this.events[name]; }, removeAttribute() { this.src = ''; }, load() {} };
@@ -32,4 +32,42 @@ test('Trilha: bloqueio de autoplay é recuperado pelo primeiro gesto; falha anti
   audio.play = () => Promise.resolve(); music.setPhase('finished'); await tick();
   rejectOld(new Error('stale error')); await tick(); assert.equal(status.failed, false);
   music.toggle(); music.activate(); assert.equal(audio.muted, true); music.dispose();
+});
+
+test('Trilha mobile: o primeiro toque inicia mesmo com autoplay pendente e ignora a rejeição antiga', async () => {
+  const audio = fakeAudio(); let rejectAutoplay, status;
+  audio.play = () => new Promise((_, reject) => { rejectAutoplay = reject; });
+  const music = createSoundtrack(audio, null, value => { status = value; });
+  music.setPhase('home');
+  audio.play = () => { audio.plays++; return Promise.resolve(); };
+  music.activate();
+  assert.equal(audio.plays, 1);
+  await tick();
+  rejectAutoplay(Object.assign(new Error(), { name: 'NotAllowedError' }));
+  await tick();
+  assert.equal(status.activated, true);
+  assert.equal(status.blocked, false);
+  music.toggle(); music.activate();
+  assert.equal(audio.plays, 1);
+  assert.equal(audio.muted, true);
+  music.dispose();
+});
+
+test('Trilha mobile: touchend desbloqueia durante o gesto, antes de trocar a tela, sem interferir no mute', () => {
+  const handlers = new Map(); let activations = 0;
+  const target = {
+    addEventListener(name, handler, options) { handlers.set(name, { handler, options }); },
+    removeEventListener(name, handler, options) {
+      assert.equal(handlers.get(name).handler, handler);
+      assert.equal(options.capture, true);
+      handlers.delete(name);
+    },
+  };
+  const detach = attachSoundtrackGestures(target, { activate() { activations++; } });
+  assert.equal(handlers.get('touchend').options.capture, true);
+  handlers.get('touchend').handler({ target: { closest: () => null } });
+  assert.equal(activations, 1);
+  handlers.get('click').handler({ target: { closest: () => ({}) } });
+  assert.equal(activations, 1);
+  detach(); assert.equal(handlers.size, 0);
 });

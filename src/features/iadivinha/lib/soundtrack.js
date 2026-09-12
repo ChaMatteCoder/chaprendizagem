@@ -1,6 +1,17 @@
 export const MUSIC_TRACKS = { menu: '/audio/iadivinha/menu.mp3', gameplay: '/audio/iadivinha/gameplay.mp3', finale: '/audio/iadivinha/finale.mp3' };
 export const musicForPhase = phase => phase === 'home' ? 'menu' : phase === 'finished' ? 'finale' : 'gameplay';
 
+export function attachSoundtrackGestures(target, music) {
+  // Touch playback must be requested inside the gesture, before React changes the screen.
+  const activate = event => {
+    if (!event.target?.closest?.('[data-music-toggle]')) music.activate();
+  };
+  const events = ['pointerup', 'touchend', 'click', 'keydown'];
+  const options = { capture: true, passive: true };
+  events.forEach(name => target.addEventListener(name, activate, options));
+  return () => events.forEach(name => target.removeEventListener(name, activate, options));
+}
+
 export function createSoundtrack(audio, _storage, notify = () => {}) {
   // A new visit starts with sound enabled; mute lasts for this mounted game.
   let muted = false, activated = false, disposed = false, track, failed = false, blocked = false, ended = false, pending = false, request = 0;
@@ -8,8 +19,8 @@ export function createSoundtrack(audio, _storage, notify = () => {}) {
   audio.preload = 'none';
   audio.volume = 0.35;
   const report = () => { if (!disposed) notify({ muted, activated, failed, blocked }); };
-  function play() {
-    if (disposed || muted || !track || ended || pending) return;
+  function play(fromGesture = false) {
+    if (disposed || muted || !track || ended || (pending && !fromGesture)) return;
     const token = ++request;
     failed = false; blocked = false; pending = true;
     function reject(error) {
@@ -42,12 +53,15 @@ export function createSoundtrack(audio, _storage, notify = () => {}) {
       audio.currentTime = 0;
       failed = false; play(); report();
     },
-    activate() { if (!activated || blocked || failed) play(); },
+    activate() {
+      // An unresolved autoplay attempt must not consume the first mobile gesture.
+      if (!activated || blocked || failed || audio.paused) play(true);
+    },
     toggle() {
       if (disposed) return;
       if (blocked || failed) muted = false; else muted = !muted;
       audio.muted = muted;
-      if (muted) { request++; pending = false; audio.pause(); } else play();
+      if (muted) { request++; pending = false; audio.pause(); } else play(true);
       report();
     },
     dispose() {

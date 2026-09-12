@@ -15,7 +15,7 @@ export default function HomeScreen({ onPlay, classes, loadError, modelStatus, on
       </div>
       <div className="iad-art-stage">
         <ScribbleNote className="iad-note-left">DESENHOS<br />VIRAM<br />PALPITES!</ScribbleNote>
-        <ul className="iad-class-cards" aria-label="Os três desafios">
+        <ul className="iad-class-cards" aria-label="Os personagens principais">
           {classes.filter(item => classById(item.id)?.type === 'core').map((item, index) => <li className={`iad-class-card iad-${item.id}`} key={item.id} tabIndex={0} style={{ "--iad-entry-delay": `${80 + index * 80}ms` }}><div className="iad-card-entry"><ClassDoodle kind={item.id} /><span>{item.label}</span></div></li>)}
         </ul>
         <ScribbleNote className="iad-note-right">PEQUENOS<br />RABISCOS,<br />GRANDES<br />SURPRESAS :)</ScribbleNote>
@@ -32,7 +32,7 @@ export default function HomeScreen({ onPlay, classes, loadError, modelStatus, on
           <li><span className="iad-step-number">2</span><span>Desenhe em 10 s</span></li>
           <li><span className="iad-step-number">3</span><span>Descubra o palpite</span></li>
         </ol>
-        <p>{classes.some(item => classById(item.id)?.type === 'special') ? 'Três figuras principais, duas principais extras e uma surpresa garantida. Acertou? A confiança vira pontos: 86% = 86 pontos. Palpite diferente vale zero.' : 'Cada desenho aparece duas vezes. A ordem muda, e cada acerto vale 100 pontos.'}</p>
+        <p>{classes.some(item => classById(item.id)?.type === 'special') ? 'Seis rodadas para soltar o traço. E uma visita surpresa da Turma do “ÃO”!' : 'Seis rodadas para soltar o traço e desafiar a IA. Qual será seu melhor rabisco?'}</p>
       </section>
       {classes.some(item => classById(item.id)?.type === 'special') && <section className="iad-special-gallery" aria-labelledby="iad-special-title">
         <h2 id="iad-special-title">TURMA DO “ÃO”</h2>
