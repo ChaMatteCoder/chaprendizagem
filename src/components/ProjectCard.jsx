@@ -1,7 +1,7 @@
 import { ArrowRight, BookOpen, Boxes, BrainCircuit, Code2, PenLine, Timer } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export default function ProjectCard({ title, description, status, visual, cover, to, featured = false, kind = 'project' }) {
+export default function ProjectCard({ title, description, status, visual, cover, to, featured = false, kind = 'project', gameFeatures }) {
   const isGame = kind === 'game';
   return (
     <article className={`project-card ${featured ? 'project-card--featured' : ''} ${isGame ? 'project-card--game' : ''}`}>
@@ -13,11 +13,7 @@ export default function ProjectCard({ title, description, status, visual, cover,
         <h3>{title}</h3>
         <p>{description}</p>
         <div className="project-card__features">
-          {isGame ? <>
-            <span><PenLine size={16} /> Desenho</span>
-            <span><Timer size={16} /> 10 segundos</span>
-            <span><BrainCircuit size={16} /> IA</span>
-          </> : <>
+          {isGame ? (gameFeatures ?? [{ text: 'Desenho', icon: PenLine }, { text: '10 segundos', icon: Timer }, { text: 'IA', icon: BrainCircuit }]).map(({ text, icon: Icon }) => <span key={text}><Icon size={16} /> {text}</span>) : <>
           <span>
             <BookOpen size={16} /> Teoria
           </span>

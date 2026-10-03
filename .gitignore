@@ -11,4 +11,5 @@ training/artifacts/
 training/reports/
 training/iadivinha/data/
 training/iadivinha/runs/
+training/sonar/runs/
 !.env.example

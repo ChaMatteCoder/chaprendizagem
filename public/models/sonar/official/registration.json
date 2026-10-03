@@ -1,0 +1,93 @@
+{
+  "configSha256": "5307c4637c81ad40a4706c7e1a4a21e0c30d1a7f3d8e07613ad3b33a3db227a9",
+  "registeredAt": "2026-09-30T22:43:49.815Z",
+  "config": {
+    "schemaVersion": 1,
+    "protocolId": "sonar-training-v1",
+    "datasetSha256": "e90434cdbf00fcf93ffa911fe447ae25606979658e60f1d32e155c3b5240234d",
+    "partitionsSha256": "890311ad91fa13a0b30ce165e004c65eba2af19c836a9a07df35f9c934353f1e",
+    "tensorflowjs": "4.22.0",
+    "backend": "cpu",
+    "classOrder": [
+      "R",
+      "M"
+    ],
+    "candidates": [
+      {
+        "id": "linear",
+        "hiddenUnits": [],
+        "role": "baseline",
+        "parameters": 122
+      },
+      {
+        "id": "mlp-16",
+        "hiddenUnits": [
+          16
+        ],
+        "role": "mlp",
+        "parameters": 1010
+      },
+      {
+        "id": "mlp-16-8",
+        "hiddenUnits": [
+          16,
+          8
+        ],
+        "role": "mlp",
+        "parameters": 1130
+      }
+    ],
+    "training": {
+      "epochs": 200,
+      "batchSize": 16,
+      "learningRate": 0.001,
+      "optimizer": "Adam",
+      "beta1": 0.9,
+      "beta2": 0.999,
+      "epsilon": 1e-7,
+      "loss": "categoricalCrossentropy",
+      "encoding": "one-hot R=0 M=1",
+      "hiddenActivation": "relu",
+      "outputActivation": "softmax",
+      "initializer": "GlorotUniform; layerSeed=(seed+997*layerIndex) mod 2^32; zero biases",
+      "shuffle": "Mulberry32(seed+epochIndex); Fisher-Yates; model.fit shuffle=false",
+      "earlyStopping": false,
+      "checkpoint": "last epoch at fixed budget"
+    },
+    "foldSeedBase": 4200,
+    "foldSeedRule": "4200 + zero-based fold index; same seeds across candidates",
+    "finalSeed": 4242,
+    "selection": {
+      "metric": "mean fold macro-F1",
+      "eligibleRole": "mlp",
+      "baselinePolicy": "Report all candidates, including any baseline advantage; official model must satisfy the academic MLP requirement.",
+      "tieTolerance": 0.0001,
+      "tieBreak": "within tolerance of highest mean: fewer parameters, then candidate order"
+    },
+    "finalTraining": "all 166 development examples; fixed 200 epochs; no validation or test for checkpoint selection",
+    "testPolicy": "42 reserved IDs; one final evaluation after selection; persist completion; never tune from test",
+    "reproducibility": "repeat selected architecture on fold 1 with identical configuration; compare probabilities and history before final evaluation",
+    "probabilityTolerance": 0.00001,
+    "parityTolerance": 0.00001
+  },
+  "environment": {
+    "node": "v24.21.0",
+    "tensorflowjs": "4.22.0",
+    "backend": "cpu",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "sourceHashes": {
+    "src/features/sonar/data/sonarSchema.js": "9f42928c3830cbf61e550310b3e76663e42248d3411fd82fe8e0b76275fd7ac1",
+    "src/features/sonar/lib/data/sonarDataset.js": "566bb62f4d0628703890e69247a9a651dd6f58a2cfaa1d50486786488c29dc9f",
+    "src/features/sonar/lib/data/sonarManifests.js": "639767b98021d584ccd4e253824a7241b226d63e06b9b093686546df3e7b02c5",
+    "src/features/sonar/lib/data/stratifiedSplit.js": "69d511ab62b7106b42f222a35dfebd5a1cfb2f47c666be33d2c46c18ec8cbbbe",
+    "src/features/sonar/lib/model/createSonarModel.js": "17dddec72bf61e3f77a6454bc02a2efe3bae2c948be7630a9fe9fbe033529c84",
+    "src/features/sonar/lib/model/trainSonarModel.js": "fa3d8947a208fa34d7636b4955a833007a84435eee541889280af79f79bd810c",
+    "src/features/sonar/lib/model/predictSonar.js": "79cec152ff8a0a02dd8548389f1cc734f873eeb43f56dfaa7635e87a546ef750",
+    "src/features/sonar/lib/model/sonarArtifacts.js": "b017996b7f7769f43d62b5021b3bb0d5fa4d56b0dd84228ad37c7b3d9246b768",
+    "src/features/sonar/lib/evaluation/sonarMetrics.js": "3572966384b8818894bbc1fccea697d3f29c2c2558d898bdbb1ebd14cbfc67ea",
+    "training/sonar/run-experiment.mjs": "7c9f67215ee46eda86c2c98921b57948d879567c7e5e98807b1c236c19896bad",
+    "training/sonar/experiment-io.mjs": "9c5c56816b4ae308b7df06badb1928aa22191e748cc4cdb09483143a204c8cd0"
+  }
+}

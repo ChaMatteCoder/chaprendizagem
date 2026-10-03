@@ -1,0 +1,5777 @@
+{
+  "modelId": "sonar-mlp-16-8a825d3f32f9",
+  "selectedId": "mlp-16",
+  "selectionPolicy": {
+    "metric": "mean fold macro-F1",
+    "eligibleRole": "mlp",
+    "baselinePolicy": "Report all candidates, including any baseline advantage; official model must satisfy the academic MLP requirement.",
+    "tieTolerance": 0.0001,
+    "tieBreak": "within tolerance of highest mean: fewer parameters, then candidate order"
+  },
+  "crossValidation": [
+    {
+      "id": "linear",
+      "hiddenUnits": [],
+      "role": "baseline",
+      "parameters": 122,
+      "folds": [
+        {
+          "fold": 1,
+          "seed": 4200,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                10,
+                6
+              ],
+              [
+                2,
+                16
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 34,
+            "correct": 26,
+            "accuracy": 0.7647058823529411,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 16,
+                "precision": 0.8333333333333334,
+                "recall": 0.625,
+                "f1": 0.7142857142857143,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.7272727272727273,
+                "recall": 0.8888888888888888,
+                "f1": 0.7999999999999999,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.7571428571428571,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.5191529393196106,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0002",
+              "label": "R",
+              "probabilities": [
+                0.5455660223960876,
+                0.45443400740623474
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0004",
+              "label": "R",
+              "probabilities": [
+                0.2921237051486969,
+                0.7078763246536255
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0021",
+              "label": "R",
+              "probabilities": [
+                0.31762197613716125,
+                0.6823779940605164
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0027",
+              "label": "R",
+              "probabilities": [
+                0.3422461748123169,
+                0.6577538251876831
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0029",
+              "label": "R",
+              "probabilities": [
+                0.40471169352531433,
+                0.5952883362770081
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0030",
+              "label": "R",
+              "probabilities": [
+                0.307671457529068,
+                0.6923285126686096
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0031",
+              "label": "R",
+              "probabilities": [
+                0.6457262635231018,
+                0.3542737066745758
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0032",
+              "label": "R",
+              "probabilities": [
+                0.695017397403717,
+                0.3049825429916382
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0037",
+              "label": "R",
+              "probabilities": [
+                0.7741169929504395,
+                0.22588303685188293
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0044",
+              "label": "R",
+              "probabilities": [
+                0.9380226731300354,
+                0.0619773268699646
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0052",
+              "label": "R",
+              "probabilities": [
+                0.8481578826904297,
+                0.15184210240840912
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0073",
+              "label": "R",
+              "probabilities": [
+                0.571577250957489,
+                0.4284227788448334
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0075",
+              "label": "R",
+              "probabilities": [
+                0.7168000936508179,
+                0.2831999659538269
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0081",
+              "label": "R",
+              "probabilities": [
+                0.4217366576194763,
+                0.5782633423805237
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0088",
+              "label": "R",
+              "probabilities": [
+                0.5061488151550293,
+                0.4938512146472931
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0095",
+              "label": "R",
+              "probabilities": [
+                0.5930940508842468,
+                0.40690600872039795
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0100",
+              "label": "M",
+              "probabilities": [
+                0.5875911712646484,
+                0.4124087691307068
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0101",
+              "label": "M",
+              "probabilities": [
+                0.3840923011302948,
+                0.6159076690673828
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0102",
+              "label": "M",
+              "probabilities": [
+                0.4853319525718689,
+                0.5146680474281311
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0111",
+              "label": "M",
+              "probabilities": [
+                0.300254225730896,
+                0.699745774269104
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0115",
+              "label": "M",
+              "probabilities": [
+                0.27677202224731445,
+                0.7232279777526855
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0121",
+              "label": "M",
+              "probabilities": [
+                0.38766947388648987,
+                0.6123304963111877
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0130",
+              "label": "M",
+              "probabilities": [
+                0.22520732879638672,
+                0.7747927308082581
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0144",
+              "label": "M",
+              "probabilities": [
+                0.10593012720346451,
+                0.8940699100494385
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0145",
+              "label": "M",
+              "probabilities": [
+                0.18619033694267273,
+                0.8138096332550049
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0154",
+              "label": "M",
+              "probabilities": [
+                0.3250102698802948,
+                0.6749897599220276
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0159",
+              "label": "M",
+              "probabilities": [
+                0.5215626358985901,
+                0.4784373939037323
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0164",
+              "label": "M",
+              "probabilities": [
+                0.4494532644748688,
+                0.5505467653274536
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0173",
+              "label": "M",
+              "probabilities": [
+                0.47408851981163025,
+                0.5259115099906921
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0176",
+              "label": "M",
+              "probabilities": [
+                0.13005052506923676,
+                0.869949460029602
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0185",
+              "label": "M",
+              "probabilities": [
+                0.021129697561264038,
+                0.9788702726364136
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0189",
+              "label": "M",
+              "probabilities": [
+                0.341089129447937,
+                0.6589109301567078
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0200",
+              "label": "M",
+              "probabilities": [
+                0.2287343591451645,
+                0.7712656855583191
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0204",
+              "label": "M",
+              "probabilities": [
+                0.24473965167999268,
+                0.7552603483200073
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 2,
+          "seed": 4201,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                12,
+                4
+              ],
+              [
+                5,
+                12
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 24,
+            "accuracy": 0.7272727272727273,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 16,
+                "precision": 0.7058823529411765,
+                "recall": 0.75,
+                "f1": 0.7272727272727272,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 17,
+                "precision": 0.75,
+                "recall": 0.7058823529411765,
+                "f1": 0.7272727272727272,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.7272727272727272,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.5301007032394409,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0006",
+              "label": "R",
+              "probabilities": [
+                0.6592440605163574,
+                0.3407559096813202
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0015",
+              "label": "R",
+              "probabilities": [
+                0.510684072971344,
+                0.4893159568309784
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0018",
+              "label": "R",
+              "probabilities": [
+                0.6060270071029663,
+                0.3939729928970337
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0022",
+              "label": "R",
+              "probabilities": [
+                0.71268230676651,
+                0.28731769323349
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0025",
+              "label": "R",
+              "probabilities": [
+                0.8779929280281067,
+                0.12200700491666794
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0046",
+              "label": "R",
+              "probabilities": [
+                0.6155296564102173,
+                0.3844703733921051
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0053",
+              "label": "R",
+              "probabilities": [
+                0.539364755153656,
+                0.460635244846344
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0055",
+              "label": "R",
+              "probabilities": [
+                0.4838699698448181,
+                0.5161300301551819
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0057",
+              "label": "R",
+              "probabilities": [
+                0.4884280562400818,
+                0.5115719437599182
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0059",
+              "label": "R",
+              "probabilities": [
+                0.8746128678321838,
+                0.12538716197013855
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0066",
+              "label": "R",
+              "probabilities": [
+                0.9075045585632324,
+                0.09249543398618698
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0070",
+              "label": "R",
+              "probabilities": [
+                0.6403579115867615,
+                0.3596420884132385
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0083",
+              "label": "R",
+              "probabilities": [
+                0.42119377851486206,
+                0.5788061618804932
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0086",
+              "label": "R",
+              "probabilities": [
+                0.49071240425109863,
+                0.5092876553535461
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0094",
+              "label": "R",
+              "probabilities": [
+                0.5511689782142639,
+                0.44883105158805847
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0096",
+              "label": "R",
+              "probabilities": [
+                0.8903636336326599,
+                0.1096363514661789
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0103",
+              "label": "M",
+              "probabilities": [
+                0.39973679184913635,
+                0.6002631783485413
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0117",
+              "label": "M",
+              "probabilities": [
+                0.2966393828392029,
+                0.7033606171607971
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0118",
+              "label": "M",
+              "probabilities": [
+                0.2326318621635437,
+                0.7673681974411011
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0124",
+              "label": "M",
+              "probabilities": [
+                0.3974822759628296,
+                0.6025177240371704
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0132",
+              "label": "M",
+              "probabilities": [
+                0.4201774299144745,
+                0.5798225402832031
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0137",
+              "label": "M",
+              "probabilities": [
+                0.20351487398147583,
+                0.7964850664138794
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0151",
+              "label": "M",
+              "probabilities": [
+                0.49806705117225647,
+                0.5019329190254211
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0160",
+              "label": "M",
+              "probabilities": [
+                0.639296293258667,
+                0.360703706741333
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0168",
+              "label": "M",
+              "probabilities": [
+                0.5848315954208374,
+                0.4151683747768402
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0169",
+              "label": "M",
+              "probabilities": [
+                0.7284725308418274,
+                0.271527498960495
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0171",
+              "label": "M",
+              "probabilities": [
+                0.6561470031738281,
+                0.3438529968261719
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0178",
+              "label": "M",
+              "probabilities": [
+                0.5533373355865479,
+                0.44666266441345215
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0180",
+              "label": "M",
+              "probabilities": [
+                0.3764914870262146,
+                0.6235085725784302
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0198",
+              "label": "M",
+              "probabilities": [
+                0.19146095216274261,
+                0.8085390329360962
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0202",
+              "label": "M",
+              "probabilities": [
+                0.14270621538162231,
+                0.8572938442230225
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0205",
+              "label": "M",
+              "probabilities": [
+                0.3805348575115204,
+                0.6194651126861572
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0208",
+              "label": "M",
+              "probabilities": [
+                0.3529820144176483,
+                0.6470180153846741
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 3,
+          "seed": 4202,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                10,
+                5
+              ],
+              [
+                4,
+                14
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 24,
+            "accuracy": 0.7272727272727273,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 15,
+                "precision": 0.7142857142857143,
+                "recall": 0.6666666666666666,
+                "f1": 0.689655172413793,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.7368421052631579,
+                "recall": 0.7777777777777778,
+                "f1": 0.7567567567567567,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.7232059645852749,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.4794709086418152,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0011",
+              "label": "R",
+              "probabilities": [
+                0.8161157965660095,
+                0.1838841736316681
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0012",
+              "label": "R",
+              "probabilities": [
+                0.49931132793426514,
+                0.5006886720657349
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0017",
+              "label": "R",
+              "probabilities": [
+                0.4752010703086853,
+                0.5247989296913147
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0035",
+              "label": "R",
+              "probabilities": [
+                0.5665463805198669,
+                0.43345361948013306
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0039",
+              "label": "R",
+              "probabilities": [
+                0.7517916560173035,
+                0.24820829927921295
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0045",
+              "label": "R",
+              "probabilities": [
+                0.1501435786485672,
+                0.849856436252594
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0047",
+              "label": "R",
+              "probabilities": [
+                0.6261531710624695,
+                0.37384676933288574
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0063",
+              "label": "R",
+              "probabilities": [
+                0.8455624580383301,
+                0.15443751215934753
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0064",
+              "label": "R",
+              "probabilities": [
+                0.7113757729530334,
+                0.28862422704696655
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0065",
+              "label": "R",
+              "probabilities": [
+                0.8412209153175354,
+                0.1587790846824646
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0071",
+              "label": "R",
+              "probabilities": [
+                0.5561849474906921,
+                0.44381511211395264
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0084",
+              "label": "R",
+              "probabilities": [
+                0.4368054270744324,
+                0.5631945133209229
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0085",
+              "label": "R",
+              "probabilities": [
+                0.2983488440513611,
+                0.7016510963439941
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0090",
+              "label": "R",
+              "probabilities": [
+                0.704460084438324,
+                0.2955399453639984
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0093",
+              "label": "R",
+              "probabilities": [
+                0.5243578553199768,
+                0.4756420850753784
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0108",
+              "label": "M",
+              "probabilities": [
+                0.5424844622612,
+                0.4575154781341553
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0110",
+              "label": "M",
+              "probabilities": [
+                0.3913429379463196,
+                0.6086570620536804
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0116",
+              "label": "M",
+              "probabilities": [
+                0.5434959530830383,
+                0.45650407671928406
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0122",
+              "label": "M",
+              "probabilities": [
+                0.38290026783943176,
+                0.6170997023582458
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0129",
+              "label": "M",
+              "probabilities": [
+                0.311522901058197,
+                0.688477098941803
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0142",
+              "label": "M",
+              "probabilities": [
+                0.08842658996582031,
+                0.9115734696388245
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0149",
+              "label": "M",
+              "probabilities": [
+                0.11583962291479111,
+                0.8841603994369507
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0162",
+              "label": "M",
+              "probabilities": [
+                0.19140151143074036,
+                0.808598518371582
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0163",
+              "label": "M",
+              "probabilities": [
+                0.30702924728393555,
+                0.6929707527160645
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0170",
+              "label": "M",
+              "probabilities": [
+                0.5932775139808655,
+                0.40672245621681213
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0175",
+              "label": "M",
+              "probabilities": [
+                0.11531473696231842,
+                0.8846852779388428
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0177",
+              "label": "M",
+              "probabilities": [
+                0.14841216802597046,
+                0.8515878915786743
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0179",
+              "label": "M",
+              "probabilities": [
+                0.5703355073928833,
+                0.4296644926071167
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0181",
+              "label": "M",
+              "probabilities": [
+                0.04914266616106033,
+                0.9508573412895203
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0196",
+              "label": "M",
+              "probabilities": [
+                0.14462706446647644,
+                0.8553729057312012
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0197",
+              "label": "M",
+              "probabilities": [
+                0.16314268112182617,
+                0.8368573784828186
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0201",
+              "label": "M",
+              "probabilities": [
+                0.1526527851819992,
+                0.8473472595214844
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0203",
+              "label": "M",
+              "probabilities": [
+                0.3092859387397766,
+                0.6907141208648682
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 4,
+          "seed": 4203,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                8,
+                7
+              ],
+              [
+                1,
+                17
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 25,
+            "accuracy": 0.7575757575757576,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 15,
+                "precision": 0.8888888888888888,
+                "recall": 0.5333333333333333,
+                "f1": 0.6666666666666667,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.7083333333333334,
+                "recall": 0.9444444444444444,
+                "f1": 0.8095238095238096,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.7380952380952381,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.570510745048523,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0001",
+              "label": "R",
+              "probabilities": [
+                0.4775146543979645,
+                0.5224853754043579
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0003",
+              "label": "R",
+              "probabilities": [
+                0.12149090319871902,
+                0.8785090446472168
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0005",
+              "label": "R",
+              "probabilities": [
+                0.37087684869766235,
+                0.6291230916976929
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0008",
+              "label": "R",
+              "probabilities": [
+                0.20455163717269897,
+                0.7954483032226562
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0020",
+              "label": "R",
+              "probabilities": [
+                0.046398505568504333,
+                0.9536014795303345
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0028",
+              "label": "R",
+              "probabilities": [
+                0.5202047228813171,
+                0.47979527711868286
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0040",
+              "label": "R",
+              "probabilities": [
+                0.8265200257301331,
+                0.17347994446754456
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0041",
+              "label": "R",
+              "probabilities": [
+                0.7625314593315125,
+                0.23746852576732635
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0042",
+              "label": "R",
+              "probabilities": [
+                0.8954994082450867,
+                0.10450052469968796
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0060",
+              "label": "R",
+              "probabilities": [
+                0.7735260128974915,
+                0.22647398710250854
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0062",
+              "label": "R",
+              "probabilities": [
+                0.7058364152908325,
+                0.29416361451148987
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0076",
+              "label": "R",
+              "probabilities": [
+                0.6080269813537598,
+                0.39197298884391785
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0078",
+              "label": "R",
+              "probabilities": [
+                0.4817960560321808,
+                0.5182039141654968
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0079",
+              "label": "R",
+              "probabilities": [
+                0.4600708484649658,
+                0.5399291515350342
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0089",
+              "label": "R",
+              "probabilities": [
+                0.6621500253677368,
+                0.33785000443458557
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0105",
+              "label": "M",
+              "probabilities": [
+                0.49039873480796814,
+                0.5096012353897095
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0109",
+              "label": "M",
+              "probabilities": [
+                0.5063067674636841,
+                0.4936932623386383
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0112",
+              "label": "M",
+              "probabilities": [
+                0.2087925672531128,
+                0.7912074327468872
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0123",
+              "label": "M",
+              "probabilities": [
+                0.25476565957069397,
+                0.7452343106269836
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0128",
+              "label": "M",
+              "probabilities": [
+                0.17636947333812714,
+                0.8236305713653564
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0133",
+              "label": "M",
+              "probabilities": [
+                0.1983417123556137,
+                0.8016582727432251
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0134",
+              "label": "M",
+              "probabilities": [
+                0.1523343175649643,
+                0.8476656675338745
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0140",
+              "label": "M",
+              "probabilities": [
+                0.3540550470352173,
+                0.6459449529647827
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0146",
+              "label": "M",
+              "probabilities": [
+                0.19831529259681702,
+                0.8016846776008606
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0148",
+              "label": "M",
+              "probabilities": [
+                0.05007559433579445,
+                0.9499244689941406
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0153",
+              "label": "M",
+              "probabilities": [
+                0.3999130129814148,
+                0.6000869870185852
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0157",
+              "label": "M",
+              "probabilities": [
+                0.3503437638282776,
+                0.6496562361717224
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0165",
+              "label": "M",
+              "probabilities": [
+                0.37221112847328186,
+                0.6277889013290405
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0167",
+              "label": "M",
+              "probabilities": [
+                0.25514936447143555,
+                0.7448506355285645
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0182",
+              "label": "M",
+              "probabilities": [
+                0.037563756108284,
+                0.9624362587928772
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0193",
+              "label": "M",
+              "probabilities": [
+                0.3362535238265991,
+                0.6637464761734009
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0194",
+              "label": "M",
+              "probabilities": [
+                0.42326775193214417,
+                0.5767322182655334
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0207",
+              "label": "M",
+              "probabilities": [
+                0.1686137467622757,
+                0.8313862085342407
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 5,
+          "seed": 4204,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                10,
+                5
+              ],
+              [
+                3,
+                15
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 25,
+            "accuracy": 0.7575757575757576,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 15,
+                "precision": 0.7692307692307693,
+                "recall": 0.6666666666666666,
+                "f1": 0.7142857142857142,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.75,
+                "recall": 0.8333333333333334,
+                "f1": 0.7894736842105262,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.7518796992481203,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.4870302677154541,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0013",
+              "label": "R",
+              "probabilities": [
+                0.4704114496707916,
+                0.5295885801315308
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0014",
+              "label": "R",
+              "probabilities": [
+                0.6370590925216675,
+                0.36294087767601013
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0026",
+              "label": "R",
+              "probabilities": [
+                0.6796838045120239,
+                0.3203161954879761
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0033",
+              "label": "R",
+              "probabilities": [
+                0.686618983745575,
+                0.31338101625442505
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0049",
+              "label": "R",
+              "probabilities": [
+                0.43234574794769287,
+                0.5676542520523071
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0054",
+              "label": "R",
+              "probabilities": [
+                0.4987429082393646,
+                0.501257061958313
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0056",
+              "label": "R",
+              "probabilities": [
+                0.46352776885032654,
+                0.5364722013473511
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0061",
+              "label": "R",
+              "probabilities": [
+                0.7551944851875305,
+                0.24480557441711426
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0067",
+              "label": "R",
+              "probabilities": [
+                0.8802502751350403,
+                0.11974970251321793
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0069",
+              "label": "R",
+              "probabilities": [
+                0.5676755309104919,
+                0.43232446908950806
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0072",
+              "label": "R",
+              "probabilities": [
+                0.527836263179779,
+                0.47216376662254333
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0074",
+              "label": "R",
+              "probabilities": [
+                0.41678890585899353,
+                0.5832110643386841
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0080",
+              "label": "R",
+              "probabilities": [
+                0.6064987778663635,
+                0.39350128173828125
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0087",
+              "label": "R",
+              "probabilities": [
+                0.6866196393966675,
+                0.31338030099868774
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0092",
+              "label": "R",
+              "probabilities": [
+                0.6439946293830872,
+                0.35600534081459045
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0098",
+              "label": "M",
+              "probabilities": [
+                0.582675576210022,
+                0.417324423789978
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0099",
+              "label": "M",
+              "probabilities": [
+                0.14601987600326538,
+                0.8539801836013794
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0113",
+              "label": "M",
+              "probabilities": [
+                0.485849529504776,
+                0.5141504406929016
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0114",
+              "label": "M",
+              "probabilities": [
+                0.46293404698371887,
+                0.5370659232139587
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0119",
+              "label": "M",
+              "probabilities": [
+                0.3362238109111786,
+                0.663776159286499
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0120",
+              "label": "M",
+              "probabilities": [
+                0.3092626631259918,
+                0.6907373666763306
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0125",
+              "label": "M",
+              "probabilities": [
+                0.259916752576828,
+                0.7400832176208496
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0126",
+              "label": "M",
+              "probabilities": [
+                0.3524610698223114,
+                0.647538959980011
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0131",
+              "label": "M",
+              "probabilities": [
+                0.2881917953491211,
+                0.7118082046508789
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0139",
+              "label": "M",
+              "probabilities": [
+                0.17726965248584747,
+                0.8227303624153137
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0152",
+              "label": "M",
+              "probabilities": [
+                0.5664385557174683,
+                0.4335615038871765
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0156",
+              "label": "M",
+              "probabilities": [
+                0.6039177775382996,
+                0.39608222246170044
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0161",
+              "label": "M",
+              "probabilities": [
+                0.37492674589157104,
+                0.625073254108429
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0174",
+              "label": "M",
+              "probabilities": [
+                0.32451826333999634,
+                0.6754817366600037
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0183",
+              "label": "M",
+              "probabilities": [
+                0.06368624418973923,
+                0.9363137483596802
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0187",
+              "label": "M",
+              "probabilities": [
+                0.022288544103503227,
+                0.9777114987373352
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0190",
+              "label": "M",
+              "probabilities": [
+                0.3066958487033844,
+                0.6933041214942932
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0206",
+              "label": "M",
+              "probabilities": [
+                0.42261022329330444,
+                0.5773897171020508
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        }
+      ],
+      "macroF1": {
+        "mean": 0.7395192972688435,
+        "sampleStandardDeviation": 0.01484503826339584
+      },
+      "accuracy": {
+        "mean": 0.7468805704099821,
+        "sampleStandardDeviation": 0.018134572147393738
+      }
+    },
+    {
+      "id": "mlp-16",
+      "hiddenUnits": [
+        16
+      ],
+      "role": "mlp",
+      "parameters": 1010,
+      "folds": [
+        {
+          "fold": 1,
+          "seed": 4200,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                11,
+                5
+              ],
+              [
+                3,
+                15
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 34,
+            "correct": 26,
+            "accuracy": 0.7647058823529411,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 16,
+                "precision": 0.7857142857142857,
+                "recall": 0.6875,
+                "f1": 0.7333333333333334,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.75,
+                "recall": 0.8333333333333334,
+                "f1": 0.7894736842105262,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.7614035087719297,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.5287061929702759,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0002",
+              "label": "R",
+              "probabilities": [
+                0.7206417918205261,
+                0.27935823798179626
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0004",
+              "label": "R",
+              "probabilities": [
+                0.21520814299583435,
+                0.784791886806488
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0021",
+              "label": "R",
+              "probabilities": [
+                0.0666249692440033,
+                0.9333750009536743
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0027",
+              "label": "R",
+              "probabilities": [
+                0.1632750779390335,
+                0.8367249965667725
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0029",
+              "label": "R",
+              "probabilities": [
+                0.187401682138443,
+                0.8125983476638794
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0030",
+              "label": "R",
+              "probabilities": [
+                0.42797091603279114,
+                0.5720290541648865
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0031",
+              "label": "R",
+              "probabilities": [
+                0.9768084287643433,
+                0.023191610351204872
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0032",
+              "label": "R",
+              "probabilities": [
+                0.980904757976532,
+                0.019095219671726227
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0037",
+              "label": "R",
+              "probabilities": [
+                0.9795305728912354,
+                0.020469414070248604
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0044",
+              "label": "R",
+              "probabilities": [
+                0.998156726360321,
+                0.0018432900542393327
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0052",
+              "label": "R",
+              "probabilities": [
+                0.9963492155075073,
+                0.00365077774040401
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0073",
+              "label": "R",
+              "probabilities": [
+                0.8924792408943176,
+                0.1075206995010376
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0075",
+              "label": "R",
+              "probabilities": [
+                0.9924277663230896,
+                0.007572258822619915
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0081",
+              "label": "R",
+              "probabilities": [
+                0.5415523648262024,
+                0.4584476053714752
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0088",
+              "label": "R",
+              "probabilities": [
+                0.8716539740562439,
+                0.1283460408449173
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0095",
+              "label": "R",
+              "probabilities": [
+                0.8346828818321228,
+                0.16531716287136078
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0100",
+              "label": "M",
+              "probabilities": [
+                0.9107935428619385,
+                0.08920641243457794
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0101",
+              "label": "M",
+              "probabilities": [
+                0.5169990062713623,
+                0.4830009937286377
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0102",
+              "label": "M",
+              "probabilities": [
+                0.7897507548332214,
+                0.2102491706609726
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0111",
+              "label": "M",
+              "probabilities": [
+                0.30613887310028076,
+                0.693861186504364
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0115",
+              "label": "M",
+              "probabilities": [
+                0.18374007940292358,
+                0.8162599205970764
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0121",
+              "label": "M",
+              "probabilities": [
+                0.4767458438873291,
+                0.5232540965080261
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0130",
+              "label": "M",
+              "probabilities": [
+                0.08691342175006866,
+                0.9130865931510925
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0144",
+              "label": "M",
+              "probabilities": [
+                0.004163430072367191,
+                0.995836615562439
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0145",
+              "label": "M",
+              "probabilities": [
+                0.06275168806314468,
+                0.9372483491897583
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0154",
+              "label": "M",
+              "probabilities": [
+                0.37882155179977417,
+                0.621178388595581
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0159",
+              "label": "M",
+              "probabilities": [
+                0.2804771363735199,
+                0.7195228934288025
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0164",
+              "label": "M",
+              "probabilities": [
+                0.32815226912498474,
+                0.6718477010726929
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0173",
+              "label": "M",
+              "probabilities": [
+                0.39841005206108093,
+                0.6015899777412415
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0176",
+              "label": "M",
+              "probabilities": [
+                0.009780683554708958,
+                0.9902192950248718
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0185",
+              "label": "M",
+              "probabilities": [
+                0.0011996682733297348,
+                0.9988002777099609
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0189",
+              "label": "M",
+              "probabilities": [
+                0.10986300557851791,
+                0.8901369571685791
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0200",
+              "label": "M",
+              "probabilities": [
+                0.019462615251541138,
+                0.9805373549461365
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0204",
+              "label": "M",
+              "probabilities": [
+                0.007987499237060547,
+                0.9920124411582947
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 2,
+          "seed": 4201,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                12,
+                4
+              ],
+              [
+                7,
+                10
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 22,
+            "accuracy": 0.6666666666666666,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 16,
+                "precision": 0.631578947368421,
+                "recall": 0.75,
+                "f1": 0.6857142857142857,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 17,
+                "precision": 0.7142857142857143,
+                "recall": 0.5882352941176471,
+                "f1": 0.6451612903225806,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.6654377880184332,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.5385810732841492,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0006",
+              "label": "R",
+              "probabilities": [
+                0.9376388788223267,
+                0.06236111372709274
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0015",
+              "label": "R",
+              "probabilities": [
+                0.3653700351715088,
+                0.6346299052238464
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0018",
+              "label": "R",
+              "probabilities": [
+                0.30192509293556213,
+                0.6980748772621155
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0022",
+              "label": "R",
+              "probabilities": [
+                0.8883864879608154,
+                0.11161351948976517
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0025",
+              "label": "R",
+              "probabilities": [
+                0.9928343296051025,
+                0.007165644317865372
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0046",
+              "label": "R",
+              "probabilities": [
+                0.33771100640296936,
+                0.6622889637947083
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0053",
+              "label": "R",
+              "probabilities": [
+                0.8150739073753357,
+                0.18492603302001953
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0055",
+              "label": "R",
+              "probabilities": [
+                0.49192798137664795,
+                0.508072018623352
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0057",
+              "label": "R",
+              "probabilities": [
+                0.623559296131134,
+                0.37644070386886597
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0059",
+              "label": "R",
+              "probabilities": [
+                0.9946284890174866,
+                0.005371500737965107
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0066",
+              "label": "R",
+              "probabilities": [
+                0.9942328333854675,
+                0.0057671708054840565
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0070",
+              "label": "R",
+              "probabilities": [
+                0.9330893158912659,
+                0.06691067665815353
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0083",
+              "label": "R",
+              "probabilities": [
+                0.5009448528289795,
+                0.4990551471710205
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0086",
+              "label": "R",
+              "probabilities": [
+                0.6869062185287476,
+                0.31309381127357483
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0094",
+              "label": "R",
+              "probabilities": [
+                0.6601726412773132,
+                0.33982738852500916
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0096",
+              "label": "R",
+              "probabilities": [
+                0.9874611496925354,
+                0.012538819573819637
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0103",
+              "label": "M",
+              "probabilities": [
+                0.3361232280731201,
+                0.6638767719268799
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0117",
+              "label": "M",
+              "probabilities": [
+                0.1964329183101654,
+                0.803567111492157
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0118",
+              "label": "M",
+              "probabilities": [
+                0.08588524907827377,
+                0.914114773273468
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0124",
+              "label": "M",
+              "probabilities": [
+                0.4271208643913269,
+                0.5728790760040283
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0132",
+              "label": "M",
+              "probabilities": [
+                0.5771539807319641,
+                0.4228459596633911
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0137",
+              "label": "M",
+              "probabilities": [
+                0.27665919065475464,
+                0.7233408093452454
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0151",
+              "label": "M",
+              "probabilities": [
+                0.5303405523300171,
+                0.4696594178676605
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0160",
+              "label": "M",
+              "probabilities": [
+                0.6519030928611755,
+                0.34809690713882446
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0168",
+              "label": "M",
+              "probabilities": [
+                0.6393632292747498,
+                0.36063674092292786
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0169",
+              "label": "M",
+              "probabilities": [
+                0.866411030292511,
+                0.133588969707489
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0171",
+              "label": "M",
+              "probabilities": [
+                0.6821539998054504,
+                0.3178459703922272
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0178",
+              "label": "M",
+              "probabilities": [
+                0.8529841899871826,
+                0.14701583981513977
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0180",
+              "label": "M",
+              "probabilities": [
+                0.24577243626117706,
+                0.7542275786399841
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0198",
+              "label": "M",
+              "probabilities": [
+                0.036931362003088,
+                0.9630686044692993
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0202",
+              "label": "M",
+              "probabilities": [
+                0.018922943621873856,
+                0.9810770153999329
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0205",
+              "label": "M",
+              "probabilities": [
+                0.07433748245239258,
+                0.9256624579429626
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0208",
+              "label": "M",
+              "probabilities": [
+                0.42232459783554077,
+                0.5776754021644592
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 3,
+          "seed": 4202,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                13,
+                2
+              ],
+              [
+                3,
+                15
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 28,
+            "accuracy": 0.8484848484848485,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 15,
+                "precision": 0.8125,
+                "recall": 0.8666666666666667,
+                "f1": 0.8387096774193549,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.8823529411764706,
+                "recall": 0.8333333333333334,
+                "f1": 0.8571428571428571,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.847926267281106,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.4435448944568634,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0011",
+              "label": "R",
+              "probabilities": [
+                0.9909080266952515,
+                0.009092015214264393
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0012",
+              "label": "R",
+              "probabilities": [
+                0.7986306548118591,
+                0.20136931538581848
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0017",
+              "label": "R",
+              "probabilities": [
+                0.5290133357048035,
+                0.47098663449287415
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0035",
+              "label": "R",
+              "probabilities": [
+                0.7125236392021179,
+                0.28747639060020447
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0039",
+              "label": "R",
+              "probabilities": [
+                0.9840807318687439,
+                0.015919294208288193
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0045",
+              "label": "R",
+              "probabilities": [
+                0.005303454119712114,
+                0.9946964979171753
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0047",
+              "label": "R",
+              "probabilities": [
+                0.5413498878479004,
+                0.4586501121520996
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0063",
+              "label": "R",
+              "probabilities": [
+                0.9944121241569519,
+                0.005587937775999308
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0064",
+              "label": "R",
+              "probabilities": [
+                0.9377297759056091,
+                0.06227025017142296
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0065",
+              "label": "R",
+              "probabilities": [
+                0.9921839833259583,
+                0.007815985009074211
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0071",
+              "label": "R",
+              "probabilities": [
+                0.8978822827339172,
+                0.10211768746376038
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0084",
+              "label": "R",
+              "probabilities": [
+                0.5037152767181396,
+                0.49628472328186035
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0085",
+              "label": "R",
+              "probabilities": [
+                0.10965022444725037,
+                0.890349805355072
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0090",
+              "label": "R",
+              "probabilities": [
+                0.9562771916389465,
+                0.043722789734601974
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0093",
+              "label": "R",
+              "probabilities": [
+                0.8069949746131897,
+                0.19300499558448792
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0108",
+              "label": "M",
+              "probabilities": [
+                0.5009020566940308,
+                0.49909788370132446
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0110",
+              "label": "M",
+              "probabilities": [
+                0.22295375168323517,
+                0.7770463228225708
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0116",
+              "label": "M",
+              "probabilities": [
+                0.5367622375488281,
+                0.4632377624511719
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0122",
+              "label": "M",
+              "probabilities": [
+                0.06787225604057312,
+                0.9321277141571045
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0129",
+              "label": "M",
+              "probabilities": [
+                0.2054453343153,
+                0.7945547103881836
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0142",
+              "label": "M",
+              "probabilities": [
+                0.0005119810812175274,
+                0.9994879961013794
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0149",
+              "label": "M",
+              "probabilities": [
+                0.01623581536114216,
+                0.9837641716003418
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0162",
+              "label": "M",
+              "probabilities": [
+                0.003348861588165164,
+                0.9966511130332947
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0163",
+              "label": "M",
+              "probabilities": [
+                0.031219836324453354,
+                0.9687801003456116
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0170",
+              "label": "M",
+              "probabilities": [
+                0.3869214355945587,
+                0.6130785346031189
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0175",
+              "label": "M",
+              "probabilities": [
+                0.005210401024669409,
+                0.9947896003723145
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0177",
+              "label": "M",
+              "probabilities": [
+                0.012770683504641056,
+                0.9872293472290039
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0179",
+              "label": "M",
+              "probabilities": [
+                0.7981072664260864,
+                0.20189273357391357
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0181",
+              "label": "M",
+              "probabilities": [
+                0.0006473843823187053,
+                0.9993526339530945
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0196",
+              "label": "M",
+              "probabilities": [
+                0.003058228176087141,
+                0.9969417452812195
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0197",
+              "label": "M",
+              "probabilities": [
+                0.002840862376615405,
+                0.9971591234207153
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0201",
+              "label": "M",
+              "probabilities": [
+                0.003307140665128827,
+                0.9966928958892822
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0203",
+              "label": "M",
+              "probabilities": [
+                0.0307211484760046,
+                0.9692788124084473
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 4,
+          "seed": 4203,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                10,
+                5
+              ],
+              [
+                1,
+                17
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 27,
+            "accuracy": 0.8181818181818182,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 15,
+                "precision": 0.9090909090909091,
+                "recall": 0.6666666666666666,
+                "f1": 0.7692307692307692,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.7727272727272727,
+                "recall": 0.9444444444444444,
+                "f1": 0.85,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.8096153846153846,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.76125568151474,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0001",
+              "label": "R",
+              "probabilities": [
+                0.09533724188804626,
+                0.9046627283096313
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0003",
+              "label": "R",
+              "probabilities": [
+                0.015837153419852257,
+                0.9841628074645996
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0005",
+              "label": "R",
+              "probabilities": [
+                0.1867484450340271,
+                0.8132514953613281
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0008",
+              "label": "R",
+              "probabilities": [
+                0.0034371500369161367,
+                0.9965628981590271
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0020",
+              "label": "R",
+              "probabilities": [
+                0.0010511621367186308,
+                0.998948872089386
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0028",
+              "label": "R",
+              "probabilities": [
+                0.8912338018417358,
+                0.10876625031232834
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0040",
+              "label": "R",
+              "probabilities": [
+                0.9597712755203247,
+                0.040228795260190964
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0041",
+              "label": "R",
+              "probabilities": [
+                0.9214465618133545,
+                0.07855349779129028
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0042",
+              "label": "R",
+              "probabilities": [
+                0.9987837672233582,
+                0.0012162774801254272
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0060",
+              "label": "R",
+              "probabilities": [
+                0.963557779788971,
+                0.03644223138689995
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0062",
+              "label": "R",
+              "probabilities": [
+                0.8609874844551086,
+                0.13901256024837494
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0076",
+              "label": "R",
+              "probabilities": [
+                0.8495195508003235,
+                0.15048041939735413
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0078",
+              "label": "R",
+              "probabilities": [
+                0.76447993516922,
+                0.23551999032497406
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0079",
+              "label": "R",
+              "probabilities": [
+                0.7374923229217529,
+                0.26250770688056946
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0089",
+              "label": "R",
+              "probabilities": [
+                0.9328135251998901,
+                0.06718651205301285
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0105",
+              "label": "M",
+              "probabilities": [
+                0.5568789839744568,
+                0.4431209862232208
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0109",
+              "label": "M",
+              "probabilities": [
+                0.4564763605594635,
+                0.5435236692428589
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0112",
+              "label": "M",
+              "probabilities": [
+                0.00675550801679492,
+                0.993244469165802
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0123",
+              "label": "M",
+              "probabilities": [
+                0.09418736398220062,
+                0.905812680721283
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0128",
+              "label": "M",
+              "probabilities": [
+                0.0415007583796978,
+                0.9584992527961731
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0133",
+              "label": "M",
+              "probabilities": [
+                0.015141041949391365,
+                0.9848589301109314
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0134",
+              "label": "M",
+              "probabilities": [
+                0.007052309811115265,
+                0.9929476976394653
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0140",
+              "label": "M",
+              "probabilities": [
+                0.11744999885559082,
+                0.8825500011444092
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0146",
+              "label": "M",
+              "probabilities": [
+                0.01551734283566475,
+                0.9844825863838196
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0148",
+              "label": "M",
+              "probabilities": [
+                0.00025873928098008037,
+                0.99974125623703
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0153",
+              "label": "M",
+              "probabilities": [
+                0.1558496654033661,
+                0.8441503047943115
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0157",
+              "label": "M",
+              "probabilities": [
+                0.06421928852796555,
+                0.9357807040214539
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0165",
+              "label": "M",
+              "probabilities": [
+                0.38053181767463684,
+                0.6194682121276855
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0167",
+              "label": "M",
+              "probabilities": [
+                0.06598188728094101,
+                0.934018075466156
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0182",
+              "label": "M",
+              "probabilities": [
+                0.0003891710366588086,
+                0.9996108412742615
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0193",
+              "label": "M",
+              "probabilities": [
+                0.18570347130298615,
+                0.8142964839935303
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0194",
+              "label": "M",
+              "probabilities": [
+                0.35081613063812256,
+                0.6491838097572327
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0207",
+              "label": "M",
+              "probabilities": [
+                0.028922531753778458,
+                0.9710774421691895
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 5,
+          "seed": 4204,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                11,
+                4
+              ],
+              [
+                2,
+                16
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 27,
+            "accuracy": 0.8181818181818182,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 15,
+                "precision": 0.8461538461538461,
+                "recall": 0.7333333333333333,
+                "f1": 0.7857142857142856,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.8,
+                "recall": 0.8888888888888888,
+                "f1": 0.8421052631578948,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.8139097744360901,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.4223684072494507,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0013",
+              "label": "R",
+              "probabilities": [
+                0.3429712951183319,
+                0.6570287346839905
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0014",
+              "label": "R",
+              "probabilities": [
+                0.9731321334838867,
+                0.02686787210404873
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0026",
+              "label": "R",
+              "probabilities": [
+                0.6726771593093872,
+                0.3273228108882904
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0033",
+              "label": "R",
+              "probabilities": [
+                0.9658327698707581,
+                0.034167222678661346
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0049",
+              "label": "R",
+              "probabilities": [
+                0.1302422285079956,
+                0.8697577118873596
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0054",
+              "label": "R",
+              "probabilities": [
+                0.6740414500236511,
+                0.3259585499763489
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0056",
+              "label": "R",
+              "probabilities": [
+                0.5184462666511536,
+                0.4815537631511688
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0061",
+              "label": "R",
+              "probabilities": [
+                0.9590324759483337,
+                0.04096750169992447
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0067",
+              "label": "R",
+              "probabilities": [
+                0.9971426129341125,
+                0.0028574008028954268
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0069",
+              "label": "R",
+              "probabilities": [
+                0.3310057818889618,
+                0.6689941883087158
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0072",
+              "label": "R",
+              "probabilities": [
+                0.9457376599311829,
+                0.05426228791475296
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0074",
+              "label": "R",
+              "probabilities": [
+                0.33456334471702576,
+                0.6654366850852966
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0080",
+              "label": "R",
+              "probabilities": [
+                0.8297268152236938,
+                0.17027311027050018
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0087",
+              "label": "R",
+              "probabilities": [
+                0.9055157899856567,
+                0.09448423236608505
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0092",
+              "label": "R",
+              "probabilities": [
+                0.9963100552558899,
+                0.0036899561528116465
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0098",
+              "label": "M",
+              "probabilities": [
+                0.8345227241516113,
+                0.16547726094722748
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0099",
+              "label": "M",
+              "probabilities": [
+                0.04607917368412018,
+                0.953920841217041
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0113",
+              "label": "M",
+              "probabilities": [
+                0.31728482246398926,
+                0.6827151775360107
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0114",
+              "label": "M",
+              "probabilities": [
+                0.407360315322876,
+                0.5926396250724792
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0119",
+              "label": "M",
+              "probabilities": [
+                0.3034262955188751,
+                0.6965737342834473
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0120",
+              "label": "M",
+              "probabilities": [
+                0.10651660710573196,
+                0.8934833407402039
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0125",
+              "label": "M",
+              "probabilities": [
+                0.09279646724462509,
+                0.9072035551071167
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0126",
+              "label": "M",
+              "probabilities": [
+                0.3718016743659973,
+                0.6281983852386475
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0131",
+              "label": "M",
+              "probabilities": [
+                0.30448952317237854,
+                0.6955104470252991
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0139",
+              "label": "M",
+              "probabilities": [
+                0.01807442493736744,
+                0.9819256067276001
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0152",
+              "label": "M",
+              "probabilities": [
+                0.47936680912971497,
+                0.5206332206726074
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0156",
+              "label": "M",
+              "probabilities": [
+                0.6046572327613831,
+                0.39534273743629456
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0161",
+              "label": "M",
+              "probabilities": [
+                0.10189176350831985,
+                0.898108184337616
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0174",
+              "label": "M",
+              "probabilities": [
+                0.4206157326698303,
+                0.5793842673301697
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0183",
+              "label": "M",
+              "probabilities": [
+                0.0027630773838609457,
+                0.9972368478775024
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0187",
+              "label": "M",
+              "probabilities": [
+                0.0016865570796653628,
+                0.9983134269714355
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0190",
+              "label": "M",
+              "probabilities": [
+                0.17984800040721893,
+                0.8201519846916199
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0206",
+              "label": "M",
+              "probabilities": [
+                0.11636068671941757,
+                0.8836393356323242
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        }
+      ],
+      "macroF1": {
+        "mean": 0.7796585446245887,
+        "sampleStandardDeviation": 0.07090604441125958
+      },
+      "accuracy": {
+        "mean": 0.7832442067736186,
+        "sampleStandardDeviation": 0.0718185335453671
+      }
+    },
+    {
+      "id": "mlp-16-8",
+      "hiddenUnits": [
+        16,
+        8
+      ],
+      "role": "mlp",
+      "parameters": 1130,
+      "folds": [
+        {
+          "fold": 1,
+          "seed": 4200,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                12,
+                4
+              ],
+              [
+                5,
+                13
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 34,
+            "correct": 25,
+            "accuracy": 0.7352941176470589,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 16,
+                "precision": 0.7058823529411765,
+                "recall": 0.75,
+                "f1": 0.7272727272727272,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.7647058823529411,
+                "recall": 0.7222222222222222,
+                "f1": 0.7428571428571428,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.735064935064935,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.7429802417755127,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0002",
+              "label": "R",
+              "probabilities": [
+                0.9872691631317139,
+                0.01273084431886673
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0004",
+              "label": "R",
+              "probabilities": [
+                0.1657838374376297,
+                0.8342161178588867
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0021",
+              "label": "R",
+              "probabilities": [
+                0.02675565704703331,
+                0.973244309425354
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0027",
+              "label": "R",
+              "probabilities": [
+                0.176521897315979,
+                0.8234781622886658
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0029",
+              "label": "R",
+              "probabilities": [
+                0.5071049928665161,
+                0.4928950369358063
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0030",
+              "label": "R",
+              "probabilities": [
+                0.0719808042049408,
+                0.9280192255973816
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0031",
+              "label": "R",
+              "probabilities": [
+                0.999804675579071,
+                0.0001953104801941663
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0032",
+              "label": "R",
+              "probabilities": [
+                0.999886155128479,
+                0.00011379832722013816
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0037",
+              "label": "R",
+              "probabilities": [
+                0.9951832890510559,
+                0.0048167030327022076
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0044",
+              "label": "R",
+              "probabilities": [
+                0.999968409538269,
+                0.00003161160566378385
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0052",
+              "label": "R",
+              "probabilities": [
+                0.9998769760131836,
+                0.00012299985974095762
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0073",
+              "label": "R",
+              "probabilities": [
+                0.9980106949806213,
+                0.0019893308635801077
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0075",
+              "label": "R",
+              "probabilities": [
+                0.9999809265136719,
+                0.000019127421182929538
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0081",
+              "label": "R",
+              "probabilities": [
+                0.5078646540641785,
+                0.49213528633117676
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0088",
+              "label": "R",
+              "probabilities": [
+                0.98451828956604,
+                0.015481735579669476
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0095",
+              "label": "R",
+              "probabilities": [
+                0.9765791893005371,
+                0.0234207883477211
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0100",
+              "label": "M",
+              "probabilities": [
+                0.968238353729248,
+                0.03176163509488106
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0101",
+              "label": "M",
+              "probabilities": [
+                0.8158354163169861,
+                0.1841646134853363
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0102",
+              "label": "M",
+              "probabilities": [
+                0.9952210783958435,
+                0.0047789220698177814
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0111",
+              "label": "M",
+              "probabilities": [
+                0.12322957813739777,
+                0.8767704367637634
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0115",
+              "label": "M",
+              "probabilities": [
+                0.02707245759665966,
+                0.9729275703430176
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0121",
+              "label": "M",
+              "probabilities": [
+                0.4568793475627899,
+                0.5431206226348877
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0130",
+              "label": "M",
+              "probabilities": [
+                0.00950606632977724,
+                0.9904939532279968
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0144",
+              "label": "M",
+              "probabilities": [
+                0.0033766699489206076,
+                0.9966232776641846
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0145",
+              "label": "M",
+              "probabilities": [
+                0.033375754952430725,
+                0.9666242599487305
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0154",
+              "label": "M",
+              "probabilities": [
+                0.227548286318779,
+                0.7724517583847046
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0159",
+              "label": "M",
+              "probabilities": [
+                0.0725550726056099,
+                0.9274449348449707
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0164",
+              "label": "M",
+              "probabilities": [
+                0.7813819050788879,
+                0.21861809492111206
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0173",
+              "label": "M",
+              "probabilities": [
+                0.5849491953849792,
+                0.41505083441734314
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0176",
+              "label": "M",
+              "probabilities": [
+                0.00108958943746984,
+                0.9989104270935059
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0185",
+              "label": "M",
+              "probabilities": [
+                0.00012852740474045277,
+                0.9998714923858643
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0189",
+              "label": "M",
+              "probabilities": [
+                0.01735794171690941,
+                0.9826420545578003
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0200",
+              "label": "M",
+              "probabilities": [
+                0.007874255999922752,
+                0.9921257495880127
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0204",
+              "label": "M",
+              "probabilities": [
+                0.00044157690717838705,
+                0.9995583891868591
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 2,
+          "seed": 4201,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                11,
+                5
+              ],
+              [
+                1,
+                16
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 27,
+            "accuracy": 0.8181818181818182,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 16,
+                "precision": 0.9166666666666666,
+                "recall": 0.6875,
+                "f1": 0.7857142857142857,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 17,
+                "precision": 0.7619047619047619,
+                "recall": 0.9411764705882353,
+                "f1": 0.8421052631578947,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.8139097744360901,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.3529433608055115,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0006",
+              "label": "R",
+              "probabilities": [
+                0.9598430395126343,
+                0.04015693813562393
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0015",
+              "label": "R",
+              "probabilities": [
+                0.2845665514469147,
+                0.7154334783554077
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0018",
+              "label": "R",
+              "probabilities": [
+                0.36783018708229065,
+                0.6321698427200317
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0022",
+              "label": "R",
+              "probabilities": [
+                0.5778507590293884,
+                0.4221492409706116
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0025",
+              "label": "R",
+              "probabilities": [
+                0.9999867677688599,
+                0.000013175568710721564
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0046",
+              "label": "R",
+              "probabilities": [
+                0.42508664727211,
+                0.5749133825302124
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0053",
+              "label": "R",
+              "probabilities": [
+                0.939422607421875,
+                0.060577377676963806
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0055",
+              "label": "R",
+              "probabilities": [
+                0.6348997354507446,
+                0.365100234746933
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0057",
+              "label": "R",
+              "probabilities": [
+                0.5277296304702759,
+                0.4722703695297241
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0059",
+              "label": "R",
+              "probabilities": [
+                0.9999076128005981,
+                0.00009234201570507139
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0066",
+              "label": "R",
+              "probabilities": [
+                0.9997219443321228,
+                0.00027806730940937996
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0070",
+              "label": "R",
+              "probabilities": [
+                0.9979655742645264,
+                0.0020344723016023636
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0083",
+              "label": "R",
+              "probabilities": [
+                0.3035247027873993,
+                0.6964753270149231
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0086",
+              "label": "R",
+              "probabilities": [
+                0.37932953238487244,
+                0.6206704378128052
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0094",
+              "label": "R",
+              "probabilities": [
+                0.5917216539382935,
+                0.40827837586402893
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0096",
+              "label": "R",
+              "probabilities": [
+                0.9990336894989014,
+                0.0009663680102676153
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0103",
+              "label": "M",
+              "probabilities": [
+                0.0861544981598854,
+                0.9138454794883728
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0117",
+              "label": "M",
+              "probabilities": [
+                0.03725172579288483,
+                0.9627482891082764
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0118",
+              "label": "M",
+              "probabilities": [
+                0.01383332908153534,
+                0.9861667156219482
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0124",
+              "label": "M",
+              "probabilities": [
+                0.0838126614689827,
+                0.9161874055862427
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0132",
+              "label": "M",
+              "probabilities": [
+                0.23823165893554688,
+                0.7617683410644531
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0137",
+              "label": "M",
+              "probabilities": [
+                0.014470023103058338,
+                0.985529899597168
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0151",
+              "label": "M",
+              "probabilities": [
+                0.15734080970287323,
+                0.8426591753959656
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0160",
+              "label": "M",
+              "probabilities": [
+                0.10387901216745377,
+                0.8961209654808044
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0168",
+              "label": "M",
+              "probabilities": [
+                0.7155421376228333,
+                0.28445789217948914
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0169",
+              "label": "M",
+              "probabilities": [
+                0.4950381815433502,
+                0.5049618482589722
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0171",
+              "label": "M",
+              "probabilities": [
+                0.43240004777908325,
+                0.5676000118255615
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0178",
+              "label": "M",
+              "probabilities": [
+                0.3842054605484009,
+                0.6157945394515991
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0180",
+              "label": "M",
+              "probabilities": [
+                0.016159018501639366,
+                0.9838410019874573
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0198",
+              "label": "M",
+              "probabilities": [
+                0.007606801576912403,
+                0.9923931360244751
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0202",
+              "label": "M",
+              "probabilities": [
+                0.0059532104060053825,
+                0.9940468072891235
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0205",
+              "label": "M",
+              "probabilities": [
+                0.00810873880982399,
+                0.9918912649154663
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0208",
+              "label": "M",
+              "probabilities": [
+                0.2388155162334442,
+                0.7611845135688782
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 3,
+          "seed": 4202,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                11,
+                4
+              ],
+              [
+                2,
+                16
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 27,
+            "accuracy": 0.8181818181818182,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 15,
+                "precision": 0.8461538461538461,
+                "recall": 0.7333333333333333,
+                "f1": 0.7857142857142856,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.8,
+                "recall": 0.8888888888888888,
+                "f1": 0.8421052631578948,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.8139097744360901,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.5104735493659973,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0011",
+              "label": "R",
+              "probabilities": [
+                0.9996329545974731,
+                0.0003669962170533836
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0012",
+              "label": "R",
+              "probabilities": [
+                0.98121178150177,
+                0.018788209185004234
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0017",
+              "label": "R",
+              "probabilities": [
+                0.8031009435653687,
+                0.19689898192882538
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0035",
+              "label": "R",
+              "probabilities": [
+                0.7696573138237,
+                0.23034268617630005
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0039",
+              "label": "R",
+              "probabilities": [
+                0.9995725750923157,
+                0.00042737324838526547
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0045",
+              "label": "R",
+              "probabilities": [
+                0.005309772212058306,
+                0.9946902990341187
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0047",
+              "label": "R",
+              "probabilities": [
+                0.376517117023468,
+                0.623482882976532
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0063",
+              "label": "R",
+              "probabilities": [
+                0.9998531341552734,
+                0.00014681491302326322
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0064",
+              "label": "R",
+              "probabilities": [
+                0.9984179735183716,
+                0.0015819804975762963
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0065",
+              "label": "R",
+              "probabilities": [
+                0.9999593496322632,
+                0.00004060432911501266
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0071",
+              "label": "R",
+              "probabilities": [
+                0.9978067278862,
+                0.0021933061070740223
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0084",
+              "label": "R",
+              "probabilities": [
+                0.21143414080142975,
+                0.7885658144950867
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0085",
+              "label": "R",
+              "probabilities": [
+                0.010733014903962612,
+                0.9892669916152954
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0090",
+              "label": "R",
+              "probabilities": [
+                0.9949217438697815,
+                0.0050782631151378155
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0093",
+              "label": "R",
+              "probabilities": [
+                0.9914509654045105,
+                0.008549009449779987
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0108",
+              "label": "M",
+              "probabilities": [
+                0.307983934879303,
+                0.692016065120697
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0110",
+              "label": "M",
+              "probabilities": [
+                0.5116608738899231,
+                0.4883391559123993
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0116",
+              "label": "M",
+              "probabilities": [
+                0.2550826072692871,
+                0.7449173331260681
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0122",
+              "label": "M",
+              "probabilities": [
+                0.0083217928186059,
+                0.9916782379150391
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0129",
+              "label": "M",
+              "probabilities": [
+                0.03607471287250519,
+                0.963925302028656
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0142",
+              "label": "M",
+              "probabilities": [
+                0.00005246137152425945,
+                0.9999475479125977
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0149",
+              "label": "M",
+              "probabilities": [
+                0.009159226901829243,
+                0.9908407926559448
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0162",
+              "label": "M",
+              "probabilities": [
+                0.00019192826584912837,
+                0.999808132648468
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0163",
+              "label": "M",
+              "probabilities": [
+                0.004280295222997665,
+                0.9957197308540344
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0170",
+              "label": "M",
+              "probabilities": [
+                0.24904051423072815,
+                0.7509595155715942
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0175",
+              "label": "M",
+              "probabilities": [
+                0.0004293884849175811,
+                0.9995705485343933
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0177",
+              "label": "M",
+              "probabilities": [
+                0.001185069908387959,
+                0.9988149404525757
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0179",
+              "label": "M",
+              "probabilities": [
+                0.8990380764007568,
+                0.10096193104982376
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0181",
+              "label": "M",
+              "probabilities": [
+                0.000026817089747055434,
+                0.9999731779098511
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0196",
+              "label": "M",
+              "probabilities": [
+                0.0007952921441756189,
+                0.999204695224762
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0197",
+              "label": "M",
+              "probabilities": [
+                0.0009087130310945213,
+                0.9990912675857544
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0201",
+              "label": "M",
+              "probabilities": [
+                0.0007161859539337456,
+                0.9992838501930237
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0203",
+              "label": "M",
+              "probabilities": [
+                0.002178937429562211,
+                0.9978210926055908
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 4,
+          "seed": 4203,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                11,
+                4
+              ],
+              [
+                3,
+                15
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 26,
+            "accuracy": 0.7878787878787878,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 15,
+                "precision": 0.7857142857142857,
+                "recall": 0.7333333333333333,
+                "f1": 0.7586206896551724,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.7894736842105263,
+                "recall": 0.8333333333333334,
+                "f1": 0.8108108108108109,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.7847157502329916,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 1.1910423040390015,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0001",
+              "label": "R",
+              "probabilities": [
+                0.020657382905483246,
+                0.9793425798416138
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0003",
+              "label": "R",
+              "probabilities": [
+                0.28685253858566284,
+                0.7131474614143372
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0005",
+              "label": "R",
+              "probabilities": [
+                0.761427640914917,
+                0.238572359085083
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0008",
+              "label": "R",
+              "probabilities": [
+                0.0000015793287957421853,
+                0.9999984502792358
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0020",
+              "label": "R",
+              "probabilities": [
+                1.4220636046502477e-7,
+                0.9999998807907104
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0028",
+              "label": "R",
+              "probabilities": [
+                0.9508366584777832,
+                0.049163319170475006
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0040",
+              "label": "R",
+              "probabilities": [
+                0.9955317974090576,
+                0.004468219354748726
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0041",
+              "label": "R",
+              "probabilities": [
+                0.9909509420394897,
+                0.00904898438602686
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0042",
+              "label": "R",
+              "probabilities": [
+                0.9986022114753723,
+                0.0013978340430185199
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0060",
+              "label": "R",
+              "probabilities": [
+                0.9962196946144104,
+                0.0037803505547344685
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0062",
+              "label": "R",
+              "probabilities": [
+                0.9804109930992126,
+                0.019588977098464966
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0076",
+              "label": "R",
+              "probabilities": [
+                0.948574960231781,
+                0.051425036042928696
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0078",
+              "label": "R",
+              "probabilities": [
+                0.9562329649925232,
+                0.043767061084508896
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0079",
+              "label": "R",
+              "probabilities": [
+                0.9627338647842407,
+                0.03726619482040405
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0089",
+              "label": "R",
+              "probabilities": [
+                0.9975155591964722,
+                0.0024844796862453222
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0105",
+              "label": "M",
+              "probabilities": [
+                0.6537718176841736,
+                0.34622812271118164
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0109",
+              "label": "M",
+              "probabilities": [
+                0.6656557321548462,
+                0.3343443274497986
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0112",
+              "label": "M",
+              "probabilities": [
+                0.000006314002348517533,
+                0.9999936819076538
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0123",
+              "label": "M",
+              "probabilities": [
+                0.013193214312195778,
+                0.9868068099021912
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0128",
+              "label": "M",
+              "probabilities": [
+                0.003424288472160697,
+                0.996575653553009
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0133",
+              "label": "M",
+              "probabilities": [
+                0.000034024786145891994,
+                0.999966025352478
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0134",
+              "label": "M",
+              "probabilities": [
+                0.00001885755409603007,
+                0.999981164932251
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0140",
+              "label": "M",
+              "probabilities": [
+                0.007641392759978771,
+                0.9923586249351501
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0146",
+              "label": "M",
+              "probabilities": [
+                0.00029292426188476384,
+                0.999707043170929
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0148",
+              "label": "M",
+              "probabilities": [
+                5.649346768166197e-9,
+                1
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0153",
+              "label": "M",
+              "probabilities": [
+                0.027563931420445442,
+                0.9724360704421997
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0157",
+              "label": "M",
+              "probabilities": [
+                0.00008633269317215309,
+                0.9999136924743652
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0165",
+              "label": "M",
+              "probabilities": [
+                0.8342791795730591,
+                0.16572079062461853
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0167",
+              "label": "M",
+              "probabilities": [
+                0.043724026530981064,
+                0.956275999546051
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0182",
+              "label": "M",
+              "probabilities": [
+                6.175283895348826e-11,
+                1
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0193",
+              "label": "M",
+              "probabilities": [
+                0.07023079693317413,
+                0.9297691583633423
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0194",
+              "label": "M",
+              "probabilities": [
+                0.3476170599460602,
+                0.6523829698562622
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0207",
+              "label": "M",
+              "probabilities": [
+                0.000790345948189497,
+                0.9992096424102783
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        },
+        {
+          "fold": 5,
+          "seed": 4204,
+          "metrics": {
+            "classOrder": [
+              "R",
+              "M"
+            ],
+            "confusionMatrix": [
+              [
+                9,
+                6
+              ],
+              [
+                3,
+                15
+              ]
+            ],
+            "orientation": "rows=true; columns=predicted",
+            "total": 33,
+            "correct": 24,
+            "accuracy": 0.7272727272727273,
+            "perClass": [
+              {
+                "index": 0,
+                "label": "R",
+                "support": 15,
+                "precision": 0.75,
+                "recall": 0.6,
+                "f1": 0.6666666666666665,
+                "zeroDenominators": []
+              },
+              {
+                "index": 1,
+                "label": "M",
+                "support": 18,
+                "precision": 0.7142857142857143,
+                "recall": 0.8333333333333334,
+                "f1": 0.7692307692307692,
+                "zeroDenominators": []
+              }
+            ],
+            "macroF1": 0.7179487179487178,
+            "zeroDenominatorPolicy": "return 0 and flag affected metric",
+            "crossEntropy": 0.6585822701454163,
+            "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+          },
+          "records": [
+            {
+              "id": "sonar-0013",
+              "label": "R",
+              "probabilities": [
+                0.08300768584012985,
+                0.9169923067092896
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0014",
+              "label": "R",
+              "probabilities": [
+                0.9977917671203613,
+                0.0022082417272031307
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0026",
+              "label": "R",
+              "probabilities": [
+                0.2917937636375427,
+                0.7082062363624573
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0033",
+              "label": "R",
+              "probabilities": [
+                0.9421087503433228,
+                0.05789128690958023
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0049",
+              "label": "R",
+              "probabilities": [
+                0.024478547275066376,
+                0.9755213856697083
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0054",
+              "label": "R",
+              "probabilities": [
+                0.6972729563713074,
+                0.30272698402404785
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0056",
+              "label": "R",
+              "probabilities": [
+                0.34450581669807434,
+                0.6554941534996033
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0061",
+              "label": "R",
+              "probabilities": [
+                0.9014328718185425,
+                0.09856709837913513
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0067",
+              "label": "R",
+              "probabilities": [
+                0.9983178377151489,
+                0.0016821599565446377
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0069",
+              "label": "R",
+              "probabilities": [
+                0.07283607125282288,
+                0.9271638989448547
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0072",
+              "label": "R",
+              "probabilities": [
+                0.9727817177772522,
+                0.02721826359629631
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0074",
+              "label": "R",
+              "probabilities": [
+                0.11340887099504471,
+                0.8865911364555359
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0080",
+              "label": "R",
+              "probabilities": [
+                0.7254173755645752,
+                0.2745826840400696
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0087",
+              "label": "R",
+              "probabilities": [
+                0.9858389496803284,
+                0.014161119237542152
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0092",
+              "label": "R",
+              "probabilities": [
+                0.9990670084953308,
+                0.0009330484317615628
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0098",
+              "label": "M",
+              "probabilities": [
+                0.9766125679016113,
+                0.023387422785162926
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0099",
+              "label": "M",
+              "probabilities": [
+                0.010159284807741642,
+                0.9898406863212585
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0113",
+              "label": "M",
+              "probabilities": [
+                0.0809568464756012,
+                0.9190431833267212
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0114",
+              "label": "M",
+              "probabilities": [
+                0.4359751343727112,
+                0.564024806022644
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0119",
+              "label": "M",
+              "probabilities": [
+                0.045052237808704376,
+                0.9549477696418762
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0120",
+              "label": "M",
+              "probabilities": [
+                0.02605392038822174,
+                0.9739460349082947
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0125",
+              "label": "M",
+              "probabilities": [
+                0.15702217817306519,
+                0.8429778218269348
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0126",
+              "label": "M",
+              "probabilities": [
+                0.6114882826805115,
+                0.38851165771484375
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0131",
+              "label": "M",
+              "probabilities": [
+                0.006549936253577471,
+                0.9934501051902771
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0139",
+              "label": "M",
+              "probabilities": [
+                0.00029422546504065394,
+                0.9997057318687439
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0152",
+              "label": "M",
+              "probabilities": [
+                0.4596467912197113,
+                0.5403531789779663
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0156",
+              "label": "M",
+              "probabilities": [
+                0.19174769520759583,
+                0.8082522749900818
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0161",
+              "label": "M",
+              "probabilities": [
+                0.009262415580451488,
+                0.9907376170158386
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0174",
+              "label": "M",
+              "probabilities": [
+                0.6473426818847656,
+                0.35265734791755676
+              ],
+              "predictedIndex": 0
+            },
+            {
+              "id": "sonar-0183",
+              "label": "M",
+              "probabilities": [
+                0.000023662842068006285,
+                0.9999762773513794
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0187",
+              "label": "M",
+              "probabilities": [
+                0.000005121820777276298,
+                0.9999948740005493
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0190",
+              "label": "M",
+              "probabilities": [
+                0.032741375267505646,
+                0.9672585725784302
+              ],
+              "predictedIndex": 1
+            },
+            {
+              "id": "sonar-0206",
+              "label": "M",
+              "probabilities": [
+                0.01720411516726017,
+                0.9827958941459656
+              ],
+              "predictedIndex": 1
+            }
+          ]
+        }
+      ],
+      "macroF1": {
+        "mean": 0.773109790423765,
+        "sampleStandardDeviation": 0.04459296645710246
+      },
+      "accuracy": {
+        "mean": 0.7773618538324423,
+        "sampleStandardDeviation": 0.043936772491792085
+      }
+    }
+  ],
+  "finalTraining": {
+    "seed": 4242,
+    "epochs": 200,
+    "sampleCount": 166,
+    "developmentResubstitution": {
+      "classOrder": [
+        "R",
+        "M"
+      ],
+      "confusionMatrix": [
+        [
+          73,
+          4
+        ],
+        [
+          3,
+          86
+        ]
+      ],
+      "orientation": "rows=true; columns=predicted",
+      "total": 166,
+      "correct": 159,
+      "accuracy": 0.9578313253012049,
+      "perClass": [
+        {
+          "index": 0,
+          "label": "R",
+          "support": 77,
+          "precision": 0.9605263157894737,
+          "recall": 0.948051948051948,
+          "f1": 0.9542483660130718,
+          "zeroDenominators": []
+        },
+        {
+          "index": 1,
+          "label": "M",
+          "support": 89,
+          "precision": 0.9555555555555556,
+          "recall": 0.9662921348314607,
+          "f1": 0.9608938547486034,
+          "zeroDenominators": []
+        }
+      ],
+      "macroF1": 0.9575711103808376,
+      "zeroDenominatorPolicy": "return 0 and flag affected metric",
+      "crossEntropy": 0.19166918098926544,
+      "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+    }
+  },
+  "finalTest": {
+    "metrics": {
+      "classOrder": [
+        "R",
+        "M"
+      ],
+      "confusionMatrix": [
+        [
+          13,
+          7
+        ],
+        [
+          3,
+          19
+        ]
+      ],
+      "orientation": "rows=true; columns=predicted",
+      "total": 42,
+      "correct": 32,
+      "accuracy": 0.7619047619047619,
+      "perClass": [
+        {
+          "index": 0,
+          "label": "R",
+          "support": 20,
+          "precision": 0.8125,
+          "recall": 0.65,
+          "f1": 0.7222222222222223,
+          "zeroDenominators": []
+        },
+        {
+          "index": 1,
+          "label": "M",
+          "support": 22,
+          "precision": 0.7307692307692307,
+          "recall": 0.8636363636363636,
+          "f1": 0.7916666666666666,
+          "zeroDenominators": []
+        }
+      ],
+      "macroF1": 0.7569444444444444,
+      "zeroDenominatorPolicy": "return 0 and flag affected metric",
+      "crossEntropy": 0.3946076035499573,
+      "lossImplementation": "tf.metrics.categoricalCrossentropy; float32; library clipping"
+    },
+    "records": [
+      {
+        "id": "sonar-0007",
+        "label": "R",
+        "probabilities": [
+          0.6508880853652954,
+          0.3491118550300598
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0009",
+        "label": "R",
+        "probabilities": [
+          0.09896343946456909,
+          0.9010365605354309
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0010",
+        "label": "R",
+        "probabilities": [
+          0.39806869626045227,
+          0.6019312739372253
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0016",
+        "label": "R",
+        "probabilities": [
+          0.9944122433662415,
+          0.005587820895016193
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0019",
+        "label": "R",
+        "probabilities": [
+          0.9994425177574158,
+          0.0005574724054895341
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0023",
+        "label": "R",
+        "probabilities": [
+          0.378970742225647,
+          0.6210293173789978
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0024",
+        "label": "R",
+        "probabilities": [
+          0.9548574686050415,
+          0.04514257237315178
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0034",
+        "label": "R",
+        "probabilities": [
+          0.33773913979530334,
+          0.662260890007019
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0036",
+        "label": "R",
+        "probabilities": [
+          0.274690181016922,
+          0.7253098487854004
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0038",
+        "label": "R",
+        "probabilities": [
+          0.9911449551582336,
+          0.008855060674250126
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0043",
+        "label": "R",
+        "probabilities": [
+          0.9999572038650513,
+          0.00004275268656783737
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0048",
+        "label": "R",
+        "probabilities": [
+          0.24379123747348785,
+          0.7562087774276733
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0050",
+        "label": "R",
+        "probabilities": [
+          0.29256901144981384,
+          0.7074310183525085
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0051",
+        "label": "R",
+        "probabilities": [
+          0.9957007765769958,
+          0.004299236927181482
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0058",
+        "label": "R",
+        "probabilities": [
+          0.9948022365570068,
+          0.005197776481509209
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0068",
+        "label": "R",
+        "probabilities": [
+          0.9973021745681763,
+          0.0026978503447026014
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0077",
+        "label": "R",
+        "probabilities": [
+          0.9762582182884216,
+          0.02374175749719143
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0082",
+        "label": "R",
+        "probabilities": [
+          0.8413130044937134,
+          0.1586870402097702
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0091",
+        "label": "R",
+        "probabilities": [
+          0.9969438910484314,
+          0.003056144341826439
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0097",
+        "label": "R",
+        "probabilities": [
+          0.9330188035964966,
+          0.06698118150234222
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0104",
+        "label": "M",
+        "probabilities": [
+          0.7175512313842773,
+          0.28244876861572266
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0106",
+        "label": "M",
+        "probabilities": [
+          0.21757346391677856,
+          0.7824265360832214
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0107",
+        "label": "M",
+        "probabilities": [
+          0.49008503556251526,
+          0.5099149346351624
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0127",
+        "label": "M",
+        "probabilities": [
+          0.08781956136226654,
+          0.9121804237365723
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0135",
+        "label": "M",
+        "probabilities": [
+          0.5710960030555725,
+          0.4289039373397827
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0136",
+        "label": "M",
+        "probabilities": [
+          0.3759494423866272,
+          0.624050498008728
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0138",
+        "label": "M",
+        "probabilities": [
+          0.019388804212212563,
+          0.9806112051010132
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0141",
+        "label": "M",
+        "probabilities": [
+          0.002513509476557374,
+          0.9974864721298218
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0143",
+        "label": "M",
+        "probabilities": [
+          0.001323566772043705,
+          0.9986763596534729
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0147",
+        "label": "M",
+        "probabilities": [
+          0.0005073424545116723,
+          0.9994926452636719
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0150",
+        "label": "M",
+        "probabilities": [
+          0.0443231537938118,
+          0.955676794052124
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0155",
+        "label": "M",
+        "probabilities": [
+          0.2611941397190094,
+          0.7388058304786682
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0158",
+        "label": "M",
+        "probabilities": [
+          0.07858823984861374,
+          0.9214117527008057
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0166",
+        "label": "M",
+        "probabilities": [
+          0.8521064519882202,
+          0.14789356291294098
+        ],
+        "predictedIndex": 0
+      },
+      {
+        "id": "sonar-0172",
+        "label": "M",
+        "probabilities": [
+          0.06768494844436646,
+          0.9323150515556335
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0184",
+        "label": "M",
+        "probabilities": [
+          0.0019366320921108127,
+          0.9980633854866028
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0186",
+        "label": "M",
+        "probabilities": [
+          0.0019106087274849415,
+          0.9980893731117249
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0188",
+        "label": "M",
+        "probabilities": [
+          0.01545858196914196,
+          0.9845414161682129
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0191",
+        "label": "M",
+        "probabilities": [
+          0.16696159541606903,
+          0.8330383896827698
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0192",
+        "label": "M",
+        "probabilities": [
+          0.22277210652828217,
+          0.7772278785705566
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0195",
+        "label": "M",
+        "probabilities": [
+          0.08253033459186554,
+          0.9174696803092957
+        ],
+        "predictedIndex": 1
+      },
+      {
+        "id": "sonar-0199",
+        "label": "M",
+        "probabilities": [
+          0.010273265652358532,
+          0.989726722240448
+        ],
+        "predictedIndex": 1
+      }
+    ]
+  },
+  "limitations": [
+    "Small dataset; row-stratified split does not prove independence across objects or acquisition angles.",
+    "Test is already evaluated and frozen; game scores on these samples are demonstrations, not new scientific estimates."
+  ]
+}

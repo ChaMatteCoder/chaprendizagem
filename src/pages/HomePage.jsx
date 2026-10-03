@@ -1,4 +1,5 @@
 import {
+  Activity,
   ArrowRight,
   Beaker,
   BookOpen,
@@ -15,6 +16,7 @@ import {
   Sigma,
   Sparkles,
   TerminalSquare,
+  Target,
 } from 'lucide-react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -192,9 +194,18 @@ export default function HomePage() {
         <div className="section-heading">
           <p className="eyebrow">Jogos</p>
           <h2 id="games-title">Aprenda brincando com a IA.</h2>
-          <p>Solte o traço, encare o relógio e descubra o que a inteligência artificial vê.</p>
+          <p>Desenhe, explore ecos e compare seus palpites com a inteligência artificial.</p>
         </div>
         <div className="games-grid stagger">
+          <ProjectCard
+            kind="game"
+            title="Sonar ou Azar?"
+            status="Jogue agora"
+            description="Observe cinco ecos reais, dê seu palpite de Rocha ou Metal e compare com a MLP oficial. Explore a decisão no SonarLab."
+            cover="/images/sonar/cover.png"
+            to="/sonar"
+            gameFeatures={[{ text: '5 encontros', icon: Target }, { text: 'Sonar real', icon: Activity }, { text: 'MLP', icon: BrainCircuit }]}
+          />
           <ProjectCard
             kind="game"
             title="IAdivinha! — Gato, pato ou sapato?"

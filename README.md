@@ -41,6 +41,18 @@ chaprendizagem/
 
 ## Como rodar
 
+### Sonar ou Azar? + SonarLab — missão e laboratório
+
+O Trabalho 03 de Aprendizagem Profunda de Modelos Generativos está concluído na **Etapa 06**. Acesse `/sonar` pelo card **Sonar ou Azar?** na seção Jogos da Home. Cada missão sorteia cinco exemplos distintos do teste já avaliado: observe os 60 atributos, escolha Rocha ou Metal, compare com a MLP oficial e revele o resultado para pontuar. O resumo permite revisar cada encontro no SonarLab, com o mesmo trace; a cross-entropy só fica disponível após a revelação. O placar de cinco encontros não é a acurácia científica do modelo.
+
+Em `/sonar/lab`, explore os dados, configure e treine uma MLP real e consulte os resultados oficiais. Experimentos usam somente desenvolvimento (133/33); o modelo oficial **60 → 16 → 2** permanece congelado, com **32/42 acertos**, acurácia **76,19%** e macro-F1 **75,69%** no teste. As artes do cenário foram geradas com a ferramenta de imagem integrada; a capa e as três músicas foram fornecidas pelo usuário. Menu, missão e laboratório têm faixas próprias em loop, com botão de som e mute mantido entre as telas. Quando o navegador bloqueia autoplay, o primeiro clique permite reproduzir. O movimento reduzido é respeitado.
+
+A capa fica em `public/images/sonar/cover.png` e as músicas em `public/audio/sonar/`. O card aparece ao lado do IAdivinha em Jogos (`/#jogos`), com os dois cards empilhados no celular. Nomes originais, destinos e validação: [organização da mídia](docs/sonar-midia.md).
+
+Confira dados, pesos e testes com `npm run check:sonar`, `npm run verify:sonar` e `npm run test:sonar`. `npm run explain:sonar` reproduz o exemplo matemático do guia com pesos oficiais e uma amostra de desenvolvimento, sem treinar ou fazer inferência no teste. Para reproduzir a comparação sem avaliar novamente o teste: `npm run train:sonar -- --run=reproducao-01`. O oficial e a avaliação concluída estão em `public/models/sonar/official/`.
+
+Apresentação, fórmulas, exemplo real, roteiro oral e perguntas: [guia para o professor](docs/sonar-guia-professor.md). Verificações e limites: [auditoria final — Etapa 06](docs/sonar-etapa-6.md). Fonte, licença, hashes, partições e comandos: [guia de reprodução](training/sonar/README.md). Histórico: [plano](docs/sonar-etapa-1.md), [dados](docs/sonar-etapa-2.md), [MLP/artefatos](docs/sonar-etapa-3.md), [SonarLab](docs/sonar-etapa-4.md) e [menu/missão](docs/sonar-etapa-5.md).
+
 ### IAdivinha! — Turma do “ÃO”
 
 Na página inicial, encontre o card com capa própria na seção **Jogos** (`/#jogos`), separado dos projetos acadêmicos. As tags são Desenho, 10 segundos e IA.

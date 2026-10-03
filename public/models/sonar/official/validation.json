@@ -1,0 +1,12 @@
+{
+  "exportParity": {
+    "sampleSet": "development",
+    "sampleCount": 166,
+    "maxProbabilityError": 0,
+    "argmaxIdentical": true,
+    "tolerance": 0.00001
+  },
+  "tensorLeak": false,
+  "trainingElapsedSeconds": 74.0688097,
+  "trainingCompletedAt": "2026-09-30T22:45:03.899Z"
+}

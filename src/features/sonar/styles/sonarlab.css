@@ -1,0 +1,156 @@
+.sonarlab { --sonar-navy: #06263a; --sonar-teal: #00888e; --sonar-yellow: #ffd34d; --sonar-cream: #faf7ef; color: var(--sonar-navy); background: var(--sonar-cream); min-height: 100vh; display: grid; grid-template-columns: 240px minmax(0, 1fr); font-family: 'Segoe UI', system-ui, sans-serif; }
+.sonarlab h1, .sonarlab h2, .sonarlab p { margin: 0; }
+.sonarlab h1 { font-weight: 950; font-size: clamp(2.15rem, 3.3vw, 3.5rem); letter-spacing: -.04em; line-height: 1.05; text-transform: uppercase; max-width: none; }
+.sonarlab h1::after { content: none; }
+.sonarlab h2 { display: flex; align-items: center; gap: 10px; font-size: 1.15rem; font-weight: 850; line-height: 1.3; margin-bottom: 18px; }
+.sonarlab h2 svg { color: #075076; flex-shrink: 0; width: 23px; }
+.sonarlab p { line-height: 1.6; margin: 12px 0; }
+.sonarlab button, .sonarlab input, .sonarlab select { font: inherit; }
+.sonarlab button { cursor: pointer; }
+.sonarlab button:disabled { cursor: not-allowed; opacity: .6; }
+.sonarlab :focus-visible { outline: 3px solid #b45006; outline-offset: 4px; }
+.sonarlab h1:focus { outline: none; }
+.sonarlab-sidebar { background: radial-gradient(ellipse at top, #094052, #06263a 65%); color: #e9ffff; position: sticky; top: 0; height: 100vh; padding: 24px 14px; overflow: hidden; display: flex; flex-direction: column; }
+.sonarlab-brand { display: grid; justify-items: center; margin-bottom: 30px; }
+.sonarlab-submarine { width: 190px; max-width: 100%; height: auto; display: block; }
+.sonarlab-brand > a { font-size: 2.45rem; font-weight: 950; letter-spacing: -.04em; }
+.sonarlab-brand > a span { color: #27d9d4; }
+.sonarlab-brand small { color: #77dfe0; font-size: 1rem; margin-top: 2px; }
+.sonarlab-sidebar nav { display: grid; gap: 6px; z-index: 1; }
+.sonarlab-sound-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: .82rem; color: #d6f4f4; margin-bottom: 15px; position: relative; z-index: 2; }
+.sonarlab-sound-row .sonar-sound button { cursor: pointer; }
+.sonarlab-sound-row .sonar-sound span { color: #f1fdff; }
+.sonarlab-sidebar nav button, .sonarlab-sidebar nav a { display: flex; align-items: center; gap: 14px; border: 0; color: #f1fdff; background: transparent; padding: 14px 12px; text-align: left; border-radius: 8px; font-size: 1rem; min-height: 48px; }
+.sonarlab-sidebar nav button:hover, .sonarlab-sidebar nav a:hover { background: #0c485b; }
+.sonarlab-sidebar nav button[aria-current] { background: #087f8a; box-shadow: inset 0 0 0 1px #16b4bb; font-weight: 700; }
+.sonarlab-sidebar :focus-visible { outline-color: var(--sonar-yellow); }
+.sonarlab-sidebar-note { display: flex; align-items: center; gap: 7px; font-size: .8rem; margin-top: auto; padding: 20px 0 0; color: #a3e2e4; z-index: 1; }
+.sonarlab-reef { position: absolute; bottom: 25px; left: 0; width: 100%; pointer-events: none; opacity: .7; }
+.sonarlab-main { width: 100%; max-width: 1600px; margin: 0 auto; padding: 24px 28px 16px; min-width: 0; }
+.sonarlab-hero { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 110px; margin-bottom: 20px; }
+.sonarlab-hero p { font-size: clamp(1rem, 1.5vw, 1.3rem); margin: 8px 0 0; font-weight: 600; }
+.sonarlab-eyebrow { display: block; text-transform: uppercase; letter-spacing: .13em; font-size: .67rem; color: #426573; margin-bottom: 9px; font-weight: 800; }
+.sonarlab-hero-art { position: relative; align-self: stretch; display: flex; align-items: end; justify-content: end; gap: 4px; min-width: 225px; background: radial-gradient(ellipse at bottom, #d6f3ed, transparent 65%); }
+.sonarlab-hero-art .sonarlab-submarine { width: 140px; }
+.sonarlab-hero-art .sonarlab-badge { position: absolute; top: 0; right: 0; }
+.sonarlab-badge { display: inline-flex; background: #e1eced; color: #245063; border-radius: 6px; padding: 6px 9px; font-size: .72rem; font-weight: 650; white-space: nowrap; }
+.sonarlab-badge.is-yellow { background: var(--sonar-yellow); color: #06263a; }
+.sonarlab-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 20px; }
+.sonarlab-stats > div { border: 1px solid #deded5; border-radius: 10px; background: #fffcf7; display: flex; align-items: center; justify-content: center; gap: 20px; padding: 17px 12px; }
+.sonarlab-stats svg { width: 35px; height: 35px; color: var(--sonar-teal); }
+.sonarlab-stats > div:nth-child(3) svg { color: #c84d3c; }
+.sonarlab-stats span { display: grid; line-height: 1.3; font-size: .9rem; }
+.sonarlab-stats strong { font-size: 1.8rem; font-weight: 850; }
+.sonarlab-stats > div:last-child strong { font-size: 1.25rem; }
+.sonarlab-top-grid, .sonarlab-bottom-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-bottom: 16px; }
+.sonarlab-panel { background: #fffcf7; border: 1px solid #deded5; border-radius: 12px; padding: 20px; min-width: 0; }
+.sonarlab-panel-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.sonarlab-stack { display: grid; gap: 18px; }
+.sonarlab-fields { padding: 0; margin: 0; border: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.sonarlab-fields > .sonarlab-field-pair { display: contents; }
+.sonarlab-fields > label:last-child { grid-column: 1 / -1; }
+.sonarlab label { display: grid; gap: 6px; font-size: .82rem; font-weight: 650; min-width: 0; }
+.sonarlab select, .sonarlab input { border: 1px solid #b8caca; border-radius: 7px; background: #fffefa; color: #06263a; padding: 9px 10px; width: 100%; min-width: 0; min-height: 41px; }
+.sonarlab-field-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.sonarlab-fixed { background: #e9f2ef; padding: 9px 10px; border-radius: 6px; font-size: .75rem; color: #244959; }
+.sonarlab .sonarlab-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid transparent; font-weight: 850; color: #06263a; min-height: 45px; }
+.sonarlab-button.is-yellow { background: var(--sonar-yellow); box-shadow: inset 0 -2px 0 #eac14a; }
+.sonarlab-button.is-yellow:hover:not(:disabled) { background: #ffdd6b; }
+.sonarlab-button.is-outline { background: transparent; border-color: #2d7985; }
+.sonarlab-action-row { display: flex; gap: 10px; }
+.sonarlab-status { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; font-size: .76rem; margin: 12px 0; line-height: 1.5; }
+.sonarlab-caption { font-size: .75rem; color: #416575; line-height: 1.5; }
+.sonarlab-caption code { overflow-wrap: anywhere; }
+.sonarlab progress { width: 100%; height: 7px; accent-color: #00888e; }
+.sonarlab-error { padding: 12px; background: #fff0e9; color: #8f2d1e; border: 1px solid #daaa96; border-radius: 7px; overflow-wrap: anywhere; }
+.sonarlab-error .sonarlab-button { margin-top: 8px; }
+.sonarlab-network { display: flex; gap: 18px; min-height: 280px; padding: 4px 0; }
+.sonarlab-layer { flex: 1; position: relative; background: #fff0c9; border-radius: 9px; padding: 16px 8px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; min-width: 0; }
+.sonarlab-layer.is-input { background: #e0f2f1; }
+.sonarlab-layer.is-output { background: #fce4dd; }
+.sonarlab-layer:not(:last-child)::after { content: '→'; position: absolute; right: -18px; top: 50%; font-size: 21px; color: #165568; }
+.sonarlab-layer strong { font-size: .82rem; white-space: nowrap; }
+.sonarlab-layer > span { font-size: .77rem; margin-top: auto; }
+.sonarlab-layer > small { font-size: .8rem; }
+.sonarlab-nodes { display: grid; gap: 8px; justify-items: center; margin: 6px 0; }
+.sonarlab-nodes i { width: 19px; height: 19px; border-radius: 50%; background: #efb32c; border: 2px solid #e1a41c; }
+.sonarlab-layer.is-input .sonarlab-nodes i { background: #079ea5; border-color: #007f88; }
+.sonarlab-layer.is-output .sonarlab-nodes i { background: #fb715c; border-color: #d45240; }
+.sonarlab-chart { min-width: 0; position: relative; }
+.sonarlab-chart-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+.sonarlab-segment { display: flex; border: 1px solid #c3d7d6; border-radius: 30px; overflow: hidden; }
+.sonarlab-segment button { border: 0; background: transparent; padding: 8px 17px; color: #214659; font-weight: 650; font-size: .8rem; min-height: 36px; }
+.sonarlab-segment button[aria-pressed=true] { color: white; background: #087d83; }
+.sonarlab-legend { display: inline-flex; align-items: center; gap: 7px; font-size: .7rem; }
+.sonarlab-legend i { height: 3px; width: 17px; background: #008d92; }
+.sonarlab-legend i.is-validation { background: repeating-linear-gradient(90deg, #c04b39 0 4px, transparent 4px 6px); margin-left: 5px; }
+.sonarlab-empty { min-height: 220px; border: 1px dashed #a7c7c6; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; color: #426777; background: #f1f8f3; }
+.sonarlab-empty > strong { color: #123e50; margin-top: 12px; }
+.sonarlab-empty p { max-width: 31em; font-size: .85rem; }
+.sonarlab-axis-note { font-size: .72rem; color: #426575; display: block; margin-top: 3px; }
+.sonarlab-sample-controls { display: grid; gap: 12px; margin-bottom: 14px; }
+.sonarlab-probabilities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+.sonarlab-probabilities > div { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 16px 12px; background: #ddf0ef; border-radius: 8px; }
+.sonarlab-probabilities > div.is-metal { background: #fce4dd; }
+.sonarlab-probabilities span { display: grid; font-size: .9rem; font-weight: 700; }
+.sonarlab-probabilities strong { font-size: 1.35rem; }
+.sonarlab table { border-collapse: collapse; width: 100%; font-size: .8rem; line-height: 1.45; }
+.sonarlab th, .sonarlab td { padding: 11px 12px; border-bottom: 1px solid #dbe5df; text-align: left; }
+.sonarlab thead th { color: #214a5a; background: #eaf2ee; }
+.sonarlab caption { text-align: left; color: #3d6473; font-size: .75rem; padding: 10px 0; }
+.sonarlab-table-scroll { overflow-x: auto; max-width: 100%; }
+.sonarlab-table-scroll:focus-visible { outline: 3px solid #b45006; outline-offset: 2px; }
+.sonarlab-details { font-size: .8rem; margin-top: 14px; }
+.sonarlab summary { cursor: pointer; padding: 8px 0; font-weight: 700; min-height: 35px; }
+.sonarlab-note { border-left: 3px solid #db9a28; background: #fff4d9; padding: 13px 15px; border-radius: 0 8px 8px 0; font-size: .83rem; }
+.sonarlab-text-link { color: #006b79; text-decoration: underline; text-underline-offset: 3px; }
+.sonarlab-distribution { display: flex; border-radius: 9px; overflow: hidden; margin: 20px 0; }
+.sonarlab-distribution span { background: #d2efeb; text-align: center; padding: 13px 6px; font-weight: 750; font-size: .85rem; }
+.sonarlab-distribution span + span { background: #ffe3d8; }
+.sonarlab-result-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.sonarlab-result-stats span { display: grid; background: #eaf5f1; border-radius: 8px; padding: 18px 12px; text-align: center; gap: 4px; font-size: .8rem; }
+.sonarlab-result-stats strong { font-size: 1.6rem; font-weight: 850; }
+.sonarlab-results-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 25px; margin-top: 18px; }
+.sonarlab-confusion td { font-size: 1.6rem; font-weight: 800; text-align: center; background: #fff0e3; }
+.sonarlab-confusion td.is-correct { background: #cbebe4; }
+.sonarlab-math math { text-align: left; margin: 18px 0; font-size: 1.25rem; overflow-x: auto; padding: 8px 0; }
+.sonarlab-math-step { border-top: 1px solid #cddcda; padding: 10px 0; margin-top: 14px; }
+.sonarlab-math-step > summary { font-size: 1rem; }
+.sonarlab-math-step > summary > span { display: inline-flex; align-items: center; justify-content: center; width: 27px; height: 27px; border-radius: 50%; background: #ddf2ee; margin-right: 8px; }
+.sonarlab-vector { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 6px; }
+.sonarlab-vector > span { display: grid; padding: 9px; background: #eaf2ee; font-variant-numeric: tabular-nums; font-size: .82rem; border-radius: 5px; }
+.sonarlab-vector small { color: #486674; margin-bottom: 2px; }
+.sonarlab-calculation { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.sonarlab-calculation span { display: grid; gap: 5px; background: #e8f2ee; padding: 13px 16px; border-radius: 7px; font-size: .8rem; }
+.sonarlab-calculation strong { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+.sonarlab-footer { display: flex; gap: 9px; align-items: center; border-top: 1px solid #d6ded7; margin-top: 18px; padding-top: 14px; color: #416575; font-size: .75rem; line-height: 1.5; }
+.sonarlab-footer svg { flex-shrink: 0; }
+.sonarlab-load { text-align: center; padding: 50px 20px; }
+.sonarlab-load h2 { justify-content: center; margin: 18px 0; }
+.sonarlab-load .sonarlab-button { width: auto; }
+.sonarlab-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.sonarlab-skip { position: fixed; top: 12px; left: 16px; z-index: 100; background: #ffd34d; color: #06263a; border-radius: 6px; clip-path: inset(50%); height: 1px; width: 1px; padding: 0; overflow: hidden; white-space: nowrap; }
+.sonarlab-skip:focus { clip-path: none; height: auto; width: auto; padding: 12px; overflow: visible; }
+@media (min-width: 1550px) { .sonarlab-top-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
+@media (max-width: 1150px) { .sonarlab { grid-template-columns: 205px minmax(0, 1fr); } .sonarlab-main { padding: 22px 18px; } .sonarlab-panel { padding: 16px; } .sonarlab-top-grid, .sonarlab-bottom-grid, .sonarlab-results-grid { grid-template-columns: minmax(0, 1fr); } .sonarlab-hero-art { display: none; } .sonarlab-stats > div { gap: 10px; } .sonarlab-stats svg { width: 24px; } .sonarlab-stats strong { font-size: 1.5rem; } .sonarlab-stats > div:last-child strong { font-size: 1rem; } .sonarlab-network { min-height: 245px; } }
+@media (max-width: 720px) { .sonarlab { display: block; } .sonarlab-sidebar { position: relative; height: auto; padding: 12px; } .sonarlab-brand { display: flex; gap: 10px; margin-bottom: 12px; } .sonarlab-brand .sonarlab-submarine { width: 66px; } .sonarlab-brand > a { font-size: 1.8rem; } .sonarlab-brand small { margin-left: auto; font-size: .8rem; } .sonarlab-sidebar nav { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; } .sonarlab-sidebar nav button, .sonarlab-sidebar nav a { padding: 9px 7px; font-size: .73rem; gap: 6px; min-height: 45px; } .sonarlab-sidebar nav svg { width: 16px; flex-shrink: 0; } .sonarlab-reef, .sonarlab-sidebar-note { display: none; } .sonarlab-main { padding: 20px 12px; } .sonarlab-hero { min-height: 0; } .sonarlab-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .sonarlab-stats > div { justify-content: start; padding: 13px; } .sonarlab-stats svg { width: 28px; } .sonarlab-stats strong { font-size: 1.65rem; } .sonarlab-stats > div:last-child strong { font-size: 1.05rem; } .sonarlab-network { gap: 16px; } .sonarlab-layer { padding: 14px 6px; } .sonarlab-layer strong { font-size: .7rem; } .sonarlab-result-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sonarlab-result-stats strong { font-size: 1.3rem; } .sonarlab-panel-heading { flex-wrap: wrap; margin-bottom: 12px; } .sonarlab-panel-heading h2 { margin-bottom: 0; } }
+@media (max-width: 360px) { .sonarlab-brand small { display: none; } .sonarlab-sidebar nav button, .sonarlab-sidebar nav a { font-size: .68rem; gap: 4px; } .sonarlab-main { padding: 18px 10px; } .sonarlab-panel { padding: 13px; } .sonarlab-network { gap: 12px; } .sonarlab-layer { padding: 12px 4px; } .sonarlab-layer:not(:last-child)::after { right: -13px; font-size: 16px; } .sonarlab-layer strong { font-size: .61rem; } .sonarlab-layer > span { font-size: .65rem; } .sonarlab-field-pair { gap: 9px; } .sonarlab-probabilities > div { gap: 7px; } }
+@media (prefers-reduced-motion: reduce) { .sonarlab *, .sonarlab *::before, .sonarlab *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+@media (max-width: 360px) { .sonarlab table { font-size: .75rem; } .sonarlab th, .sonarlab td { padding: 9px 7px; } }
+/* Keep navigation and real percentages readable beside the illustrated icons. */
+@media (max-width: 720px) {
+  .sonarlab-sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sonarlab-sidebar nav button, .sonarlab-sidebar nav a { font-size: .82rem; min-height: 48px; gap: 7px; }
+  .sonarlab-probabilities > div { flex-direction: column; gap: 8px; text-align: center; }
+  .sonarlab-layer strong { font-size: .78rem; white-space: normal; }
+  .sonarlab-layer > span { font-size: .75rem; }
+}
+@media (max-width: 480px) {
+  .sonarlab-network { flex-direction: column; gap: 22px; min-height: 0; }
+  .sonarlab-layer { flex: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; text-align: left; padding: 15px 12px; }
+  .sonarlab-layer strong { font-size: .85rem; }
+  .sonarlab-layer > span { margin-top: 0; }
+  .sonarlab-nodes { grid-column: 2; grid-row: 1 / span 3; display: flex; align-items: center; gap: 5px; margin: 0; }
+  .sonarlab-nodes > span { transform: rotate(90deg); }
+  .sonarlab-layer:not(:last-child)::after { content: '↓'; top: auto; right: auto; bottom: -22px; left: 50%; font-size: 19px; }
+}

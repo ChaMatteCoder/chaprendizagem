@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "sonar-training-v1",
+  "datasetSha256": "e90434cdbf00fcf93ffa911fe447ae25606979658e60f1d32e155c3b5240234d",
+  "partitionsSha256": "890311ad91fa13a0b30ce165e004c65eba2af19c836a9a07df35f9c934353f1e",
+  "tensorflowjs": "4.22.0",
+  "backend": "cpu",
+  "classOrder": ["R", "M"],
+  "candidates": [
+    { "id": "linear", "hiddenUnits": [], "role": "baseline", "parameters": 122 },
+    { "id": "mlp-16", "hiddenUnits": [16], "role": "mlp", "parameters": 1010 },
+    { "id": "mlp-16-8", "hiddenUnits": [16, 8], "role": "mlp", "parameters": 1130 }
+  ],
+  "training": {
+    "epochs": 200,
+    "batchSize": 16,
+    "learningRate": 0.001,
+    "optimizer": "Adam",
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "epsilon": 1e-7,
+    "loss": "categoricalCrossentropy",
+    "encoding": "one-hot R=0 M=1",
+    "hiddenActivation": "relu",
+    "outputActivation": "softmax",
+    "initializer": "GlorotUniform; layerSeed=(seed+997*layerIndex) mod 2^32; zero biases",
+    "shuffle": "Mulberry32(seed+epochIndex); Fisher-Yates; model.fit shuffle=false",
+    "earlyStopping": false,
+    "checkpoint": "last epoch at fixed budget"
+  },
+  "foldSeedBase": 4200,
+  "foldSeedRule": "4200 + zero-based fold index; same seeds across candidates",
+  "finalSeed": 4242,
+  "selection": {
+    "metric": "mean fold macro-F1",
+    "eligibleRole": "mlp",
+    "baselinePolicy": "Report all candidates, including any baseline advantage; official model must satisfy the academic MLP requirement.",
+    "tieTolerance": 0.0001,
+    "tieBreak": "within tolerance of highest mean: fewer parameters, then candidate order"
+  },
+  "finalTraining": "all 166 development examples; fixed 200 epochs; no validation or test for checkpoint selection",
+  "testPolicy": "42 reserved IDs; one final evaluation after selection; persist completion; never tune from test",
+  "reproducibility": "repeat selected architecture on fold 1 with identical configuration; compare probabilities and history before final evaluation",
+  "probabilityTolerance": 0.00001,
+  "parityTolerance": 0.00001
+}

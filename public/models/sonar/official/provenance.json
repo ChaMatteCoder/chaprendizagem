@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "uci-sonar-151",
+  "title": "Connectionist Bench (Sonar, Mines vs. Rocks)",
+  "source": {
+    "schemaVersion": 1,
+    "datasetId": "uci-sonar-151",
+    "title": "Connectionist Bench (Sonar, Mines vs. Rocks)",
+    "catalogUrl": "https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks",
+    "downloadUrl": "https://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/sonar/sonar.all-data",
+    "metadataUrl": "https://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/sonar/sonar.names",
+    "doi": "10.24432/C5T01Q",
+    "citation": "Sejnowski, T. & Gorman, R. (1988). Connectionist Bench (Sonar, Mines vs. Rocks) [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5T01Q.",
+    "license": {
+      "id": "CC-BY-4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "authority": "UCI dataset catalog, consulted 2026-09-30"
+    },
+    "fileName": "sonar.all-data",
+    "byteLength": 87776,
+    "sha256": "e90434cdbf00fcf93ffa911fe447ae25606979658e60f1d32e155c3b5240234d",
+    "retrievedAt": "2026-09-30T13:56:22.543Z"
+  },
+  "featureOrder": [
+    "Attribute1",
+    "Attribute2",
+    "Attribute3",
+    "Attribute4",
+    "Attribute5",
+    "Attribute6",
+    "Attribute7",
+    "Attribute8",
+    "Attribute9",
+    "Attribute10",
+    "Attribute11",
+    "Attribute12",
+    "Attribute13",
+    "Attribute14",
+    "Attribute15",
+    "Attribute16",
+    "Attribute17",
+    "Attribute18",
+    "Attribute19",
+    "Attribute20",
+    "Attribute21",
+    "Attribute22",
+    "Attribute23",
+    "Attribute24",
+    "Attribute25",
+    "Attribute26",
+    "Attribute27",
+    "Attribute28",
+    "Attribute29",
+    "Attribute30",
+    "Attribute31",
+    "Attribute32",
+    "Attribute33",
+    "Attribute34",
+    "Attribute35",
+    "Attribute36",
+    "Attribute37",
+    "Attribute38",
+    "Attribute39",
+    "Attribute40",
+    "Attribute41",
+    "Attribute42",
+    "Attribute43",
+    "Attribute44",
+    "Attribute45",
+    "Attribute46",
+    "Attribute47",
+    "Attribute48",
+    "Attribute49",
+    "Attribute50",
+    "Attribute51",
+    "Attribute52",
+    "Attribute53",
+    "Attribute54",
+    "Attribute55",
+    "Attribute56",
+    "Attribute57",
+    "Attribute58",
+    "Attribute59",
+    "Attribute60"
+  ],
+  "classOrder": [
+    "R",
+    "M"
+  ],
+  "classes": [
+    {
+      "index": 0,
+      "label": "R",
+      "name": "Rocha"
+    },
+    {
+      "index": 1,
+      "label": "M",
+      "name": "Metal"
+    }
+  ],
+  "idPolicy": "sonar-NNNN; one-based original row number; bound to source.sha256",
+  "labelColumn": 61,
+  "featureMeaning": "Energy in frequency bands integrated over time intervals; not an audio recording or spatial coordinates.",
+  "metalMeaning": "M (mine) denotes returns from a metal cylinder in this dataset.",
+  "transformations": [],
+  "parsing": "Original bytes preserved; comma-separated decimal numbers parsed without rounding; optional terminal line ending is not a record.",
+  "preprocessing": "identity; original values in [0,1]",
+  "validation": {
+    "sampleCount": 208,
+    "featureCount": 60,
+    "classCounts": {
+      "R": 97,
+      "M": 111
+    },
+    "observedRange": [
+      0,
+      1
+    ],
+    "duplicates": {
+      "exactRowGroups": [],
+      "featureGroups": [],
+      "conflictingLabelGroups": []
+    }
+  }
+}

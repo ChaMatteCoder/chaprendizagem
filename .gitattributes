@@ -1,0 +1,10 @@
+# Preserve the original UCI bytes and their SHA-256 on every platform.
+public/data/sonar/sonar.all-data -text
+public/data/sonar/*.json text eol=lf
+public/models/sonar/**/*.json text eol=lf
+training/sonar/*.json text eol=lf
+training/sonar/*.mjs text eol=lf
+src/features/sonar/**/*.js text eol=lf
+public/models/sonar/**/*.bin binary
+public/images/sonar/*.png binary
+public/audio/sonar/*.mp3 binary

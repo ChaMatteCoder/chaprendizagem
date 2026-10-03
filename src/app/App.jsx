@@ -21,10 +21,11 @@ const KMeansPage = lazy(() => import('../features/kmeans/pages/KMeansPage.jsx'))
 const KMeansPlusPlusPage = lazy(() => import('../features/kmeans/pages/KMeansPlusPlusPage.jsx'));
 const KMeansHubPage = lazy(() => import('../features/kmeans/pages/KMeansHubPage.jsx'));
 const IAdivinhaPage = lazy(() => import('../features/iadivinha/pages/IAdivinhaPage.jsx'));
+const SonarApp = lazy(() => import('../features/sonar/pages/SonarApp.jsx'));
 
 function RouteLayout({ children }) {
   const { pathname } = useLocation();
-  return /^\/iadivinha\/?$/.test(pathname) ? children : <Layout>{children}</Layout>;
+  return /^\/iadivinha\/?$/.test(pathname) || /^\/sonar(?:\/|$)/.test(pathname) ? children : <Layout>{children}</Layout>;
 }
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
   return (
     <RouteLayout>
       <Routes>
+        <Route path="/sonar/*" element={<Suspense fallback={<p role="status">Carregando Sonar…</p>}><SonarApp /></Suspense>} />
         <Route path="/iadivinha" element={
           <Suspense fallback={<p role="status">Carregando IAdivinha…</p>}>
             <IAdivinhaPage />

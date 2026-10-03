@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "kind": "official",
+  "modelId": "sonar-mlp-16-8a825d3f32f9",
+  "architecture": [
+    60,
+    16,
+    2
+  ],
+  "parameterCount": 1010,
+  "inputSize": 60,
+  "classOrder": [
+    "R",
+    "M"
+  ],
+  "preprocessing": "identity; original values in [0,1]",
+  "datasetSha256": "e90434cdbf00fcf93ffa911fe447ae25606979658e60f1d32e155c3b5240234d",
+  "partitionsSha256": "890311ad91fa13a0b30ce165e004c65eba2af19c836a9a07df35f9c934353f1e",
+  "configSha256": "5307c4637c81ad40a4706c7e1a4a21e0c30d1a7f3d8e07613ad3b33a3db227a9",
+  "protocolId": "sonar-training-v1",
+  "evaluation": {
+    "status": "completed",
+    "sampleCount": 42,
+    "completedAt": "2026-09-30T22:48:53.165Z"
+  },
+  "files": {
+    "model.json": {
+      "byteLength": 2788,
+      "sha256": "3b834e9dcde846f917899bf62f90f3c8445e97096216100115d83b6142f8375d"
+    },
+    "weights.bin": {
+      "byteLength": 4040,
+      "sha256": "8a825d3f32f99a12c7bb377c0b13eac393f4042edb1a584a6d079589ad444b73"
+    },
+    "history.json": {
+      "byteLength": 663204,
+      "sha256": "de2ac97d501127ae47a4de965d9dfdd23cff457f24c1c5026d32225156e8f7ee"
+    },
+    "reproducibility.json": {
+      "byteLength": 36549,
+      "sha256": "1db960afe533fa37632e7eab189f7ace4198c1b8f3647abc53bc15a4ff12b73e"
+    },
+    "parity-fixtures.json": {
+      "byteLength": 29151,
+      "sha256": "fc6757bd5b6a00b4c2439413ae47bb776439c59d3ad8c1f218a6532d36a36a22"
+    },
+    "registration.json": {
+      "byteLength": 3959,
+      "sha256": "d06b2b2bbf6f6d616e0e66ae48be314d222c44931bd30e16866adf107de1beb8"
+    },
+    "config.json": {
+      "byteLength": 2065,
+      "sha256": "5307c4637c81ad40a4706c7e1a4a21e0c30d1a7f3d8e07613ad3b33a3db227a9"
+    },
+    "partitions.json": {
+      "byteLength": 28797,
+      "sha256": "890311ad91fa13a0b30ce165e004c65eba2af19c836a9a07df35f9c934353f1e"
+    },
+    "provenance.json": {
+      "byteLength": 3384,
+      "sha256": "040f32950cbba9dc4ff036fbfe35427328ecd0e9972c1c7a968a7f4c27c7227d"
+    },
+    "evaluation.json": {
+      "byteLength": 9784,
+      "sha256": "883edc911400b3a8f79b32579f5668ee3cc120651846e3ab79418d8158619a75"
+    },
+    "metrics.json": {
+      "byteLength": 156909,
+      "sha256": "087328331deca57370ede7f94d7455501814d9bbbfcf598dfd6e6ef38a8a53cb"
+    },
+    "validation.json": {
+      "byteLength": 284,
+      "sha256": "6b0cf0e9b3be791a003670e6520192c39f4160221031e94b30bf0a33343b692d"
+    }
+  }
+}
