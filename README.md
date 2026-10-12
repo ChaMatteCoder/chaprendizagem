@@ -2,7 +2,7 @@
 
 Chaprendizagem é um laboratório digital sobre aprendizagem de máquina. O projeto combina explicações teóricas, visualizações interativas e pequenos experimentos de código para transformar conceitos de modelos em páginas navegáveis e fáceis de revisar.
 
-Os módulos atuais são **Perceptron - Reconhecimento de Dígitos**, **Adaline** e **Aproximação Funcional**, com o Trabalho 05 de classificação na base B2, o Trabalho 06 de regressão linear com Adaline e o Trabalho 07 com uma MLP aproximando uma função a partir de pontos amostrados.
+Os módulos incluem **Perceptron**, **Adaline**, **MLP**, **K-Means** e **Convolução**, além dos jogos **IAdivinha!** e **Sonar ou Azar?**. Cada trilha reúne explicações e experimentos interativos.
 
 ## Stack
 
@@ -40,6 +40,14 @@ chaprendizagem/
 ```
 
 ## Como rodar
+
+### Trabalho 05 — Convolução
+
+Acesse `/convolucao` pelo catálogo ou pelo **Módulo 05** na Home. Abra o laboratório, escolha um dos dois exemplos ou envie uma imagem PNG, JPEG ou WebP e aplique um filtro. O módulo compara a original e a convolução em **RGB e escala de cinza**, com oito filtros, kernel editável 3×3 ou 5×5, divisor, deslocamento, módulo e três tratamentos de borda. Clique em um pixel para acompanhar sua vizinhança, o kernel girado em 180°, os produtos e a resposta; também é possível informar coordenadas e canal pelo teclado. Exporte cada resultado em PNG.
+
+O processamento roda localmente em Web Worker. Uploads têm limite de 20 MB e 40 megapixels, são reduzidos proporcionalmente para até 640 px no maior lado e recebem fundo branco nas transparências. Alterar a configuração exige uma nova aplicação. O número Trabalho 05 segue o enunciado de processamento de imagens e é independente da numeração da trilha Adaline.
+
+Implementação, convenções matemáticas e limites: [guia do módulo](docs/convolucao.md). Testes específicos: `npm run test:convolution`; validação geral: `npm test`, `npm run lint` e `npm run build`.
 
 ### Sonar ou Azar? + SonarLab — missão e laboratório
 
@@ -132,6 +140,7 @@ O script usa o preset `/kmeans` por padrão. Também é possível ser explícito
 - `/` - Landing page do laboratório, com projetos em carrossel.
 - `/sobre` - História, motivação e proposta do projeto.
 - `/contato` - Sobre mim e links principais.
+- `/convolucao` - Trabalho 05 de processamento de imagens: filtros em RGB e cinza, kernels editáveis, comparação, inspeção numérica e PNG.
 - `/adaline` - Trabalho 05 com teoria, simulação, erro quadrático e teste da rede.
 - `/adaline/regressao` - Trabalho 06 com regressão linear usando Adaline, comparação com regressão clássica, Pearson e R².
 - `/aproximacao-funcional` - Trabalho 07 com MLP para aproximação funcional, pontos editáveis, curva aproximada, erro por época e métricas.

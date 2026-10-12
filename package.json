@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "lint": "eslint src/features/iadivinha src/features/sonar training/sonar tests/sonar-*.test.js src/app/App.jsx src/pages/HomePage.jsx src/components/ProjectCard.jsx --max-warnings 0",
+    "lint": "eslint src/features/iadivinha src/features/sonar src/features/convolution training/sonar tests/sonar-*.test.js tests/convolution.test.js src/app/App.jsx src/pages/HomePage.jsx src/components/ProjectCard.jsx --max-warnings 0",
     "dev": "vite --host 127.0.0.1 --clearScreen false",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
@@ -13,6 +13,7 @@
     "test:kmeans": "node --test tests/kmeans.test.js",
     "test:newsletter": "node --test tests/newsletter.test.js",
     "test:sonar": "node --test tests/sonar-*.test.js",
+    "test:convolution": "node --test tests/convolution.test.js",
     "prepare:sonar": "node training/sonar/prepare-data.mjs",
     "check:sonar": "node training/sonar/prepare-data.mjs --check",
     "train:sonar": "node training/sonar/run-experiment.mjs",

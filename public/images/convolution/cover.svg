@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs><pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern></defs>
+  <rect width="800" height="500" fill="#083b3f"/><rect width="800" height="500" fill="url(#grid)"/>
+  <text x="52" y="65" fill="#d5eae2" font-family="Segoe UI,sans-serif" font-weight="700" font-size="16" letter-spacing="3">TRABALHO 05 · PROCESSAMENTO DE IMAGENS</text>
+  <g transform="translate(52 104)"><rect width="287" height="200" fill="#e9d9b9"/><rect x="15" y="14" width="120" height="135" fill="#83beba"/><circle cx="100" cy="45" r="20" fill="#edb748"/><path d="M15 149L61 59 135 149" fill="#316c5c"/><path d="M75 14V149M15 80H135" stroke="#f9eed5" stroke-width="5"/><path d="M0 157H287V200H0" fill="#ac6b43"/><path d="M175 115Q154 186 195 186Q235 186 215 115" fill="#16887d"/><path d="M196 117L181 52M197 117L236 78" stroke="#48713d" stroke-width="4"/><circle cx="181" cy="52" r="15" fill="#cc6d48"/><circle cx="237" cy="76" r="15" fill="#edb748"/></g>
+  <rect x="175" y="165" width="86" height="86" fill="#edb748" fill-opacity=".25" stroke="#edb748" stroke-width="3"/>
+  <path d="M359 202H430M414 186L430 202 414 218" stroke="#edb748" stroke-width="3" fill="none"/>
+  <g fill="#e4eee8" font-size="25" font-family="Consolas,monospace" text-anchor="middle"><text x="482" y="155">0 −1 0</text><text x="482" y="205">−1 5 −1</text><text x="482" y="255">0 −1 0</text></g>
+  <path d="M563 120V280M571 120H563M571 280H563M397 120V280M389 120H397M389 280H397" stroke="#edb748" stroke-width="2" fill="none"/>
+  <g fill="#7cbab0"><rect x="620" y="119" width="30" height="30"/><rect x="654" y="119" width="30" height="30"/><rect x="688" y="119" width="30" height="30"/><rect x="620" y="153" width="30" height="30"/><rect x="654" y="153" width="30" height="30" fill="#f4bf58"/><rect x="688" y="153" width="30" height="30"/><rect x="620" y="187" width="30" height="30"/><rect x="654" y="187" width="30" height="30"/><rect x="688" y="187" width="30" height="30"/></g>
+  <text x="52" y="393" fill="#fff7e6" font-family="Segoe UI,sans-serif" font-size="60" font-weight="700">Convolução</text>
+  <text x="55" y="444" fill="#b3d3c9" font-family="Segoe UI,sans-serif" font-size="21">Uma vizinhança. Um kernel. Uma nova imagem.</text>
+</svg>

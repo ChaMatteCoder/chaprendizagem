@@ -22,6 +22,7 @@ const KMeansPlusPlusPage = lazy(() => import('../features/kmeans/pages/KMeansPlu
 const KMeansHubPage = lazy(() => import('../features/kmeans/pages/KMeansHubPage.jsx'));
 const IAdivinhaPage = lazy(() => import('../features/iadivinha/pages/IAdivinhaPage.jsx'));
 const SonarApp = lazy(() => import('../features/sonar/pages/SonarApp.jsx'));
+const ConvolutionPage = lazy(() => import('../features/convolution/pages/ConvolutionPage.jsx'));
 
 function RouteLayout({ children }) {
   const { pathname } = useLocation();
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/sobre" element={<AboutPage />} />
         <Route path="/contato" element={<ContactPage />} />
+        <Route path="/convolucao" element={<Suspense fallback={<div className="page wide-panel" role="status">Carregando laboratório de convolução…</div>}><ConvolutionPage /></Suspense>} />
         <Route path="/adaline" element={<AdalinePage />} />
         <Route path="/adaline/regressao" element={<AdalineRegressionPage />} />
         <Route path="/aproximacao-funcional" element={<FunctionalApproximationPage />} />

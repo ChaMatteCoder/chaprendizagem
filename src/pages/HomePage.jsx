@@ -10,6 +10,7 @@ import {
   ChevronRight,
   FunctionSquare,
   Flower2,
+  Grid3X3,
   MonitorUp,
   Network,
   PenLine,
@@ -101,6 +102,15 @@ const projects = [
     description: 'Compare K-Means clássico, K-Means++ e MiniBatchKMeans com EQT, dados editáveis e execução passo a passo.',
     visual: 'K++',
     to: '/kmeans/plusplus',
+    featured: true,
+  },
+  {
+    title: 'Trabalho 05 — Convolução',
+    status: 'Novo laboratório',
+    description: 'Explore filtros e kernels editáveis, compare imagens coloridas e em cinza e acompanhe a conta de cada pixel.',
+    visual: '∗',
+    cover: '/images/convolution/cover.svg',
+    to: '/convolucao',
     featured: true,
   },
   {
@@ -303,17 +313,24 @@ export default function HomePage() {
             </div>
             <ArrowRight size={18} />
           </Link>
+          <Link className="module-card module-card--active" to="/convolucao">
+            <Grid3X3 size={34} />
+            <span>Módulo 05</span>
+            <h3>Convolução</h3>
+            <p>Filtros de imagem com kernels editáveis, comparação em RGB e cinza e inspeção pixel por pixel.</p>
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
 
       <section className="cta-band reveal-scale">
         <Beaker size={34} />
         <div>
-          <h2>Pronto para comparar duas formas de começar?</h2>
-          <p>O Trabalho 11 revela como a semeadura K-Means++ muda a trajetória e leva o experimento até grandes bases.</p>
+          <h2>O que uma pequena matriz pode fazer com uma imagem?</h2>
+          <p>Explore o Trabalho 05 de Convolução: escolha um filtro, compare os resultados e descubra a conta de cada pixel.</p>
         </div>
-        <Link className="button button--primary" to="/kmeans/plusplus">
-          Abrir K-Means++ <Sparkles size={18} />
+        <Link className="button button--primary" to="/convolucao">
+          Abrir Convolução <Grid3X3 size={18} />
         </Link>
       </section>
     </div>

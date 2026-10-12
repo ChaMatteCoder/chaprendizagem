@@ -6,7 +6,7 @@ import refresh from 'eslint-plugin-react-refresh';
 
 // Start with the new feature and its integration points; legacy modules retain their conventions.
 export default [{
-  files: ['src/features/iadivinha/**/*.{js,jsx}', 'src/features/sonar/**/*.jsx', 'src/app/App.jsx', 'src/pages/HomePage.jsx', 'src/components/ProjectCard.jsx'],
+  files: ['src/features/iadivinha/**/*.{js,jsx}', 'src/features/convolution/**/*.{js,jsx}', 'src/features/sonar/**/*.jsx', 'src/app/App.jsx', 'src/pages/HomePage.jsx', 'src/components/ProjectCard.jsx'],
   languageOptions: {
     ecmaVersion: 'latest', sourceType: 'module', globals: globals.browser,
     parserOptions: { ecmaFeatures: { jsx: true } },
@@ -27,7 +27,7 @@ export default [{
   languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: { structuredClone: 'readonly' } },
   rules: js.configs.recommended.rules,
 }, {
-  files: ['training/sonar/**/*.mjs', 'tests/sonar-*.test.js'],
+  files: ['training/sonar/**/*.mjs', 'tests/sonar-*.test.js', 'tests/convolution.test.js'],
   languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: globals.node },
   rules: js.configs.recommended.rules,
 }];

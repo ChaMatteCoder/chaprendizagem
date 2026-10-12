@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+  <defs>
+    <linearGradient id="ramp"><stop stop-color="#000"/><stop offset="1" stop-color="#fff"/></linearGradient>
+    <linearGradient id="color"><stop stop-color="#00575b"/><stop offset=".5" stop-color="#db9e30"/><stop offset="1" stop-color="#c35f45"/></linearGradient>
+    <pattern id="check" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#faf6eb"/><path d="M0 0H16V16H0ZM16 16H32V32H16Z" fill="#163d3f"/></pattern>
+    <pattern id="lines" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#f6e9cf"/><path d="M0 0V12" stroke="#c76b48" stroke-width="5"/></pattern>
+  </defs>
+  <rect width="640" height="420" fill="#eee8dc"/>
+  <rect x="25" y="25" width="280" height="175" fill="url(#check)"/>
+  <rect x="335" y="25" width="280" height="175" fill="url(#color)"/>
+  <circle cx="405" cy="108" r="49" fill="#f5efd9"/><path d="M461 161L524 53 588 161Z" fill="#00575b"/>
+  <rect x="25" y="230" width="280" height="165" fill="url(#ramp)"/>
+  <rect x="335" y="230" width="135" height="165" fill="url(#lines)"/>
+  <rect x="489" y="230" width="126" height="165" fill="#a192bc"/>
+  <path d="M500 385L605 240M500 345L575 240M540 385L605 295" stroke="#fff" stroke-width="3"/>
+</svg>

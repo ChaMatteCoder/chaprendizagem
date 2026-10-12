@@ -9,6 +9,7 @@ import {
   FlaskConical,
   Folder,
   Github,
+  Grid3X3,
   Home,
   Instagram,
   LoaderCircle,
@@ -49,6 +50,7 @@ const moduleLinks = [
   { to: '/adaline', label: 'Adaline', icon: Network, tone: 'violet' },
   { to: '/mlp', label: 'MLP', icon: FunctionSquare, tone: 'amber' },
   { to: '/kmeans/hub', label: 'K-Means', icon: Boxes, tone: 'teal' },
+  { to: '/convolucao', label: 'Convolução', icon: Grid3X3, tone: 'amber' },
 ];
 
 const resourceLinks = [
@@ -284,6 +286,20 @@ function getNextStep(location) {
   }
 
   if (location.pathname === '/kmeans/plusplus') {
+    return {
+      eyebrow: 'Próximo experimento',
+      title: 'Explore uma transformação de imagens',
+      description: 'Depois dos agrupamentos, veja como uma operação local transforma os pixels de uma imagem inteira.',
+      cardLabel: 'Trabalho 05 · Imagens',
+      cardTitle: 'Convolução',
+      cardDescription: 'Kernels editáveis, filtros em RGB e cinza e contas por pixel.',
+      buttonLabel: 'Abrir Convolução',
+      to: '/convolucao',
+      mark: '∗',
+    };
+  }
+
+  if (location.pathname === '/convolucao') {
     return {
       eyebrow: 'Ciclo de estudos',
       title: 'Compare com um modelo supervisionado',
