@@ -105,7 +105,7 @@ const projects = [
     featured: true,
   },
   {
-    title: 'Trabalho 05 — Convolução',
+    title: 'Convolução 2D',
     status: 'Novo laboratório',
     description: 'Explore filtros e kernels editáveis, compare imagens coloridas e em cinza e acompanhe a conta de cada pixel.',
     visual: '∗',
@@ -327,7 +327,7 @@ export default function HomePage() {
         <Beaker size={34} />
         <div>
           <h2>O que uma pequena matriz pode fazer com uma imagem?</h2>
-          <p>Explore o Trabalho 05 de Convolução: escolha um filtro, compare os resultados e descubra a conta de cada pixel.</p>
+          <p>Explore a convolução 2D: escolha um filtro, compare os resultados e descubra a conta de cada pixel.</p>
         </div>
         <Link className="button button--primary" to="/convolucao">
           Abrir Convolução <Grid3X3 size={18} />

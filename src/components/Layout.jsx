@@ -290,7 +290,7 @@ function getNextStep(location) {
       eyebrow: 'Próximo experimento',
       title: 'Explore uma transformação de imagens',
       description: 'Depois dos agrupamentos, veja como uma operação local transforma os pixels de uma imagem inteira.',
-      cardLabel: 'Trabalho 05 · Imagens',
+      cardLabel: 'Convolução · Imagens',
       cardTitle: 'Convolução',
       cardDescription: 'Kernels editáveis, filtros em RGB e cinza e contas por pixel.',
       buttonLabel: 'Abrir Convolução',

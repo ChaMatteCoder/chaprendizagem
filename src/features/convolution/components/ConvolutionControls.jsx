@@ -1,7 +1,8 @@
-import { ImagePlus, Play, RotateCcw } from 'lucide-react';
+import { ImagePlus, LoaderCircle, Play, RotateCcw } from 'lucide-react';
+import { memo } from 'react';
 import { kernelPresets, optionsFromPreset, sampleImages } from '../data/kernels.js';
 
-export default function ConvolutionControls({ lab }) {
+function ConvolutionControls({ lab }) {
   const { image, options, presetId, status, updateOptions, selectImage, apply } = lab;
   const loading = status === 'loading';
   const processing = status === 'processing';
@@ -15,7 +16,7 @@ export default function ConvolutionControls({ lab }) {
   return (
     <div className="conv-setup">
       <section className="conv-panel conv-source" aria-labelledby="conv-source-title">
-        <p className="eyebrow">01 · A entrada</p><h3 id="conv-source-title">Comece por uma imagem.</h3>
+        <p className="eyebrow">01 · A entrada</p><h3 id="conv-source-title">Imagem de entrada</h3>
         <div className="conv-samples">{sampleImages.map(sample => <button key={sample.id} type="button" disabled={loading} className={image?.name === sample.name ? 'is-selected' : ''} onClick={() => selectImage(sample)} aria-pressed={image?.name === sample.name}><img src={sample.url} alt="" /><strong>{sample.name}</strong></button>)}</div>
         <label className={`conv-upload ${loading ? 'is-disabled' : ''}`}>
           <ImagePlus size={22} aria-hidden="true" /><strong>Enviar minha imagem</strong><span>PNG, JPEG ou WebP · até 20 MB</span>
@@ -45,9 +46,11 @@ export default function ConvolutionControls({ lab }) {
               <label className="conv-checkbox"><input type="checkbox" checked={options.absolute} onChange={event => update('absolute', event.target.checked)} /><span>Usar módulo da resposta<small>Útil para visualizar bordas.</small></span></label>
             </div>
           </div>
-          <div className="conv-actions"><button className="button button--primary" type="button" disabled={!image || processing} onClick={apply}><Play size={16} />{processing ? 'Processando…' : 'Aplicar convolução'}</button><button className="conv-reset" type="button" onClick={() => updateOptions(optionsFromPreset(), 'sharpen')}><RotateCcw size={15} /> Restaurar filtro</button></div>
+          <div className="conv-actions"><button className="button button--primary" type="button" disabled={!image || processing} onClick={apply}>{processing ? <LoaderCircle className="conv-spinner" size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}{processing ? 'Processando…' : 'Aplicar convolução'}</button><button className="conv-reset" type="button" onClick={() => updateOptions(optionsFromPreset(), 'sharpen')}><RotateCcw size={15} /> Restaurar filtro</button></div>
         </fieldset>
       </section>
     </div>
   );
 }
+
+export default memo(ConvolutionControls);

@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { optionsFromPreset, sampleImages } from '../data/kernels.js';
-import { validateOptions } from '../lib/convolution.js';
+import { toGrayscale, validateOptions } from '../lib/convolution.js';
 import { loadSampleImage, loadUploadedImage } from '../lib/imageIO.js';
+import { createConvolutionProcessor } from '../lib/convolutionProcessor.js';
+import { createImageFrame } from '../lib/imageFrame.js';
 
 export default function useConvolutionLab() {
   const [image, setImage] = useState(null);
@@ -11,64 +13,69 @@ export default function useConvolutionLab() {
   const [status, setStatus] = useState('loading');
   const [error, setError] = useState('');
   const request = useRef(0);
-  const worker = useRef(null);
+  const processor = useRef(null);
+  const imageLoad = useRef(null);
+  const grayInput = useMemo(() => image ? createImageFrame(toGrayscale(image)) : null, [image]);
 
   useEffect(() => {
     let active = true;
-    loadSampleImage(sampleImages[0]).then(next => {
-      if (active) { setImage(next); setStatus('ready'); }
-    }).catch(reason => { if (active) { setError(reason.message); setStatus('error'); } });
-    return () => { active = false; request.current += 1; worker.current?.terminate(); };
+    const controller = new AbortController();
+    imageLoad.current = controller;
+    loadSampleImage(sampleImages[0], { signal: controller.signal }).then(next => {
+      if (active) { setImage(createImageFrame(next)); setStatus('ready'); }
+    }).catch(reason => { if (active && reason.name !== 'AbortError') { setError(reason.message); setStatus('error'); } });
+    return () => {
+      active = false;
+      request.current += 1;
+      imageLoad.current?.abort();
+      processor.current?.dispose();
+      processor.current = null;
+    };
   }, []);
 
-  function cancelWork() {
+  const cancelWork = useCallback((releaseInput = false) => {
     request.current += 1;
-    worker.current?.terminate(); worker.current = null;
+    processor.current?.cancel({ releaseInput });
     setResult(null); setError('');
-  }
+  }, []);
 
-  function updateOptions(next, id = 'custom') {
+  const updateOptions = useCallback((next, id = 'custom') => {
     cancelWork(); setOptions(next); setPresetId(id);
     setStatus(image ? 'ready' : 'error');
-  }
+  }, [cancelWork, image]);
 
-  async function selectImage(source, isUpload = false) {
-    cancelWork(); setStatus('loading');
+  const selectImage = useCallback(async (source, isUpload = false) => {
+    imageLoad.current?.abort();
+    const controller = new AbortController();
+    imageLoad.current = controller;
+    cancelWork(true); setStatus('loading');
     const id = request.current;
     try {
-      const next = await (isUpload ? loadUploadedImage(source) : loadSampleImage(source));
+      const next = await (isUpload ? loadUploadedImage(source, { signal: controller.signal }) : loadSampleImage(source, { signal: controller.signal }));
       if (id !== request.current) return;
-      setImage(next); setStatus('ready');
+      setImage(createImageFrame(next)); setStatus('ready');
     } catch (reason) {
-      if (id === request.current) { setError(reason.message); setStatus(image ? 'ready' : 'error'); }
+      if (id === request.current && reason.name !== 'AbortError') { setError(reason.message); setStatus(image ? 'ready' : 'error'); }
     }
-  }
+  }, [cancelWork, image]);
 
-  function apply() {
-    if (!image) return;
+  const apply = useCallback(async () => {
+    if (!image || status === 'loading' || status === 'processing') return;
     cancelWork();
     try { validateOptions(options); } catch (reason) { setError(reason.message); setStatus('ready'); return; }
     setStatus('processing');
     const id = request.current;
     try {
-      const current = new Worker(new URL('../lib/convolution.worker.js', import.meta.url), { type: 'module' });
-      worker.current = current;
-      current.onmessage = ({ data }) => {
-        if (id !== request.current) return;
-        current.terminate(); worker.current = null;
-        if (data.error) { setError(data.error); setStatus('ready'); }
-        else { setResult({ ...data, image, options: { ...options, kernel: options.kernel.map(row => [...row]) }, presetId }); setStatus('done'); }
-      };
-      current.onerror = () => {
-        if (id !== request.current) return;
-        current.terminate(); worker.current = null;
-        setError('O processamento falhou. Tente aplicar novamente.'); setStatus('ready');
-      };
-      current.postMessage({ image, options });
-    } catch {
-      setError('Não foi possível iniciar o processamento. Tente novamente.'); setStatus('ready');
+      processor.current ??= createConvolutionProcessor(() => new Worker(new URL('../lib/convolution.worker.js', import.meta.url), { type: 'module' }));
+      const data = await processor.current.run(image, grayInput, options);
+      if (id !== request.current) return;
+      setResult({ ...data, color: createImageFrame(data.color), gray: createImageFrame(data.gray), image, grayInput, options: { ...options, kernel: options.kernel.map(row => [...row]) }, presetId });
+      setStatus('done');
+    } catch (reason) {
+      if (id !== request.current || reason.name === 'AbortError') return;
+      setError(reason.message || 'Não foi possível iniciar o processamento. Tente novamente.'); setStatus('ready');
     }
-  }
+  }, [cancelWork, grayInput, image, options, presetId, status]);
 
-  return { image, options, presetId, result, status, error, selectImage, updateOptions, apply };
+  return useMemo(() => ({ image, grayInput, options, presetId, result, status, error, selectImage, updateOptions, apply }), [image, grayInput, options, presetId, result, status, error, selectImage, updateOptions, apply]);
 }

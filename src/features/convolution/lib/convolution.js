@@ -53,26 +53,45 @@ export function convolveImage(image, options, { grayscale = false } = {}) {
   const radius = Math.floor(size / 2);
   const data = new Uint8ClampedArray(image.data.length);
   const weights = options.kernel.flat().reverse(); // Convolução: kernel girado 180°.
+  // Coordenadas de borda e pesos são invariantes entre os canais e as linhas.
+  const columns = Array.from({ length: size }, (_, kx) =>
+    Int32Array.from({ length: width }, (_, x) => borderCoordinate(x + kx - radius, width, options.border)));
+  const rows = Array.from({ length: size }, (_, ky) =>
+    Int32Array.from({ length: height }, (_, y) => borderCoordinate(y + ky - radius, height, options.border)));
+  const terms = weights.flatMap((weight, index) => weight === 0 ? [] : [{
+    weight, columns: columns[index % size], rows: rows[Math.floor(index / size)],
+  }]);
+  const channels = grayscale ? 1 : 3;
+  const input = image.data;
+  const { divisor, absolute, bias } = options;
   let min = Infinity; let max = -Infinity; let clipped = 0; let changed = 0;
   for (let y = 0; y < height; y += 1) {
     for (let x = 0; x < width; x += 1) {
       const offset = (y * width + x) * 4;
-      let pixelChanged = false;
-      for (let channel = 0; channel < (grayscale ? 1 : 3); channel += 1) {
-        let sum = 0;
-        for (let ky = 0; ky < size; ky += 1) {
-          for (let kx = 0; kx < size; kx += 1) {
-            sum += readChannel(image, x + kx - radius, y + ky - radius, channel, options.border) * weights[ky * size + kx];
-          }
+      let red = 0; let green = 0; let blue = 0;
+      for (let index = 0; index < terms.length; index += 1) {
+        const term = terms[index];
+        const px = term.columns[x]; const py = term.rows[y];
+        if (px < 0 || py < 0) continue;
+        const source = (py * width + px) * 4;
+        red += input[source] * term.weight;
+        if (!grayscale) {
+          green += input[source + 1] * term.weight;
+          blue += input[source + 2] * term.weight;
         }
-        const response = displayResponse(sum, options);
-        min = Math.min(min, response.adjusted); max = Math.max(max, response.adjusted);
-        if (response.adjusted < 0 || response.adjusted > 255) clipped += 1;
-        data[offset + channel] = response.value;
-        if (response.value !== image.data[offset + channel]) pixelChanged = true;
+      }
+      let pixelChanged = false;
+      for (let channel = 0; channel < channels; channel += 1) {
+        const scaled = (channel === 0 ? red : channel === 1 ? green : blue) / divisor;
+        const adjusted = (absolute ? Math.abs(scaled) : scaled) + bias;
+        min = Math.min(min, adjusted); max = Math.max(max, adjusted);
+        if (adjusted < 0 || adjusted > 255) clipped += 1;
+        const value = Math.round(Math.max(0, Math.min(255, adjusted)));
+        data[offset + channel] = value;
+        if (value !== input[offset + channel]) pixelChanged = true;
       }
       if (grayscale) { data[offset + 1] = data[offset]; data[offset + 2] = data[offset]; }
-      data[offset + 3] = image.data[offset + 3];
+      data[offset + 3] = input[offset + 3];
       if (pixelChanged) changed += 1;
     }
   }
