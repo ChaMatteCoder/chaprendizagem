@@ -1,0 +1,33 @@
+{
+  "dataset": "CIFAR-10 (Python version)",
+  "catalogUrl": "https://www.cs.toronto.edu/~kriz/cifar.html",
+  "downloadUrl": "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz",
+  "citation": "Alex Krizhevsky. Learning Multiple Layers of Features from Tiny Images, Technical Report, University of Toronto, 2009.",
+  "filename": "cifar-10-python.tar.gz",
+  "byteLength": 170498071,
+  "md5": "c58f30108f718f92721af3b95e74349a",
+  "sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+  "expectedBatches": {
+    "meta": "cifar-10-batches-py/batches.meta",
+    "train": [
+      "cifar-10-batches-py/data_batch_1",
+      "cifar-10-batches-py/data_batch_2",
+      "cifar-10-batches-py/data_batch_3",
+      "cifar-10-batches-py/data_batch_4",
+      "cifar-10-batches-py/data_batch_5"
+    ],
+    "test": "cifar-10-batches-py/test_batch"
+  },
+  "classOrder": [
+    { "index": 0, "en": "airplane", "pt": "Avião" },
+    { "index": 1, "en": "automobile", "pt": "Automóvel" },
+    { "index": 2, "en": "bird", "pt": "Pássaro" },
+    { "index": 3, "en": "cat", "pt": "Gato" },
+    { "index": 4, "en": "deer", "pt": "Cervo" },
+    { "index": 5, "en": "dog", "pt": "Cachorro" },
+    { "index": 6, "en": "frog", "pt": "Sapo" },
+    { "index": 7, "en": "horse", "pt": "Cavalo" },
+    { "index": 8, "en": "ship", "pt": "Navio" },
+    { "index": 9, "en": "truck", "pt": "Caminhão" }
+  ]
+}

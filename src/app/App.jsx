@@ -22,11 +22,12 @@ const KMeansPlusPlusPage = lazy(() => import('../features/kmeans/pages/KMeansPlu
 const KMeansHubPage = lazy(() => import('../features/kmeans/pages/KMeansHubPage.jsx'));
 const IAdivinhaPage = lazy(() => import('../features/iadivinha/pages/IAdivinhaPage.jsx'));
 const SonarApp = lazy(() => import('../features/sonar/pages/SonarApp.jsx'));
+const PixelApp = lazy(() => import('../features/pixel/pages/PixelApp.jsx'));
 const ConvolutionPage = lazy(() => import('../features/convolution/pages/ConvolutionPage.jsx'));
 
 function RouteLayout({ children }) {
   const { pathname } = useLocation();
-  return /^\/iadivinha\/?$/.test(pathname) || /^\/sonar(?:\/|$)/.test(pathname) ? children : <Layout>{children}</Layout>;
+  return /^\/iadivinha\/?$/.test(pathname) || /^\/sonar(?:\/|$)/.test(pathname) || /^\/pixel(?:\/|$)/.test(pathname) ? children : <Layout>{children}</Layout>;
 }
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
     <RouteLayout>
       <Routes>
         <Route path="/sonar/*" element={<Suspense fallback={<p role="status">Carregando Sonar…</p>}><SonarApp /></Suspense>} />
+        <Route path="/pixel/*" element={<Suspense fallback={<p role="status">Carregando Pixel em Pânico!…</p>}><PixelApp /></Suspense>} />
         <Route path="/iadivinha" element={
           <Suspense fallback={<p role="status">Carregando IAdivinha…</p>}>
             <IAdivinhaPage />

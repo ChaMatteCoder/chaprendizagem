@@ -1,0 +1,76 @@
+{
+  "protocolId": "pixel-cifar10-protocol-v1",
+  "seed": 42,
+  "splits": {
+    "officialTrainTotal": 50000,
+    "trainTotal": 45000,
+    "trainPerClass": 4500,
+    "validationTotal": 5000,
+    "validationPerClass": 500,
+    "officialTestTotal": 10000,
+    "officialTestPerClass": 1000,
+    "demoPerClass": 10,
+    "demoTotal": 100
+  },
+  "preprocessing": {
+    "version": "cifar10-rgb-uint8-to-float32-v1",
+    "inputShape": [32, 32, 3],
+    "layout": "NHWC",
+    "channels": ["R", "G", "B"],
+    "rawDtype": "uint8",
+    "rawRange": [0, 255],
+    "normalizedDtype": "float32",
+    "normalizedRange": [0, 1],
+    "formula": "x_float32 = x_uint8 / 255.0"
+  },
+  "architecture": {
+    "id": "cifar10-compact-cnn-v1",
+    "totalParameters": 61130,
+    "layers": [
+      { "name": "input_rgb", "type": "InputLayer", "shape": [32, 32, 3], "params": 0 },
+      { "name": "conv2d_1", "type": "Conv2D", "filters": 32, "kernelSize": [3, 3], "padding": "same", "activation": "relu", "params": 896 },
+      { "name": "max_pooling2d_1", "type": "MaxPooling2D", "poolSize": [2, 2], "strides": [2, 2], "params": 0 },
+      { "name": "conv2d_2", "type": "Conv2D", "filters": 64, "kernelSize": [3, 3], "padding": "same", "activation": "relu", "params": 18496 },
+      { "name": "max_pooling2d_2", "type": "MaxPooling2D", "poolSize": [2, 2], "strides": [2, 2], "params": 0 },
+      { "name": "conv2d_3", "type": "Conv2D", "filters": 64, "kernelSize": [3, 3], "padding": "same", "activation": "relu", "params": 36928 },
+      { "name": "global_average_pooling2d_1", "type": "GlobalAveragePooling2D", "params": 0 },
+      { "name": "dense_1", "type": "Dense", "units": 64, "activation": "relu", "params": 4160 },
+      { "name": "dense_2", "type": "Dense", "units": 10, "activation": "softmax", "params": 650 }
+    ]
+  },
+  "training": {
+    "optimizer": "Adam",
+    "learningRate": 0.001,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "epsilon": 1e-7,
+    "batchSize": 128,
+    "maxEpochs": 20,
+    "earlyStopping": {
+      "monitor": "val_loss",
+      "patience": 4,
+      "restoreBestWeights": true
+    },
+    "loss": "categorical_crossentropy"
+  },
+  "smoke": {
+    "trainPerClass": 50,
+    "valPerClass": 10,
+    "epochs": 2,
+    "batchSize": 64
+  },
+  "robustnessProtocol": {
+    "evaluationSet": "validation_5000",
+    "seedBase": 202610,
+    "conditions": [
+      { "id": "clean", "label": "Original (sem alteração)", "kind": "baseline", "contrast": 1.0, "brightness": 0, "noiseStd": 0 },
+      { "id": "bright_minus_36", "label": "Brilho -36 (subexposição)", "kind": "brightness", "contrast": 1.0, "brightness": -36, "noiseStd": 0 },
+      { "id": "bright_plus_36", "label": "Brilho +36 (superexposição)", "kind": "brightness", "contrast": 1.0, "brightness": 36, "noiseStd": 0 },
+      { "id": "contrast_065", "label": "Contraste 0,65× (baixo contraste)", "kind": "contrast", "contrast": 0.65, "brightness": 0, "noiseStd": 0 },
+      { "id": "contrast_140", "label": "Contraste 1,40× (alto contraste)", "kind": "contrast", "contrast": 1.4, "brightness": 0, "noiseStd": 0 },
+      { "id": "noise_16", "label": "Ruído aditivo leve (±16)", "kind": "noise", "contrast": 1.0, "brightness": 0, "noiseStd": 16 },
+      { "id": "noise_28", "label": "Ruído aditivo moderado (±28)", "kind": "noise", "contrast": 1.0, "brightness": 0, "noiseStd": 28 },
+      { "id": "game_preset_underexposed", "label": "Estação: Subexposição com granulação", "kind": "combined", "contrast": 0.75, "brightness": -36, "noiseStd": 14 }
+    ]
+  }
+}

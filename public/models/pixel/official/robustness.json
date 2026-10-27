@@ -1,0 +1,185 @@
+{
+  "protocolId": "pixel-cifar10-protocol-v1",
+  "evaluationPartition": "validation",
+  "sampleCount": 5000,
+  "seedBase": 202610,
+  "note": "Avaliação agregada executada sobre o conjunto de validação com o modelo congelado, separando desempenho original e sob perturbações pré-definidas.",
+  "conditions": [
+    {
+      "id": "clean",
+      "label": "Original (sem alteração)",
+      "kind": "baseline",
+      "params": {
+        "contrast": 1.0,
+        "brightness": 0,
+        "noiseStd": 0
+      },
+      "sampleCount": 5000,
+      "accuracy": 0.6786,
+      "macroF1": 0.6755701480926024,
+      "crossEntropy": 0.9106467489211238,
+      "accuracyDeltaVsClean": 0.0,
+      "extremePixelFraction": 0.0,
+      "transitionsVsClean": {
+        "keptCorrect": 3393,
+        "degradedToError": 0,
+        "recoveredToCorrect": 0,
+        "keptError": 1607
+      }
+    },
+    {
+      "id": "bright_minus_36",
+      "label": "Brilho -36 (subexposição)",
+      "kind": "brightness",
+      "params": {
+        "contrast": 1.0,
+        "brightness": -36,
+        "noiseStd": 0
+      },
+      "sampleCount": 5000,
+      "accuracy": 0.6576,
+      "macroF1": 0.6508851027854361,
+      "crossEntropy": 0.9645376071573472,
+      "accuracyDeltaVsClean": -0.02100000000000002,
+      "extremePixelFraction": 0.09771334635416666,
+      "transitionsVsClean": {
+        "keptCorrect": 3083,
+        "degradedToError": 310,
+        "recoveredToCorrect": 205,
+        "keptError": 1402
+      }
+    },
+    {
+      "id": "bright_plus_36",
+      "label": "Brilho +36 (superexposição)",
+      "kind": "brightness",
+      "params": {
+        "contrast": 1.0,
+        "brightness": 36,
+        "noiseStd": 0
+      },
+      "sampleCount": 5000,
+      "accuracy": 0.644,
+      "macroF1": 0.6461187271554547,
+      "crossEntropy": 0.9956802520711467,
+      "accuracyDeltaVsClean": -0.034599999999999964,
+      "extremePixelFraction": 0.08644140625,
+      "transitionsVsClean": {
+        "keptCorrect": 3052,
+        "degradedToError": 341,
+        "recoveredToCorrect": 168,
+        "keptError": 1439
+      }
+    },
+    {
+      "id": "contrast_065",
+      "label": "Contraste 0,65× (baixo contraste)",
+      "kind": "contrast",
+      "params": {
+        "contrast": 0.65,
+        "brightness": 0,
+        "noiseStd": 0
+      },
+      "sampleCount": 5000,
+      "accuracy": 0.586,
+      "macroF1": 0.5912245311112548,
+      "crossEntropy": 1.1588328822175047,
+      "accuracyDeltaVsClean": -0.09260000000000002,
+      "extremePixelFraction": 0.0,
+      "transitionsVsClean": {
+        "keptCorrect": 2670,
+        "degradedToError": 723,
+        "recoveredToCorrect": 260,
+        "keptError": 1347
+      }
+    },
+    {
+      "id": "contrast_140",
+      "label": "Contraste 1,40× (alto contraste)",
+      "kind": "contrast",
+      "params": {
+        "contrast": 1.4,
+        "brightness": 0,
+        "noiseStd": 0
+      },
+      "sampleCount": 5000,
+      "accuracy": 0.6406,
+      "macroF1": 0.6261209137931667,
+      "crossEntropy": 1.031130301447212,
+      "accuracyDeltaVsClean": -0.038000000000000034,
+      "extremePixelFraction": 0.18415475260416667,
+      "transitionsVsClean": {
+        "keptCorrect": 2990,
+        "degradedToError": 403,
+        "recoveredToCorrect": 213,
+        "keptError": 1394
+      }
+    },
+    {
+      "id": "noise_16",
+      "label": "Ruído aditivo leve (±16)",
+      "kind": "noise",
+      "params": {
+        "contrast": 1.0,
+        "brightness": 0,
+        "noiseStd": 16
+      },
+      "sampleCount": 5000,
+      "accuracy": 0.6516,
+      "macroF1": 0.6468921118329518,
+      "crossEntropy": 0.9828505527585465,
+      "accuracyDeltaVsClean": -0.027000000000000024,
+      "extremePixelFraction": 0.024060611979166667,
+      "transitionsVsClean": {
+        "keptCorrect": 3035,
+        "degradedToError": 358,
+        "recoveredToCorrect": 223,
+        "keptError": 1384
+      }
+    },
+    {
+      "id": "noise_28",
+      "label": "Ruído aditivo moderado (±28)",
+      "kind": "noise",
+      "params": {
+        "contrast": 1.0,
+        "brightness": 0,
+        "noiseStd": 28
+      },
+      "sampleCount": 5000,
+      "accuracy": 0.5478,
+      "macroF1": 0.544168070068312,
+      "crossEntropy": 1.282396394254251,
+      "accuracyDeltaVsClean": -0.13080000000000003,
+      "extremePixelFraction": 0.03676145833333333,
+      "transitionsVsClean": {
+        "keptCorrect": 2452,
+        "degradedToError": 941,
+        "recoveredToCorrect": 287,
+        "keptError": 1320
+      }
+    },
+    {
+      "id": "game_preset_underexposed",
+      "label": "Estação: Subexposição com granulação",
+      "kind": "combined",
+      "params": {
+        "contrast": 0.75,
+        "brightness": -36,
+        "noiseStd": 14
+      },
+      "sampleCount": 5000,
+      "accuracy": 0.6132,
+      "macroF1": 0.6125760285685861,
+      "crossEntropy": 1.1038013549962593,
+      "accuracyDeltaVsClean": -0.06540000000000001,
+      "extremePixelFraction": 0.017717317708333333,
+      "transitionsVsClean": {
+        "keptCorrect": 2738,
+        "degradedToError": 655,
+        "recoveredToCorrect": 328,
+        "keptError": 1279
+      }
+    }
+  ]
+}

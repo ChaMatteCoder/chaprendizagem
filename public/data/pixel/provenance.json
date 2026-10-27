@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "dataset": "CIFAR-10 (Python version)",
+  "catalogUrl": "https://www.cs.toronto.edu/~kriz/cifar.html",
+  "downloadUrl": "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz",
+  "citation": "Alex Krizhevsky. Learning Multiple Layers of Features from Tiny Images, Technical Report, University of Toronto, 2009.",
+  "archive": {
+    "filename": "cifar-10-python.tar.gz",
+    "byteLength": 170498071,
+    "md5": "c58f30108f718f92721af3b95e74349a",
+    "sha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce"
+  },
+  "batchSha256": {
+    "cifar-10-batches-py/batches.meta": "f962466ef690d46b226450fb9aadc74ba4bc64a76aa526b5827fe4bc5c7125cb",
+    "cifar-10-batches-py/data_batch_1": "54636561a3ce25bd3e19253c6b0d8538147b0ae398331ac4a2d86c6d987368cd",
+    "cifar-10-batches-py/data_batch_2": "766b2cef9fbc745cf056b3152224f7cf77163b330ea9a15f9392beb8b89bc5a8",
+    "cifar-10-batches-py/data_batch_3": "0f00d98ebfb30b3ec0ad19f9756dc2630b89003e10525f5e148445e82aa6a1f9",
+    "cifar-10-batches-py/data_batch_4": "3f7bb240661948b8f4d53e36ec720d8306f5668bd0071dcb4e6c947f78e9682b",
+    "cifar-10-batches-py/data_batch_5": "d91802434d8376bbaeeadf58a737e3a1b12ac839077e931237e0dcd43adcb154",
+    "cifar-10-batches-py/test_batch": "f53d8d457504f7cff4ea9e021afcf0e0ad8e24a91f3fc42091b8adef61157831"
+  },
+  "imageSpec": {
+    "version": "cifar10-rgb-uint8-to-float32-v1",
+    "inputShape": [
+      32,
+      32,
+      3
+    ],
+    "layout": "NHWC",
+    "channels": [
+      "R",
+      "G",
+      "B"
+    ],
+    "rawDtype": "uint8",
+    "rawRange": [
+      0,
+      255
+    ],
+    "normalizedDtype": "float32",
+    "normalizedRange": [
+      0,
+      1
+    ],
+    "formula": "x_float32 = x_uint8 / 255.0"
+  },
+  "classOrder": [
+    {
+      "index": 0,
+      "en": "airplane",
+      "pt": "Avião"
+    },
+    {
+      "index": 1,
+      "en": "automobile",
+      "pt": "Automóvel"
+    },
+    {
+      "index": 2,
+      "en": "bird",
+      "pt": "Pássaro"
+    },
+    {
+      "index": 3,
+      "en": "cat",
+      "pt": "Gato"
+    },
+    {
+      "index": 4,
+      "en": "deer",
+      "pt": "Cervo"
+    },
+    {
+      "index": 5,
+      "en": "dog",
+      "pt": "Cachorro"
+    },
+    {
+      "index": 6,
+      "en": "frog",
+      "pt": "Sapo"
+    },
+    {
+      "index": 7,
+      "en": "horse",
+      "pt": "Cavalo"
+    },
+    {
+      "index": 8,
+      "en": "ship",
+      "pt": "Navio"
+    },
+    {
+      "index": 9,
+      "en": "truck",
+      "pt": "Caminhão"
+    }
+  ],
+  "counts": {
+    "total": 60000,
+    "officialTrain": 50000,
+    "officialTest": 10000,
+    "trainSplit": 45000,
+    "validationSplit": 5000,
+    "demoValidationPack": 100
+  }
+}

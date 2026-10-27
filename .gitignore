@@ -12,4 +12,6 @@ training/reports/
 training/iadivinha/data/
 training/iadivinha/runs/
 training/sonar/runs/
+training/pixel/cache/
+training/pixel/runs/
 !.env.example

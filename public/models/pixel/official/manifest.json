@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "kind": "official",
+  "smoke": false,
+  "modelId": "pixel-cifar10-cnn-f27ef7d52038",
+  "protocolId": "pixel-cifar10-protocol-v1",
+  "completedAt": "2026-10-20T17:15:52Z",
+  "architectureId": "cifar10-compact-cnn-v1",
+  "parameterCount": 61130,
+  "inputShape": [
+    32,
+    32,
+    3
+  ],
+  "outputClasses": 10,
+  "classOrder": [
+    {
+      "index": 0,
+      "en": "airplane",
+      "pt": "Avião"
+    },
+    {
+      "index": 1,
+      "en": "automobile",
+      "pt": "Automóvel"
+    },
+    {
+      "index": 2,
+      "en": "bird",
+      "pt": "Pássaro"
+    },
+    {
+      "index": 3,
+      "en": "cat",
+      "pt": "Gato"
+    },
+    {
+      "index": 4,
+      "en": "deer",
+      "pt": "Cervo"
+    },
+    {
+      "index": 5,
+      "en": "dog",
+      "pt": "Cachorro"
+    },
+    {
+      "index": 6,
+      "en": "frog",
+      "pt": "Sapo"
+    },
+    {
+      "index": 7,
+      "en": "horse",
+      "pt": "Cavalo"
+    },
+    {
+      "index": 8,
+      "en": "ship",
+      "pt": "Navio"
+    },
+    {
+      "index": 9,
+      "en": "truck",
+      "pt": "Caminhão"
+    }
+  ],
+  "preprocessing": {
+    "version": "cifar10-rgb-uint8-to-float32-v1",
+    "inputShape": [
+      32,
+      32,
+      3
+    ],
+    "layout": "NHWC",
+    "channels": [
+      "R",
+      "G",
+      "B"
+    ],
+    "rawDtype": "uint8",
+    "rawRange": [
+      0,
+      255
+    ],
+    "normalizedDtype": "float32",
+    "normalizedRange": [
+      0,
+      1
+    ],
+    "formula": "x_float32 = x_uint8 / 255.0"
+  },
+  "datasetSha256": "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce",
+  "evaluation": {
+    "status": "completed",
+    "validationSamples": 5000,
+    "validationAccuracy": 0.6786,
+    "validationMacroF1": 0.6755701480926024,
+    "testSamples": 10000,
+    "testAccuracy": 0.6753,
+    "testMacroF1": 0.6734498588267746,
+    "testCrossEntropy": 0.924177077664589
+  },
+  "exportParity": {
+    "verifiedAt": "2026-10-20T17:15:53.609Z",
+    "tfjsVersion": "4.22.0",
+    "backend": "cpu",
+    "sampleCount": 20,
+    "parameterCount": 61130,
+    "maxAbsDiff": 2.384185791015625e-07,
+    "argmaxAgreement": 1,
+    "tensorLeakDelta": 0
+  },
+  "files": {
+    "model.json": {
+      "byteLength": 6023,
+      "sha256": "40583b3a3cced787fa518b1067d32dbfbf65f8e08308c800bc3cef7735a91693"
+    },
+    "weights.bin": {
+      "byteLength": 244520,
+      "sha256": "f27ef7d52038ec8d5d215fed019a1cca38ce3233f5e3044b89697edfd4a64c24"
+    },
+    "metrics.json": {
+      "byteLength": 14123,
+      "sha256": "3f694a83fd6cb2ea996f0b420d4f8bce872a5e410e4343b305d4783069e0ff83"
+    },
+    "history.json": {
+      "byteLength": 4387,
+      "sha256": "1d209c79fc843cca94283f6f1e3298798d4298f349525645f561a37c1b25f239"
+    },
+    "robustness.json": {
+      "byteLength": 5159,
+      "sha256": "5e65b4ebcca92b004493460d221445296a0a88f11d3e98b8758e2e10e636da75"
+    },
+    "parity-fixtures.json": {
+      "byteLength": 534538,
+      "sha256": "dd8473bd0b9bdf9cd4dc7e0559441404318b516a136d9c3407b3dc20083b13fb"
+    }
+  }
+}

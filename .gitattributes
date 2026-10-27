@@ -8,3 +8,11 @@ src/features/sonar/**/*.js text eol=lf
 public/models/sonar/**/*.bin binary
 public/images/sonar/*.png binary
 public/audio/sonar/*.mp3 binary
+public/data/pixel/*.json text eol=lf
+public/models/pixel/**/*.json text eol=lf
+public/models/pixel/**/*.bin binary
+training/pixel/*.json text eol=lf
+training/pixel/*.py text eol=lf
+training/pixel/*.mjs text eol=lf
+src/features/pixel/**/*.js text eol=lf
+src/features/pixel/**/*.jsx text eol=lf

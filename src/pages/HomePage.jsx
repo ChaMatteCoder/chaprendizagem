@@ -114,6 +114,15 @@ const projects = [
     featured: true,
   },
   {
+    title: 'PixelLab — CNN e CIFAR-10',
+    status: 'Novo laboratório',
+    description: 'Inspecione uma CNN real de 61.130 parâmetros sobre imagens 32×32 RGB do CIFAR-10, mapas de ativação e convolução passo a passo.',
+    visual: 'CNN',
+    cover: '/images/pixel/cover.svg',
+    to: '/pixel/lab',
+    featured: true,
+  },
+  {
     title: 'Reconhecimento de Letras',
     status: 'Em breve',
     description: 'Generalizar representações matriciais para padrões de letras maiúsculas.',
@@ -207,6 +216,15 @@ export default function HomePage() {
           <p>Desenhe, explore ecos e compare seus palpites com a inteligência artificial.</p>
         </div>
         <div className="games-grid stagger">
+          <ProjectCard
+            kind="game"
+            title="Pixel em Pânico!"
+            status="Jogue agora"
+            description="Restaure cinco imagens 32×32 afetadas por ruído, contraste ou brilho em até três consultas e veja o que muda na CNN real."
+            cover="/images/pixel/cover.svg"
+            to="/pixel"
+            gameFeatures={[{ text: '5 casos', icon: Target }, { text: '32×32 RGB', icon: Grid3X3 }, { text: 'CNN real', icon: BrainCircuit }]}
+          />
           <ProjectCard
             kind="game"
             title="Sonar ou Azar?"
@@ -318,6 +336,13 @@ export default function HomePage() {
             <span>Módulo 05</span>
             <h3>Convolução</h3>
             <p>Filtros de imagem com kernels editáveis, comparação em RGB e cinza e inspeção pixel por pixel.</p>
+            <ArrowRight size={18} />
+          </Link>
+          <Link className="module-card module-card--active" to="/pixel">
+            <BrainCircuit size={34} />
+            <span>Módulo 06</span>
+            <h3>CNN e Visão Computacional</h3>
+            <p>Pixel em Pânico! e PixelLab: classificação real CIFAR-10, mapas de ativação, convolução passo a passo e robustez.</p>
             <ArrowRight size={18} />
           </Link>
         </div>

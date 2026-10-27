@@ -1,0 +1,47 @@
+{
+  "desktop": {
+    "menu": true,
+    "instructions": true,
+    "threeRealQueries": true,
+    "privateOriginal": true,
+    "exactPixelsInLab": true,
+    "untestedChangesExcluded": true,
+    "fiveRounds": true,
+    "restart": true,
+    "labSections": [
+      "O que entra e o que sai da rede?",
+      "Como a imagem percorre a CNN?",
+      "Como um filtro produz um único valor?",
+      "Como sabemos quanto a CNN acerta?",
+      "O que muda quando alteramos a imagem?"
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "score": 300
+  },
+  "mobile": {
+    "menu": true,
+    "instructions": true,
+    "threeRealQueries": true,
+    "privateOriginal": true,
+    "exactPixelsInLab": true,
+    "untestedChangesExcluded": true,
+    "fiveRounds": true,
+    "restart": true,
+    "labSections": [
+      "O que entra e o que sai da rede?",
+      "Como a imagem percorre a CNN?",
+      "Como um filtro produz um único valor?",
+      "Como sabemos quanto a CNN acerta?",
+      "O que muda quando alteramos a imagem?"
+    ],
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "score": 300
+  },
+  "runtimeErrors": []
+}

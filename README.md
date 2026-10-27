@@ -2,7 +2,7 @@
 
 Chaprendizagem é um laboratório digital sobre aprendizagem de máquina. O projeto combina explicações teóricas, visualizações interativas e pequenos experimentos de código para transformar conceitos de modelos em páginas navegáveis e fáceis de revisar.
 
-Os módulos incluem **Perceptron**, **Adaline**, **MLP**, **K-Means** e **Convolução**, além dos jogos **IAdivinha!** e **Sonar ou Azar?**. Cada trilha reúne explicações e experimentos interativos.
+Os módulos incluem **Perceptron**, **Adaline**, **MLP**, **K-Means**, **Convolução** e **CNN CIFAR-10 (PixelLab)**, além dos jogos **Pixel em Pânico!**, **IAdivinha!** e **Sonar ou Azar?**. Cada trilha reúne explicações e experimentos interativos.
 
 ## Stack
 
@@ -40,6 +40,14 @@ chaprendizagem/
 ```
 
 ## Como rodar
+
+### Pixel em Pânico! + PixelLab — CNN real e CIFAR-10
+
+Acesse `/pixel` pelo card **Pixel em Pânico!** em Jogos (`/#jogos`), pelo card **PixelLab — CNN e CIFAR-10** em Projetos (`/#projetos`) ou pelo **Módulo 06** em Módulos (`/#modulos`). Em `/pixel/jogo`, cada partida apresenta cinco casos distintos `32 × 32` RGB da partição de validação do **CIFAR-10** afetados por contraste, brilho ou ruído reproduzível: observe a previsão inicial da CNN (`61.130` parâmetros), aplique ferramentas reais de restauração (suavização `3 × 3`, contraste e brilho), realize até três consultas (`TESTAR AJUSTES`) e conclua a rodada para revelar a fotografia original, o rótulo verdadeiro e os quatro desfechos possíveis (100 pontos por acerto final, máximo 500, sem bônus por confiança).
+
+Em `/pixel/lab`, inspecione a mesma CNN em cinco etapas: **Entrada** (canais RGB, probabilidades e diferença entre confiança, acerto e acurácia), **Camadas** (arquitetura, parâmetros, filtros `3×3×3` e mapas de ativação com escalas explícitas), **Cálculo** (convolução nos três canais, ReLU, pooling e classificação), **Avaliação** (curvas reais, matriz de confusão `10×10` e precisão/recall/F1 por classe) e **Alterações** (exploração interativa e relatório agregado de robustez). O **Modo apresentação** oferece falas curtas para cada etapa.
+
+Comandos: `npm run check:pixel`, `npm run verify:pixel`, `npm run explain:pixel` e `npm run test:pixel`. Documentação: [guia para o professor](docs/pixel-guia-professor.md), [roteiro de apresentação](docs/apresentacao/roteiro-apresentacao-pixel.md), [slides com notas de fala](docs/apresentacao/apresentacao-pixel.pptx), [pipeline de treinamento](training/pixel/README.md), checkpoints ([Etapa 01](docs/pixel-etapa-1.md) a [Etapa 05](docs/pixel-etapa-5.md)) e [exemplo matemático verificável](docs/pixel/etapa-6-exemplo.json).
 
 ### Trabalho 05 — Convolução
 
@@ -141,6 +149,9 @@ O script usa o preset `/kmeans` por padrão. Também é possível ser explícito
 - `/sobre` - História, motivação e proposta do projeto.
 - `/contato` - Sobre mim e links principais.
 - `/convolucao` - Trabalho 05 de processamento de imagens: filtros em RGB e cinza, kernels editáveis, comparação, inspeção numérica e PNG.
+- `/pixel` - Menu e instruções de **Pixel em Pânico!** e **PixelLab** (CNN real sobre CIFAR-10).
+- `/pixel/jogo` - Estação de jogo **Pixel em Pânico!**: 5 rodadas `32×32` RGB, ferramentas reais de restauração e até 3 consultas à CNN.
+- `/pixel/lab` - Laboratório científico **PixelLab** com 5 seções (dados, camadas/mapas, convolução passo a passo, métricas de treinamento e robustez).
 - `/adaline` - Trabalho 05 com teoria, simulação, erro quadrático e teste da rede.
 - `/adaline/regressao` - Trabalho 06 com regressão linear usando Adaline, comparação com regressão clássica, Pearson e R².
 - `/aproximacao-funcional` - Trabalho 07 com MLP para aproximação funcional, pontos editáveis, curva aproximada, erro por época e métricas.
