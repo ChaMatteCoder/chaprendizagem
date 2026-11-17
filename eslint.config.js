@@ -6,7 +6,7 @@ import refresh from 'eslint-plugin-react-refresh';
 
 // Start with the new feature and its integration points; legacy modules retain their conventions.
 export default [{
-  files: ['src/features/iadivinha/**/*.{js,jsx}', 'src/features/convolution/**/*.{js,jsx}', 'src/features/sonar/**/*.jsx', 'src/features/pixel/**/*.jsx', 'src/app/App.jsx', 'src/pages/HomePage.jsx', 'src/components/ProjectCard.jsx'],
+  files: ['src/features/iadivinha/**/*.{js,jsx}', 'src/features/convolution/**/*.{js,jsx}', 'src/features/enganai/**/*.{js,jsx}', 'src/features/sonar/**/*.jsx', 'src/features/pixel/**/*.jsx', 'src/app/App.jsx', 'src/pages/HomePage.jsx', 'src/components/ProjectCard.jsx'],
   languageOptions: {
     ecmaVersion: 'latest', sourceType: 'module', globals: globals.browser,
     parserOptions: { ecmaFeatures: { jsx: true } },
@@ -35,7 +35,7 @@ export default [{
   },
   rules: js.configs.recommended.rules,
 }, {
-  files: ['training/sonar/**/*.mjs', 'training/pixel/**/*.mjs', 'tests/sonar-*.test.js', 'tests/pixel-*.test.js', 'tests/convolution.test.js', 'scripts/check-pixel-browser.mjs'],
+  files: ['training/sonar/**/*.mjs', 'training/pixel/**/*.mjs', 'tests/enganai-*.test.js', 'tests/sonar-*.test.js', 'tests/pixel-*.test.js', 'tests/convolution.test.js', 'scripts/check-enganai-browser.mjs', 'scripts/check-pixel-browser.mjs'],
   languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: { ...globals.node, ...globals.browser } },
   rules: js.configs.recommended.rules,
 }];

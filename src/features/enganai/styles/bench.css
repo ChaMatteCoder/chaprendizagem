@@ -1,0 +1,236 @@
+/* Stage 04: inference bench inside the arena. */
+.gan-arena-preparation:has(.gan-bench) {
+  align-items: start;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr) 0.36fr;
+}
+.gan-bench {
+  background: #1e2228;
+  border: 12px solid var(--gan-paper);
+  border-radius: 3px;
+  box-shadow:
+    0 0 0 1px #876447,
+    0 10px 22px #0006;
+  color: var(--gan-text);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 420px;
+  padding: 26px 24px 24px;
+  position: relative;
+  transform: rotate(-1deg);
+}
+.gan-bench > .gan-evidence-corner {
+  left: 46%;
+}
+.gan-bench-header {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+.gan-bench-badge {
+  align-items: center;
+  background: #2b3036;
+  border: 1px solid #a5845880;
+  border-radius: 50%;
+  color: var(--gan-primary);
+  display: inline-flex;
+  flex: none;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+.gan-bench[data-inference-phase="ready"] .gan-bench-badge {
+  color: var(--gan-cyan);
+}
+.gan-bench-eyebrow {
+  color: #bba88b;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 1.6px;
+}
+.gan-bench h2 {
+  font-family: var(--gan-display);
+  font-size: 27px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+.gan-bench h2:focus-visible {
+  outline: 2px solid var(--gan-primary);
+  outline-offset: 4px;
+}
+.gan-bench-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.gan-bench-steps {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.gan-bench-steps li {
+  align-items: center;
+  color: var(--gan-muted);
+  display: flex;
+  font-size: 15px;
+  gap: 12px;
+  min-height: 34px;
+}
+.gan-bench-steps li[data-status="done"] {
+  color: var(--gan-text);
+}
+.gan-bench-steps li[data-status="current"] {
+  color: var(--gan-text);
+  font-weight: 700;
+}
+.gan-bench-step-icon {
+  align-items: center;
+  border: 1px solid #a5845899;
+  border-radius: 50%;
+  display: inline-flex;
+  flex: none;
+  height: 26px;
+  justify-content: center;
+  width: 26px;
+}
+.gan-bench-step-icon > span {
+  background: #a5845866;
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+}
+li[data-status="done"] > .gan-bench-step-icon {
+  background: #375f63;
+  border-color: var(--gan-cyan);
+  color: var(--gan-text);
+}
+li[data-status="current"] > .gan-bench-step-icon {
+  border-color: var(--gan-primary);
+  color: var(--gan-primary);
+}
+li[data-status="current"] > .gan-bench-step-icon svg {
+  animation: gan-bench-spin 1.1s linear infinite;
+}
+@keyframes gan-bench-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.gan-bench-hint,
+.gan-bench-caveat {
+  color: var(--gan-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.gan-bench-samples {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+.gan-bench-samples figure {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+.gan-bench-canvas {
+  aspect-ratio: 1;
+  background: #101117;
+  border: 1px solid #a5845880;
+  display: block;
+  image-rendering: pixelated;
+  width: 100%;
+}
+.gan-bench-samples figcaption {
+  display: grid;
+  font-size: 12px;
+  gap: 2px;
+  line-height: 1.4;
+}
+.gan-bench-samples figcaption > span:first-child {
+  color: var(--gan-muted);
+}
+.gan-bench-samples strong {
+  color: var(--gan-text);
+}
+.gan-bench-score {
+  color: var(--gan-muted);
+  font-variant-numeric: tabular-nums;
+}
+.gan-bench-facts {
+  border-top: 1px solid #a5845855;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-top: 14px;
+}
+.gan-bench-facts div {
+  display: grid;
+  gap: 2px;
+}
+.gan-bench-facts dt {
+  color: #bba88b;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.gan-bench-facts dd {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.gan-bench-failure {
+  border-left: 3px solid var(--gan-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 16px;
+}
+.gan-bench-failure > p:first-child {
+  font-size: 16px;
+}
+.gan-bench-failure .gan-button {
+  align-self: flex-start;
+}
+@media (max-width: 1100px) {
+  .gan-arena-preparation:has(.gan-bench) {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+  .gan-bench-samples {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .gan-arena-preparation:has(.gan-bench) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .gan-bench-samples {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .gan-bench {
+    border-width: 9px;
+    min-height: 0;
+    padding: 22px 16px 18px;
+    transform: none;
+  }
+  .gan-bench h2 {
+    font-size: 23px;
+  }
+  .gan-bench-samples {
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gan-bench-samples figcaption {
+    font-size: 13px;
+  }
+}
+.gan-app[data-reduced-motion="true"] li[data-status="current"] > .gan-bench-step-icon svg {
+  animation: none;
+}

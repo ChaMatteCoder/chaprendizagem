@@ -34,6 +34,15 @@ import StudyStepCard from '../components/StudyStepCard.jsx';
 
 const projects = [
   {
+    title: 'enGAN.AI — A Guerra dos Pixels',
+    status: 'Primeira versão',
+    description: 'Conheça Fifi e Lupa em um laboratório de redes generativas adversariais, com seis ambientes e experiências conceituais interativas.',
+    visual: 'GAN',
+    cover: '/images/enganai/cover.webp',
+    to: '/enganai',
+    featured: true,
+  },
+  {
     title: 'Perceptron - Reconhecimento de Dígitos',
     status: 'Publicado',
     description: 'Classificação de dígitos de 0 a 9 representados por matrizes 5x4.',
@@ -284,6 +293,13 @@ export default function HomePage() {
           <h2>Os assuntos já organizados no laboratório.</h2>
         </div>
         <div className="module-grid stagger">
+          <Link className="module-card module-card--active" to="/enganai">
+            <Sparkles size={34} />
+            <span>Trabalho 07 · Modelos Generativos</span>
+            <h3>enGAN.AI</h3>
+            <p>Engana aí, aprende aqui. Fifi e Lupa apresentam a disputa entre Gerador e Discriminador em seis ambientes interativos.</p>
+            <ArrowRight size={18} />
+          </Link>
           <Link className="module-card" to="/perceptron/modelo">
             <Sigma size={34} />
             <span>Módulo 01</span>

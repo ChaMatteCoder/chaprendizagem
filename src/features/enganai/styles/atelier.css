@@ -1,0 +1,1831 @@
+@font-face {
+  font-family: Manrope;
+  src: url("/fonts/enganai/Manrope-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lilita One";
+  src: url("/fonts/enganai/LilitaOne-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.gan-app {
+  --gan-bg: #141923;
+  --gan-panel: #252a32;
+  --gan-paper: #e4d2af;
+  --gan-ink: #241d18;
+  --gan-text: #eee9dd;
+  --gan-muted: #bab6ac;
+  --gan-coral: #e5b664;
+  --gan-cyan: #9fc8c3;
+  --gan-violet: #c2a9bb;
+  --gan-lime: #c6cba4;
+  --gan-primary: #e5b664;
+  --gan-fifi: #775569;
+  --gan-lupa: #375f63;
+  --gan-display: "Lilita One", sans-serif;
+  --gan-line: #a5845860;
+  background: var(--gan-bg);
+  color: var(--gan-text);
+  color-scheme: dark;
+  font:
+    400 16px/1.6 Manrope,
+    "Segoe UI",
+    sans-serif;
+  isolation: isolate;
+  min-height: 100svh;
+  position: relative;
+  overflow: clip;
+}
+.gan-app *,
+.gan-app *::before,
+.gan-app *::after {
+  box-sizing: border-box;
+}
+.gan-app :is(h1, h2, h3, p) {
+  margin: 0;
+}
+.gan-app :where(p) {
+  color: inherit;
+}
+.gan-app :is(h1, h2, h3) {
+  color: inherit;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+.gan-app h1 {
+  max-width: none;
+  font-family: var(--gan-display);
+  font-weight: 400;
+}
+.gan-app h1::after {
+  content: none;
+}
+.gan-app h1:focus,
+.gan-app h2[tabindex="-1"]:focus {
+  outline: none;
+}
+.gan-app h2,
+.gan-app h3 {
+  font-family: var(--gan-display);
+  font-weight: 400;
+}
+.gan-app button,
+.gan-app input {
+  font: inherit;
+}
+.gan-app button,
+.gan-app a,
+.gan-app input {
+  -webkit-tap-highlight-color: transparent;
+}
+.gan-app button {
+  cursor: pointer;
+}
+.gan-app button:disabled {
+  cursor: default;
+}
+.gan-app :is(a, button, input, summary):focus-visible {
+  outline: 3px solid #f7cd82;
+  outline-offset: 4px;
+}
+.gan-app code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  overflow-wrap: anywhere;
+}
+.gan-app ::selection {
+  background: #e5b66444;
+}
+.gan-sr-only {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+.gan-skip {
+  background: var(--gan-paper);
+  border-radius: 8px;
+  color: var(--gan-ink);
+  left: 16px;
+  padding: 12px 20px;
+  position: fixed;
+  top: -100px;
+  z-index: 100;
+}
+.gan-skip:focus {
+  top: 12px;
+}
+.gan-scene-backdrop {
+  background-image:
+    linear-gradient(180deg, #10141c12 65%, #10141c50),
+    url("/images/enganai/atelier/atelier.webp");
+  background-position: center;
+  background-size: cover;
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -2;
+}
+.gan-scene-mural .gan-scene-backdrop {
+  background-image:
+    linear-gradient(#10141c25, #10141c45),
+    url("/images/enganai/atelier/mural.webp");
+}
+.gan-scene-bancada .gan-scene-backdrop {
+  background-image:
+    linear-gradient(#10141c45, #10141c88),
+    url("/images/enganai/atelier/bancada.webp");
+}
+.gan-hud {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  min-height: 84px;
+  padding: 16px 32px;
+  position: relative;
+  z-index: 10;
+}
+.gan-hud-back {
+  align-items: center;
+  color: var(--gan-text);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 8px;
+  text-shadow: 0 2px 5px #000;
+}
+.gan-hud-back:hover {
+  color: var(--gan-primary);
+}
+.gan-hud-controls {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+.gan-icon-button {
+  align-items: center;
+  background: #14192399;
+  border: 1px solid #b8a18255;
+  border-radius: 12px;
+  color: var(--gan-text);
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 48px;
+  justify-content: center;
+  padding: 0;
+  width: 48px;
+  transition:
+    background 0.16s,
+    border-color 0.16s;
+}
+.gan-icon-button:hover {
+  background: #443a2ddd;
+  border-color: var(--gan-primary);
+}
+.gan-icon-button[aria-pressed="true"] {
+  background: #54412bd9;
+  border-color: var(--gan-primary);
+  color: #f7cd82;
+}
+.gan-icon-button:disabled {
+  opacity: 0.5;
+}
+.gan-wordmark {
+  color: var(--gan-text);
+  font-family: var(--gan-display);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  text-shadow:
+    0 5px 1px #281d18,
+    0 10px 25px #0006;
+  white-space: nowrap;
+}
+.gan-wordmark > span {
+  color: var(--gan-primary);
+}
+.gan-wordmark-small {
+  font-size: 30px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+.gan-main {
+  animation: gan-enter 0.24s ease-out;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+.gan-main-instrument {
+  margin: 10px auto 0;
+  max-width: 1200px;
+  min-height: calc(100svh - 160px);
+  padding: 12px 32px 40px;
+}
+.gan-main-scene {
+  margin: 0 auto;
+  min-height: calc(100svh - 144px);
+  width: 100%;
+}
+.gan-footer {
+  align-items: center;
+  color: #ddd0b9;
+  display: flex;
+  font-size: 12px;
+  gap: 20px;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-height: 64px;
+  padding: 12px 32px;
+  position: relative;
+  z-index: 2;
+}
+.gan-footer > span {
+  font-style: italic;
+}
+.gan-footer button {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: var(--gan-text);
+  display: flex;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 0;
+}
+.gan-eyebrow {
+  color: var(--gan-primary);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+.gan-ink-eyebrow {
+  color: #62492e;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+.gan-button {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 700;
+  gap: 12px;
+  justify-content: center;
+  line-height: 1.3;
+  min-height: 48px;
+  padding: 14px 22px;
+  text-align: center;
+  transition:
+    transform 0.16s,
+    background 0.16s,
+    border-color 0.16s;
+}
+.gan-button svg {
+  flex-shrink: 0;
+}
+.gan-button:hover {
+  transform: translateY(-2px);
+}
+.gan-button.is-primary {
+  background: linear-gradient(#edc47c, #dfa952);
+  border: 2px solid #f3d494;
+  box-shadow:
+    0 4px 0 #815421,
+    0 8px 20px #0004;
+  color: var(--gan-ink);
+}
+.gan-button.is-primary:hover {
+  background: #f0c47b;
+}
+.gan-button.is-secondary {
+  background: #252a32;
+  border-color: #9c8062;
+  color: var(--gan-text);
+}
+.gan-button.is-secondary:hover {
+  background: #393b3d;
+  border-color: var(--gan-primary);
+}
+.gan-button.is-small {
+  font-size: 13px;
+  min-height: 44px;
+  padding: 10px 15px;
+}
+.gan-button:disabled {
+  opacity: 0.5;
+  transform: none;
+}
+.gan-text-button {
+  background: none;
+  border: 0;
+  color: var(--gan-text);
+  font-size: 13px;
+  min-height: 44px;
+  padding: 8px 0;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.gan-paper-link {
+  align-items: center;
+  color: var(--gan-ink);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 650;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 0;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.gan-paper-link:focus-visible,
+.gan-case-notebook :is(button, a):focus-visible,
+.gan-mission-folder:focus-visible {
+  outline-color: var(--gan-ink);
+}
+.gan-paper-link.is-subtle {
+  font-size: 12px;
+}
+.gan-character {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  width: 100%;
+}
+.gan-character-sheet {
+  aspect-ratio: 1;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.gan-character-sheet > img {
+  height: 200%;
+  max-width: none;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+}
+.gan-character-sheet[data-pose="thinking"] > img {
+  left: -100%;
+}
+.gan-character-sheet[data-pose="celebrating"] > img {
+  top: -100%;
+}
+.gan-character-sheet[data-pose="mistake"] > img {
+  left: -100%;
+  top: -100%;
+}
+.gan-pixel-preview {
+  background: #15171d;
+  border-radius: 3px;
+  display: block;
+  height: auto;
+  image-rendering: pixelated;
+  width: 100%;
+}
+
+/* Main menu: the room, characters and controls occupy independent layers. */
+.gan-home-stage {
+  min-height: calc(100svh - 84px);
+  overflow: hidden;
+  padding: 20px 32px 190px;
+  position: relative;
+}
+.gan-home-center {
+  margin: 0 auto;
+  max-width: 760px;
+  position: relative;
+  text-align: center;
+  width: 54%;
+  z-index: 4;
+}
+.gan-home-overline {
+  color: #d4c9ba;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 2.2px;
+  margin-bottom: 10px !important;
+}
+.gan-home-center .gan-wordmark {
+  font-size: clamp(80px, 10.2vw, 156px);
+}
+.gan-ribbon {
+  background: var(--gan-paper);
+  clip-path: polygon(
+    2% 0,
+    99% 3%,
+    97% 15%,
+    100% 30%,
+    98% 48%,
+    100% 67%,
+    97% 80%,
+    99% 96%,
+    0 100%,
+    2% 82%,
+    0 62%,
+    2% 43%,
+    0 19%
+  );
+  color: var(--gan-ink) !important;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin: 8px auto 0 !important;
+  padding: 7px 28px;
+  transform: rotate(-1deg);
+}
+.gan-home-pitch {
+  color: var(--gan-text);
+  font-size: clamp(18px, 1.8vw, 27px);
+  font-weight: 650;
+  line-height: 1.45;
+  margin: 35px auto 32px;
+  max-width: 620px;
+  text-shadow: 0 2px 9px #000;
+}
+.gan-start-button {
+  font-family: var(--gan-display);
+  font-size: 26px;
+  font-weight: 400;
+  min-height: 72px;
+  min-width: 300px;
+  padding: 18px 30px;
+}
+.gan-start-button > svg:last-child {
+  margin-left: 12px;
+}
+.gan-home-lab-link {
+  align-items: center;
+  color: var(--gan-text);
+  display: flex;
+  font-size: 17px;
+  font-weight: 650;
+  gap: 9px;
+  justify-content: center;
+  margin: 22px auto 0;
+  min-height: 48px;
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  width: fit-content;
+}
+.gan-home-lab-link:hover {
+  color: var(--gan-primary);
+}
+.gan-home-availability {
+  align-items: center;
+  background: #141923c9;
+  border: 1px solid #b49b6d33;
+  border-radius: 30px;
+  color: #d4c9b6;
+  display: inline-flex;
+  font-size: 11px;
+  gap: 8px;
+  margin-top: 20px !important;
+  padding: 8px 13px;
+}
+.gan-home-availability > span {
+  background: #c6cba4;
+  border-radius: 50%;
+  height: 5px;
+  width: 5px;
+}
+.gan-home-actor {
+  bottom: 17%;
+  position: absolute;
+  width: 32%;
+  z-index: 2;
+}
+.gan-home-fifi {
+  left: 1.5%;
+  transform: rotate(-3deg);
+}
+.gan-home-lupa {
+  right: 1.5%;
+  transform: rotate(3deg);
+}
+.gan-home-actor > .gan-character {
+  animation: gan-breathe 7s ease-in-out infinite;
+  filter: drop-shadow(0 14px 16px #0005);
+}
+.gan-home-lupa > .gan-character {
+  animation-delay: -3s;
+}
+.gan-name-tag {
+  align-items: center;
+  background: var(--gan-paper);
+  border: 1px solid #a58861;
+  box-shadow: 0 4px 10px #0005;
+  color: var(--gan-ink);
+  display: flex;
+  font-size: 12px;
+  gap: 9px;
+  justify-content: center;
+  left: 50%;
+  padding: 7px 18px;
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.gan-name-tag strong {
+  font-family: var(--gan-display);
+  font-size: 20px;
+  font-weight: 400;
+}
+.gan-name-tag > span {
+  border-left: 1px solid #987c5a;
+  padding-left: 9px;
+}
+.gan-table-evidence {
+  align-items: end;
+  bottom: 67px;
+  display: flex;
+  gap: 75px;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+.gan-loose-photo {
+  background: var(--gan-paper);
+  box-shadow: 0 5px 10px #0006;
+  padding: 7px 7px 4px;
+  transform: rotate(-13deg);
+  width: 82px;
+}
+.gan-loose-photo:last-child {
+  transform: rotate(13deg);
+}
+.gan-loose-photo > span {
+  color: var(--gan-ink);
+  display: block;
+  font-size: 7px;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+}
+.gan-projector {
+  filter: drop-shadow(0 0 18px #e4d2af26);
+  padding-bottom: 18px;
+  position: relative;
+  width: 65px;
+}
+.gan-projector > .gan-pixel-preview {
+  animation: gan-hologram 6s ease-in-out infinite;
+  background: none;
+  opacity: 0.82;
+}
+.gan-projector > span {
+  background: radial-gradient(ellipse, #ffe5b460, transparent 65%);
+  bottom: 0;
+  height: 22px;
+  left: -16px;
+  position: absolute;
+  width: 97px;
+}
+.gan-home-signature {
+  bottom: 25px;
+  color: #eee0c7;
+  font-size: 16px;
+  font-style: italic;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0 2px 6px #000;
+  width: 100%;
+  z-index: 4;
+}
+
+/* Case folders sit on the mural; the briefing is a real, readable paper panel. */
+.gan-missions-stage {
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 10px 40px 20px;
+}
+.gan-scene-heading {
+  text-align: center;
+  text-shadow: 0 3px 8px #0007;
+}
+.gan-scene-heading h1 {
+  font-size: clamp(32px, 4vw, 54px);
+  margin: 6px 0 12px;
+}
+.gan-scene-heading > p:last-child {
+  color: #e4d8c5;
+  font-size: 16px;
+}
+.gan-mission-board {
+  margin: 35px auto 28px;
+  max-width: 1010px;
+  padding: 18px 22px 25px;
+  position: relative;
+}
+.gan-mission-folders {
+  display: grid;
+  gap: 36px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  position: relative;
+}
+.gan-board-string {
+  background: #8b5042;
+  box-shadow: 0 2px 3px #0006;
+  height: 3px;
+  left: 10%;
+  position: absolute;
+  right: 10%;
+  top: 44%;
+  transform: rotate(1deg);
+}
+.gan-mission-folder {
+  align-items: center;
+  background: linear-gradient(110deg, #c5a67c, #e4cfac 57%, #d0b38b);
+  border: 2px solid #8c6743;
+  border-radius: 3px 12px 10px 10px;
+  box-shadow:
+    0 8px 0 #65482a99,
+    0 16px 20px #0005;
+  color: var(--gan-ink);
+  display: flex;
+  flex-direction: column;
+  min-height: 285px;
+  min-width: 0;
+  padding: 25px 16px 17px;
+  position: relative;
+  transform: rotate(-2deg);
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+.gan-mission-folder:nth-child(2) {
+  transform: rotate(1.5deg);
+}
+.gan-mission-folder:nth-child(3) {
+  transform: rotate(-0.5deg);
+}
+.gan-mission-folder.is-selected,
+.gan-mission-folder:hover {
+  border-color: #ffce77;
+  box-shadow:
+    0 6px 0 #865b27,
+    0 0 0 3px #e5b66455,
+    0 14px 20px #0005;
+  transform: translateY(-4px) rotate(0);
+}
+.gan-folder-tab {
+  background: #d3b88f;
+  border: 1px solid #896646;
+  border-bottom: 0;
+  border-radius: 9px 12px 0 0;
+  font-size: 10px;
+  font-weight: 800;
+  left: -2px;
+  letter-spacing: 1.8px;
+  padding: 5px 17px;
+  position: absolute;
+  top: -25px;
+}
+.gan-folder-pin {
+  background: radial-gradient(circle at 30% 25%, #b48065, #693f2f);
+  border: 1px solid #54372c;
+  border-radius: 50%;
+  box-shadow: 0 2px 3px #0005;
+  height: 11px;
+  position: absolute;
+  top: 9px;
+  width: 11px;
+  z-index: 1;
+}
+.gan-folder-photo {
+  background: #f0dfbc;
+  border: 1px solid #b08d61;
+  box-shadow: 0 3px 5px #52341c55;
+  display: block;
+  max-width: 142px;
+  padding: 8px;
+  transform: rotate(-4deg);
+  width: 70%;
+}
+.gan-folder-photo > span {
+  color: #695136;
+  display: block;
+  font-size: 9px;
+  margin-top: 5px;
+}
+.gan-mission-folder > strong {
+  font-family: var(--gan-display);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 16px 0 12px;
+  text-align: center;
+}
+.gan-folder-status {
+  align-items: center;
+  background: #f2dfbd70;
+  border-radius: 4px;
+  color: #3c3d28;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 650;
+  gap: 6px;
+  padding: 5px 10px;
+}
+.gan-folder-status > span {
+  background: #586245;
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+}
+.gan-folder-status.is-locked {
+  color: #5e4d3b;
+}
+.gan-mission-bottom {
+  align-items: end;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  margin: 0 auto;
+  max-width: 1140px;
+}
+.gan-case-notebook {
+  background: var(--gan-paper);
+  border: 7px solid #775438;
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px #b08f67,
+    0 14px 30px #0006;
+  color: var(--gan-ink);
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 150px minmax(0, 1fr);
+  padding: 26px;
+}
+.gan-notebook-photo {
+  align-self: center;
+  background: #f2e3c7;
+  border: 1px solid #ac8b62;
+  box-shadow: 0 5px 6px #5f432f33;
+  padding: 10px;
+  transform: rotate(-6deg);
+}
+.gan-notebook-photo > span {
+  color: #6b5038;
+  display: block;
+  font-size: 9px;
+  margin-top: 6px;
+  text-align: center;
+}
+.gan-case-description h2 {
+  font-size: 30px;
+  margin: 8px 0 10px;
+}
+.gan-case-description > p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.gan-case-facts {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 14px 0;
+}
+.gan-case-facts > span {
+  align-items: center;
+  display: flex;
+  font-size: 13px;
+  gap: 7px;
+}
+.gan-case-description .gan-case-preparing {
+  color: #664c35;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+.gan-case-description .gan-button {
+  font-size: 15px;
+  padding: 12px 19px;
+}
+.gan-case-description .gan-paper-link {
+  display: flex;
+  font-size: 12px;
+  margin-top: 9px;
+}
+.gan-case-description .gan-case-lock {
+  align-items: flex-start;
+  color: #624e3b;
+  display: flex;
+  font-size: 13px;
+  gap: 8px;
+  margin-top: 15px;
+}
+.gan-case-lock > svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.gan-board-detective .gan-character {
+  filter: drop-shadow(0 8px 12px #0005);
+}
+.gan-board-detective p {
+  color: #eee2ce;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.6;
+  margin-top: 8px;
+  text-align: center;
+  text-shadow: 0 2px 5px #000;
+}
+.gan-board-progress {
+  color: #e2d4bd;
+  font-size: 12px;
+  margin-top: 20px !important;
+  text-align: center;
+  text-shadow: 0 2px 4px #000;
+}
+.gan-board-progress > span {
+  color: #c5b8a4;
+  font-size: 11px;
+  margin-left: 12px;
+}
+
+.gan-arena-stage {
+  margin: 0 auto;
+  max-width: 1270px;
+  padding: 12px 32px 40px;
+}
+.gan-arena-preparation {
+  align-items: center;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 0.85fr 1.15fr 0.42fr;
+  margin-top: 42px;
+}
+.gan-empty-evidence {
+  align-items: center;
+  aspect-ratio: 1;
+  background: #1e2228;
+  border: 14px solid var(--gan-paper);
+  box-shadow:
+    0 0 0 1px #876447,
+    0 10px 22px #0006;
+  color: #bba88b;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  padding: 25px;
+  position: relative;
+  transform: rotate(-3deg);
+}
+.gan-empty-evidence > span:last-child {
+  font-size: 10px;
+  letter-spacing: 2px;
+  line-height: 1.8;
+  text-align: center;
+}
+.gan-evidence-corner {
+  background: #8e6641;
+  border-radius: 7px;
+  box-shadow: 0 3px 4px #0007;
+  height: 33px;
+  position: absolute;
+  top: -26px;
+  width: 20px;
+}
+.gan-arena-note {
+  background: var(--gan-paper);
+  border: 1px solid #9f7e57;
+  border-radius: 4px 14px 14px 4px;
+  box-shadow: 0 8px 16px #0005;
+  color: var(--gan-ink);
+  padding: 34px;
+}
+.gan-arena-note h2 {
+  font-size: 33px;
+  margin: 12px 0 17px;
+}
+.gan-arena-note > p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.gan-arena-note .gan-button {
+  margin: 24px 0 10px;
+  width: 100%;
+}
+.gan-arena-note .gan-paper-link {
+  display: flex;
+}
+.gan-arena-detective {
+  align-self: end;
+  margin-left: -40px;
+  position: relative;
+  width: 210px;
+  z-index: 2;
+}
+.gan-empty-arena {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  max-width: 720px;
+  padding: 40px 24px;
+  text-align: center;
+}
+.gan-empty-emblem {
+  align-items: center;
+  border: 1px solid #a88d6555;
+  border-radius: 50%;
+  color: var(--gan-primary);
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  margin-bottom: 25px;
+  width: 100px;
+}
+.gan-empty-arena h1 {
+  font-size: 42px;
+  margin: 15px 0;
+}
+.gan-empty-arena > p:not(.gan-eyebrow) {
+  color: var(--gan-muted);
+}
+.gan-empty-arena .gan-button {
+  margin-top: 25px;
+}
+
+/* Native dialogs retain keyboard focus and present calm, opaque surfaces. */
+.gan-dialog {
+  background: #252a32;
+  border: 1px solid #a38963;
+  border-radius: 18px;
+  box-shadow: 0 20px 100px #0009;
+  color: var(--gan-text);
+  max-height: 88svh;
+  max-width: 680px;
+  padding: 28px;
+  width: calc(100% - 32px);
+}
+.gan-dialog::backdrop {
+  background: #0b1018cc;
+  backdrop-filter: blur(7px);
+}
+.gan-dialog-heading {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+.gan-dialog-heading .gan-eyebrow {
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+.gan-dialog h2 {
+  font-size: 36px;
+  margin: 20px 0 24px;
+}
+.gan-travel-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.gan-travel-grid > a {
+  align-items: center;
+  background: #1c222a;
+  border: 1px solid #a88d6545;
+  border-radius: 10px;
+  display: flex;
+  gap: 12px;
+  min-height: 95px;
+  padding: 16px;
+}
+.gan-travel-grid > a:hover {
+  border-color: var(--gan-primary);
+  background: #353532;
+}
+.gan-travel-grid > a > svg:first-child {
+  color: var(--gan-primary);
+  flex-shrink: 0;
+}
+.gan-travel-grid > a > svg:last-child {
+  color: #b9a88d;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.gan-travel-grid strong {
+  display: block;
+  font-size: 14px;
+}
+.gan-travel-grid small {
+  color: var(--gan-muted);
+  display: block;
+  font-size: 11px;
+  line-height: 1.7;
+  margin-top: 5px;
+}
+.gan-settings-content > p {
+  color: var(--gan-muted);
+  font-size: 14px;
+}
+.gan-setting-row {
+  align-items: center;
+  border-bottom: 1px solid #a88d6530;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 23px 0;
+}
+.gan-setting-row strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 650;
+}
+.gan-setting-row small {
+  color: var(--gan-muted);
+  display: block;
+  font-size: 12px;
+  margin-top: 6px;
+  max-width: 350px;
+}
+.gan-setting-toggle {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: var(--gan-text);
+  display: flex;
+  flex-shrink: 0;
+  font-size: 12px;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0;
+}
+.gan-setting-toggle > span {
+  background: #4b4b47;
+  border: 1px solid #887b66;
+  border-radius: 20px;
+  height: 24px;
+  padding: 3px;
+  width: 43px;
+}
+.gan-setting-toggle > span::before {
+  background: var(--gan-text);
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 16px;
+  transition: transform 0.16s;
+  width: 16px;
+}
+.gan-setting-toggle[aria-pressed="true"] > span {
+  background: #845e2c;
+  border-color: #b48d55;
+}
+.gan-setting-toggle[aria-pressed="true"] > span::before {
+  background: #f7cd82;
+  transform: translateX(18px);
+}
+.gan-setting-fieldset {
+  border: 0;
+  margin: 24px 0 0;
+  padding: 0;
+}
+.gan-setting-fieldset legend {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+.gan-settings-help {
+  align-items: center;
+  border-top: 1px solid #a88d6530;
+  display: flex;
+  gap: 15px;
+  margin-top: 24px;
+  padding-top: 22px;
+}
+.gan-settings-help > svg {
+  color: var(--gan-primary);
+}
+.gan-settings-help > span {
+  color: var(--gan-muted);
+  font-size: 12px;
+}
+.gan-settings-help button {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: var(--gan-primary);
+  display: flex;
+  font-size: 13px;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0;
+}
+.gan-settings-notice {
+  background: #e5b66410;
+  border: 1px solid #e5b66444;
+  border-radius: 8px;
+  font-size: 12px !important;
+  margin-top: 18px !important;
+  padding: 12px;
+}
+.gan-guide-content {
+  display: grid;
+  font-size: 14px;
+  gap: 20px;
+  line-height: 1.9;
+  margin-top: 24px;
+}
+.gan-guide-content p {
+  color: #d0c8b9;
+}
+.gan-guide-content strong {
+  color: var(--gan-text);
+}
+.gan-guide-content > .gan-button {
+  justify-self: start;
+}
+.gan-glossary {
+  display: grid;
+  gap: 18px;
+  margin: 24px 0 0;
+}
+.gan-glossary dt {
+  color: var(--gan-primary);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.gan-glossary dd {
+  color: #d0c8b9;
+  font-size: 14px;
+  margin: 0;
+}
+@keyframes gan-enter {
+  from {
+    opacity: 0.4;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes gan-breathe {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -5px;
+  }
+}
+@keyframes gan-hologram {
+  0%,
+  100% {
+    translate: 0 0;
+    opacity: 0.8;
+  }
+  50% {
+    translate: 0 -7px;
+    opacity: 0.9;
+  }
+}
+
+@media (min-width: 1700px) {
+  .gan-home-center {
+    padding-top: 2vh;
+  }
+  .gan-home-actor {
+    max-width: 580px;
+    width: 33%;
+    bottom: 16%;
+  }
+  .gan-home-fifi {
+    left: 3%;
+  }
+  .gan-home-lupa {
+    right: 3%;
+  }
+  .gan-home-pitch {
+    margin-top: 42px;
+  }
+  .gan-start-button {
+    min-height: 80px;
+    font-size: 30px;
+  }
+  .gan-home-signature {
+    font-size: 20px;
+  }
+  .gan-table-evidence {
+    bottom: 80px;
+    gap: 110px;
+  }
+  .gan-loose-photo {
+    width: 100px;
+  }
+}
+@media (max-width: 1100px) {
+  .gan-hud {
+    padding-inline: 24px;
+  }
+  .gan-hud-back {
+    font-size: 12px;
+  }
+  .gan-hud-controls {
+    gap: 8px;
+  }
+  .gan-home-stage {
+    padding-top: 30px;
+    min-height: 760px;
+  }
+  .gan-home-center {
+    width: 60%;
+  }
+  .gan-home-center .gan-wordmark {
+    font-size: clamp(80px, 10vw, 114px);
+  }
+  .gan-home-overline {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+  .gan-home-pitch {
+    font-size: 22px;
+    margin-top: 30px;
+  }
+  .gan-home-actor {
+    width: 31%;
+    bottom: 17%;
+  }
+  .gan-home-fifi {
+    left: 0;
+  }
+  .gan-home-lupa {
+    right: 0;
+  }
+  .gan-start-button {
+    font-size: 23px;
+    min-height: 66px;
+    min-width: 270px;
+  }
+  .gan-home-availability {
+    font-size: 10px;
+  }
+  .gan-name-tag {
+    padding: 7px 12px;
+  }
+  .gan-name-tag strong {
+    font-size: 18px;
+  }
+  .gan-name-tag > span {
+    font-size: 10px;
+  }
+  .gan-home-signature {
+    font-size: 15px;
+  }
+  .gan-table-evidence {
+    gap: 55px;
+  }
+  .gan-missions-stage {
+    padding-inline: 28px;
+  }
+  .gan-mission-folders {
+    gap: 24px;
+  }
+  .gan-mission-folder {
+    min-height: 267px;
+    padding-inline: 12px;
+  }
+  .gan-mission-folder > strong {
+    font-size: 22px;
+  }
+  .gan-mission-bottom {
+    grid-template-columns: minmax(0, 1fr) 170px;
+  }
+  .gan-case-notebook {
+    gap: 20px;
+    grid-template-columns: 120px minmax(0, 1fr);
+    padding: 22px;
+  }
+  .gan-case-description h2 {
+    font-size: 28px;
+  }
+  .gan-case-description > p {
+    font-size: 13px;
+  }
+  .gan-board-detective p {
+    font-size: 11px;
+  }
+  .gan-arena-preparation {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 25px;
+  }
+  .gan-arena-detective {
+    display: none;
+  }
+  .gan-arena-note {
+    padding: 30px;
+  }
+  .gan-arena-note h2 {
+    font-size: 30px;
+  }
+}
+@media (max-width: 900px) {
+  .gan-home-stage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: calc(100svh - 84px);
+    padding: 18px 32px 100px;
+  }
+  .gan-home-center {
+    grid-column: 1/-1;
+    max-width: 650px;
+    width: 100%;
+  }
+  .gan-home-center .gan-wordmark {
+    font-size: clamp(80px, 14vw, 120px);
+  }
+  .gan-home-actor {
+    align-self: end;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin-top: 25px;
+    max-width: 320px;
+    position: relative;
+    width: 100%;
+  }
+  .gan-home-fifi {
+    grid-column: 1;
+    justify-self: end;
+  }
+  .gan-home-lupa {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .gan-home-pitch {
+    font-size: 23px;
+    margin-bottom: 27px;
+  }
+  .gan-name-tag {
+    bottom: -13px;
+  }
+  .gan-table-evidence {
+    bottom: 76px;
+    gap: 25px;
+  }
+  .gan-table-evidence .gan-loose-photo {
+    display: none;
+  }
+  .gan-projector {
+    opacity: 0.55;
+    width: 45px;
+  }
+  .gan-home-signature {
+    bottom: 22px;
+  }
+  .gan-mission-bottom {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .gan-board-detective {
+    display: none;
+  }
+  .gan-case-notebook {
+    grid-template-columns: 150px minmax(0, 1fr);
+  }
+  .gan-main-instrument {
+    padding-inline: 25px;
+  }
+  .gan-folder-photo {
+    width: 85%;
+  }
+  .gan-mission-folder > strong {
+    font-size: 21px;
+  }
+  .gan-mission-board {
+    padding-inline: 5px;
+  }
+  .gan-arena-preparation {
+    gap: 20px;
+  }
+  .gan-arena-note {
+    padding: 25px;
+  }
+  .gan-arena-note h2 {
+    font-size: 29px;
+  }
+  .gan-empty-evidence {
+    border-width: 11px;
+    padding: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .gan-hud {
+    gap: 6px;
+    min-height: 76px;
+    padding: 12px 16px;
+  }
+  .gan-hud-back {
+    padding: 0;
+    min-width: 48px;
+  }
+  .gan-hud-back > span {
+    display: none;
+  }
+  .gan-wordmark-small {
+    font-size: 23px;
+    left: auto;
+    position: static;
+    transform: none;
+  }
+  .gan-hud-controls {
+    gap: 4px;
+    margin-left: auto;
+  }
+  .gan-icon-button {
+    height: 48px;
+    width: 48px;
+  }
+  .gan-main-scene {
+    min-height: calc(100svh - 140px);
+  }
+  .gan-main-instrument {
+    margin-top: 3px;
+    padding: 12px 18px 30px;
+  }
+  .gan-footer {
+    font-size: 11px;
+    gap: 10px;
+    min-height: 64px;
+    padding: 10px 18px;
+  }
+  .gan-footer button {
+    font-size: 11px;
+    gap: 6px;
+  }
+  .gan-home-stage {
+    min-height: calc(100svh - 76px);
+    padding: 10px 16px 87px;
+  }
+  .gan-home-overline {
+    font-size: 7px;
+    letter-spacing: 1.4px;
+    margin-bottom: 12px !important;
+  }
+  .gan-home-center .gan-wordmark {
+    font-size: clamp(65px, 16vw, 96px);
+  }
+  .gan-ribbon {
+    font-size: 11px;
+    letter-spacing: 2.4px;
+    padding: 6px 24px;
+  }
+  .gan-home-pitch {
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 27px auto 25px;
+    max-width: 340px;
+  }
+  .gan-start-button {
+    font-size: 23px;
+    min-height: 64px;
+    min-width: 0;
+    padding: 15px 23px;
+    width: min(100%, 320px);
+  }
+  .gan-start-button > svg:first-child {
+    width: 20px;
+  }
+  .gan-start-button > svg:last-child {
+    margin-left: 5px;
+    width: 18px;
+  }
+  .gan-home-lab-link {
+    font-size: 15px;
+    margin-top: 17px;
+  }
+  .gan-home-availability {
+    font-size: 9px;
+    gap: 6px;
+    margin-top: 14px !important;
+    padding: 7px 10px;
+  }
+  .gan-home-actor {
+    margin-top: 30px;
+  }
+  .gan-name-tag {
+    display: grid;
+    font-size: 10px;
+    gap: 1px;
+    min-width: 110px;
+    padding: 6px 12px;
+    text-align: center;
+  }
+  .gan-name-tag strong {
+    font-size: 18px;
+  }
+  .gan-name-tag > span {
+    border: 0;
+    font-size: 10px;
+    padding: 0;
+  }
+  .gan-home-signature {
+    font-size: 13px;
+  }
+  .gan-projector {
+    padding-bottom: 5px;
+    width: 38px;
+  }
+  .gan-table-evidence {
+    bottom: 86px;
+  }
+  .gan-missions-stage {
+    padding: 12px 18px 20px;
+  }
+  .gan-scene-heading h1 {
+    font-size: 35px;
+    line-height: 1.1;
+    margin: 10px 0 14px;
+  }
+  .gan-scene-heading > p:last-child {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .gan-eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.7px;
+  }
+  .gan-mission-board {
+    margin: 38px 0 20px;
+    padding: 0 7px 10px;
+  }
+  .gan-board-string {
+    display: none;
+  }
+  .gan-mission-folders {
+    gap: 35px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .gan-mission-folder {
+    align-items: center;
+    column-gap: 18px;
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    min-height: 150px;
+    padding: 20px 18px 15px;
+    transform: rotate(-1deg);
+  }
+  .gan-mission-folder:nth-child(2) {
+    transform: rotate(1deg);
+  }
+  .gan-folder-tab {
+    font-size: 9px;
+    padding: 5px 15px;
+    top: -24px;
+  }
+  .gan-folder-pin {
+    left: 50%;
+  }
+  .gan-folder-photo {
+    grid-row: 1/3;
+    max-width: none;
+    transform: rotate(-3deg);
+    width: 90px;
+  }
+  .gan-folder-photo > span {
+    font-size: 7px;
+  }
+  .gan-mission-folder > strong {
+    align-self: end;
+    font-size: 24px;
+    margin: 0 0 8px;
+    text-align: left;
+  }
+  .gan-folder-status {
+    align-self: start;
+    font-size: 11px;
+    justify-self: start;
+    padding: 4px 7px;
+  }
+  .gan-case-notebook {
+    border-width: 5px;
+    gap: 18px;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 24px 20px;
+  }
+  .gan-notebook-photo {
+    display: none;
+  }
+  .gan-case-description h2 {
+    font-size: 30px;
+  }
+  .gan-case-description > p {
+    font-size: 14px;
+  }
+  .gan-case-description .gan-button {
+    font-size: 15px;
+    width: 100%;
+  }
+  .gan-case-facts {
+    font-size: 12px;
+    gap: 23px;
+  }
+  .gan-case-description .gan-paper-link {
+    font-size: 12px;
+  }
+  .gan-board-progress {
+    font-size: 11px;
+    line-height: 1.8;
+    margin-top: 23px !important;
+  }
+  .gan-board-progress > span {
+    display: block;
+    font-size: 10px;
+    margin: 4px 0 0;
+  }
+  .gan-arena-stage {
+    padding: 12px 20px 30px;
+  }
+  .gan-arena-preparation {
+    gap: 26px;
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 30px;
+  }
+  .gan-empty-evidence {
+    border-width: 12px;
+    justify-self: center;
+    max-width: 275px;
+    width: 85%;
+  }
+  .gan-empty-evidence > svg {
+    height: 56px;
+    width: 56px;
+  }
+  .gan-empty-evidence > span:last-child {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+  .gan-arena-note {
+    padding: 27px 23px;
+  }
+  .gan-arena-note h2 {
+    font-size: 31px;
+  }
+  .gan-arena-note > p {
+    font-size: 14px;
+  }
+  .gan-arena-note .gan-button {
+    font-size: 14px;
+    padding-inline: 12px;
+  }
+  .gan-empty-arena {
+    margin: 25px auto;
+    padding: 32px 22px;
+  }
+  .gan-empty-arena h1 {
+    font-size: 35px;
+  }
+  .gan-empty-arena > p:not(.gan-eyebrow) {
+    font-size: 14px;
+  }
+  .gan-dialog {
+    max-height: 90svh;
+    padding: 22px;
+  }
+  .gan-dialog h2 {
+    font-size: 31px;
+  }
+  .gan-dialog-heading .gan-eyebrow {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+  .gan-travel-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .gan-travel-grid > a {
+    min-height: 83px;
+  }
+  .gan-setting-row {
+    align-items: start;
+    gap: 13px;
+    padding-block: 22px;
+  }
+  .gan-setting-row strong {
+    font-size: 14px;
+  }
+  .gan-setting-row small {
+    font-size: 11px;
+    max-width: 190px;
+  }
+  .gan-setting-toggle {
+    font-size: 10px;
+    gap: 6px;
+    min-height: 40px;
+  }
+  .gan-setting-toggle > span {
+    flex-shrink: 0;
+    width: 42px;
+  }
+  .gan-setting-fieldset legend {
+    font-size: 14px;
+  }
+  .gan-guide-content {
+    font-size: 13px;
+  }
+  .gan-glossary dd {
+    font-size: 13px;
+  }
+}
+@media (max-width: 370px) {
+  .gan-hud {
+    padding-inline: 12px;
+    gap: 3px;
+  }
+  .gan-wordmark-small {
+    font-size: 18px;
+  }
+  .gan-hud-controls {
+    gap: 0;
+  }
+  .gan-home-overline {
+    font-size: 6px;
+    letter-spacing: 1.1px;
+  }
+  .gan-home-center .gan-wordmark {
+    font-size: 63px;
+  }
+  .gan-home-pitch {
+    font-size: 18px;
+  }
+  .gan-home-availability {
+    font-size: 8px;
+    padding-inline: 7px;
+  }
+  .gan-home-stage {
+    padding-inline: 14px;
+  }
+  .gan-main-instrument {
+    padding-inline: 14px;
+  }
+  .gan-scene-heading h1 {
+    font-size: 31px;
+  }
+  .gan-missions-stage {
+    padding-inline: 15px;
+  }
+  .gan-mission-folder {
+    column-gap: 13px;
+    grid-template-columns: 76px minmax(0, 1fr);
+    padding-inline: 14px;
+  }
+  .gan-folder-photo {
+    width: 76px;
+  }
+  .gan-mission-folder > strong {
+    font-size: 22px;
+  }
+  .gan-folder-status {
+    font-size: 10px;
+  }
+  .gan-case-notebook {
+    padding: 23px 17px;
+  }
+  .gan-arena-stage {
+    padding-inline: 17px;
+  }
+  .gan-case-description .gan-paper-link {
+    font-size: 11px;
+  }
+}
+.gan-app[data-reduced-motion="true"] *,
+.gan-app[data-reduced-motion="true"] *::before,
+.gan-app[data-reduced-motion="true"] *::after {
+  animation: none !important;
+  scroll-behavior: auto !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gan-app *,
+  .gan-app *::before,
+  .gan-app *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

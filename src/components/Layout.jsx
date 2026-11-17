@@ -46,6 +46,7 @@ const footerNavItems = [
 ];
 
 const moduleLinks = [
+  { to: '/enganai', label: 'enGAN.AI', icon: FlaskConical, tone: 'violet' },
   { to: '/perceptron/modelo', label: 'Perceptron', icon: Sigma, tone: 'teal' },
   { to: '/adaline', label: 'Adaline', icon: Network, tone: 'violet' },
   { to: '/mlp', label: 'MLP', icon: FunctionSquare, tone: 'amber' },
