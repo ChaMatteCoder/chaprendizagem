@@ -1,0 +1,123 @@
+{
+  "stage": 5,
+  "status": "passed",
+  "rules": {
+    "rounds": 5,
+    "pointsCorrect": 100,
+    "maxScore": 500,
+    "originsReal": [
+      2,
+      3
+    ],
+    "timer": false,
+    "selectionRng": "mulberry32-v1"
+  },
+  "arenaPool": {
+    "id": "fashion-mnist-arena-pool-v1",
+    "realImages": 500,
+    "perClass": 50,
+    "partition": "arena",
+    "realSha256": "cd91796a72b52a739f5dd25673c955fa35b12ce4334900024fa6ca6ab0810590",
+    "latentSetId": "arena-latents-v1",
+    "latents": 64,
+    "latentRng": "pytorch-cpu-normal-v1",
+    "latentSeed": 6011,
+    "rebuildIdentical": true
+  },
+  "missionCheckpoints": {
+    "primeiros-rastros": 1,
+    "novos-padroes": 4,
+    "grande-duelo": 8
+  },
+  "discriminatorDiagnosticsDevelopment": {
+    "1": {
+      "realCorrect": 512,
+      "syntheticCorrect": 0,
+      "balanced": 0.5
+    },
+    "4": {
+      "realCorrect": 315,
+      "syntheticCorrect": 282,
+      "balanced": 0.583
+    },
+    "8": {
+      "realCorrect": 247,
+      "syntheticCorrect": 370,
+      "balanced": 0.6025
+    }
+  },
+  "humanDifficultyMeasured": false,
+  "contracts": {
+    "validator": "docs/enganai/etapa-01/validate.py",
+    "requireRecorded": true,
+    "kinds": [
+      "sample",
+      "question",
+      "round-reveal",
+      "session",
+      "progress"
+    ],
+    "tamperedAnswerKeyRejected": true,
+    "extension": "weight_links from verified onnx-export.json"
+  },
+  "tests": {
+    "javascript": 173,
+    "newJavascript": 8,
+    "python": 15,
+    "newPython": 3
+  },
+  "browser": {
+    "report": "browser-report.json",
+    "seed": 4242,
+    "firstMission": {
+      "correct": 3,
+      "score": 300,
+      "rounds": [
+        {
+          "round": 1,
+          "correct": true
+        },
+        {
+          "round": 2,
+          "correct": false
+        },
+        {
+          "round": 3,
+          "correct": true
+        },
+        {
+          "round": 4,
+          "correct": true
+        },
+        {
+          "round": 5,
+          "correct": false
+        }
+      ]
+    },
+    "tested": [
+      "locked-cases-by-url",
+      "briefing-after-bench-verification",
+      "origin-hidden-before-answer",
+      "png-blob-28x28",
+      "double-click-scores-once",
+      "focus-reveal-and-next-round",
+      "exit-confirmation-escape",
+      "summary-score-equals-answers",
+      "progress-saved-once",
+      "review-in-report",
+      "seed-reproduces-sample-and-png",
+      "replay-new-session-no-duplicates",
+      "mural-best-score-and-unlock",
+      "registered-previews-in-mural",
+      "preparation-error-and-retry",
+      "phone-390-order-touch-and-overflow"
+    ]
+  },
+  "regressions": {
+    "stage04Browser": "passed",
+    "stage02Browser": "passed (one intermittent tab-trap failure, two passing reruns)"
+  },
+  "officialTestEvaluated": false,
+  "sessionPersisted": false
+}

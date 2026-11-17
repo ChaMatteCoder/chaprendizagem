@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "status": "art-direction-specified",
+  "referenceScreen": "../proposta-v2/telas/01-inicio.png",
+  "characters": [
+    {
+      "id": "fifi",
+      "role": "Gerador",
+      "costume": "Capuz ameixa, boina com paleta, pincel, carcaça marfim e olhos coral.",
+      "referenceSheet": "referencias/fifi-expressoes.png",
+      "sheetOrder": [
+        "neutral",
+        "thinking",
+        "celebrating",
+        "mistake"
+      ],
+      "productionStatus": "etapa-02",
+      "sourceMode": "ChatGPT Imagem integrado"
+    },
+    {
+      "id": "lupa",
+      "role": "Discriminador",
+      "costume": "Chapéu petróleo com laço, casaco castanho com cinto, lupa, carcaça marfim e olhos turquesa.",
+      "referenceSheet": "referencias/lupa-expressoes.png",
+      "sheetOrder": [
+        "neutral",
+        "thinking",
+        "celebrating",
+        "mistake"
+      ],
+      "productionStatus": "etapa-02",
+      "sourceMode": "ChatGPT Imagem integrado"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "atelier",
+      "purpose": "Entrada e ambientação",
+      "productionStatus": "etapa-02",
+      "layers": [
+        "background",
+        "props",
+        "character-left",
+        "character-right",
+        "native-ui"
+      ]
+    },
+    {
+      "id": "mural",
+      "purpose": "Seleção de missões",
+      "productionStatus": "etapa-02",
+      "layers": [
+        "background",
+        "props",
+        "character-left",
+        "character-right",
+        "native-ui"
+      ]
+    },
+    {
+      "id": "bancada",
+      "purpose": "Arena, revelação e relatório",
+      "productionStatus": "etapa-02",
+      "layers": [
+        "background",
+        "props",
+        "character-left",
+        "character-right",
+        "native-ui"
+      ]
+    },
+    {
+      "id": "instrumento",
+      "purpose": "GANLab, Museu, Mutações e Caos com variações de instrumentos",
+      "productionStatus": "etapa-02",
+      "layers": [
+        "background",
+        "props",
+        "character-left",
+        "character-right",
+        "native-ui"
+      ]
+    }
+  ],
+  "ui": {
+    "implementation": "HTML/SVG/CSS acessíveis; texto fora dos bitmaps.",
+    "rasterProps": [
+      "papel",
+      "madeira",
+      "metal"
+    ],
+    "forbidden": "Não transformar as telas de referência em um bitmap único com áreas clicáveis."
+  },
+  "assetBudgets": {
+    "initialSceneTargetKiB": 1500,
+    "characterMaxSourceEdgePx": 1600,
+    "productionFormat": "WebP/AVIF com alpha quando necessário",
+    "budgetMeaning": "Metas da etapa 02; não medições de assets já produzidos."
+  }
+}

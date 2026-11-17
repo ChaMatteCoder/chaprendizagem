@@ -1,0 +1,187 @@
+{
+  "status": "passed",
+  "baseUrl": "http://127.0.0.1:4173",
+  "responsive": [
+    {
+      "path": "/enganai",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "path": "/enganai/missoes",
+      "width": 320,
+      "scrollWidth": 310
+    },
+    {
+      "path": "/enganai/arena?missao=primeiros-rastros",
+      "width": 320,
+      "scrollWidth": 310
+    },
+    {
+      "path": "/enganai/aquecimento",
+      "width": 320,
+      "scrollWidth": 310
+    },
+    {
+      "path": "/enganai/lab",
+      "width": 320,
+      "scrollWidth": 310
+    },
+    {
+      "path": "/enganai/museu",
+      "width": 320,
+      "scrollWidth": 310
+    },
+    {
+      "path": "/enganai/mutacoes",
+      "width": 320,
+      "scrollWidth": 310
+    },
+    {
+      "path": "/enganai/caos",
+      "width": 320,
+      "scrollWidth": 310
+    },
+    {
+      "path": "/enganai",
+      "width": 390,
+      "scrollWidth": 380
+    },
+    {
+      "path": "/enganai/missoes",
+      "width": 390,
+      "scrollWidth": 380
+    },
+    {
+      "path": "/enganai/arena?missao=primeiros-rastros",
+      "width": 390,
+      "scrollWidth": 380
+    },
+    {
+      "path": "/enganai/aquecimento",
+      "width": 390,
+      "scrollWidth": 380
+    },
+    {
+      "path": "/enganai/lab",
+      "width": 390,
+      "scrollWidth": 380
+    },
+    {
+      "path": "/enganai/museu",
+      "width": 390,
+      "scrollWidth": 380
+    },
+    {
+      "path": "/enganai/mutacoes",
+      "width": 390,
+      "scrollWidth": 380
+    },
+    {
+      "path": "/enganai/caos",
+      "width": 390,
+      "scrollWidth": 380
+    },
+    {
+      "path": "/enganai",
+      "width": 768,
+      "scrollWidth": 758
+    },
+    {
+      "path": "/enganai/missoes",
+      "width": 768,
+      "scrollWidth": 758
+    },
+    {
+      "path": "/enganai/arena?missao=primeiros-rastros",
+      "width": 768,
+      "scrollWidth": 758
+    },
+    {
+      "path": "/enganai/aquecimento",
+      "width": 768,
+      "scrollWidth": 758
+    },
+    {
+      "path": "/enganai/lab",
+      "width": 768,
+      "scrollWidth": 758
+    },
+    {
+      "path": "/enganai/museu",
+      "width": 768,
+      "scrollWidth": 758
+    },
+    {
+      "path": "/enganai/mutacoes",
+      "width": 768,
+      "scrollWidth": 758
+    },
+    {
+      "path": "/enganai/caos",
+      "width": 768,
+      "scrollWidth": 758
+    },
+    {
+      "path": "/enganai",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "path": "/enganai/missoes",
+      "width": 1440,
+      "scrollWidth": 1430
+    },
+    {
+      "path": "/enganai/arena?missao=primeiros-rastros",
+      "width": 1440,
+      "scrollWidth": 1430
+    },
+    {
+      "path": "/enganai/aquecimento",
+      "width": 1440,
+      "scrollWidth": 1430
+    },
+    {
+      "path": "/enganai/lab",
+      "width": 1440,
+      "scrollWidth": 1430
+    },
+    {
+      "path": "/enganai/museu",
+      "width": 1440,
+      "scrollWidth": 1430
+    },
+    {
+      "path": "/enganai/mutacoes",
+      "width": 1440,
+      "scrollWidth": 1430
+    },
+    {
+      "path": "/enganai/caos",
+      "width": 1440,
+      "scrollWidth": 1430
+    }
+  ],
+  "runtimeErrors": [],
+  "failedRequests": [
+    {
+      "url": "http://127.0.0.1:4173/favicon.ico",
+      "status": 404
+    }
+  ],
+  "tested": [
+    "menu-mural-bancada-aquecimento",
+    "quiz-score-isolation",
+    "keyboard-focus",
+    "native-dialog-escape-and-tab-trap",
+    "glossary-dialog-navigation",
+    "preferences-persistence",
+    "incompatible-preferences-preserved",
+    "blocked-storage-memory-fallback",
+    "sound-on-off",
+    "reduced-motion-system-and-manual",
+    "32-responsive-route-combinations",
+    "equivalent-200-percent-viewport"
+  ]
+}

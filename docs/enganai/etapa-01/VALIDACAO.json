@@ -1,0 +1,64 @@
+{
+  "stage": "01 — Direção e contratos",
+  "status": "passed",
+  "schemaDraft": "2020-12",
+  "contractKinds": 12,
+  "validExampleRecords": 16,
+  "invalidCasesRejected": [
+    "origin-in-question",
+    "wrong-score",
+    "duplicate-answer",
+    "latent-dimension",
+    "split-overlap",
+    "arena-test-leak",
+    "wrong-answer-key",
+    "false-discriminator-score",
+    "checkpoint-vector",
+    "history-regression",
+    "early-summary",
+    "path-traversal",
+    "mixed-mode",
+    "bad-progress",
+    "inconsistent-shape",
+    "fixture-as-recorded-result"
+  ],
+  "contrastPairs": [
+    {
+      "name": "Texto no cenário",
+      "ratio": 14.53,
+      "required": 4.5
+    },
+    {
+      "name": "Texto secundário no painel",
+      "ratio": 7.126,
+      "required": 4.5
+    },
+    {
+      "name": "Botão principal",
+      "ratio": 8.866,
+      "required": 4.5
+    },
+    {
+      "name": "Escolha Fifi",
+      "ratio": 5.273,
+      "required": 4.5
+    },
+    {
+      "name": "Controle Lupa",
+      "ratio": 5.818,
+      "required": 4.5
+    },
+    {
+      "name": "Texto no papel",
+      "ratio": 11.184,
+      "required": 4.5
+    },
+    {
+      "name": "Foco sobre painel",
+      "ratio": 9.623,
+      "required": 3
+    }
+  ],
+  "referenceSheets": 2,
+  "notice": "Validação da especificação e de exemplos fictícios; não valida pesos nem execução da GAN."
+}

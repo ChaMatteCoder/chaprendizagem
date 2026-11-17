@@ -1,0 +1,1247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:enganai:contracts:1",
+  "title": "enGAN.AI — contratos v1",
+  "description": "Contrato de planejamento. Registros fixture são exemplos e não podem ser publicados como resultados reais. Regras entre campos são verificadas no validador complementar.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/model-manifest"
+    },
+    {
+      "$ref": "#/$defs/dataset-split"
+    },
+    {
+      "$ref": "#/$defs/sample"
+    },
+    {
+      "$ref": "#/$defs/latent-set"
+    },
+    {
+      "$ref": "#/$defs/checkpoint"
+    },
+    {
+      "$ref": "#/$defs/history"
+    },
+    {
+      "$ref": "#/$defs/question"
+    },
+    {
+      "$ref": "#/$defs/round-reveal"
+    },
+    {
+      "$ref": "#/$defs/session"
+    },
+    {
+      "$ref": "#/$defs/creation"
+    },
+    {
+      "$ref": "#/$defs/progress"
+    },
+    {
+      "$ref": "#/$defs/preferences"
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,95}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "path": {
+      "type": "string",
+      "pattern": "^(?:[a-zA-Z0-9_.-]+/)*[a-zA-Z0-9_.-]+$"
+    },
+    "origin": {
+      "enum": [
+        "real",
+        "synthetic"
+      ]
+    },
+    "vector": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 1,
+      "maxItems": 4096
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset",
+        "width",
+        "height",
+        "channels",
+        "encoding"
+      ],
+      "properties": {
+        "asset": {
+          "$ref": "#/$defs/asset"
+        },
+        "width": {
+          "const": 28
+        },
+        "height": {
+          "const": 28
+        },
+        "channels": {
+          "const": 1
+        },
+        "encoding": {
+          "const": "png"
+        }
+      }
+    },
+    "latent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dimension",
+        "distribution",
+        "rngId",
+        "seed",
+        "values"
+      ],
+      "properties": {
+        "dimension": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "distribution": {
+          "const": "normal-0-1"
+        },
+        "rngId": {
+          "$ref": "#/$defs/id"
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "values": {
+          "$ref": "#/$defs/vector"
+        }
+      }
+    },
+    "real-source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "datasetId",
+        "partition",
+        "recordId"
+      ],
+      "properties": {
+        "origin": {
+          "const": "real"
+        },
+        "datasetId": {
+          "$ref": "#/$defs/id"
+        },
+        "partition": {
+          "enum": [
+            "train",
+            "development",
+            "arena",
+            "test"
+          ]
+        },
+        "recordId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "synthetic-source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "runId",
+        "checkpointId",
+        "generatorSha256",
+        "latent"
+      ],
+      "properties": {
+        "origin": {
+          "const": "synthetic"
+        },
+        "runId": {
+          "$ref": "#/$defs/id"
+        },
+        "checkpointId": {
+          "$ref": "#/$defs/id"
+        },
+        "generatorSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "latent": {
+          "$ref": "#/$defs/latent"
+        }
+      }
+    },
+    "provenance": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/real-source"
+        },
+        {
+          "$ref": "#/$defs/synthetic-source"
+        }
+      ]
+    },
+    "discriminator": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "runId",
+            "checkpointId",
+            "logit",
+            "score",
+            "threshold",
+            "predictedOrigin",
+            "meaning"
+          ],
+          "properties": {
+            "status": {
+              "const": "ready"
+            },
+            "runId": {
+              "$ref": "#/$defs/id"
+            },
+            "checkpointId": {
+              "$ref": "#/$defs/id"
+            },
+            "logit": {
+              "type": "number"
+            },
+            "score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "threshold": {
+              "const": 0.5
+            },
+            "predictedOrigin": {
+              "$ref": "#/$defs/origin"
+            },
+            "meaning": {
+              "const": "uncalibrated-sigmoid"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "unavailable",
+                "error"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
+    "tensor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "dtype",
+        "shape"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/id"
+        },
+        "dtype": {
+          "const": "float32"
+        },
+        "shape": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "const": "N"
+              }
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 4
+        }
+      }
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset",
+        "input",
+        "output"
+      ],
+      "properties": {
+        "asset": {
+          "$ref": "#/$defs/asset"
+        },
+        "input": {
+          "$ref": "#/$defs/tensor"
+        },
+        "output": {
+          "$ref": "#/$defs/tensor"
+        }
+      }
+    },
+    "model-manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "id",
+        "runId",
+        "family",
+        "runtime",
+        "generator",
+        "discriminator",
+        "image",
+        "latent",
+        "datasetId",
+        "splitManifest",
+        "trainingConfig",
+        "checkpointsPath",
+        "historyPath",
+        "fixedLatentSetId",
+        "environment",
+        "activeCheckpointId"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "model-manifest"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "runId": {
+          "$ref": "#/$defs/id"
+        },
+        "family": {
+          "const": "dcgan-compact"
+        },
+        "runtime": {
+          "const": "onnx"
+        },
+        "generator": {
+          "$ref": "#/$defs/network"
+        },
+        "discriminator": {
+          "$ref": "#/$defs/network"
+        },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "width",
+            "height",
+            "channels",
+            "layout",
+            "range"
+          ],
+          "properties": {
+            "width": {
+              "const": 28
+            },
+            "height": {
+              "const": 28
+            },
+            "channels": {
+              "const": 1
+            },
+            "layout": {
+              "const": "NCHW"
+            },
+            "range": {
+              "const": [
+                -1,
+                1
+              ]
+            }
+          }
+        },
+        "latent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dimension",
+            "distribution",
+            "rngId"
+          ],
+          "properties": {
+            "dimension": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4096
+            },
+            "distribution": {
+              "const": "normal-0-1"
+            },
+            "rngId": {
+              "$ref": "#/$defs/id"
+            }
+          }
+        },
+        "datasetId": {
+          "$ref": "#/$defs/id"
+        },
+        "splitManifest": {
+          "$ref": "#/$defs/asset"
+        },
+        "trainingConfig": {
+          "$ref": "#/$defs/asset"
+        },
+        "checkpointsPath": {
+          "$ref": "#/$defs/path"
+        },
+        "historyPath": {
+          "$ref": "#/$defs/path"
+        },
+        "fixedLatentSetId": {
+          "$ref": "#/$defs/id"
+        },
+        "environment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "python",
+            "pytorch",
+            "device"
+          ],
+          "properties": {
+            "python": {
+              "type": "string",
+              "minLength": 1
+            },
+            "pytorch": {
+              "type": "string",
+              "minLength": 1
+            },
+            "device": {
+              "enum": [
+                "cpu",
+                "cuda"
+              ]
+            }
+          }
+        },
+        "activeCheckpointId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "dataset-split": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "id",
+        "datasetId",
+        "source",
+        "sourceSha256",
+        "partitionSeed",
+        "partitions"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "dataset-split"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "datasetId": {
+          "const": "fashion-mnist"
+        },
+        "source": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sourceSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "partitionSeed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "partitions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "train",
+            "development",
+            "arena",
+            "test"
+          ],
+          "properties": {
+            "train": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "development": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "arena": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "test": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "id",
+        "image",
+        "provenance"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "sample"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "latent-set": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "id",
+        "dimension",
+        "distribution",
+        "rngId",
+        "vectors"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "latent-set"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "dimension": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "distribution": {
+          "const": "normal-0-1"
+        },
+        "rngId": {
+          "$ref": "#/$defs/id"
+        },
+        "vectors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/vector"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        }
+      }
+    },
+    "checkpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "id",
+        "runId",
+        "epoch",
+        "globalStep",
+        "generator",
+        "discriminator",
+        "fixedLatentSetId",
+        "previewSampleIds"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "checkpoint"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "runId": {
+          "$ref": "#/$defs/id"
+        },
+        "epoch": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "globalStep": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "generator": {
+          "$ref": "#/$defs/asset"
+        },
+        "discriminator": {
+          "$ref": "#/$defs/asset"
+        },
+        "fixedLatentSetId": {
+          "$ref": "#/$defs/id"
+        },
+        "previewSampleIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true
+        }
+      }
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "id",
+        "runId",
+        "unit",
+        "lossFamily",
+        "points"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "history"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "runId": {
+          "$ref": "#/$defs/id"
+        },
+        "unit": {
+          "enum": [
+            "optimizer-step",
+            "epoch"
+          ]
+        },
+        "lossFamily": {
+          "const": "bce-with-logits"
+        },
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "globalStep",
+              "epoch",
+              "generatorLoss",
+              "discriminatorLoss"
+            ],
+            "properties": {
+              "globalStep": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "epoch": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "generatorLoss": {
+                "type": "number",
+                "minimum": 0
+              },
+              "discriminatorLoss": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "sessionId",
+        "missionId",
+        "sampleId",
+        "roundIndex",
+        "roundCount",
+        "image"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "question"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "sessionId": {
+          "$ref": "#/$defs/id"
+        },
+        "missionId": {
+          "$ref": "#/$defs/id"
+        },
+        "sampleId": {
+          "$ref": "#/$defs/id"
+        },
+        "roundIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "roundCount": {
+          "const": 5
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        }
+      }
+    },
+    "round-reveal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "sampleId",
+        "roundIndex",
+        "playerChoice",
+        "correctOrigin",
+        "correct",
+        "points",
+        "provenance",
+        "discriminator"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "round-reveal"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "sampleId": {
+          "$ref": "#/$defs/id"
+        },
+        "roundIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "playerChoice": {
+          "$ref": "#/$defs/origin"
+        },
+        "correctOrigin": {
+          "$ref": "#/$defs/origin"
+        },
+        "correct": {
+          "type": "boolean"
+        },
+        "points": {
+          "enum": [
+            0,
+            100
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "discriminator": {
+          "$ref": "#/$defs/discriminator"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "correct": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "points": {
+                "const": 100
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "points": {
+                "const": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "id",
+        "missionId",
+        "phase",
+        "roundCount",
+        "currentRoundIndex",
+        "sampleIds",
+        "answers",
+        "score",
+        "selectionSeed",
+        "error"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "session"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "missionId": {
+          "$ref": "#/$defs/id"
+        },
+        "phase": {
+          "enum": [
+            "briefing",
+            "preparing",
+            "investigating",
+            "revealing",
+            "revealed",
+            "summary",
+            "error"
+          ]
+        },
+        "roundCount": {
+          "const": 5
+        },
+        "currentRoundIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "sampleIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "maxItems": 5,
+          "uniqueItems": true
+        },
+        "answers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/round-reveal"
+          },
+          "maxItems": 5
+        },
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500,
+          "multipleOf": 100
+        },
+        "selectionSeed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "error": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "code",
+                "message",
+                "recoverTo"
+              ],
+              "properties": {
+                "code": {
+                  "enum": [
+                    "asset-load",
+                    "model-load",
+                    "generation",
+                    "invalid-artifact"
+                  ]
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "recoverTo": {
+                  "enum": [
+                    "preparing",
+                    "investigating"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "creation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "id",
+        "runId",
+        "checkpointId",
+        "generatorSha256",
+        "latent",
+        "thumbnail",
+        "createdAt"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "creation"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "runId": {
+          "$ref": "#/$defs/id"
+        },
+        "checkpointId": {
+          "$ref": "#/$defs/id"
+        },
+        "generatorSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "latent": {
+          "$ref": "#/$defs/latent"
+        },
+        "thumbnail": {
+          "$ref": "#/$defs/image"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "mission-record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "missionId",
+        "bestScore",
+        "bestCorrect",
+        "completions"
+      ],
+      "properties": {
+        "missionId": {
+          "$ref": "#/$defs/id"
+        },
+        "bestScore": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500,
+          "multipleOf": 100
+        },
+        "bestCorrect": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "completions": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "completedMissionIds",
+        "missions",
+        "badges",
+        "completedSessionIds"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "progress"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "completedMissionIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "missions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/mission-record"
+          },
+          "maxItems": 3
+        },
+        "badges": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "first-mission",
+              "all-missions"
+            ]
+          },
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "completedSessionIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "kind",
+        "dataMode",
+        "soundEnabled",
+        "motion",
+        "explanation"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "preferences"
+        },
+        "dataMode": {
+          "enum": [
+            "fixture",
+            "recorded"
+          ]
+        },
+        "soundEnabled": {
+          "type": "boolean"
+        },
+        "motion": {
+          "enum": [
+            "system",
+            "reduced"
+          ]
+        },
+        "explanation": {
+          "enum": [
+            "intuitive",
+            "technical"
+          ]
+        }
+      }
+    }
+  }
+}

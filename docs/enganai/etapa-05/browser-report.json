@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "baseUrl": "http://127.0.0.1:4173",
+  "browser": "Chrome/153.0.8010.36",
+  "seed": 4242,
+  "firstMission": {
+    "correct": 3,
+    "score": 300,
+    "rounds": [
+      {
+        "round": 1,
+        "correct": true
+      },
+      {
+        "round": 2,
+        "correct": false
+      },
+      {
+        "round": 3,
+        "correct": true
+      },
+      {
+        "round": 4,
+        "correct": true
+      },
+      {
+        "round": 5,
+        "correct": false
+      }
+    ]
+  },
+  "storedProgress": {
+    "schemaVersion": 1,
+    "kind": "progress",
+    "dataMode": "recorded",
+    "completedMissionIds": [
+      "primeiros-rastros"
+    ],
+    "missions": [
+      {
+        "missionId": "primeiros-rastros",
+        "bestScore": 300,
+        "bestCorrect": 3,
+        "completions": 3
+      }
+    ],
+    "badges": [
+      "first-mission"
+    ],
+    "completedSessionIds": [
+      "s-978fedb3f2af5f06",
+      "s-b638548075a8edd0",
+      "s-fceb47b1f86af376"
+    ]
+  },
+  "tested": [
+    "locked-cases-by-url",
+    "briefing-after-bench-verification",
+    "origin-hidden-before-answer",
+    "png-blob-28x28",
+    "double-click-scores-once",
+    "focus-reveal-and-next-round",
+    "exit-confirmation-escape",
+    "summary-score-equals-answers",
+    "progress-saved-once",
+    "review-in-report",
+    "seed-reproduces-sample-and-png",
+    "replay-new-session-no-duplicates",
+    "mural-best-score-and-unlock",
+    "registered-previews-in-mural",
+    "preparation-error-and-retry",
+    "phone-390-order-touch-and-overflow"
+  ],
+  "runtimeErrors": []
+}

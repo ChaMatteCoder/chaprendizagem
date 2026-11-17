@@ -1,0 +1,440 @@
+{
+  "stage": 4,
+  "status": "passed",
+  "runId": "cpu-no-batchnorm-v1",
+  "manifestId": "cpu-no-batchnorm-v1-onnx-v1",
+  "decision": "pytorch-onnx-onnxruntime-web-static-delivery",
+  "exporter": {
+    "tool": "torch.onnx.export",
+    "dynamo": true,
+    "optimize": true,
+    "opset": 18,
+    "maxBatch": 1024,
+    "torch": "2.15.0+cpu",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.32.0"
+  },
+  "browserRuntime": {
+    "package": "onnxruntime-web",
+    "version": "1.31.1",
+    "executionProvider": "wasm"
+  },
+  "tolerance": {
+    "generatorAbs": 0.0001,
+    "pixelMaxDifference": 1,
+    "pixelMismatchFraction": 0.002,
+    "logitAbs": 0.0001,
+    "logitRel": 0.0001
+  },
+  "checkpoints": [
+    {
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-000",
+      "epoch": 0,
+      "generatorSha256": "0fc28989abf849cffe2055f6382d5de19e1258d64c857bcbbd1f3203abab3e40",
+      "discriminatorSha256": "d14d6118b0bdeb9b4c236e0fddecf274165be3f1730fb519c3f57cbb520282d9",
+      "sourceWeights": {
+        "generator": "4a29d09ec1791c2a51dd7deccf68077f865684d8076656344ba3f3a0af8a16d6",
+        "discriminator": "b43a4c708a566b690ed80f303ac416d5d8707108018ca9850d66b83b8cee0d25"
+      },
+      "operations": {
+        "generator": [
+          "ConvTranspose",
+          "Relu",
+          "Tanh"
+        ],
+        "discriminator": [
+          "Conv",
+          "LeakyRelu",
+          "Reshape"
+        ]
+      },
+      "pythonParity": {
+        "generatorFixedBatch": {
+          "count": 16,
+          "maxAbsError": 9.313225746154785e-09,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorFixedSingle": {
+          "count": 16,
+          "maxAbsError": 9.313225746154785e-09,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorDevelopmentLatents": {
+          "count": 512,
+          "maxAbsError": 1.0244548320770264e-08,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 401408,
+          "passed": true
+        },
+        "discriminatorFixedSynthetic": {
+          "count": 16,
+          "maxAbsError": 1.673470251262188e-10,
+          "maxAllowedRatio": 1.6733062011553557e-06,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentSynthetic": {
+          "count": 512,
+          "maxAbsError": 2.3283064365386963e-10,
+          "maxAllowedRatio": 2.3281095309357625e-06,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentReal": {
+          "count": 512,
+          "maxAbsError": 2.2351741790771484e-08,
+          "maxAllowedRatio": 0.00022134301252663136,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorRealSingle": {
+          "count": 16,
+          "maxAbsError": 1.955777406692505e-08,
+          "maxAllowedRatio": 0.0001939127832883969,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "registeredPreviews": {
+          "count": 16,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        }
+      }
+    },
+    {
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-001",
+      "epoch": 1,
+      "generatorSha256": "9d679a429009318e8a8acdea00fe9a77c0968a7d5da78ee9f10e399d9fdd41c2",
+      "discriminatorSha256": "7a7ab72c21924b34cc97b9ed67e45d478ab577fe65f4ffd4ebc94bde8a398140",
+      "sourceWeights": {
+        "generator": "6c0bde487dc364bd3744bc3f5fdd68888392197fb4a41f59ea7dc3720d08d4bb",
+        "discriminator": "58c5919fe3a5b43eb011ebe8b6f0bdcda152dbccbf743c6ba7fa217f46ef6c82"
+      },
+      "operations": {
+        "generator": [
+          "ConvTranspose",
+          "Relu",
+          "Tanh"
+        ],
+        "discriminator": [
+          "Conv",
+          "LeakyRelu",
+          "Reshape"
+        ]
+      },
+      "pythonParity": {
+        "generatorFixedBatch": {
+          "count": 16,
+          "maxAbsError": 4.76837158203125e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorFixedSingle": {
+          "count": 16,
+          "maxAbsError": 4.76837158203125e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorDevelopmentLatents": {
+          "count": 512,
+          "maxAbsError": 4.470348358154297e-07,
+          "pixelMaxDifference": 1,
+          "pixelMismatches": 2,
+          "pixelsCompared": 401408,
+          "passed": true
+        },
+        "discriminatorFixedSynthetic": {
+          "count": 16,
+          "maxAbsError": 2.384185791015625e-07,
+          "maxAllowedRatio": 0.0018435926176607609,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentSynthetic": {
+          "count": 512,
+          "maxAbsError": 3.8743019104003906e-07,
+          "maxAllowedRatio": 0.0030023802537471056,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentReal": {
+          "count": 512,
+          "maxAbsError": 5.066394805908203e-07,
+          "maxAllowedRatio": 0.00365750165656209,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorRealSingle": {
+          "count": 16,
+          "maxAbsError": 1.7136335372924805e-07,
+          "maxAllowedRatio": 0.001652511884458363,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "registeredPreviews": {
+          "count": 16,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        }
+      }
+    },
+    {
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-004",
+      "epoch": 4,
+      "generatorSha256": "61d7842b28f4c92fd3191be5891eb0dcbcd475ba562aff6e4617763be220cd5a",
+      "discriminatorSha256": "aed278cf2e9c2403bab34f73738c3d5e26955475402dc84ef47b5f051d80d018",
+      "sourceWeights": {
+        "generator": "040844f36ce0dc692bf8d3db39885f4fc82bca37b526b6608695fbb2fb866b51",
+        "discriminator": "b84ab15bd66095a68a762f1e108caa91b2c67f37d6eaf91f4f48cac5ea4e3d90"
+      },
+      "operations": {
+        "generator": [
+          "ConvTranspose",
+          "Relu",
+          "Tanh"
+        ],
+        "discriminator": [
+          "Conv",
+          "LeakyRelu",
+          "Reshape"
+        ]
+      },
+      "pythonParity": {
+        "generatorFixedBatch": {
+          "count": 16,
+          "maxAbsError": 4.917383193969727e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorFixedSingle": {
+          "count": 16,
+          "maxAbsError": 4.917383193969727e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorDevelopmentLatents": {
+          "count": 512,
+          "maxAbsError": 6.854534149169922e-07,
+          "pixelMaxDifference": 1,
+          "pixelMismatches": 1,
+          "pixelsCompared": 401408,
+          "passed": true
+        },
+        "discriminatorFixedSynthetic": {
+          "count": 16,
+          "maxAbsError": 5.364418029785156e-07,
+          "maxAllowedRatio": 0.004290197975933552,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentSynthetic": {
+          "count": 512,
+          "maxAbsError": 5.066394805908203e-07,
+          "maxAllowedRatio": 0.004502207040786743,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentReal": {
+          "count": 512,
+          "maxAbsError": 5.066394805908203e-07,
+          "maxAllowedRatio": 0.003942939918488264,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorRealSingle": {
+          "count": 16,
+          "maxAbsError": 1.564621925354004e-07,
+          "maxAllowedRatio": 0.0014473069459199905,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "registeredPreviews": {
+          "count": 16,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        }
+      }
+    },
+    {
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-008",
+      "epoch": 8,
+      "generatorSha256": "d7fcc97433462dc7a3a3e22ed40836efe16fb426178a2eb63760bd8f34304c01",
+      "discriminatorSha256": "10b6a7940b568f3874a15499d27d11ec4d3042b34674206635a9257e4ee52e47",
+      "sourceWeights": {
+        "generator": "a904a7755f422411d13476e2a1178e878d22c8d6831345e4de1a8966e61e9d4e",
+        "discriminator": "05c37bfa21c3c22fdabb8ac0d279880aaca496821fc33ce396516b38341ad06d"
+      },
+      "operations": {
+        "generator": [
+          "ConvTranspose",
+          "Relu",
+          "Tanh"
+        ],
+        "discriminator": [
+          "Conv",
+          "LeakyRelu",
+          "Reshape"
+        ]
+      },
+      "pythonParity": {
+        "generatorFixedBatch": {
+          "count": 16,
+          "maxAbsError": 8.903443813323975e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorFixedSingle": {
+          "count": 16,
+          "maxAbsError": 8.903443813323975e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorDevelopmentLatents": {
+          "count": 512,
+          "maxAbsError": 1.1026859283447266e-06,
+          "pixelMaxDifference": 1,
+          "pixelMismatches": 1,
+          "pixelsCompared": 401408,
+          "passed": true
+        },
+        "discriminatorFixedSynthetic": {
+          "count": 16,
+          "maxAbsError": 3.2782554626464844e-07,
+          "maxAllowedRatio": 0.0026148278266191483,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentSynthetic": {
+          "count": 512,
+          "maxAbsError": 7.487833499908447e-07,
+          "maxAllowedRatio": 0.0072560557164251804,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentReal": {
+          "count": 512,
+          "maxAbsError": 1.0132789611816406e-06,
+          "maxAllowedRatio": 0.0076802680268883705,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorRealSingle": {
+          "count": 16,
+          "maxAbsError": 5.662441253662109e-07,
+          "maxAllowedRatio": 0.004826690070331097,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "registeredPreviews": {
+          "count": 16,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        }
+      }
+    }
+  ],
+  "onnxRuntimeWebParityNode": {
+    "maxGeneratorAbsError": 1.0132789611816406e-06,
+    "maxLogitAbsError": 8.344650268554688e-07,
+    "pixelMismatches": 0,
+    "predictionChanges": 0,
+    "checkpoints": 4
+  },
+  "browser": {
+    "report": "browser-report.json",
+    "checkpoints": [
+      {
+        "checkpointId": "cpu-no-batchnorm-v1-epoch-001",
+        "readyMs": 913,
+        "maxPixelDifference": 0
+      },
+      {
+        "checkpointId": "cpu-no-batchnorm-v1-epoch-004",
+        "readyMs": 761,
+        "maxPixelDifference": 0
+      },
+      {
+        "checkpointId": "cpu-no-batchnorm-v1-epoch-008",
+        "readyMs": 564,
+        "maxPixelDifference": 0
+      }
+    ],
+    "warmRevisit": {
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-008",
+      "readyMs": 76,
+      "cached": true
+    },
+    "tested": [
+      "no-model-download-on-entry-and-mural",
+      "three-checkpoints-parity-in-browser",
+      "canvas-pixels-equal-pytorch-reference",
+      "session-reuse",
+      "network-error-focus-and-retry",
+      "tampered-weights-rejected",
+      "phone-390-no-overflow",
+      "reduced-motion-spinner",
+      "unavailable-without-webassembly"
+    ]
+  },
+  "reExportIdentical": true,
+  "tests": {
+    "python": 12,
+    "javascript": 165,
+    "stage02BrowserRegression": {
+      "status": "passed",
+      "combinations": 32
+    }
+  },
+  "officialTestEvaluated": false,
+  "arenaUsedForParity": false,
+  "missionPlayable": false,
+  "checks": [
+    "research-run-verified-before-export",
+    "onnx-checker-full",
+    "allowed-operations",
+    "dynamic-batch-1-and-n",
+    "embedded-weights",
+    "deterministic-re-export",
+    "python-ort-parity",
+    "registered-preview-pixels",
+    "node-ort-web-parity",
+    "browser-ort-web-parity",
+    "canvas-equals-reference",
+    "sha256-integrity",
+    "fixture-rejection",
+    "worker-timeout-cancel-restart",
+    "network-error-retry",
+    "unavailable-without-webassembly",
+    "lazy-runtime-loading",
+    "lint",
+    "vite-production-build",
+    "stage-01-contracts"
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "version": 1,
+  "status": "specified",
+  "brand": {
+    "name": "enGAN.AI",
+    "pronunciation": "engana aí",
+    "tagline": "Engana aí. Aprende aqui.",
+    "subtitle": "A Guerra dos Pixels"
+  },
+  "game": {
+    "roundCount": 5,
+    "pointsCorrect": 100,
+    "pointsIncorrect": 0,
+    "maxScore": 500,
+    "timer": false,
+    "lives": false,
+    "sequenceBonus": false,
+    "originCounts": [
+      2,
+      3
+    ],
+    "balanceRule": "Sortear qual origem terá três amostras; embaralhar cinco sem repetição.",
+    "tutorialOptional": true,
+    "labAccess": "always",
+    "selectionRetryPreservesSeed": true,
+    "wrongAnswerUnlocksNext": true,
+    "resumeAcrossReload": false,
+    "progressSavedOn": "summary-once-per-session-id",
+    "discriminatorBeforeAnswer": false,
+    "discriminatorThreshold": 0.5,
+    "discriminatorTieOrigin": "real",
+    "tutorialRoute": "/enganai/aquecimento"
+  },
+  "missions": [
+    {
+      "id": "primeiros-rastros",
+      "title": "Primeiros rastros",
+      "requiresCompletion": null,
+      "checkpointRole": "initial"
+    },
+    {
+      "id": "novos-padroes",
+      "title": "Novos padrões",
+      "requiresCompletion": "primeiros-rastros",
+      "checkpointRole": "intermediate"
+    },
+    {
+      "id": "grande-duelo",
+      "title": "O grande duelo",
+      "requiresCompletion": "novos-padroes",
+      "checkpointRole": "advanced"
+    }
+  ],
+  "storage": {
+    "preferences": "enganai.preferences.v1",
+    "progress": "enganai.progress.v1",
+    "creations": "enganai.creations.v1",
+    "legacySeeds": "enganai-seeds",
+    "legacySeedMigration": "Oferecer importar apenas os números, sem afirmar que reproduzem imagens de uma GAN.",
+    "unrecognizedVersion": "Preservar valor antigo e iniciar estado local compatível; oferecer limpeza explícita."
+  },
+  "screens": [
+    {
+      "id": "01",
+      "route": "/enganai",
+      "name": "Entrada",
+      "primary": "Começar missão",
+      "next": "02"
+    },
+    {
+      "id": "02",
+      "route": "/enganai/missoes",
+      "name": "Mural",
+      "primary": "Iniciar missão",
+      "next": "03"
+    },
+    {
+      "id": "03",
+      "route": "/enganai/arena",
+      "state": "investigating",
+      "name": "Investigação",
+      "primary": "Escolher origem",
+      "next": "04"
+    },
+    {
+      "id": "04",
+      "route": "/enganai/arena",
+      "state": "revealed",
+      "name": "Revelação",
+      "primary": "Próxima imagem / Ver relatório",
+      "next": "03 ou 05"
+    },
+    {
+      "id": "05",
+      "route": "/enganai/arena",
+      "state": "summary",
+      "name": "Relatório",
+      "primary": "Voltar ao mural",
+      "next": "02"
+    },
+    {
+      "id": "06",
+      "route": "/enganai/lab",
+      "name": "GANLab",
+      "primary": "Acompanhar o percurso",
+      "next": "07"
+    },
+    {
+      "id": "07",
+      "route": "/enganai/museu",
+      "name": "Museu",
+      "primary": "Comparar checkpoints",
+      "next": "06 ou 08"
+    },
+    {
+      "id": "08",
+      "route": "/enganai/mutacoes",
+      "name": "Mutações",
+      "primary": "Gerar imagem",
+      "next": "08"
+    },
+    {
+      "id": "09",
+      "route": "/enganai/caos",
+      "name": "Caos",
+      "primary": "Comparar execuções",
+      "next": "06"
+    },
+    {
+      "id": "10",
+      "route": "/enganai/arena",
+      "name": "Arena móvel",
+      "variantOf": "03 e 04",
+      "primary": "Escolher origem",
+      "next": "04"
+    }
+  ],
+  "deferredExperiments": [
+    "latent-dimension",
+    "training-epochs",
+    "optimizer-settings",
+    "checkpoint-selection",
+    "onnx-parity-tolerance",
+    "real-run-performance"
+  ],
+  "references": "../proposta-v2/telas/"
+}

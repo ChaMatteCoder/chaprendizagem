@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "status": "specified",
+  "scope": "enGAN.AI — Ateliê de Investigação dos Pixels",
+  "colors": {
+    "scene": "#141923",
+    "panel": "#252A32",
+    "paper": "#E4D2AF",
+    "ink": "#241D18",
+    "text": "#EEE9DD",
+    "muted": "#BAB6AC",
+    "fifi": "#775569",
+    "lupaAccent": "#487578",
+    "lupaControl": "#375F63",
+    "primary": "#E5B664",
+    "primaryHover": "#F0C47B",
+    "focus": "#F7CD82"
+  },
+  "contrastPairs": [
+    {
+      "name": "Texto no cenário",
+      "foreground": "text",
+      "background": "scene",
+      "minimumRatio": 4.5
+    },
+    {
+      "name": "Texto secundário no painel",
+      "foreground": "muted",
+      "background": "panel",
+      "minimumRatio": 4.5
+    },
+    {
+      "name": "Botão principal",
+      "foreground": "ink",
+      "background": "primary",
+      "minimumRatio": 4.5
+    },
+    {
+      "name": "Escolha Fifi",
+      "foreground": "text",
+      "background": "fifi",
+      "minimumRatio": 4.5
+    },
+    {
+      "name": "Controle Lupa",
+      "foreground": "text",
+      "background": "lupaControl",
+      "minimumRatio": 4.5
+    },
+    {
+      "name": "Texto no papel",
+      "foreground": "ink",
+      "background": "paper",
+      "minimumRatio": 4.5
+    },
+    {
+      "name": "Foco sobre painel",
+      "foreground": "focus",
+      "background": "panel",
+      "minimumRatio": 3
+    }
+  ],
+  "typography": {
+    "display": {
+      "family": "Lilita One",
+      "source": "public/fonts/iadivinha/LilitaOne-Regular.ttf",
+      "license": "public/fonts/iadivinha/LilitaOne-OFL.txt",
+      "usage": "Marca, títulos curtos; sem parágrafos em caixa alta."
+    },
+    "body": {
+      "family": "Manrope",
+      "source": "public/fonts/enganai/Manrope-Variable.ttf",
+      "license": "public/fonts/enganai/OFL.txt",
+      "usage": "Instruções, controles, detalhes técnicos."
+    },
+    "sizePx": {
+      "body": 16,
+      "label": 14,
+      "caption": 12,
+      "button": 16,
+      "titleMobile": 30,
+      "titleDesktop": 48
+    },
+    "lineHeight": {
+      "body": 1.6,
+      "heading": 1.15
+    }
+  },
+  "spacingPx": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48,
+    64
+  ],
+  "radiiPx": {
+    "control": 12,
+    "instrument": 18,
+    "paper": 8
+  },
+  "targetSizePx": 48,
+  "focus": {
+    "widthPx": 3,
+    "offsetPx": 4,
+    "colorToken": "focus",
+    "onPaperInkToken": "ink"
+  },
+  "layout": {
+    "mobileMaxPx": 759,
+    "tabletMaxPx": 1099,
+    "desktopMinPx": 1100,
+    "minSupportedPx": 320,
+    "safeMarginMobilePx": 16,
+    "safeMarginDesktopPx": 32,
+    "sampleMinWidthMobilePx": 240,
+    "sampleMaxWidthDesktopPx": 448
+  },
+  "motionMs": {
+    "feedback": 160,
+    "screen": 240,
+    "characterReaction": 360
+  },
+  "motionReduced": {
+    "parallax": false,
+    "float": false,
+    "decorativeLoop": false,
+    "screenDurationMs": 0
+  },
+  "audioDefault": "off",
+  "colorDistributionGuidance": {
+    "neutralPercent": 80,
+    "accentPercent": 15,
+    "primaryActionPercent": 5
+  },
+  "imageRendering": "pixelated",
+  "primaryActionsPerScreen": 1
+}

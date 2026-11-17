@@ -2,7 +2,7 @@
 
 Chaprendizagem é um laboratório digital sobre aprendizagem de máquina. O projeto combina explicações teóricas, visualizações interativas e pequenos experimentos de código para transformar conceitos de modelos em páginas navegáveis e fáceis de revisar.
 
-Os módulos incluem **Perceptron**, **Adaline**, **MLP**, **K-Means**, **Convolução** e **CNN CIFAR-10 (PixelLab)**, além dos jogos **Pixel em Pânico!**, **IAdivinha!** e **Sonar ou Azar?**. Cada trilha reúne explicações e experimentos interativos.
+Os módulos incluem **Perceptron**, **Adaline**, **MLP**, **K-Means**, **Convolução**, **CNN CIFAR-10 (PixelLab)** e **enGAN.AI**, além dos jogos **Pixel em Pânico!**, **IAdivinha!** e **Sonar ou Azar?**. Cada trilha reúne explicações e experimentos interativos.
 
 ## Stack
 
@@ -40,6 +40,10 @@ chaprendizagem/
 ```
 
 ## Como rodar
+
+### enGAN.AI — A Guerra dos Pixels
+
+Acesse `/enganai` pelo catálogo de projetos ou pela seção Módulos. A etapa 02 implementou o ateliê, mural, bancada, aquecimento e preferências. A [etapa 03](docs/enganai/etapa-03/README.md) acrescenta o pipeline real em PyTorch: Fashion-MNIST separado em treino/desenvolvimento/arena/teste, duas execuções de oito épocas, checkpoints, perdas, procedência e reprodução das amostras. A [etapa 04](docs/enganai/etapa-04/README.md) exporta G e D para ONNX, com paridade medida contra o PyTorch, e os executa no navegador com ONNX Runtime Web dentro da bancada da arena. A [etapa 05](docs/enganai/etapa-05/README.md) torna a arena jogável: cinco evidências (fotos reais da partição reservada e criações de G geradas na hora), resposta única, 100 pontos por acerto, palpite da Lupa após a resposta, relatório revisável e progresso que libera os próximos casos. Escopo e capturas: [guia do enGAN.AI](docs/enganai/README.md). Reprodução: [pipeline científico](training/enganai/README.md).
 
 ### Pixel em Pânico! + PixelLab — CNN real e CIFAR-10
 

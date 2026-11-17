@@ -1,0 +1,92 @@
+{
+  "stage": 3,
+  "status": "passed",
+  "dataPartitions": {
+    "train": 50000,
+    "development": 5000,
+    "arena": 5000,
+    "test": 10000
+  },
+  "pythonTests": 8,
+  "javascriptTests": 154,
+  "schemaSpecification": {
+    "contracts": 12,
+    "fixtures": 16,
+    "invalidFixturesRejected": 16
+  },
+  "integrationInvalidCasesRejected": [
+    "weight-bytes",
+    "latent-provenance",
+    "fixture"
+  ],
+  "completedRuns": [
+    {
+      "runId": "cpu-baseline-v1",
+      "verification": {
+        "status": "passed",
+        "runId": "cpu-baseline-v1",
+        "recordedSchemaRecords": 71,
+        "checkpoints": 4,
+        "previewsRecomputed": 64,
+        "maxPreviewPixelError": 0,
+        "weightL1Change": {
+          "generator": 4709.450918674469,
+          "discriminator": 178.32929873466492
+        },
+        "diagnostics": "recomputed-final-development-diagnostics",
+        "officialTestEvaluated": false,
+        "browserReady": false
+      }
+    },
+    {
+      "runId": "cpu-no-batchnorm-v1",
+      "verification": {
+        "status": "passed",
+        "runId": "cpu-no-batchnorm-v1",
+        "recordedSchemaRecords": 71,
+        "checkpoints": 4,
+        "previewsRecomputed": 64,
+        "maxPreviewPixelError": 0,
+        "weightL1Change": {
+          "generator": 4752.540372014046,
+          "discriminator": 283.19228744506836
+        },
+        "diagnostics": "recomputed-final-development-diagnostics",
+        "officialTestEvaluated": false,
+        "browserReady": false
+      }
+    }
+  ],
+  "selectedRunId": "cpu-no-batchnorm-v1",
+  "inferenceConnected": false,
+  "officialTestEvaluated": false,
+  "checks": [
+    "dataset-source-md5-and-sha256",
+    "idx-shapes-and-byte-lengths",
+    "partition-disjunction-and-coverage",
+    "training-selection-isolation",
+    "G-and-D-gradient-updates",
+    "reproducible-short-training",
+    "Adam-and-RNG-resume-equivalence",
+    "recorded-schema-conformance",
+    "preview-pixels-recomputed-exactly",
+    "final-development-diagnostics-recomputed",
+    "lint",
+    "vite-production-build"
+  ],
+  "smokeVerification": {
+    "status": "passed",
+    "runId": "smoke-resumable-v1",
+    "recordedSchemaRecords": 37,
+    "checkpoints": 2,
+    "previewsRecomputed": 32,
+    "maxPreviewPixelError": 0,
+    "weightL1Change": {
+      "generator": 266.3268154859543,
+      "discriminator": 26.948840975761414
+    },
+    "diagnostics": "recomputed-final-development-diagnostics",
+    "officialTestEvaluated": false,
+    "browserReady": false
+  }
+}

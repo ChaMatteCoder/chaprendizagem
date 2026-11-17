@@ -1,0 +1,38 @@
+{
+  "runId": "cpu-baseline-v1",
+  "epochs": 8,
+  "optimizerSteps": 3128,
+  "trainingRecords": 50000,
+  "elapsedSeconds": 647.7507295539999,
+  "generatorParameters": 234176,
+  "discriminatorParameters": 10080,
+  "finalEpochLosses": {
+    "epoch": 8,
+    "globalStep": 3128,
+    "examplesSeen": 50000,
+    "generatorLoss": 0.07000616418361663,
+    "discriminatorLoss": 0.003222205918878317,
+    "seconds": 97.561921622
+  },
+  "developmentDiagnostics": {
+    "epoch": 8,
+    "globalStep": 3128,
+    "realCount": 512,
+    "syntheticCount": 512,
+    "realCorrect": 248,
+    "syntheticCorrect": 0,
+    "balancedOriginAccuracy": 0.2421875,
+    "realMeanSigmoid": 0.48084452748298645,
+    "syntheticMeanSigmoid": 0.9220028519630432,
+    "discriminatorLoss": 3.3532824516296387,
+    "generatorLoss": 0.08133291453123093,
+    "uniqueQuantizedImages": 512,
+    "meanPixelStandardDeviation": 0.1600266993045807
+  },
+  "diagnosticMeaning": "D distinguishes held-out real development images from current G outputs. This is not image quality, test accuracy, nor general AI detection.",
+  "selection": {
+    "rule": "last-predeclared-epoch",
+    "qualityClaim": "preliminary-baseline-not-a-universal-ai-detector"
+  },
+  "testEvaluated": false
+}

@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "baseUrl": "http://127.0.0.1:4173",
+  "browser": "Chrome/153.0.8010.36",
+  "runtime": {
+    "package": "onnxruntime-web",
+    "version": "1.31.1",
+    "executionProvider": "wasm"
+  },
+  "tolerance": {
+    "generatorAbs": 0.0001,
+    "pixelMaxDifference": 1,
+    "pixelMismatchFraction": 0.002,
+    "logitAbs": 0.0001,
+    "logitRel": 0.0001
+  },
+  "checkpoints": [
+    {
+      "mission": "primeiros-rastros",
+      "epoch": 1,
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-001",
+      "readyMs": 656,
+      "canvas": {
+        "samples": 4,
+        "maxDifference": 0,
+        "mismatches": 0,
+        "nonBlank": 3114
+      },
+      "facts": [
+        "16 vetores reproduzidos; erro máximo 3,6 × 10⁻⁷ (limite 10⁻⁴)",
+        "32 leituras conferidas; erro máximo 2,1 × 10⁻⁷, 0 decisões alteradas",
+        "cpu-no-batchnorm-v1 · época 1 · ONNX Runtime Web 1.31.1 (WASM) · pronta em 656 ms"
+      ]
+    },
+    {
+      "mission": "novos-padroes",
+      "epoch": 4,
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-004",
+      "readyMs": 614,
+      "canvas": {
+        "samples": 4,
+        "maxDifference": 0,
+        "mismatches": 0,
+        "nonBlank": 2842
+      },
+      "facts": [
+        "16 vetores reproduzidos; erro máximo 5,8 × 10⁻⁷ (limite 10⁻⁴)",
+        "32 leituras conferidas; erro máximo 3,6 × 10⁻⁷, 0 decisões alteradas",
+        "cpu-no-batchnorm-v1 · época 4 · ONNX Runtime Web 1.31.1 (WASM) · pronta em 614 ms"
+      ]
+    },
+    {
+      "mission": "grande-duelo",
+      "epoch": 8,
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-008",
+      "readyMs": 403,
+      "canvas": {
+        "samples": 4,
+        "maxDifference": 0,
+        "mismatches": 0,
+        "nonBlank": 2104
+      },
+      "facts": [
+        "16 vetores reproduzidos; erro máximo 10⁻⁶ (limite 10⁻⁴)",
+        "32 leituras conferidas; erro máximo 8,3 × 10⁻⁷, 0 decisões alteradas",
+        "cpu-no-batchnorm-v1 · época 8 · ONNX Runtime Web 1.31.1 (WASM) · pronta em 403 ms"
+      ]
+    }
+  ],
+  "warmRevisit": {
+    "checkpointId": "cpu-no-batchnorm-v1-epoch-008",
+    "readyMs": 47,
+    "cached": true
+  },
+  "failures": {
+    "network": "Não foi possível baixar os arquivos do modelo.",
+    "integrity": "Assinatura SHA-256 diferente em onnx/epoch-001/discriminator.onnx.",
+    "unavailable": "no-webassembly"
+  },
+  "tested": [
+    "no-model-download-on-entry-and-mural",
+    "three-checkpoints-parity-in-browser",
+    "canvas-pixels-equal-pytorch-reference",
+    "session-reuse",
+    "network-error-focus-and-retry",
+    "tampered-weights-rejected",
+    "phone-390-no-overflow",
+    "reduced-motion-spinner",
+    "unavailable-without-webassembly"
+  ],
+  "runtimeErrors": []
+}

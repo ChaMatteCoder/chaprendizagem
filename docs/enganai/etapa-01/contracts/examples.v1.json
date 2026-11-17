@@ -1,0 +1,650 @@
+{
+  "fixtureNotice": "Somente exemplos de contrato. Nenhum arquivo de pesos, imagem de dataset ou resultado existe nestes caminhos. Dimensão 4, hashes nulos e métricas são deliberadamente fictícios.",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "kind": "model-manifest",
+      "dataMode": "fixture",
+      "id": "fixture-manifest",
+      "runId": "fixture-run",
+      "family": "dcgan-compact",
+      "runtime": "onnx",
+      "generator": {
+        "asset": {
+          "path": "fixtures/generator.onnx",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "bytes": 1
+        },
+        "input": {
+          "name": "latent",
+          "dtype": "float32",
+          "shape": [
+            "N",
+            4,
+            1,
+            1
+          ]
+        },
+        "output": {
+          "name": "image",
+          "dtype": "float32",
+          "shape": [
+            "N",
+            1,
+            28,
+            28
+          ]
+        }
+      },
+      "discriminator": {
+        "asset": {
+          "path": "fixtures/discriminator.onnx",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "bytes": 1
+        },
+        "input": {
+          "name": "image",
+          "dtype": "float32",
+          "shape": [
+            "N",
+            1,
+            28,
+            28
+          ]
+        },
+        "output": {
+          "name": "logit",
+          "dtype": "float32",
+          "shape": [
+            "N",
+            1
+          ]
+        }
+      },
+      "image": {
+        "width": 28,
+        "height": 28,
+        "channels": 1,
+        "layout": "NCHW",
+        "range": [
+          -1,
+          1
+        ]
+      },
+      "latent": {
+        "dimension": 4,
+        "distribution": "normal-0-1",
+        "rngId": "fixture-rng-not-production"
+      },
+      "datasetId": "fashion-mnist",
+      "splitManifest": {
+        "path": "fixtures/split.json",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "bytes": 1
+      },
+      "trainingConfig": {
+        "path": "fixtures/config.json",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "bytes": 1
+      },
+      "checkpointsPath": "fixtures/checkpoints.json",
+      "historyPath": "fixtures/history.json",
+      "fixedLatentSetId": "fixture-fixed-z",
+      "environment": {
+        "python": "fixture",
+        "pytorch": "fixture",
+        "device": "cpu"
+      },
+      "activeCheckpointId": "fixture-checkpoint"
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "dataset-split",
+      "dataMode": "fixture",
+      "id": "fixture-split",
+      "datasetId": "fashion-mnist",
+      "source": "https://github.com/zalandoresearch/fashion-mnist",
+      "sourceSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "partitionSeed": 42,
+      "partitions": {
+        "train": [
+          "fixture-train-01"
+        ],
+        "development": [
+          "fixture-dev-01"
+        ],
+        "arena": [
+          "fixture-arena-01",
+          "fixture-arena-02"
+        ],
+        "test": [
+          "fixture-test-01"
+        ]
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "latent-set",
+      "dataMode": "fixture",
+      "id": "fixture-fixed-z",
+      "dimension": 4,
+      "distribution": "normal-0-1",
+      "rngId": "fixture-rng-not-production",
+      "vectors": [
+        [
+          0.25,
+          -0.5,
+          1.0,
+          -0.75
+        ]
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "checkpoint",
+      "dataMode": "fixture",
+      "id": "fixture-checkpoint",
+      "runId": "fixture-run",
+      "epoch": 1,
+      "globalStep": 1,
+      "generator": {
+        "path": "fixtures/generator.onnx",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "bytes": 1
+      },
+      "discriminator": {
+        "path": "fixtures/discriminator.onnx",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "bytes": 1
+      },
+      "fixedLatentSetId": "fixture-fixed-z",
+      "previewSampleIds": [
+        "fixture-sample-01"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "history",
+      "dataMode": "fixture",
+      "id": "fixture-history",
+      "runId": "fixture-run",
+      "unit": "optimizer-step",
+      "lossFamily": "bce-with-logits",
+      "points": [
+        {
+          "globalStep": 1,
+          "epoch": 1,
+          "generatorLoss": 0.8,
+          "discriminatorLoss": 1.3
+        },
+        {
+          "globalStep": 2,
+          "epoch": 1,
+          "generatorLoss": 0.9,
+          "discriminatorLoss": 1.2
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "sample",
+      "dataMode": "fixture",
+      "id": "fixture-sample-01",
+      "image": {
+        "asset": {
+          "path": "fixtures/fixture-sample-01.png",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "bytes": 1
+        },
+        "width": 28,
+        "height": 28,
+        "channels": 1,
+        "encoding": "png"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "runId": "fixture-run",
+        "checkpointId": "fixture-checkpoint",
+        "generatorSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "latent": {
+          "dimension": 4,
+          "distribution": "normal-0-1",
+          "rngId": "fixture-rng-not-production",
+          "seed": 42,
+          "values": [
+            0.25,
+            -0.5,
+            1.0,
+            -0.75
+          ]
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "sample",
+      "dataMode": "fixture",
+      "id": "fixture-sample-02",
+      "image": {
+        "asset": {
+          "path": "fixtures/fixture-sample-02.png",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "bytes": 1
+        },
+        "width": 28,
+        "height": 28,
+        "channels": 1,
+        "encoding": "png"
+      },
+      "provenance": {
+        "origin": "real",
+        "datasetId": "fashion-mnist",
+        "partition": "arena",
+        "recordId": "fixture-arena-01"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "sample",
+      "dataMode": "fixture",
+      "id": "fixture-sample-03",
+      "image": {
+        "asset": {
+          "path": "fixtures/fixture-sample-03.png",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "bytes": 1
+        },
+        "width": 28,
+        "height": 28,
+        "channels": 1,
+        "encoding": "png"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "runId": "fixture-run",
+        "checkpointId": "fixture-checkpoint",
+        "generatorSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "latent": {
+          "dimension": 4,
+          "distribution": "normal-0-1",
+          "rngId": "fixture-rng-not-production",
+          "seed": 44,
+          "values": [
+            0.27,
+            -0.48,
+            1.02,
+            -0.73
+          ]
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "sample",
+      "dataMode": "fixture",
+      "id": "fixture-sample-04",
+      "image": {
+        "asset": {
+          "path": "fixtures/fixture-sample-04.png",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "bytes": 1
+        },
+        "width": 28,
+        "height": 28,
+        "channels": 1,
+        "encoding": "png"
+      },
+      "provenance": {
+        "origin": "real",
+        "datasetId": "fashion-mnist",
+        "partition": "arena",
+        "recordId": "fixture-arena-02"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "sample",
+      "dataMode": "fixture",
+      "id": "fixture-sample-05",
+      "image": {
+        "asset": {
+          "path": "fixtures/fixture-sample-05.png",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "bytes": 1
+        },
+        "width": 28,
+        "height": 28,
+        "channels": 1,
+        "encoding": "png"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "runId": "fixture-run",
+        "checkpointId": "fixture-checkpoint",
+        "generatorSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "latent": {
+          "dimension": 4,
+          "distribution": "normal-0-1",
+          "rngId": "fixture-rng-not-production",
+          "seed": 46,
+          "values": [
+            0.29,
+            -0.46,
+            1.04,
+            -0.71
+          ]
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "question",
+      "dataMode": "fixture",
+      "sessionId": "fixture-session",
+      "missionId": "primeiros-rastros",
+      "sampleId": "fixture-sample-01",
+      "roundIndex": 0,
+      "roundCount": 5,
+      "image": {
+        "asset": {
+          "path": "fixtures/fixture-sample-01.png",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "bytes": 1
+        },
+        "width": 28,
+        "height": 28,
+        "channels": 1,
+        "encoding": "png"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "round-reveal",
+      "dataMode": "fixture",
+      "sampleId": "fixture-sample-01",
+      "roundIndex": 0,
+      "playerChoice": "synthetic",
+      "correctOrigin": "synthetic",
+      "correct": true,
+      "points": 100,
+      "provenance": {
+        "origin": "synthetic",
+        "runId": "fixture-run",
+        "checkpointId": "fixture-checkpoint",
+        "generatorSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "latent": {
+          "dimension": 4,
+          "distribution": "normal-0-1",
+          "rngId": "fixture-rng-not-production",
+          "seed": 42,
+          "values": [
+            0.25,
+            -0.5,
+            1.0,
+            -0.75
+          ]
+        }
+      },
+      "discriminator": {
+        "status": "ready",
+        "runId": "fixture-run",
+        "checkpointId": "fixture-checkpoint",
+        "logit": 0,
+        "score": 0.5,
+        "threshold": 0.5,
+        "predictedOrigin": "real",
+        "meaning": "uncalibrated-sigmoid"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "session",
+      "dataMode": "fixture",
+      "id": "fixture-session",
+      "missionId": "primeiros-rastros",
+      "phase": "summary",
+      "roundCount": 5,
+      "currentRoundIndex": 4,
+      "sampleIds": [
+        "fixture-sample-01",
+        "fixture-sample-02",
+        "fixture-sample-03",
+        "fixture-sample-04",
+        "fixture-sample-05"
+      ],
+      "answers": [
+        {
+          "schemaVersion": 1,
+          "kind": "round-reveal",
+          "dataMode": "fixture",
+          "sampleId": "fixture-sample-01",
+          "roundIndex": 0,
+          "playerChoice": "synthetic",
+          "correctOrigin": "synthetic",
+          "correct": true,
+          "points": 100,
+          "provenance": {
+            "origin": "synthetic",
+            "runId": "fixture-run",
+            "checkpointId": "fixture-checkpoint",
+            "generatorSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "latent": {
+              "dimension": 4,
+              "distribution": "normal-0-1",
+              "rngId": "fixture-rng-not-production",
+              "seed": 42,
+              "values": [
+                0.25,
+                -0.5,
+                1.0,
+                -0.75
+              ]
+            }
+          },
+          "discriminator": {
+            "status": "ready",
+            "runId": "fixture-run",
+            "checkpointId": "fixture-checkpoint",
+            "logit": 0,
+            "score": 0.5,
+            "threshold": 0.5,
+            "predictedOrigin": "real",
+            "meaning": "uncalibrated-sigmoid"
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "kind": "round-reveal",
+          "dataMode": "fixture",
+          "sampleId": "fixture-sample-02",
+          "roundIndex": 1,
+          "playerChoice": "real",
+          "correctOrigin": "real",
+          "correct": true,
+          "points": 100,
+          "provenance": {
+            "origin": "real",
+            "datasetId": "fashion-mnist",
+            "partition": "arena",
+            "recordId": "fixture-arena-01"
+          },
+          "discriminator": {
+            "status": "ready",
+            "runId": "fixture-run",
+            "checkpointId": "fixture-checkpoint",
+            "logit": 0,
+            "score": 0.5,
+            "threshold": 0.5,
+            "predictedOrigin": "real",
+            "meaning": "uncalibrated-sigmoid"
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "kind": "round-reveal",
+          "dataMode": "fixture",
+          "sampleId": "fixture-sample-03",
+          "roundIndex": 2,
+          "playerChoice": "synthetic",
+          "correctOrigin": "synthetic",
+          "correct": true,
+          "points": 100,
+          "provenance": {
+            "origin": "synthetic",
+            "runId": "fixture-run",
+            "checkpointId": "fixture-checkpoint",
+            "generatorSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "latent": {
+              "dimension": 4,
+              "distribution": "normal-0-1",
+              "rngId": "fixture-rng-not-production",
+              "seed": 44,
+              "values": [
+                0.27,
+                -0.48,
+                1.02,
+                -0.73
+              ]
+            }
+          },
+          "discriminator": {
+            "status": "ready",
+            "runId": "fixture-run",
+            "checkpointId": "fixture-checkpoint",
+            "logit": 0,
+            "score": 0.5,
+            "threshold": 0.5,
+            "predictedOrigin": "real",
+            "meaning": "uncalibrated-sigmoid"
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "kind": "round-reveal",
+          "dataMode": "fixture",
+          "sampleId": "fixture-sample-04",
+          "roundIndex": 3,
+          "playerChoice": "synthetic",
+          "correctOrigin": "real",
+          "correct": false,
+          "points": 0,
+          "provenance": {
+            "origin": "real",
+            "datasetId": "fashion-mnist",
+            "partition": "arena",
+            "recordId": "fixture-arena-02"
+          },
+          "discriminator": {
+            "status": "error",
+            "reason": "Exemplo de erro de inferência; placar humano preservado."
+          }
+        },
+        {
+          "schemaVersion": 1,
+          "kind": "round-reveal",
+          "dataMode": "fixture",
+          "sampleId": "fixture-sample-05",
+          "roundIndex": 4,
+          "playerChoice": "real",
+          "correctOrigin": "synthetic",
+          "correct": false,
+          "points": 0,
+          "provenance": {
+            "origin": "synthetic",
+            "runId": "fixture-run",
+            "checkpointId": "fixture-checkpoint",
+            "generatorSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "latent": {
+              "dimension": 4,
+              "distribution": "normal-0-1",
+              "rngId": "fixture-rng-not-production",
+              "seed": 46,
+              "values": [
+                0.29,
+                -0.46,
+                1.04,
+                -0.71
+              ]
+            }
+          },
+          "discriminator": {
+            "status": "ready",
+            "runId": "fixture-run",
+            "checkpointId": "fixture-checkpoint",
+            "logit": 0,
+            "score": 0.5,
+            "threshold": 0.5,
+            "predictedOrigin": "real",
+            "meaning": "uncalibrated-sigmoid"
+          }
+        }
+      ],
+      "score": 300,
+      "selectionSeed": 42,
+      "error": null
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "creation",
+      "dataMode": "fixture",
+      "id": "fixture-creation",
+      "runId": "fixture-run",
+      "checkpointId": "fixture-checkpoint",
+      "generatorSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "latent": {
+        "dimension": 4,
+        "distribution": "normal-0-1",
+        "rngId": "fixture-rng-not-production",
+        "seed": 42,
+        "values": [
+          0.25,
+          -0.5,
+          1.0,
+          -0.75
+        ]
+      },
+      "thumbnail": {
+        "asset": {
+          "path": "fixtures/fixture-saved.png",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "bytes": 1
+        },
+        "width": 28,
+        "height": 28,
+        "channels": 1,
+        "encoding": "png"
+      },
+      "createdAt": "2026-11-16T00:00:00Z"
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "progress",
+      "dataMode": "fixture",
+      "completedMissionIds": [
+        "primeiros-rastros"
+      ],
+      "missions": [
+        {
+          "missionId": "primeiros-rastros",
+          "bestScore": 300,
+          "bestCorrect": 3,
+          "completions": 1
+        }
+      ],
+      "badges": [
+        "first-mission"
+      ],
+      "completedSessionIds": [
+        "fixture-session"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "preferences",
+      "dataMode": "fixture",
+      "soundEnabled": false,
+      "motion": "system",
+      "explanation": "intuitive"
+    }
+  ]
+}
