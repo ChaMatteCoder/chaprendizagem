@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "checkpoint",
+  "dataMode": "recorded",
+  "id": "cpu-no-batchnorm-v1-epoch-004",
+  "runId": "cpu-no-batchnorm-v1",
+  "epoch": 4,
+  "globalStep": 1564,
+  "generator": {
+    "path": "checkpoints/epoch-004/generator.pt",
+    "sha256": "040844f36ce0dc692bf8d3db39885f4fc82bca37b526b6608695fbb2fb866b51",
+    "bytes": 942562
+  },
+  "discriminator": {
+    "path": "checkpoints/epoch-004/discriminator.pt",
+    "sha256": "b84ab15bd66095a68a762f1e108caa91b2c67f37d6eaf91f4f48cac5ea4e3d90",
+    "bytes": 42519
+  },
+  "fixedLatentSetId": "cpu-no-batchnorm-v1-fixed-z",
+  "previewSampleIds": [
+    "cpu-no-batchnorm-v1-epoch-004-z-00",
+    "cpu-no-batchnorm-v1-epoch-004-z-01",
+    "cpu-no-batchnorm-v1-epoch-004-z-02",
+    "cpu-no-batchnorm-v1-epoch-004-z-03",
+    "cpu-no-batchnorm-v1-epoch-004-z-04",
+    "cpu-no-batchnorm-v1-epoch-004-z-05",
+    "cpu-no-batchnorm-v1-epoch-004-z-06",
+    "cpu-no-batchnorm-v1-epoch-004-z-07",
+    "cpu-no-batchnorm-v1-epoch-004-z-08",
+    "cpu-no-batchnorm-v1-epoch-004-z-09",
+    "cpu-no-batchnorm-v1-epoch-004-z-10",
+    "cpu-no-batchnorm-v1-epoch-004-z-11",
+    "cpu-no-batchnorm-v1-epoch-004-z-12",
+    "cpu-no-batchnorm-v1-epoch-004-z-13",
+    "cpu-no-batchnorm-v1-epoch-004-z-14",
+    "cpu-no-batchnorm-v1-epoch-004-z-15"
+  ]
+}

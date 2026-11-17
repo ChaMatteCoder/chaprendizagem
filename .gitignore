@@ -14,4 +14,7 @@ training/iadivinha/runs/
 training/sonar/runs/
 training/pixel/cache/
 training/pixel/runs/
+training/enganai/.venv/
+training/enganai/cache/
+training/enganai/runs/
 !.env.example

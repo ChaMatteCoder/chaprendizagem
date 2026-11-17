@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "kind": "pytorch-training-run",
+  "dataMode": "recorded",
+  "id": "cpu-no-batchnorm-v1",
+  "status": "completed",
+  "purpose": "baseline-research",
+  "runtime": "pytorch",
+  "browserReady": false,
+  "startedAt": "2026-11-17T12:31:01.917128+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "pytorch": "2.15.0+cpu",
+    "numpy": "2.4.6",
+    "device": "cpu",
+    "threads": 2,
+    "platform": "Linux-7.0.0-43-generic-x86_64-desconhecido-with-glibc2.43",
+    "deterministicAlgorithms": true,
+    "mkldnn": true
+  },
+  "architecture": {
+    "generator": "Generator(\n  (layers): Sequential(\n    (0): ConvTranspose2d(64, 64, kernel_size=(7, 7), stride=(1, 1), bias=False)\n    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n    (2): ReLU()\n    (3): ConvTranspose2d(64, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)\n    (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n    (5): ReLU()\n    (6): ConvTranspose2d(32, 1, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)\n    (7): Tanh()\n  )\n)",
+    "discriminator": "Discriminator(\n  (layers): Sequential(\n    (0): Conv2d(1, 16, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)\n    (1): LeakyReLU(negative_slope=0.2)\n    (2): Conv2d(16, 32, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)\n    (3): Identity()\n    (4): LeakyReLU(negative_slope=0.2)\n    (5): Conv2d(32, 1, kernel_size=(7, 7), stride=(1, 1), bias=False)\n    (6): Flatten(start_dim=1, end_dim=-1)\n  )\n)",
+    "generatorParameters": 234176,
+    "discriminatorParameters": 10016,
+    "generatorInput": [
+      "N",
+      64,
+      1,
+      1
+    ],
+    "generatorOutput": [
+      "N",
+      1,
+      28,
+      28
+    ],
+    "discriminatorInput": [
+      "N",
+      1,
+      28,
+      28
+    ],
+    "discriminatorOutput": [
+      "N",
+      1
+    ]
+  },
+  "config": {
+    "path": "config.json",
+    "sha256": "cd3ec50785c9521dbb84f290dfaab767035497389ba00c0314ea72be5ba8c101",
+    "bytes": 798
+  },
+  "split": {
+    "path": "split.json",
+    "sha256": "eb617bac11146bff675e45235667200fbe5fb14c31c5049b07b599ec82294042",
+    "bytes": 1460434
+  },
+  "trainingSelection": {
+    "path": "training-record-ids.json",
+    "sha256": "9a27767193394b9fe17ad9e4151308875ff8e696868298918a69bad8d34ed79e",
+    "bytes": 850003
+  },
+  "sources": {
+    "path": "sources.json",
+    "sha256": "b437a502bada59a281c3e7b1fe26b33e4a7a99976432fd2eb3b587098c394c0b",
+    "bytes": 2686
+  },
+  "sourceCode": [
+    {
+      "path": "source/common.py",
+      "sha256": "a1df8dcda955072a52171f0b4bf8d9ac41738484e38047b0f338c5955f4e3eb1",
+      "bytes": 2172
+    },
+    {
+      "path": "source/data.py",
+      "sha256": "041eb8660b1635d414681831d35c2403592c9acf9ec36d80efe525d9653b1cfd",
+      "bytes": 7403
+    },
+    {
+      "path": "source/model.py",
+      "sha256": "e7f147882a910402535ae40132b3d1395e7e521aa4a6cde1d35ed7ada1566f48",
+      "bytes": 3585
+    },
+    {
+      "path": "source/train.py",
+      "sha256": "b59579e5e1f839ba85719ccde7d35dca7ea3705c7e1657e5bc90637563f416fe",
+      "bytes": 16141
+    },
+    {
+      "path": "source/verify.py",
+      "sha256": "7bdef262662770a5823a85ccbe809412a2cceb41bbf3a1bad7daec4ebf163d0e",
+      "bytes": 8486
+    },
+    {
+      "path": "source/requirements.txt",
+      "sha256": "46d94ffa31fbfb41bbe356cfd32e770403b9b085e18487d951ff30ea3fb5e98b",
+      "bytes": 139
+    },
+    {
+      "path": "source/requirements.lock.txt",
+      "sha256": "58e54118977ffef1882705315a5f45930ed2fa6af510e62ecafb5e3aa7424d8c",
+      "bytes": 463
+    }
+  ],
+  "trainingRecords": 50000,
+  "classCounts": [
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000
+  ],
+  "classNames": [
+    "T-shirt/top",
+    "Trouser",
+    "Pullover",
+    "Dress",
+    "Coat",
+    "Sandal",
+    "Shirt",
+    "Sneaker",
+    "Bag",
+    "Ankle boot"
+  ],
+  "officialTestEvaluated": false,
+  "arenaUsedForTraining": false,
+  "selection": {
+    "rule": "last-predeclared-epoch",
+    "qualityClaim": "preliminary-baseline-not-a-universal-ai-detector"
+  },
+  "resumptions": [
+    {
+      "startedAt": "2026-11-17T12:41:15.716972+00:00",
+      "fromEpoch": 4,
+      "fromStep": 1564,
+      "sourceCode": [
+        {
+          "path": "source-resume-01/train.py",
+          "sha256": "6910f109b7be314f77b4667a25a9a64ec478c45bda8d158dbe261d39664a1082",
+          "bytes": 19990
+        },
+        {
+          "path": "source-resume-01/model.py",
+          "sha256": "e7f147882a910402535ae40132b3d1395e7e521aa4a6cde1d35ed7ada1566f48",
+          "bytes": 3585
+        },
+        {
+          "path": "source-resume-01/verify.py",
+          "sha256": "7bdef262662770a5823a85ccbe809412a2cceb41bbf3a1bad7daec4ebf163d0e",
+          "bytes": 8486
+        },
+        {
+          "path": "source-resume-01/requirements.lock.txt",
+          "sha256": "58e54118977ffef1882705315a5f45930ed2fa6af510e62ecafb5e3aa7424d8c",
+          "bytes": 463
+        }
+      ]
+    }
+  ],
+  "timingNote": "Elapsed time includes completed epochs before resumption and the resumed process; discarded partial work and offline time are excluded.",
+  "finishedAt": "2026-11-17T12:45:58.676564+00:00",
+  "elapsedSeconds": 642.4894518270003,
+  "globalStep": 3128,
+  "activeCheckpointId": "cpu-no-batchnorm-v1-epoch-008",
+  "completedEpochs": 8
+}

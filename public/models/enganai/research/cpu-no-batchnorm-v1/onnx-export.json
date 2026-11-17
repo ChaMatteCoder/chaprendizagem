@@ -1,0 +1,725 @@
+{
+  "schemaVersion": 1,
+  "kind": "onnx-export",
+  "dataMode": "recorded",
+  "id": "cpu-no-batchnorm-v1-onnx-v1",
+  "version": 1,
+  "runId": "cpu-no-batchnorm-v1",
+  "manifest": {
+    "path": "model-manifest.json",
+    "sha256": "7976f8911c7ca1774d0c2a02d74a2cce7fbb4b644ca3b594babd571fc9318695",
+    "bytes": 2017
+  },
+  "fixedLatents": {
+    "path": "fixed-latents.json",
+    "sha256": "1bd38672f9dd5acf808bdbf836b3ea037e7092589f9085fe0feabee46fd64d18",
+    "bytes": 27746
+  },
+  "activeCheckpointId": "cpu-no-batchnorm-v1-epoch-008",
+  "exporter": {
+    "tool": "torch.onnx.export",
+    "dynamo": true,
+    "optimize": true,
+    "opset": 18,
+    "maxBatch": 1024,
+    "torch": "2.15.0+cpu",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.32.0"
+  },
+  "browserRuntime": {
+    "package": "onnxruntime-web",
+    "version": "1.31.1",
+    "executionProvider": "wasm"
+  },
+  "tolerance": {
+    "generatorAbs": 0.0001,
+    "pixelMaxDifference": 1,
+    "pixelMismatchFraction": 0.002,
+    "logitAbs": 0.0001,
+    "logitRel": 0.0001
+  },
+  "decision": "Threshold for D readings is sigmoid(logit) >= 0.5, equivalent to logit >= 0; scores are uncalibrated.",
+  "realReference": {
+    "asset": {
+      "path": "onnx/reference-real.u8",
+      "sha256": "957910426ea7849bc1c4e529659dec0da7d5dfaf6b6d7d34b7c5c1a07a366099",
+      "bytes": 12544
+    },
+    "datasetId": "fashion-mnist",
+    "partition": "development",
+    "recordIds": [
+      "train-05812",
+      "train-18086",
+      "train-49807",
+      "train-16915",
+      "train-18405",
+      "train-13104",
+      "train-46703",
+      "train-14070",
+      "train-07015",
+      "train-33428",
+      "train-29008",
+      "train-56267",
+      "train-14964",
+      "train-46552",
+      "train-47221",
+      "train-26392"
+    ],
+    "encoding": "uint8-row-major-28x28",
+    "rule": "first-entries-of-evaluation-inputs"
+  },
+  "research": {
+    "verification": "passed",
+    "previewsRecomputed": 64
+  },
+  "checkpoints": [
+    {
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-000",
+      "epoch": 0,
+      "generator": {
+        "asset": {
+          "path": "onnx/epoch-000/generator.onnx",
+          "sha256": "0fc28989abf849cffe2055f6382d5de19e1258d64c857bcbbd1f3203abab3e40",
+          "bytes": 946569
+        },
+        "sourceWeightsSha256": "4a29d09ec1791c2a51dd7deccf68077f865684d8076656344ba3f3a0af8a16d6",
+        "operations": [
+          "ConvTranspose",
+          "Relu",
+          "Tanh"
+        ]
+      },
+      "discriminator": {
+        "asset": {
+          "path": "onnx/epoch-000/discriminator.onnx",
+          "sha256": "d14d6118b0bdeb9b4c236e0fddecf274165be3f1730fb519c3f57cbb520282d9",
+          "bytes": 50054
+        },
+        "sourceWeightsSha256": "b43a4c708a566b690ed80f303ac416d5d8707108018ca9850d66b83b8cee0d25",
+        "operations": [
+          "Conv",
+          "LeakyRelu",
+          "Reshape"
+        ]
+      },
+      "reference": {
+        "fixedLatentIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "generatorOutput": {
+          "path": "onnx/epoch-000/reference-generator.f32",
+          "sha256": "adea2c6611d886bfd1135238c14cd34c4816bc988806794a5de61fed89556566",
+          "bytes": 50176
+        },
+        "discriminatorSyntheticLogits": [
+          -8.895182691048831e-05,
+          -7.17671646270901e-05,
+          -4.45187215518672e-05,
+          -8.938190148910508e-05,
+          -6.728243170073256e-05,
+          2.4963412215583958e-05,
+          -0.00011471801553852856,
+          -5.233545016380958e-05,
+          -6.40311700408347e-05,
+          -9.382608550367877e-05,
+          -3.429731077631004e-05,
+          -6.484920595539734e-05,
+          1.7425606984033948e-06,
+          3.992449819634203e-06,
+          1.3566104826168157e-05,
+          -9.807218157220632e-05
+        ],
+        "discriminatorRealLogits": [
+          -0.004793016705662012,
+          -0.005974910221993923,
+          -0.001896756119094789,
+          -8.753610745770857e-05,
+          -0.008041421882808208,
+          -0.0062977042980492115,
+          0.005029958672821522,
+          -0.008586145006120205,
+          -0.0068741245195269585,
+          -0.009939906187355518,
+          -0.00030025397427380085,
+          -0.007545576896518469,
+          -0.006757338531315327,
+          -0.00047331623500213027,
+          -0.008236119523644447,
+          -0.005943065043538809
+        ]
+      },
+      "pythonParity": {
+        "generatorFixedBatch": {
+          "count": 16,
+          "maxAbsError": 9.313225746154785e-09,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorFixedSingle": {
+          "count": 16,
+          "maxAbsError": 9.313225746154785e-09,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorDevelopmentLatents": {
+          "count": 512,
+          "maxAbsError": 1.0244548320770264e-08,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 401408,
+          "passed": true
+        },
+        "discriminatorFixedSynthetic": {
+          "count": 16,
+          "maxAbsError": 1.673470251262188e-10,
+          "maxAllowedRatio": 1.6733062011553557e-06,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentSynthetic": {
+          "count": 512,
+          "maxAbsError": 2.3283064365386963e-10,
+          "maxAllowedRatio": 2.3281095309357625e-06,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentReal": {
+          "count": 512,
+          "maxAbsError": 2.2351741790771484e-08,
+          "maxAllowedRatio": 0.00022134301252663136,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorRealSingle": {
+          "count": 16,
+          "maxAbsError": 1.955777406692505e-08,
+          "maxAllowedRatio": 0.0001939127832883969,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "registeredPreviews": {
+          "count": 16,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        }
+      },
+      "pythonTiming": {
+        "generatorBatch": 16,
+        "generatorSeconds": 0.010485191999578092
+      }
+    },
+    {
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-001",
+      "epoch": 1,
+      "generator": {
+        "asset": {
+          "path": "onnx/epoch-001/generator.onnx",
+          "sha256": "9d679a429009318e8a8acdea00fe9a77c0968a7d5da78ee9f10e399d9fdd41c2",
+          "bytes": 947059
+        },
+        "sourceWeightsSha256": "6c0bde487dc364bd3744bc3f5fdd68888392197fb4a41f59ea7dc3720d08d4bb",
+        "operations": [
+          "ConvTranspose",
+          "Relu",
+          "Tanh"
+        ]
+      },
+      "discriminator": {
+        "asset": {
+          "path": "onnx/epoch-001/discriminator.onnx",
+          "sha256": "7a7ab72c21924b34cc97b9ed67e45d478ab577fe65f4ffd4ebc94bde8a398140",
+          "bytes": 50054
+        },
+        "sourceWeightsSha256": "58c5919fe3a5b43eb011ebe8b6f0bdcda152dbccbf743c6ba7fa217f46ef6c82",
+        "operations": [
+          "Conv",
+          "LeakyRelu",
+          "Reshape"
+        ]
+      },
+      "reference": {
+        "fixedLatentIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "generatorOutput": {
+          "path": "onnx/epoch-001/reference-generator.f32",
+          "sha256": "21a6180695056fc9882d255897865cf36959156e681cbcd017da466bbc8839d1",
+          "bytes": 50176
+        },
+        "discriminatorSyntheticLogits": [
+          0.21903756260871887,
+          0.19092638790607452,
+          0.1541898399591446,
+          0.17271137237548828,
+          0.2318439930677414,
+          0.2816859185695648,
+          0.1829669177532196,
+          0.152647465467453,
+          0.2932281494140625,
+          0.3238556981086731,
+          0.1671794205904007,
+          0.21741272509098053,
+          0.15019018948078156,
+          0.1907355785369873,
+          0.2178328037261963,
+          0.21851655840873718
+        ],
+        "discriminatorRealLogits": [
+          0.1501927673816681,
+          0.21609093248844147,
+          0.1608179807662964,
+          0.3163820505142212,
+          0.08465858548879623,
+          0.08385203033685684,
+          0.3379254937171936,
+          0.03698708862066269,
+          0.12542065978050232,
+          0.09726613759994507,
+          0.24529580771923065,
+          0.02921311743557453,
+          0.1520589292049408,
+          0.22832748293876648,
+          0.07628180086612701,
+          0.10274174809455872
+        ]
+      },
+      "pythonParity": {
+        "generatorFixedBatch": {
+          "count": 16,
+          "maxAbsError": 4.76837158203125e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorFixedSingle": {
+          "count": 16,
+          "maxAbsError": 4.76837158203125e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorDevelopmentLatents": {
+          "count": 512,
+          "maxAbsError": 4.470348358154297e-07,
+          "pixelMaxDifference": 1,
+          "pixelMismatches": 2,
+          "pixelsCompared": 401408,
+          "passed": true
+        },
+        "discriminatorFixedSynthetic": {
+          "count": 16,
+          "maxAbsError": 2.384185791015625e-07,
+          "maxAllowedRatio": 0.0018435926176607609,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentSynthetic": {
+          "count": 512,
+          "maxAbsError": 3.8743019104003906e-07,
+          "maxAllowedRatio": 0.0030023802537471056,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentReal": {
+          "count": 512,
+          "maxAbsError": 5.066394805908203e-07,
+          "maxAllowedRatio": 0.00365750165656209,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorRealSingle": {
+          "count": 16,
+          "maxAbsError": 1.7136335372924805e-07,
+          "maxAllowedRatio": 0.001652511884458363,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "registeredPreviews": {
+          "count": 16,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        }
+      },
+      "pythonTiming": {
+        "generatorBatch": 16,
+        "generatorSeconds": 0.00402735500028939
+      }
+    },
+    {
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-004",
+      "epoch": 4,
+      "generator": {
+        "asset": {
+          "path": "onnx/epoch-004/generator.onnx",
+          "sha256": "61d7842b28f4c92fd3191be5891eb0dcbcd475ba562aff6e4617763be220cd5a",
+          "bytes": 947059
+        },
+        "sourceWeightsSha256": "040844f36ce0dc692bf8d3db39885f4fc82bca37b526b6608695fbb2fb866b51",
+        "operations": [
+          "ConvTranspose",
+          "Relu",
+          "Tanh"
+        ]
+      },
+      "discriminator": {
+        "asset": {
+          "path": "onnx/epoch-004/discriminator.onnx",
+          "sha256": "aed278cf2e9c2403bab34f73738c3d5e26955475402dc84ef47b5f051d80d018",
+          "bytes": 50054
+        },
+        "sourceWeightsSha256": "b84ab15bd66095a68a762f1e108caa91b2c67f37d6eaf91f4f48cac5ea4e3d90",
+        "operations": [
+          "Conv",
+          "LeakyRelu",
+          "Reshape"
+        ]
+      },
+      "reference": {
+        "fixedLatentIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "generatorOutput": {
+          "path": "onnx/epoch-004/reference-generator.f32",
+          "sha256": "541dcfe687965018d9e60305ff531353528a8bed712df80ff9dedf6df3b084f5",
+          "bytes": 50176
+        },
+        "discriminatorSyntheticLogits": [
+          0.03071831539273262,
+          -0.042320579290390015,
+          -0.029952097684144974,
+          -0.04959661141037941,
+          0.13951139152050018,
+          0.08610700070858002,
+          -0.03307635337114334,
+          -0.14185532927513123,
+          0.05792640149593353,
+          0.25038936734199524,
+          -0.04852352291345596,
+          -0.05161050334572792,
+          0.019528621807694435,
+          -0.02155213989317417,
+          0.039348211139440536,
+          0.08269821107387543
+        ],
+        "discriminatorRealLogits": [
+          0.14532919228076935,
+          -0.035646382719278336,
+          0.08105741441249847,
+          0.3603770136833191,
+          -0.012701736763119698,
+          -0.19026923179626465,
+          0.1786240190267563,
+          -0.15875282883644104,
+          0.13961103558540344,
+          -0.16486212611198425,
+          0.21986927092075348,
+          -0.1726342737674713,
+          0.21636618673801422,
+          0.051405929028987885,
+          -0.16476407647132874,
+          -0.0406818762421608
+        ]
+      },
+      "pythonParity": {
+        "generatorFixedBatch": {
+          "count": 16,
+          "maxAbsError": 4.917383193969727e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorFixedSingle": {
+          "count": 16,
+          "maxAbsError": 4.917383193969727e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorDevelopmentLatents": {
+          "count": 512,
+          "maxAbsError": 6.854534149169922e-07,
+          "pixelMaxDifference": 1,
+          "pixelMismatches": 1,
+          "pixelsCompared": 401408,
+          "passed": true
+        },
+        "discriminatorFixedSynthetic": {
+          "count": 16,
+          "maxAbsError": 5.364418029785156e-07,
+          "maxAllowedRatio": 0.004290197975933552,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentSynthetic": {
+          "count": 512,
+          "maxAbsError": 5.066394805908203e-07,
+          "maxAllowedRatio": 0.004502207040786743,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentReal": {
+          "count": 512,
+          "maxAbsError": 5.066394805908203e-07,
+          "maxAllowedRatio": 0.003942939918488264,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorRealSingle": {
+          "count": 16,
+          "maxAbsError": 1.564621925354004e-07,
+          "maxAllowedRatio": 0.0014473069459199905,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "registeredPreviews": {
+          "count": 16,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        }
+      },
+      "pythonTiming": {
+        "generatorBatch": 16,
+        "generatorSeconds": 0.0033968640000239247
+      }
+    },
+    {
+      "checkpointId": "cpu-no-batchnorm-v1-epoch-008",
+      "epoch": 8,
+      "generator": {
+        "asset": {
+          "path": "onnx/epoch-008/generator.onnx",
+          "sha256": "d7fcc97433462dc7a3a3e22ed40836efe16fb426178a2eb63760bd8f34304c01",
+          "bytes": 947059
+        },
+        "sourceWeightsSha256": "a904a7755f422411d13476e2a1178e878d22c8d6831345e4de1a8966e61e9d4e",
+        "operations": [
+          "ConvTranspose",
+          "Relu",
+          "Tanh"
+        ]
+      },
+      "discriminator": {
+        "asset": {
+          "path": "onnx/epoch-008/discriminator.onnx",
+          "sha256": "10b6a7940b568f3874a15499d27d11ec4d3042b34674206635a9257e4ee52e47",
+          "bytes": 50054
+        },
+        "sourceWeightsSha256": "05c37bfa21c3c22fdabb8ac0d279880aaca496821fc33ce396516b38341ad06d",
+        "operations": [
+          "Conv",
+          "LeakyRelu",
+          "Reshape"
+        ]
+      },
+      "reference": {
+        "fixedLatentIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "generatorOutput": {
+          "path": "onnx/epoch-008/reference-generator.f32",
+          "sha256": "476777c022f8ec5ea67a5f304578b0f26bc0e7c68193393fddc831d23d9fc715",
+          "bytes": 50176
+        },
+        "discriminatorSyntheticLogits": [
+          0.04603398218750954,
+          -0.12773829698562622,
+          -0.03823290020227432,
+          0.04233493655920029,
+          -0.020109951496124268,
+          0.015339179895818233,
+          -0.2886549234390259,
+          0.0026525254361331463,
+          0.02403537556529045,
+          0.2537175714969635,
+          -0.04992891103029251,
+          -0.10330535471439362,
+          -0.06847838312387466,
+          -0.06930997967720032,
+          -0.07673480361700058,
+          -0.13812199234962463
+        ],
+        "discriminatorRealLogits": [
+          -0.09949851781129837,
+          -0.036248188465833664,
+          -0.13528573513031006,
+          0.08733835816383362,
+          -0.15865473449230194,
+          -0.2986362874507904,
+          0.17315205931663513,
+          -0.14728432893753052,
+          -0.0877910628914833,
+          -0.09209926426410675,
+          0.11708898097276688,
+          0.020388200879096985,
+          -0.0366809144616127,
+          -0.032574448734521866,
+          0.026073120534420013,
+          -0.0847698301076889
+        ]
+      },
+      "pythonParity": {
+        "generatorFixedBatch": {
+          "count": 16,
+          "maxAbsError": 8.903443813323975e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorFixedSingle": {
+          "count": 16,
+          "maxAbsError": 8.903443813323975e-07,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        },
+        "generatorDevelopmentLatents": {
+          "count": 512,
+          "maxAbsError": 1.1026859283447266e-06,
+          "pixelMaxDifference": 1,
+          "pixelMismatches": 1,
+          "pixelsCompared": 401408,
+          "passed": true
+        },
+        "discriminatorFixedSynthetic": {
+          "count": 16,
+          "maxAbsError": 3.2782554626464844e-07,
+          "maxAllowedRatio": 0.0026148278266191483,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentSynthetic": {
+          "count": 512,
+          "maxAbsError": 7.487833499908447e-07,
+          "maxAllowedRatio": 0.0072560557164251804,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorDevelopmentReal": {
+          "count": 512,
+          "maxAbsError": 1.0132789611816406e-06,
+          "maxAllowedRatio": 0.0076802680268883705,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "discriminatorRealSingle": {
+          "count": 16,
+          "maxAbsError": 5.662441253662109e-07,
+          "maxAllowedRatio": 0.004826690070331097,
+          "predictionChanges": 0,
+          "passed": true
+        },
+        "registeredPreviews": {
+          "count": 16,
+          "pixelMaxDifference": 0,
+          "pixelMismatches": 0,
+          "pixelsCompared": 12544,
+          "passed": true
+        }
+      },
+      "pythonTiming": {
+        "generatorBatch": 16,
+        "generatorSeconds": 0.0033291529998678016
+      }
+    }
+  ],
+  "sourceCode": [
+    {
+      "path": "onnx/source/export_onnx.py",
+      "sha256": "48ef6ef1fc8f21095ebdad429c4c4d47068fd818cdf43e47b4aa4b7806a4e67e",
+      "bytes": 21503
+    },
+    {
+      "path": "onnx/source/model.py",
+      "sha256": "e7f147882a910402535ae40132b3d1395e7e521aa4a6cde1d35ed7ada1566f48",
+      "bytes": 3585
+    },
+    {
+      "path": "onnx/source/common.py",
+      "sha256": "a1df8dcda955072a52171f0b4bf8d9ac41738484e38047b0f338c5955f4e3eb1",
+      "bytes": 2172
+    },
+    {
+      "path": "onnx/source/requirements.lock.txt",
+      "sha256": "777b52870dfe4f8c54d7953068516289fbb9d0870292b71a5724e3f3b63be225",
+      "bytes": 585
+    }
+  ],
+  "officialTestEvaluated": false,
+  "arenaUsedForParity": false
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "checkpoint",
+  "dataMode": "recorded",
+  "id": "cpu-baseline-v1-epoch-004",
+  "runId": "cpu-baseline-v1",
+  "epoch": 4,
+  "globalStep": 1564,
+  "generator": {
+    "path": "checkpoints/epoch-004/generator.pt",
+    "sha256": "cffa70dda4b4d8e5f9c15e78606ebab2f85548acd64a063205cb0cad5a8079fa",
+    "bytes": 942562
+  },
+  "discriminator": {
+    "path": "checkpoints/epoch-004/discriminator.pt",
+    "sha256": "48c95bc4fd07e9eb909eda657f2c1a05afef5038a6329a7e9c241e677f32e208",
+    "bytes": 44385
+  },
+  "fixedLatentSetId": "cpu-baseline-v1-fixed-z",
+  "previewSampleIds": [
+    "cpu-baseline-v1-epoch-004-z-00",
+    "cpu-baseline-v1-epoch-004-z-01",
+    "cpu-baseline-v1-epoch-004-z-02",
+    "cpu-baseline-v1-epoch-004-z-03",
+    "cpu-baseline-v1-epoch-004-z-04",
+    "cpu-baseline-v1-epoch-004-z-05",
+    "cpu-baseline-v1-epoch-004-z-06",
+    "cpu-baseline-v1-epoch-004-z-07",
+    "cpu-baseline-v1-epoch-004-z-08",
+    "cpu-baseline-v1-epoch-004-z-09",
+    "cpu-baseline-v1-epoch-004-z-10",
+    "cpu-baseline-v1-epoch-004-z-11",
+    "cpu-baseline-v1-epoch-004-z-12",
+    "cpu-baseline-v1-epoch-004-z-13",
+    "cpu-baseline-v1-epoch-004-z-14",
+    "cpu-baseline-v1-epoch-004-z-15"
+  ]
+}

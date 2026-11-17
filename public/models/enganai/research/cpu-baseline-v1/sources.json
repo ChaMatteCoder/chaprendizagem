@@ -1,0 +1,68 @@
+{
+  "datasetId": "fashion-mnist",
+  "sourceCommit": "b2617bb6d3ffa2e429640350f613e3291e10b141",
+  "source": "https://github.com/zalandoresearch/fashion-mnist",
+  "license": {
+    "path": "FASHION-MNIST-LICENSE.txt",
+    "sha256": "13ef4788476d292858fa60eb9a5f74aeca5c65770bc885ccaa05823a17ef7be1",
+    "bytes": 1109
+  },
+  "files": [
+    {
+      "file": {
+        "path": "train-images-idx3-ubyte.gz",
+        "sha256": "3aede38d61863908ad78613f6a32ed271626dd12800ba2636569512369268a84",
+        "bytes": 26421880
+      },
+      "decoded": {
+        "path": "train-images-idx3-ubyte.npy",
+        "sha256": "fa55843a054d8d313e1599d2541666e5febd6f186948f84db90dd89f854fa02e",
+        "bytes": 47040128
+      },
+      "md5": "8d4fb7e6c68d591d4c3dfef9ec88bf0d",
+      "url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/b2617bb6d3ffa2e429640350f613e3291e10b141/data/fashion/train-images-idx3-ubyte.gz"
+    },
+    {
+      "file": {
+        "path": "train-labels-idx1-ubyte.gz",
+        "sha256": "a04f17134ac03560a47e3764e11b92fc97de4d1bfaf8ba1a3aa29af54cc90845",
+        "bytes": 29515
+      },
+      "decoded": {
+        "path": "train-labels-idx1-ubyte.npy",
+        "sha256": "efa44c2e191352e6f338f69c404dcc5c8c636ff9c237875b7fbf289f568c064c",
+        "bytes": 60128
+      },
+      "md5": "25c81989df183df01b3e8a0aad5dffbe",
+      "url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/b2617bb6d3ffa2e429640350f613e3291e10b141/data/fashion/train-labels-idx1-ubyte.gz"
+    },
+    {
+      "file": {
+        "path": "t10k-images-idx3-ubyte.gz",
+        "sha256": "346e55b948d973a97e58d2351dde16a484bd415d4595297633bb08f03db6a073",
+        "bytes": 4422102
+      },
+      "decoded": {
+        "path": "t10k-images-idx3-ubyte.npy",
+        "sha256": "fa687ea6e35cd511e68bc9cd5049edbadf6eb7dfde574e880a3325309e5aadfd",
+        "bytes": 7840128
+      },
+      "md5": "bef4ecab320f06d8554ea6380940ec79",
+      "url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/b2617bb6d3ffa2e429640350f613e3291e10b141/data/fashion/t10k-images-idx3-ubyte.gz"
+    },
+    {
+      "file": {
+        "path": "t10k-labels-idx1-ubyte.gz",
+        "sha256": "67da17c76eaffca5446c3361aaab5c3cd6d1c2608764d35dfb1850b086bf8dd5",
+        "bytes": 5148
+      },
+      "decoded": {
+        "path": "t10k-labels-idx1-ubyte.npy",
+        "sha256": "dc8f8f1192c27394f85487043710db3a9b18d51be2c3bca478bf94dfff9dd146",
+        "bytes": 10128
+      },
+      "md5": "bb300cfdad3c16e7a12a480ee83cd310",
+      "url": "https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/b2617bb6d3ffa2e429640350f613e3291e10b141/data/fashion/t10k-labels-idx1-ubyte.gz"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0+cpu
+numpy==2.4.6
+Pillow==12.2.0
+jsonschema==4.26.0
+matplotlib==3.11.2
+onnx==1.23.2
+onnxscript==0.7.2
+onnxruntime==1.32.0

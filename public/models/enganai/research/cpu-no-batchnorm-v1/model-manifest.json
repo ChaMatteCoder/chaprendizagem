@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "model-manifest",
+  "dataMode": "recorded",
+  "id": "cpu-no-batchnorm-v1-onnx-v1",
+  "runId": "cpu-no-batchnorm-v1",
+  "family": "dcgan-compact",
+  "runtime": "onnx",
+  "generator": {
+    "asset": {
+      "path": "onnx/epoch-008/generator.onnx",
+      "sha256": "d7fcc97433462dc7a3a3e22ed40836efe16fb426178a2eb63760bd8f34304c01",
+      "bytes": 947059
+    },
+    "input": {
+      "name": "latent",
+      "dtype": "float32",
+      "shape": [
+        "N",
+        64,
+        1,
+        1
+      ]
+    },
+    "output": {
+      "name": "image",
+      "dtype": "float32",
+      "shape": [
+        "N",
+        1,
+        28,
+        28
+      ]
+    }
+  },
+  "discriminator": {
+    "asset": {
+      "path": "onnx/epoch-008/discriminator.onnx",
+      "sha256": "10b6a7940b568f3874a15499d27d11ec4d3042b34674206635a9257e4ee52e47",
+      "bytes": 50054
+    },
+    "input": {
+      "name": "image",
+      "dtype": "float32",
+      "shape": [
+        "N",
+        1,
+        28,
+        28
+      ]
+    },
+    "output": {
+      "name": "logit",
+      "dtype": "float32",
+      "shape": [
+        "N",
+        1
+      ]
+    }
+  },
+  "image": {
+    "width": 28,
+    "height": 28,
+    "channels": 1,
+    "layout": "NCHW",
+    "range": [
+      -1,
+      1
+    ]
+  },
+  "latent": {
+    "dimension": 64,
+    "distribution": "normal-0-1",
+    "rngId": "pytorch-cpu-normal-v1"
+  },
+  "datasetId": "fashion-mnist",
+  "splitManifest": {
+    "path": "split.json",
+    "sha256": "eb617bac11146bff675e45235667200fbe5fb14c31c5049b07b599ec82294042",
+    "bytes": 1460434
+  },
+  "trainingConfig": {
+    "path": "config.json",
+    "sha256": "cd3ec50785c9521dbb84f290dfaab767035497389ba00c0314ea72be5ba8c101",
+    "bytes": 798
+  },
+  "checkpointsPath": "checkpoints.json",
+  "historyPath": "history.json",
+  "fixedLatentSetId": "cpu-no-batchnorm-v1-fixed-z",
+  "environment": {
+    "python": "3.12.14",
+    "pytorch": "2.15.0+cpu",
+    "device": "cpu"
+  },
+  "activeCheckpointId": "cpu-no-batchnorm-v1-epoch-008"
+}

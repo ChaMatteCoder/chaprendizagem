@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "runId": "cpu-baseline-v1",
+  "recordedSchemaRecords": 71,
+  "checkpoints": 4,
+  "previewsRecomputed": 64,
+  "maxPreviewPixelError": 0,
+  "weightL1Change": {
+    "generator": 4709.450918674469,
+    "discriminator": 178.32929873466492
+  },
+  "diagnostics": "recomputed-final-development-diagnostics",
+  "officialTestEvaluated": false,
+  "browserReady": false
+}

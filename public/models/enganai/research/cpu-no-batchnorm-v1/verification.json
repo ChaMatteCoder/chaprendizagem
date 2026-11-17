@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "runId": "cpu-no-batchnorm-v1",
+  "recordedSchemaRecords": 71,
+  "checkpoints": 4,
+  "previewsRecomputed": 64,
+  "maxPreviewPixelError": 0,
+  "weightL1Change": {
+    "generator": 4752.540372014046,
+    "discriminator": 283.19228744506836
+  },
+  "diagnostics": "recomputed-final-development-diagnostics",
+  "officialTestEvaluated": false,
+  "browserReady": false
+}
